@@ -1,0 +1,74 @@
+<androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    card_view:cardElevation="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="4dp"
+    android:layout_margin="5dp">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvLoginid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            card_view:layout_constraintTop_toTopOf="parent"
+            android:background="@color/colorPrimary"
+            android:text="contact det(HMCRM192000440)"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_plot_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PlotDetails"
+            android:padding="2dp"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            card_view:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/black"
+
+            card_view:layout_constraintTop_toBottomOf="@+id/tvLoginid"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/InstallmentNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:hint="Start Date"
+            android:textColor="@color/black"
+
+            android:padding="2dp"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/tv_plot_details"
+            android:paddingBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+
+            android:hint="djhkajdf"
+            android:textSize="12sp"
+            card_view:layout_constraintTop_toBottomOf="@+id/InstallmentNo"
+            android:paddingBottom="4sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

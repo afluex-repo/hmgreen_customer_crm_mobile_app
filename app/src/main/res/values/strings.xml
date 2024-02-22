@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">HMGreenCity</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+    <string name="alert_internet">There is no Internet Connectivity</string>
+    <string name="enable_internet">Please enable your Internet Connectivity</string>
+    <string name="alert_text">Alert</string>
+    <string name="share_using">Enter Mobile No.</string>
+    <string name="permission_camera_rationale11">Some permission are required to use the app.</string>
+    <string name="reqst_permission">Request permission?</string>
+
+    <!-- Toolbar/ActionBar Title -->
+    <string name="home_title">DashBoard</string>
+    <string name="sales_title">Sales</string>
+    <string name="customers_title">Customers</string>
+    <string name="purchases_title">Purchases</string>
+    <string name="products_title">Products</string>
+    <string name="suppliers_title">Suppliers</string>
+    <string name="settings_title">Settings</string>
+    <string name="profiles_title">Profiles</string>
+    <string name="users_title">Users</string>
+    <string name="developed_by"><a href='http://crm.hmgreencity.com/Home/'>http://crm.hmgreencity.com/Home/</a></string>
+
+    <!--Social media-->
+    <string name="facebook"><a href='http://www.facebook.com'>f</a></string>
+    <string name="twitter"><a href='http://www.twitter.com'>t</a></string>
+    <string name="youtube"><a href='http://www.youtube.com'>f</a></string>
+    <string name="baseurl">demo1</string>
+
+    <!--dummy data-->
+    <string-array name="product_name_array">
+        <item>Select Product Name</item>
+        <item>Soap</item>
+        <item>Detergent</item>
+        <item>Toothpaste</item>
+        <item>Brush</item>
+        <item>Mouthwash</item>
+        <item>Shampoo</item>
+        <item>Face Wash</item>
+        <item>Hand Wash</item>
+    </string-array>
+
+    <string-array name="customer_name_array">
+        <item>Select Customer</item>
+        <item>Mr. Munir</item>
+        <item>Mr. Mamun</item>
+        <item>Mr. Mustofa</item>
+        <item>Mr. Musharoof</item>
+        <item>Mr. Masud</item>
+        <item>Mr. Manik</item>
+        <item>Mr. Munna</item>
+    </string-array>
+
+    <string-array name="supplier_name_array">
+        <item>Select Supplier</item>
+        <item>Abdul Haque</item>
+        <item>Abdul Rab</item>
+        <item>Abdul Karim</item>
+        <item>Abdul Razzak</item>
+        <item>Abdul Jabbar</item>
+        <item>Abdul Latif</item>
+    </string-array>
+
+
+    <string name="Rs_symbol">\u20B9</string>
+    <string name="your_booking">Your Booking</string>
+    <string name="underscore">-</string>
+    <string name="total_plot_amount">Total Plot Amount</string>
+    <string name="paid_amount">Paid Amount</string>
+    <string name="pending_amount">Pending Amount</string>
+    <string name="due_installments">Due Installments</string>
+
+
+</resources>

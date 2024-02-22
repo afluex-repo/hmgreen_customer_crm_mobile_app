@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customer_alert_dialog_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:id="@+id/profile_img"
+            android:src="@drawable/user_icon"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/customer_name"
+            android:hint="Customer Name"
+            android:inputType="none"
+            android:layout_marginTop="10dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+        <EditText
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:id="@+id/customer_phone_number"
+            android:hint="Customer Phone Number"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_email"
+            android:hint="Customer Email"
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:id="@+id/customer_contact_person"
+            android:hint="Account Holder Name"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:id="@+id/customer_account_no"
+            android:hint="Customer Account number"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_ifsc"
+            android:hint="Customer IFSC"
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_bankname"
+            android:hint="Bank name"
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_bankBranch"
+            android:hint="Bank branch"
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <EditText
+            android:id="@+id/customer_dob"
+            android:hint="DOB"
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/customer_pan_no"
+            android:hint="Pan Number"
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_address"
+            android:hint="Customer Address"
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/customer_save_button"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="Close"
+            android:textColor="@color/white_color"
+            android:background="@color/dark_grey_color"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/card_view" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/whiteTextColor"
+    app:cardCornerRadius="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/salesImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cash"/>
+
+        <LinearLayout
+            android:id="@+id/llcontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/salesImageView"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/plot_detail"
+                style="@style/reportContentText"
+                android:text="Plot details"
+                android:textColor="#25C0DE" />
+
+            <TextView
+                android:id="@+id/installmentAmount"
+                style="@style/viewParent.headerText"
+                android:text="$1000.22"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/dueDate"
+                style="@style/viewParent.headerText"
+                android:layout_marginTop="4dp"
+                android:text="Installment number"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/installment_number"
+            style="@style/viewParent.headerText"
+            android:layout_alignBottom="@+id/llcontainer"
+            android:layout_alignParentEnd="true"
+
+            android:layout_alignParentRight="true"
+            android:text="Due Date"
+            android:textSize="12sp" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

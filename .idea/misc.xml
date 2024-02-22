@@ -1,0 +1,18 @@
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Neelu Sahu 28 March 2023/hmgreen_customer/app/src/main/res/layout/activity_main.xml" value="0.24814814814814815" />
+        <entry key="..\:/Neelu Sahu 28 March 2023/hmgreen_customer/app/src/main/res/layout/activity_suppliers.xml" value="0.27291666666666664" />
+        <entry key="..\:/Neelu Sahu 28 March 2023/hmgreen_customer/app/src/main/res/layout/activity_users.xml" value="0.27291666666666664" />
+        <entry key="..\:/Neelu Sahu 28 March 2023/hmgreen_customer/app/src/main/res/layout/product_alert_dialog.xml" value="0.27291666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

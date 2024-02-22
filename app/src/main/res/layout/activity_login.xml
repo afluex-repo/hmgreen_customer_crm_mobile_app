@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="35dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/login_photo"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/hm_logo_new_final"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+    <EditText
+        android:id="@+id/login_username"
+        android:textAlignment="center"
+        android:hint="LoginID"
+        android:singleLine="true"
+
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edit_text_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/login_password"
+        android:textAlignment="center"
+        android:hint="Password"
+        android:singleLine="true"
+
+        android:inputType="textPassword"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edit_text_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/login_button"
+        android:text="Login"
+        android:layout_marginBottom="25dp"
+        android:textColor="@color/white_color"
+        android:background="@color/dark_grey_color"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/for_forgot_password"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Forgot Password"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
