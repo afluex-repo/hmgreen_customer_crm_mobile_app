@@ -22,7 +22,7 @@
             android:paddingBottom="2dp"
             card_view:layout_constraintTop_toTopOf="parent"
             android:background="@color/colorPrimary"
-            android:text="BookingNumber"
+            android:text="@string/bookingnumber"
             android:gravity="center_vertical"
             android:textColor="@android:color/white"
             android:textSize="14sp"/>
@@ -31,7 +31,7 @@
             android:id="@+id/tv_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PlotDetails"
+            android:text="@string/plotdetails"
             android:padding="2dp"
             android:gravity="center_vertical"
             android:textSize="12sp"
@@ -47,7 +47,7 @@
             android:id="@+id/tv_pan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="plotRate"
+            android:text="@string/plotrate"
             android:padding="2dp"
             android:gravity="center_vertical"
             android:textSize="12sp"
@@ -64,8 +64,7 @@
             android:layout_marginRight="8dp"
             card_view:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/black"
-
-            android:hint="Booking Rate"
+            android:hint="@string/booking_rate"
             android:textSize="12sp"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_contact"
             />
@@ -77,12 +76,10 @@
             android:layout_marginRight="8dp"
             card_view:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/black"
-
-            android:hint="Booking Rate"
+            android:hint="@string/booking_rate"
             android:textSize="12sp"
             android:paddingBottom="4sp"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_joinDate"
-            />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_joinDate"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

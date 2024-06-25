@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.Fragment;
-
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,26 +6,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.Activity.AssociateContaner;
+import com.hm.greencity.customermanagement.Activity.AssosiateDashboard;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.AdapterCustomerList;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.common.Utils;
 import com.hm.greencity.customermanagement.constants.BaseFragment;
 import com.hm.greencity.customermanagement.models.CustomerList.ResponseCustomerList;
-
 import java.util.Calendar;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -34,6 +32,7 @@ import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 public class CustomerListFragment extends BaseFragment {
 
@@ -45,6 +44,10 @@ public class CustomerListFragment extends BaseFragment {
     TextView tvSearch;
     @BindView(R.id.rl_clickmenu)
     RelativeLayout rl_clickmenu;
+
+    @BindView(R.id.backarrow)
+    ImageView tvbackarrow;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle
@@ -63,6 +66,17 @@ public class CustomerListFragment extends BaseFragment {
                 ((ViewGroup)view.getParent()).removeView(view);
             }
         });
+
+        tvbackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AssociateContaner.currentFragment = new AssosiateDashboard();
+                FragmentTransaction fr4 = getFragmentManager().beginTransaction();
+                fr4.replace(R.id.frame, new AssosiateDashboard()).addToBackStack(null);
+                fr4.commit();
+            }
+        });
+
 
         return view;
     }

@@ -79,7 +79,7 @@
 
         <EditText
             android:id="@+id/sl_sales_date"
-            android:hint="Sales Date"
+            android:hint="@string/sales_date"
             android:ems="10"
             android:inputType="date"
             android:clickable="true"
@@ -90,7 +90,7 @@
 
         <EditText
             android:id="@+id/sl_sales_discount"
-            android:hint="Sales Discount"
+            android:hint="@string/sales_discount"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -99,7 +99,7 @@
 
         <EditText
             android:id="@+id/sl_sales_vat"
-            android:hint="Sales Vat"
+            android:hint="@string/sales_vat"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"

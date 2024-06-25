@@ -1,19 +1,16 @@
 package com.hm.greencity.customermanagement.Activity;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.AdapterAssociateDueInstallment;
@@ -23,16 +20,15 @@ import com.hm.greencity.customermanagement.constants.BaseFragment;
 import com.hm.greencity.customermanagement.models.AssociateDashboard.ResponseAssociateDashboard;
 import com.hm.greencity.customermanagement.models.AssociateDueInstallment.Lstdue;
 import com.hm.greencity.customermanagement.models.AssociateDueInstallment.ResponseAssociateDueInstallment;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 public class AssosiateDashboardOld extends BaseFragment {
 

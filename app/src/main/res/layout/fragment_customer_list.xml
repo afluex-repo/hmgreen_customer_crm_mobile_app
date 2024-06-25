@@ -29,18 +29,25 @@
 
                 <RelativeLayout
                     android:id="@+id/rl_clickmenu"
-                    android:layout_width="40dp"
+                    android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:background="?attr/selectableItemBackground"
                     >
-
+                    <ImageView
+                        android:id="@+id/backarrow"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/baseline_arrow_back_24" />
                     <ImageButton
                         android:id="@+id/img_side_menu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
+                        android:layout_marginStart="40dp"
                         android:layout_centerVertical="true"
                         android:background="@drawable/hm_logo_new_final"
                         android:scaleX="0.9"
@@ -55,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="HM Green City"
+                    android:text="@string/hm_green_city"
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
@@ -105,7 +112,7 @@
             android:textStyle="bold"
             android:id="@+id/tvall"
             android:textAlignment="center"
-            android:text="All"
+            android:text="@string/all"
             android:textSize="12sp"
             android:textColor="@color/black"
             android:layout_weight="1"/>
@@ -117,7 +124,7 @@
         android:textStyle="bold"
         android:id="@+id/tvbooked"
         android:textAlignment="center"
-        android:text="Booked"
+        android:text="@string/booked"
         android:textSize="12sp"
         android:background="@drawable/color_gradient_booked"
         android:textColor="@color/black"
@@ -129,7 +136,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:text="Available"
+            android:text="@string/available"
             android:textSize="12sp"
             android:id="@+id/tvavail"
             android:textAlignment="center"
@@ -145,7 +152,7 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:textSize="12sp"
-            android:text="Alloted"
+            android:text="@string/alloted"
             android:textColor="@color/black"
             android:background="@drawable/color_alloted_gradient"
             android:layout_weight="1"/>
@@ -156,7 +163,7 @@
             android:id="@+id/tvreg"
             android:textAlignment="center"
              android:textStyle="bold"
-            android:text="Registered"
+            android:text="@string/registered"
             android:textSize="12sp"
             android:background="#c10202"
             android:textColor="@color/black"

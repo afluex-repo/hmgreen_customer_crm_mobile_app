@@ -22,7 +22,7 @@
             android:paddingBottom="2dp"
             card_view:layout_constraintTop_toTopOf="parent"
             android:background="@color/colorPrimary"
-            android:text="contact det(HMCRM192000440)"
+            android:text="@string/contact_det_hmcrm192000440"
             android:gravity="center_vertical"
             android:textColor="@android:color/white"
             android:textSize="14sp"/>
@@ -31,7 +31,7 @@
             android:id="@+id/tv_plot_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PlotDetails"
+            android:text="@string/plotdetails"
             android:padding="2dp"
             android:gravity="center_vertical"
             android:textSize="12sp"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:hint="Start Date"
+            android:hint="@string/start_date"
             android:textColor="@color/black"
 
             android:padding="2dp"
@@ -64,7 +64,6 @@
             android:layout_marginRight="8dp"
             card_view:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/black"
-
             android:hint="djhkajdf"
             android:textSize="12sp"
             card_view:layout_constraintTop_toBottomOf="@+id/InstallmentNo"

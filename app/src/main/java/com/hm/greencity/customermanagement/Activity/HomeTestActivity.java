@@ -1,11 +1,18 @@
 package com.hm.greencity.customermanagement.Activity;
-
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,11 +20,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.mikephil.charting.animation.Easing;
@@ -45,10 +50,9 @@ import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.listeners.IPickCancel;
 import com.vansuita.pickimage.listeners.IPickResult;
-
 import java.io.File;
 import java.util.ArrayList;
-
+import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.MediaType;
@@ -57,6 +61,8 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+
 
 public class HomeTestActivity extends BaseActivity implements IPickCancel, IPickResult {
 
@@ -105,6 +111,17 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     CardView cvLogout;
     private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12, E13, custSearch;
     PieChart pieChart;
+    @BindView(R.id.languagechange)
+    ImageView languagechange;
+
+    @BindView(R.id.chatImage)
+    ImageView chatImage;
+    @BindView(R.id.imageView6)
+    ImageView imageView6;
+    @BindView(R.id.imageView7)
+    ImageView imageView7;
+    @BindView(R.id.imageView8)
+    ImageView imageView8;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -185,7 +202,62 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
 
+        languagechange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showChangeLanguageDialog();
+            }
+        });
+
+        chatImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               startActivity(new Intent(HomeTestActivity.this,ChatActivity.class));
+            }
+        });
+
+        imageView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openinsta();
+            }
+        });
+        imageView7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openfb();
+            }
+        });
+        imageView8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openyoutube();
+            }
+        });
+
+
     }
+
+    private void openinsta() {
+        String url = "https://www.instagram.com/hm_green_city_2k?igsh=YXNnemQ5aWt5ZW5o";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
+    private void openfb() {
+        String url = "https://www.facebook.com/profile.php?id=61558813520747&mibextid=ZbWKwL";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
+    private void openyoutube() {
+        String url = "https://youtube.com/@Hm.city7374?si=PYfmNKUSZ66UNA17";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
+
+
 
     @Override
     protected void onResume() {
@@ -522,16 +594,45 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
     //====================================================| About |====================================================
     public void aboutMe() {
-        new androidx.appcompat.app.AlertDialog.Builder(this)
+        String message = "Associate Management - 2022\n Version - 1.0\n" +
+                getString(R.string.developed_by) + "\n"  +
+                "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n"+
+                "Website:  http://crm.hmgreencity.com/home";
+
+        // Create a SpannableString
+        SpannableString spannableString = new SpannableString(message);
+
+        // Find the index of the URL
+        int startIndexWebsite = message.indexOf("http://crm.hmgreencity.com/home");
+        int endIndexWebsite = startIndexWebsite + "http://crm.hmgreencity.com/home".length();
+
+        // Apply clickable span for the website
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                // Handle click action for the website
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://crm.hmgreencity.com/home"));
+                startActivity(intent);
+            }
+        }, startIndexWebsite, endIndexWebsite, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        // Create AlertDialog with custom message
+        AlertDialog alertDialog = new AlertDialog.Builder(HomeTestActivity.this)
                 .setTitle("Contact Details")
-                .setMessage("Customer Management 2022  \nVersion 1.0 \n" + HomeTestActivity.this.getString(R.string.developed_by) + "\n" +
-                        "Contact us 9721497374 \nmail us hmcity7374@gmail.com")
+                .setMessage(spannableString)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(getApplicationContext(), "Thank You", Toast.LENGTH_SHORT);
+                        // Positive button clicked
                     }
-                }).show();
+                })
+                .show();
+
+        // Make links clickable
+        TextView messageTextView = alertDialog.findViewById(android.R.id.message);
+        if (messageTextView != null) {
+            messageTextView.setMovementMethod(LinkMovementMethod.getInstance());
+        }
     }
 
 
@@ -745,6 +846,56 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
 
     }
+
+
+    private void showChangeLanguageDialog() {
+
+        final String [] listItems = {"English","हिंदी"};
+        androidx.appcompat.app.AlertDialog.Builder mBuilder = new androidx.appcompat.app.AlertDialog.Builder(HomeTestActivity.this);
+        mBuilder.setTitle("Choose Language...");
+        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (i==0){
+                    setLocale("en");
+                    recreate();
+                }
+                else if (i==1){
+                    setLocale("hi");
+                    recreate();
+                }
+                dialogInterface.dismiss();
+
+            }
+        });
+
+        androidx.appcompat.app.AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
+    }
+
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+
+        //SAVE data to sharepref
+        SharedPreferences.Editor editor = getSharedPreferences("Setings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang",lang);
+        editor.apply();
+
+    }
+
+    public void loadLocale(){
+        SharedPreferences prefs = getSharedPreferences("Setings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Lang","");
+        setLocale(language);
+    }
+
+
+
+
 
     @Override
     public void onBackPressed() {

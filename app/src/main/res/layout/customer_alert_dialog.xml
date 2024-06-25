@@ -20,7 +20,7 @@
 
         <EditText
             android:id="@+id/customer_name"
-            android:hint="Customer Name"
+            android:hint="@string/customer_name"
             android:inputType="none"
             android:layout_marginTop="10dp"
             android:clickable="false"
@@ -39,7 +39,7 @@
             android:focusable="false"
             android:cursorVisible="false"
             android:id="@+id/customer_phone_number"
-            android:hint="Customer Phone Number"
+            android:hint="@string/customer_phone_number"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
 
         <EditText
             android:id="@+id/customer_email"
-            android:hint="Customer Email"
+            android:hint="@string/customer_email"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
@@ -63,7 +63,7 @@
             android:focusable="false"
             android:cursorVisible="false"
             android:id="@+id/customer_contact_person"
-            android:hint="Account Holder Name"
+            android:hint="@string/account_holder_name"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
@@ -75,7 +75,7 @@
             android:focusable="false"
             android:cursorVisible="false"
             android:id="@+id/customer_account_no"
-            android:hint="Customer Account number"
+            android:hint="@string/customer_account_number"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
@@ -83,7 +83,7 @@
 
         <EditText
             android:id="@+id/customer_ifsc"
-            android:hint="Customer IFSC"
+            android:hint="@string/customer_ifsc"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
@@ -95,7 +95,7 @@
 
         <EditText
             android:id="@+id/customer_bankname"
-            android:hint="Bank name"
+            android:hint="@string/bank_name"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
@@ -107,7 +107,7 @@
 
         <EditText
             android:id="@+id/customer_bankBranch"
-            android:hint="Bank branch"
+            android:hint="@string/bank_branch"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
@@ -120,7 +120,7 @@
 
         <EditText
             android:id="@+id/customer_dob"
-            android:hint="DOB"
+            android:hint="@string/dob"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
@@ -131,7 +131,7 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/customer_pan_no"
-            android:hint="Pan Number"
+            android:hint="@string/pan_number"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
@@ -143,7 +143,7 @@
 
         <EditText
             android:id="@+id/customer_address"
-            android:hint="Customer Address"
+            android:hint="@string/customer_address"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
@@ -152,14 +152,12 @@
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-
         <Button
             android:id="@+id/customer_save_button"
             android:layout_marginBottom="10dp"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:text="Close"
+            android:text="@string/close"
             android:textColor="@color/white_color"
             android:background="@color/dark_grey_color"
             android:layout_gravity="center"

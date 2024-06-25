@@ -13,7 +13,7 @@
 
         <EditText
             android:id="@+id/product_name"
-            android:hint="Product Name"
+            android:hint="@string/product_name"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 
         <EditText
             android:id="@+id/product_code"
-            android:hint="Product Code"
+            android:hint="@string/product_code"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
 
         <EditText
             android:id="@+id/product_quantity"
-            android:hint="Product Quantity"
+            android:hint="@string/product_quantity"
             android:inputType="number"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -38,7 +38,7 @@
 
         <EditText
             android:id="@+id/product_price"
-            android:hint="Product Price"
+            android:hint="@string/product_price"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -47,7 +47,7 @@
 
         <EditText
             android:id="@+id/product_expire_date"
-            android:hint="Product Expire Date"
+            android:hint="@string/product_expire_date"
             android:inputType="datetime"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -57,7 +57,7 @@
         <EditText
             android:id="@+id/product_description"
             android:gravity="top"
-            android:hint="Description"
+            android:hint="@string/description"
             android:layout_marginBottom="10dp"
             android:inputType="text|textMultiLine"
             android:background="@drawable/edit_text_border"
@@ -69,11 +69,12 @@
             android:layout_marginBottom="10dp"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:text="Save"
+            android:text="@string/Save"
             android:textColor="@color/white_color"
             android:background="@color/dark_grey_color"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 </ScrollView>

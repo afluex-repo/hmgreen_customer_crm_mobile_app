@@ -17,11 +17,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.JsonObject;
+import com.hm.greencity.customermanagement.Activity.AssociateContaner;
+import com.hm.greencity.customermanagement.Activity.AssosiateDashboard;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.AdapterLedgerAssociate;
 import com.hm.greencity.customermanagement.adapters.AdapterLedgerCustomer;
@@ -80,6 +83,9 @@ public class AssociateLedgerReport extends BaseFragment {
     @BindView(R.id.recyclerview1)
     RecyclerView recyclerview1;
 
+    @BindView(R.id.backarrow)
+    ImageView tvbackarrow;
+
     BottomSheetDialog bottomSheetDialog;
     TextView tvSelectSite;
     TextView tvSector;
@@ -137,6 +143,17 @@ public class AssociateLedgerReport extends BaseFragment {
                 searchhDialog();
             }
         });
+
+        tvbackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AssociateContaner.currentFragment = new AssosiateDashboard();
+                FragmentTransaction fr4 = getFragmentManager().beginTransaction();
+                fr4.replace(R.id.frame, new AssosiateDashboard()).addToBackStack(null);
+                fr4.commit();
+            }
+        });
+
 
 
 

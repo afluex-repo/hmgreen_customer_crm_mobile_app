@@ -8,7 +8,6 @@
     card_view:cardCornerRadius="4dp"
     android:layout_margin="5dp">
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -18,7 +17,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/colorPrimary"
-
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent">
@@ -34,7 +32,7 @@
                 android:layout_marginRight="5dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
-                android:text="BookingNumber"
+                android:text="@string/bookingnumber"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 card_view:layout_constraintEnd_toStartOf="@+id/srno"
@@ -45,7 +43,7 @@
                 android:id="@+id/srno"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Srno"
+                android:text="@string/srno"
                 android:textColor="@color/white"
                 android:layout_marginRight="5dp"
                  android:paddingEnd="5dp"
@@ -60,18 +58,15 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-
             android:gravity="center_vertical"
             android:padding="2dp"
-            android:text="PlotDetails"
+            android:text="@string/plotdetails"
             android:textColor="@color/black"
             android:textSize="12sp"
             card_view:layout_constraintHorizontal_bias="0"
             card_view:layout_constraintEnd_toStartOf="@+id/tv_installment_number"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/llcontainer" />
-
-
         <TextView
             android:id="@+id/tv_installment_amount"
             android:layout_width="0dp"
@@ -80,7 +75,7 @@
             android:layout_marginRight="5dp"
             android:gravity="center_vertical"
             android:padding="2dp"
-            android:text="plotRate"
+            android:text="@string/plotrate"
             card_view:layout_constraintHorizontal_bias="0"
             android:textColor="@color/black"
             android:textSize="12sp"
@@ -95,8 +90,7 @@
             android:layout_marginRight="8dp"
             card_view:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/black"
-
-            android:hint="Booking Rate"
+            android:hint="@string/booking_rate"
             android:textSize="12sp"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_payment_mode"
             />
@@ -108,14 +102,10 @@
             android:layout_marginRight="8dp"
             card_view:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/black"
-
-            android:hint="Booking Rate"
+            android:hint="@string/booking_rate"
             android:textSize="12sp"
             android:paddingBottom="4sp"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_paid_amount"
-            />
-
-
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_paid_amount"/>
         <TextView
             android:id="@+id/tv_installment_number"
             android:layout_width="wrap_content"
@@ -124,12 +114,10 @@
             android:layout_marginRight="8dp"
             card_view:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/black"
-
-            android:hint="Installment number"
+            android:hint="@string/installment_number"
             android:textSize="12sp"
             android:paddingBottom="4sp"
-            card_view:layout_constraintTop_toTopOf="@+id/tv_payment_mode"
-            />
-
+            card_view:layout_constraintTop_toTopOf="@+id/tv_payment_mode"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

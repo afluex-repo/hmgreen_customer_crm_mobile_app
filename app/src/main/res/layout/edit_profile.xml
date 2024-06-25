@@ -70,7 +70,7 @@
                             android:background="@color/colorPrimary"
                             android:gravity="center"
                             android:padding="3dp"
-                            android:text="Personal Information"
+                            android:text="@string/personal_information"
                             android:textAppearance="@style/TextField_Bold"
                             android:textColor="@color/white"
                             android:textSize="15sp" />
@@ -80,7 +80,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="First Name"
+                            android:text="@string/first_name"
                             android:textColor="@color/grey"
                             android:textSize="14sp" />
 
@@ -104,7 +104,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="LastName"
+                            android:text="@string/lastname"
                             android:textColor="@color/grey"
                             android:textSize="14sp" />
 
@@ -128,7 +128,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="Member Id"
+                            android:text="@string/member_id"
                             android:textColor="@color/grey"
                             android:textSize="14sp"
                             android:visibility="gone" />
@@ -154,7 +154,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="Mobile"
+                            android:text="@string/mobile"
                             android:textColor="@color/grey"
                             android:textSize="14sp" />
 
@@ -180,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="Email"
+                            android:text="@string/email"
                             android:textColor="@color/grey"
                             android:textSize="14sp" />
 
@@ -208,7 +208,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="Pan Card"
+                            android:text="@string/pan_card"
                             android:textColor="@color/grey"
                             android:textSize="14sp" />
 
@@ -234,7 +234,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="Date OF Birth"
+                            android:text="@string/date_of_birth"
                             android:textColor="@color/grey"
                             android:textSize="14sp" />
 
@@ -257,7 +257,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="Gender"
+                            android:text="@string/gender"
                             android:textColor="@color/grey"
                             android:textSize="14sp"
                             android:visibility="gone" />
@@ -278,7 +278,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.5"
                                 android:checked="true"
-                                android:text="Male"
+                                android:text="@string/male"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -286,7 +286,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.5"
-                                android:text="Female"
+                                android:text="@string/female"
                                 android:textColor="@color/black" />
                         </RadioGroup>
 
@@ -319,7 +319,7 @@
                         android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:padding="3dp"
-                        android:text="Bank Details"
+                        android:text="@string/bank_details"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
@@ -328,7 +328,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
-                        android:text="Account Number"
+                        android:text="@string/account_number"
                         android:textColor="@color/grey"
                         android:textSize="14sp" />
 
@@ -378,7 +378,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
-                        android:text="Branch Name"
+                        android:text="@string/branch_name"
                         android:textColor="@color/grey"
                         android:textSize="14sp" />
 
@@ -402,7 +402,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
-                        android:text="IFSC"
+                        android:text="@string/ifsc"
                         android:textColor="@color/grey"
                         android:textSize="14sp" />
 

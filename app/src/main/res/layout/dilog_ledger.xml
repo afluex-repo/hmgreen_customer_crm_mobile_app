@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingStart="12dp"
@@ -16,7 +15,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/box_bg"
-        android:hint="Select Site "
+        android:hint="@string/selectsite"
         android:drawableEnd="@drawable/ic_arrow_down_sign_to_navigate"
 
         android:imeOptions="actionDone"
@@ -42,7 +41,7 @@
         android:drawableEnd="@drawable/ic_arrow_down_sign_to_navigate"
 
         android:singleLine="true"
-        android:hint="Select Sector"
+        android:hint="@string/select_sector"
         app:layout_constraintStart_toEndOf="@+id/tv_site"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -59,7 +58,7 @@
         android:padding="8dp"
         android:drawableEnd="@drawable/ic_arrow_down_sign_to_navigate"
 
-        android:hint="Select Block"
+        android:hint="@string/selectblock"
         android:singleLine="true"
         app:layout_constraintEnd_toStartOf="@+id/et_plot_number"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,15 +76,13 @@
         android:background="@drawable/box_bg"
         android:drawablePadding="8dp"
         android:padding="8dp"
-
         android:singleLine="true"
-        android:hint="Plot Number"
-
+        android:hint="@string/plotnumbeR"
         app:layout_constraintStart_toEndOf="@+id/tv_block"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toBottomOf="@+id/tv_sector" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -96,7 +93,7 @@
         android:layout_marginTop="8dp"
         android:textSize="14sp"
         android:padding="8dp"
-        android:hint="Booking Number"
+        android:hint="@string/booking_number"
         android:background="@drawable/box_bg"
         android:id="@+id/et_booking_number"
 
@@ -109,7 +106,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@color/grey"
-        android:text="Cancel"
+        android:text="@string/canceL"
         android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/btn_search"
         app:layout_constraintHorizontal_bias="0.5"
@@ -124,7 +121,7 @@
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/white"
-        android:text="Search"
+        android:text="@string/Search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_cancel"

@@ -38,7 +38,7 @@
             <TextView
                 style="@style/viewParent.headerText"
                 android:textSize="18sp"
-                android:text="Subheading..."/>
+                android:text="@string/subheading"/>
 
         </LinearLayout>
 

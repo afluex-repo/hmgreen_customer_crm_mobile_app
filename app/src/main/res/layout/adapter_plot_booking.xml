@@ -10,7 +10,6 @@
     card_view:cardElevation="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -24,7 +23,7 @@
             android:paddingLeft="2dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
-            android:text="BookingNumber"
+            android:text="@string/bookingnumber"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             card_view:layout_constraintTop_toTopOf="parent" />
@@ -36,10 +35,9 @@
             android:layout_marginLeft="5dp"
             android:gravity="center_vertical"
             android:padding="2dp"
-            android:text="Plot Details"
+            android:text="@string/plot_details"
             android:textColor="@color/black"
             android:textSize="14sp"
-
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_bookingNo" />
 
@@ -48,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:hint="Plot Amt"
+            android:hint="@string/plot_amt"
             android:padding="2dp"
             android:visibility="gone"
             android:paddingBottom="4dp"
@@ -77,9 +75,8 @@
             android:layout_marginTop="3dp"
             android:gravity="center_vertical"
             android:padding="2dp"
-            android:text="Rate : "
+            android:text="@string/rate"
             android:textColor="@color/black"
-
             android:textSize="14sp"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/plotamt" />
@@ -89,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:hint="Booking Rate"
+            android:hint="@string/booking_rate"
             android:paddingVertical="2dp"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -103,10 +100,9 @@
             android:layout_marginLeft="5dp"
             android:gravity="center_vertical"
             android:padding="2dp"
-            android:text="Area"
+            android:text="@string/area"
             android:textColor="@color/black"
             android:textSize="14sp"
-
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_booking_rate" />
 
@@ -126,10 +122,9 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="2dp"
-            android:text="Paid Amt"
+            android:text="@string/paid_amt"
             android:textColor="@color/black"
             android:textSize="14sp"
-
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_netAmt" />
 
@@ -140,7 +135,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="2dp"
-            android:text="Remaining Amt"
+            android:text="@string/remaining_amt"
             android:textColor="@color/black"
             android:textSize="14sp"
 
@@ -153,10 +148,9 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="2dp"
-            android:text="Booking Status"
+            android:text="@string/booking_status"
             android:textColor="@color/black"
             android:textSize="14sp"
-
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="@+id/tv_plot_details" />
 
@@ -167,10 +161,9 @@
             android:gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:padding="2dp"
-            android:text="Booking Date"
+            android:text="@string/booking_date"
             android:textColor="@color/black"
             android:textSize="14sp"
-
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_area" />
     </androidx.constraintlayout.widget.ConstraintLayout>

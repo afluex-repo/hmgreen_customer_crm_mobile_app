@@ -59,7 +59,7 @@
             android:layout_alignParentEnd="true"
 
             android:layout_alignParentRight="true"
-            android:text="Due Date"
+            android:text="@string/due_date"
             android:textSize="12sp" />
 
 

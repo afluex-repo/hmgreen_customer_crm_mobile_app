@@ -11,16 +11,20 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.JsonObject;
+import com.hm.greencity.customermanagement.Activity.AssociateContaner;
+import com.hm.greencity.customermanagement.Activity.AssosiateDashboard;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.AdapterAssociateBookingLst;
 import com.hm.greencity.customermanagement.adapters.AdapterAssociateBusinessReport;
@@ -54,6 +58,10 @@ public class AssociateBusinessReport extends BaseFragment {
     @BindView(R.id.tvSearch)
     TextView tvSearch;
 
+    @BindView(R.id.backarrow)
+    ImageView tvbackarrow;
+
+
     private List<LstSite> lstsites;
     private List<LstPhase> lstSectors,sublstSectors;
     private List<LstBlock> lstBlocks,sublstBlocks;
@@ -78,6 +86,20 @@ public class AssociateBusinessReport extends BaseFragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerview.setLayoutManager(layoutManager);
         getDataSearch("","","","","","","","","");
+
+
+        tvbackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AssociateContaner.currentFragment = new AssosiateDashboard();
+                FragmentTransaction fr4 = getFragmentManager().beginTransaction();
+                fr4.replace(R.id.frame, new AssosiateDashboard()).addToBackStack(null);
+                fr4.commit();
+            }
+        });
+
+
+
         return view;
     }
 

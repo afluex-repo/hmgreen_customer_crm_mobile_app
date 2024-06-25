@@ -29,7 +29,7 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/reg_designation"
-            android:hint="Designation (User Access Role)"
+            android:hint="@string/designation_user_access_role"
             android:inputType="textAutoCorrect"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/reg_email"
-            android:hint="E-mail"
+            android:hint="e_mail"
             android:inputType="textWebEmailAddress"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/reg_phone_number"
-            android:hint="Phone Number"
+            android:hint="@string/phone_number"
             android:inputType="phone"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/reg_address"
-            android:hint="Address"
+            android:hint="@string/address"
             android:inputType="textAutoCorrect"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -61,14 +61,14 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/reg_username"
-            android:hint="Username"
+            android:hint="@string/username"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/reg_password"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/reg_confirm_password"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -87,7 +87,7 @@
             android:layout_marginBottom="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Save"
+            android:text="@string/save"
             android:textColor="@color/white_color"
             android:background="@color/dark_grey_color"
             android:layout_gravity="center"

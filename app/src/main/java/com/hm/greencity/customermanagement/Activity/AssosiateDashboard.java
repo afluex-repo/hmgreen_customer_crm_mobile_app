@@ -1,9 +1,21 @@
 package com.hm.greencity.customermanagement.Activity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,6 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.Fragment.AssociateBookingList;
 import com.hm.greencity.customermanagement.Fragment.AssociateBusinessReport;
@@ -34,6 +47,8 @@ import com.hm.greencity.customermanagement.constants.BaseFragment;
 import com.hm.greencity.customermanagement.login.LoginActivity;
 import com.hm.greencity.customermanagement.models.AssociateDashboard.ResponseAssociateDashboard;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
+
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -154,11 +169,8 @@ public class AssosiateDashboard extends BaseFragment {
 
     @BindView(R.id.tv_username)
     TextView tv_username;
-
     @BindView(R.id.tv_loginId)
     TextView tv_loginId;
-
-
     @BindView(R.id.cv_plotBooking)
     CardView cvPlotBooking;
     @BindView(R.id.cv_customerDetails)
@@ -177,6 +189,13 @@ public class AssosiateDashboard extends BaseFragment {
     CardView cvAboutUs;
     @BindView(R.id.cv_logout)
     CardView cvLogout;
+    @BindView(R.id.add_fab)
+    FloatingActionButton  add_fab;
+
+//    @BindView(R.id.textViewdueInstallment1)
+//     ImageView textViewdueInstallment1;
+
+
 
 //    @BindView(R.id.rl_clickmenu)
 //    RelativeLayout rl_clickmenu;
@@ -187,6 +206,7 @@ public class AssosiateDashboard extends BaseFragment {
     AssociateContaner associateContaner;
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -228,8 +248,24 @@ public class AssosiateDashboard extends BaseFragment {
         });
 
 
+       //floating ACTION BUTTON
+
+
+
+
+//        textViewdueInstallment1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//              showChangeLanguageDialog();
+//            }
+//
+//
+//        });
+
+
         return view;
     }
+
 
 //    @Override
 //    public void onDestroy() {
@@ -282,7 +318,7 @@ public class AssosiateDashboard extends BaseFragment {
     }
 
 
-    @OnClick({R.id.cv_plotBooking, R.id.cv_customerDetails, R.id.cv_mysummary, R.id.cv_plot_ledger, R.id.cv_plot_avaibility, R.id.cv_contactus, R.id.cv_change_password, R.id.cv_aboutUs, R.id.cv_logout, R.id.support})
+    @OnClick({R.id.cv_plotBooking, R.id.cv_customerDetails, R.id.cv_mysummary, R.id.cv_plot_ledger, R.id.cv_plot_avaibility, R.id.cv_contactus, R.id.cv_change_password, R.id.cv_aboutUs, R.id.cv_logout, R.id.support,R.id.textViewdueInstallment1,R.id.imageViewinsta,R.id.chatImage,R.id.imageViewfb,R.id.imageViewyoutube})
     public void onClick(View view) {
         switch (view.getId()) {
 
@@ -332,6 +368,9 @@ public class AssosiateDashboard extends BaseFragment {
             case R.id.cv_change_password:
                 changePassword();
                 break;
+            case R.id.textViewdueInstallment1:
+                showChangeLanguageDialog();
+                break;
             case R.id.cv_aboutUs:
             case R.id.support:
                 aboutMe();
@@ -339,7 +378,35 @@ public class AssosiateDashboard extends BaseFragment {
             case R.id.cv_logout:
                 logout();
                 break;
+            case R.id.imageViewinsta:
+                openinsta();
+                break;
+            case R.id.imageViewfb:
+                openfb();
+                break;
+            case R.id.imageViewyoutube:
+                openyoutube();
+                break;
         }
+    }
+
+    private void openinsta() {
+        String url = "https://www.instagram.com/hm_green_city_2k?igsh=YXNnemQ5aWt5ZW5o";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
+    private void openfb() {
+        String url = "https://www.facebook.com/profile.php?id=61558813520747&mibextid=ZbWKwL";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
+    private void openyoutube() {
+        String url = "https://youtube.com/@Hm.city7374?si=PYfmNKUSZ66UNA17";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 
 
@@ -421,18 +488,63 @@ public class AssosiateDashboard extends BaseFragment {
     }
 
     //====================================================| About |====================================================
+//    public void aboutMe() {
+//        new androidx.appcompat.app.AlertDialog.Builder(getActivity())
+//                .setTitle("Contact Details")
+//                .setMessage("Associate Management 2022  \nVersion 1.0 \n" + getActivity().getString(R.string.developed_by) + "\n" +
+//                        "Contact us 9721497374 \nmail us hmcity7374@gmail.com")
+//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+////                        Toast.makeText(getApplicationContext(), "Thank You", Toast.LENGTH_SHORT);
+//                    }
+//                }).show();
+//    }
+
+
+
     public void aboutMe() {
-        new androidx.appcompat.app.AlertDialog.Builder(getActivity())
+        String message = "Associate Management - 2022\n Version - 1.0\n" +
+                getString(R.string.developed_by) + "\n"  +
+                "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n"+
+               "Website:  http://crm.hmgreencity.com/home";
+
+        // Create a SpannableString
+        SpannableString spannableString = new SpannableString(message);
+
+        // Find the index of the URL
+        int startIndexWebsite = message.indexOf("http://crm.hmgreencity.com/home");
+        int endIndexWebsite = startIndexWebsite + "http://crm.hmgreencity.com/home".length();
+
+        // Apply clickable span for the website
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                // Handle click action for the website
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://crm.hmgreencity.com/home"));
+                startActivity(intent);
+            }
+        }, startIndexWebsite, endIndexWebsite, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        // Create AlertDialog with custom message
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle("Contact Details")
-                .setMessage("Associate Management 2022  \nVersion 1.0 \n" + getActivity().getString(R.string.developed_by) + "\n" +
-                        "Contact us 9721497374 \nmail us hmcity7374@gmail.com")
+                .setMessage(spannableString)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(getApplicationContext(), "Thank You", Toast.LENGTH_SHORT);
+                        // Positive button clicked
                     }
-                }).show();
+                })
+                .show();
+
+        // Make links clickable
+        TextView messageTextView = alertDialog.findViewById(android.R.id.message);
+        if (messageTextView != null) {
+            messageTextView.setMovementMethod(LinkMovementMethod.getInstance());
+        }
     }
+
 
 
     private void logout() {
@@ -460,6 +572,50 @@ public class AssosiateDashboard extends BaseFragment {
             alert11.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         });
         alert11.show();
+
+    }
+
+
+
+    private void showChangeLanguageDialog() {
+        final String[] listItems = {"English", "हिंदी"};
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+        mBuilder.setTitle("Choose Language...");
+        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (i == 0) {
+                    setLocale("en");
+                    getActivity().recreate();
+                } else if (i == 1) {
+                    setLocale("hi");
+                    getActivity().recreate();
+                }
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
+    }
+
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getActivity().getResources().updateConfiguration(config, getActivity().getResources().getDisplayMetrics());
+
+        // SAVE data to SharedPreferences
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+
+    public void loadLocale() {
+        SharedPreferences prefs = getActivity().getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocale(language);
     }
 
 
@@ -514,5 +670,9 @@ public class AssosiateDashboard extends BaseFragment {
         unbinder.unbind();
         super.onDestroyView();
     }
+
+
+
+
 
 }

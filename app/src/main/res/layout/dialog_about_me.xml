@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="0dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:elevation="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="200dp">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_details"
+            android:textStyle="bold"
+            android:textColor="#101010"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/text_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/associate_management_2022_nversion_1_0_ndeveloped_by_ncontact_us_9721497374_nmail_us_hmcity7374_gmail_com"
+            android:layout_marginTop="40dp"
+            android:textSize="16sp"/>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

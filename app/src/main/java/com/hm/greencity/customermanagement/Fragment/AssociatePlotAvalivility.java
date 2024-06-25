@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -20,11 +21,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.JsonObject;
+import com.hm.greencity.customermanagement.Activity.AssociateContaner;
+import com.hm.greencity.customermanagement.Activity.AssosiateDashboard;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.AdapterAssociatePlotAvalility;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
@@ -56,6 +60,10 @@ public class AssociatePlotAvalivility extends BaseFragment {
 
     @BindView(R.id.tvSearch)
     TextView tvSearch;
+
+    @BindView(R.id.backarrow)
+    ImageView tvbackarrow;
+
 
 
     BottomSheetDialog bottomSheetDialog;
@@ -125,6 +133,17 @@ public class AssociatePlotAvalivility extends BaseFragment {
                 searchhDialog();
             }
         });
+
+        tvbackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AssociateContaner.currentFragment = new AssosiateDashboard();
+                FragmentTransaction fr4 = getFragmentManager().beginTransaction();
+                fr4.replace(R.id.frame, new AssosiateDashboard()).addToBackStack(null);
+                fr4.commit();
+            }
+        });
+
 //        getData();
         getData("", "", ""
                 , "", "");

@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:textSize="16sp"
         android:layout_marginHorizontal="8dp"
-        android:hint="Title"
+        android:hint="@string/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
         android:layout_width="0dip"
         android:layout_height="300dp"
         android:layout_weight="1"
-        android:hint="Feedback..."
+        android:hint="@string/feedback"
         android:inputType="textCapSentences|textMultiLine"
         android:maxLength="2000"
         android:textAlignment="viewStart"
@@ -63,7 +63,7 @@
             android:background="@color/grey"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:text="Cancel"
+            android:text="@string/Cancel"
             android:textColor="@color/white_color" />
 
         <Button
@@ -77,7 +77,7 @@
             android:background="@color/dark_grey_color"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:text="Send"
+            android:text="@string/send"
             android:textColor="@color/white_color" />
     </LinearLayout>
 

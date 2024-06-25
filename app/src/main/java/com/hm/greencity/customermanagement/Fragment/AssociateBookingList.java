@@ -1,7 +1,4 @@
 package com.hm.greencity.customermanagement.Fragment;
-
-
-
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,37 +8,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.Activity.AssociateContaner;
-
+import com.hm.greencity.customermanagement.Activity.AssosiateDashboard;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.AdapterAssociateBookingLst;
-import com.hm.greencity.customermanagement.adapters.AdapterCustomerList;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.common.Utils;
 import com.hm.greencity.customermanagement.constants.BaseFragment;
 import com.hm.greencity.customermanagement.models.AssociateBookingList.ResponseAssociateBookingList;
-import com.hm.greencity.customermanagement.models.CustomerList.ResponseCustomerList;
 import com.hm.greencity.customermanagement.models.ResponseList.LstBlock;
 import com.hm.greencity.customermanagement.models.ResponseList.LstPhase;
 import com.hm.greencity.customermanagement.models.ResponseList.LstSite;
 import com.hm.greencity.customermanagement.models.ResponseList.ResponseSite;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -50,26 +43,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AssociateBookingList  extends BaseFragment {
 
+public class AssociateBookingList  extends BaseFragment {
     Unbinder unbinder;
     @BindView(com.hm.greencity.customermanagement.R.id.recyclerview)
     RecyclerView recyclerview;
     BottomSheetDialog searchDialog;
-
-
     @BindView(R.id.tvSearch)
     TextView tvSearch;
-
     @BindView(R.id.textContainer1)
     LinearLayout textContainer1;
-
-
     @BindView(R.id.total_number_of_plot)
     TextView total_number_of_plot;
-
     @BindView(R.id.rl_clickmenu)
     RelativeLayout rl_clickmenu;
+    @BindView(R.id.backarrow)
+    ImageView tvbackarrow;
 
 
     private TextView tv_select_site,tv_sector,select_block;
@@ -94,6 +83,16 @@ public class AssociateBookingList  extends BaseFragment {
             public void onClick(View view) {
                goToActivityWithFinish(AssociateContaner.class,null);
 
+            }
+        });
+
+        tvbackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AssociateContaner.currentFragment = new AssosiateDashboard();
+                FragmentTransaction fr4 = getFragmentManager().beginTransaction();
+                fr4.replace(R.id.frame, new AssosiateDashboard()).addToBackStack(null);
+                fr4.commit();
             }
         });
         return view;

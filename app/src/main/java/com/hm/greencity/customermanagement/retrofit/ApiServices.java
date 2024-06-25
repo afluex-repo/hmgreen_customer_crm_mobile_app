@@ -21,6 +21,7 @@ import com.hm.greencity.customermanagement.models.ResponseStatusMessage;
 import com.hm.greencity.customermanagement.models.ResponseUpdateProfile;
 import com.hm.greencity.customermanagement.models.UpdateCustomerProfile;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
+import com.hm.greencity.customermanagement.models.chatModel.ResponseChat;
 
 
 import okhttp3.MultipartBody;
@@ -99,4 +100,9 @@ public interface ApiServices {
 
     @POST("webapi/AssociatePlotAvailability")
     Call<ResponseAssociatePlotAvalibility>AssociatePlotAvailability(@Body JsonObject object);
+
+    @POST("WebAPI/SaveQuery")
+    Call<ResponseChat>sendChat(@Body JsonObject object);
+
+
 }

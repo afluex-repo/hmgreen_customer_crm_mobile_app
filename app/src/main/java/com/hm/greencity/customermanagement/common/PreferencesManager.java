@@ -1,13 +1,9 @@
 package com.hm.greencity.customermanagement.common;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 
-
 public class PreferencesManager {
 
-
-    //app login variables
     private static final String PREF_NAME = "com.hmgreencitycustomer";
     private static final String Full_Name = "Full_Name";
     private static final String UserId = "UserId";
@@ -21,11 +17,9 @@ public class PreferencesManager {
     private static final String CustomerID = "CustomerID";
     private static final String producyInfoId = "producyInfoId";
     private static final String vendorId = "vendorId";
-
     public static PreferencesManager sInstance;
     private final SharedPreferences mPref;
     private static Context context;
-
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     private static final String IS_FIRST_INTRO = "IS_FIRST_INTRO";
 
@@ -146,7 +140,6 @@ public class PreferencesManager {
     public void setPassword(String value) {
         mPref.edit().putString(Password, value).apply();
     }
-
     public String getPassword(String value) {
         return mPref.getString(Password, "");
     }
@@ -156,7 +149,6 @@ public class PreferencesManager {
     public String getCustomerID() {
         return mPref.getString(CustomerID, "");
     }
-
 
 
     //IS_FIRST_TIME_LAUNCH

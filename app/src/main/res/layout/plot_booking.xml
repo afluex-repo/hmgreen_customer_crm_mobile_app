@@ -30,7 +30,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Customer Detail :"
+                    android:text="@string/customer_detail"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Associate Detail :"
+                    android:text="@string/Associate_detail"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Booking No :"
+                    android:text="@string/bookingno"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -121,7 +121,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Booking Date	:"
+                    android:text="@string/bookingdate"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -150,7 +150,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Plot Number	:"
+                    android:text="@string/plotnumber"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -179,10 +179,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Plot Area	:"
+                    android:text="@string/plotarea"
                     android:layout_weight="2"
                     android:textSize="12dp"
-
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"/>
                 <TextView
@@ -208,7 +207,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Plot Status	:"
+                    android:text="@string/plotstatus"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -267,7 +266,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Plot Amt :"
+                    android:text="@string/plotamt"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -296,7 +295,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Plot Rate :"
+                    android:text="@string/Plotrate"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -326,7 +325,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Discount :"
+                    android:text="@string/Discount"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -355,7 +354,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Payment Plan :"
+                    android:text="@string/paymentplan"
                     android:layout_weight="2"
                     android:textSize="12dp"
 
@@ -384,7 +383,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Paid Amt :"
+                    android:text="@string/paidamt"
                     android:layout_weight="2"
                     android:textSize="12dp"
 

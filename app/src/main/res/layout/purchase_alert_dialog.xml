@@ -40,7 +40,7 @@
 
         <EditText
             android:id="@+id/purchase_date"
-            android:hint="Purchase Date"
+            android:hint="@string/purchase_date"
             android:inputType="datetime"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -49,7 +49,7 @@
 
         <EditText
             android:id="@+id/purchase_product_quantity"
-            android:hint="Purchase Product Quantity"
+            android:hint="@string/purchase_product_quantity"
             android:inputType="number"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -58,7 +58,7 @@
 
         <EditText
             android:id="@+id/purchase_product_price"
-            android:hint="Purchase Product Price"
+            android:hint="@string/purchase_product_price"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -67,7 +67,7 @@
 
         <EditText
             android:id="@+id/purchase_amount"
-            android:hint="Total Amount"
+            android:hint="@string/total_amount"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -76,7 +76,7 @@
 
         <EditText
             android:id="@+id/purchase_payment"
-            android:hint="Total Payment"
+            android:hint="@string/total_payment"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
@@ -85,7 +85,7 @@
 
         <EditText
             android:id="@+id/purchase_balance"
-            android:hint="Total Balance"
+            android:hint="@string/total_balance"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"

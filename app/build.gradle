@@ -1,22 +1,28 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 33
     defaultConfig {
         applicationId "com.hm.greencity.customermanagement"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 8
-        versionName "1.8"
+        versionCode 9
+        versionName "1.9"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
+
+    buildFeatures{
+        viewBinding= true
+    }
+
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", "\"http://crm.hmgreencity.com/\""
+            buildConfigField "String", "BASE_URL", "\"https://crm.hmgreencity.com/\""
         }
         release {
 //            buildConfigField "String", "BASE_URL", "\"http://demo1.afluex.com/webapi/\""
-            buildConfigField "String", "BASE_URL", "\"http://crm.hmgreencity.com/\""
+            buildConfigField "String", "BASE_URL", "\"https://crm.hmgreencity.com/\""
             lintOptions {
                 disable 'MissingTranslation'
                 checkReleaseBuilds false
@@ -35,8 +41,6 @@ android {
             targetCompatibility JavaVersion.VERSION_1_8
         }
     }
-
-
 }
 
 repositories {
@@ -93,6 +97,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+
+    implementation 'com.squareup.picasso:picasso:2.8'
+
 
 
 }

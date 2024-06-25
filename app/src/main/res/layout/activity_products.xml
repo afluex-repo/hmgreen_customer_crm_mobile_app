@@ -8,14 +8,35 @@
     android:layout_height="match_parent"
     tools:context=".products.ProductsActivity">
 
+<LinearLayout
+    android:id="@+id/product_search"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/backarrow"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="5dp"
+        android:scaleType="centerCrop"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/baseline_arrow_back_24" />
+
     <EditText
-        android:id="@+id/product_search"
         android:fontFamily="@font/font_awesome_font"
         android:hint=""
+        android:layout_marginStart="10dp"
         android:textColor="@color/dark_grey_color"
         android:background="@drawable/edit_text_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+</LinearLayout>
+
 
     <!--<SearchView
         android:id="@+id/product_search"
@@ -23,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </SearchView>-->
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         xmlns:app="http://schemas.android.com/apk/res-auto"
