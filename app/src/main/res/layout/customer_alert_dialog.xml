@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/customer_alert_dialog_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <LinearLayout
         android:padding="15dp"
@@ -18,138 +18,174 @@
             android:src="@drawable/user_icon"
             android:layout_gravity="center_horizontal"/>
 
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/customer_name"
+          android:layout_height="wrap_content"/>
+
         <EditText
             android:id="@+id/customer_name"
-            android:hint="@string/customer_name"
             android:inputType="none"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:clickable="false"
+            android:hint="N/A"
             android:focusable="false"
             android:cursorVisible="false"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
-
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/customer_phone_number"
+          android:layout_height="wrap_content"/>
         <EditText
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
             android:cursorVisible="false"
+            android:layout_marginTop="5dp"
+            android:hint="N/A"
             android:id="@+id/customer_phone_number"
-            android:hint="@string/customer_phone_number"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/customer_email"
+          android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/customer_email"
-            android:hint="@string/customer_email"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
+            android:layout_marginTop="5dp"
+            android:hint="N/A"
             android:cursorVisible="false"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/account_holder_name"
+          android:layout_height="wrap_content"/>
         <EditText
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
             android:cursorVisible="false"
+            android:layout_marginTop="5dp"
+            android:hint="N/A"
             android:id="@+id/customer_contact_person"
-            android:hint="@string/account_holder_name"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/customer_account_number"
+          android:layout_height="wrap_content"/>
         <EditText
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
             android:cursorVisible="false"
+            android:hint="N/A"
+            android:layout_marginTop="5dp"
             android:id="@+id/customer_account_no"
-            android:hint="@string/customer_account_number"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/customer_ifsc"
+          android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/customer_ifsc"
-            android:hint="@string/customer_ifsc"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
+            android:layout_marginTop="5dp"
             android:cursorVisible="false"
+            android:hint="N/A"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/bank_name"
+          android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/customer_bankname"
-            android:hint="@string/bank_name"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
             android:cursorVisible="false"
+            android:layout_marginTop="5dp"
+            android:hint="N/A"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/bank_branch"
+          android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/customer_bankBranch"
-            android:hint="@string/bank_branch"
             android:inputType="none"
             android:clickable="false"
+            android:layout_marginTop="5dp"
             android:focusable="false"
+            android:hint="N/A"
             android:cursorVisible="false"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/dob"
+          android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/customer_dob"
-            android:hint="@string/dob"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
+            android:layout_marginTop="5dp"
             android:cursorVisible="false"
+            android:hint="N/A"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/pan_number"
+          android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/customer_pan_no"
-            android:hint="@string/pan_number"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
+            android:hint="N/A"
+            android:layout_marginTop="5dp"
             android:cursorVisible="false"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@string/customer_address"
+          android:layout_height="wrap_content"/>
 
         <EditText
             android:id="@+id/customer_address"
-            android:hint="@string/customer_address"
             android:inputType="none"
             android:clickable="false"
             android:focusable="false"
+            android:hint="N/A"
+            android:layout_marginTop="5dp"
             android:cursorVisible="false"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
@@ -164,4 +200,5 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
 </ScrollView>

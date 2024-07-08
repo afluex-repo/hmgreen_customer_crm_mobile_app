@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.Fragment;
-
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -52,10 +51,6 @@ import retrofit2.Response;
 public class AssociateLedgerReport extends BaseFragment {
 
     Unbinder unbinder;
-
-
-
-
     @BindView(R.id.tv_plot_rate)
     TextView tvPlotRate;
     @BindView(R.id.tv_plot_area)
@@ -82,27 +77,22 @@ public class AssociateLedgerReport extends BaseFragment {
     TextView tvBalance;
     @BindView(R.id.recyclerview1)
     RecyclerView recyclerview1;
-
     @BindView(R.id.backarrow)
     ImageView tvbackarrow;
-
     BottomSheetDialog bottomSheetDialog;
     TextView tvSelectSite;
     TextView tvSector;
     TextView selectBlock;
     EditText etBookingNumber;
     EditText etPlotNumber;
-
     @BindView(R.id.img_side_menu)
     ImageView btnsearchbutton;
-
     private List<LstSite> lstsites;
     private List<LstPhase> lstSectors, sublstSectors;
     private List<LstBlock> lstBlocks, sublstBlocks;
     private ArrayList<String> SelectSite, SelectSector, SelectBlock;
     private String PK_SectorID, PK_SiteID, PK_BlockID;
     private PopupMenu sitemenu, sectorMenu, blockMenu;
-
     LinearLayout llcontainer;
     CardView cvcontainer;
 
@@ -364,8 +354,6 @@ public class AssociateLedgerReport extends BaseFragment {
         datePickerDialog.getDatePicker().setMaxDate(cal.getTimeInMillis());
         datePickerDialog.show();
     }
-
-
     public void getProductLst() {
         JsonObject jsonObject = new JsonObject();
 
@@ -426,8 +414,6 @@ public class AssociateLedgerReport extends BaseFragment {
 
         });
     }
-
-
     private void setSector(String siteID) {
 
         sublstSectors.clear();
@@ -452,8 +438,6 @@ public class AssociateLedgerReport extends BaseFragment {
 
 
     }
-
-
     private void setBlock(String blockID) {
 
         sublstBlocks.clear();

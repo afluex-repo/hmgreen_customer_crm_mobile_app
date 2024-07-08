@@ -31,7 +31,6 @@ import retrofit2.Response;
 
 
 public class AssosiateDashboardOld extends BaseFragment {
-
     Unbinder unbinder;
     @BindView(R.id.imageView2)
     ImageView imageView2;
@@ -61,15 +60,10 @@ public class AssosiateDashboardOld extends BaseFragment {
     ImageView imageView5;
     @BindView(R.id.tv_total_inactive)
     TextView tvTotalInactive;
-
-
-
     @BindView(R.id.tv_total_payout)
     TextView tvTotalPayout;
-
     @BindView(R.id.tv_total_advance)
     TextView tvTotalAdvance;
-
     @BindView(R.id.tv_total_deduct)
     TextView tvTotalDeduct;
 
@@ -206,8 +200,6 @@ public class AssosiateDashboardOld extends BaseFragment {
                             paidRight.setText(response.body().getPaidBusinessRight());
                             totalbuisLeft.setText(response.body().getPaidBusinessLeft());
                             totalbuisRight.setText(response.body().getPaidBusinessRight());
-
-
 
                     }else showMessage(response.body().getMessage());
                 } catch (Exception e) {

@@ -1,9 +1,7 @@
 package com.hm.greencity.customermanagement.Activity;
-
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,15 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.JsonObject;
@@ -31,19 +26,15 @@ import com.hm.greencity.customermanagement.adapters.AdapterLedgerCustomer;
 import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.common.Utils;
-import com.hm.greencity.customermanagement.login.LoginActivity;
-import com.hm.greencity.customermanagement.models.CustomerMyProfile;
 import com.hm.greencity.customermanagement.models.LedgerReport.ResponseLedgerReport;
 import com.hm.greencity.customermanagement.models.ResponseList.LstBlock;
 import com.hm.greencity.customermanagement.models.ResponseList.LstPhase;
 import com.hm.greencity.customermanagement.models.ResponseList.LstSite;
 import com.hm.greencity.customermanagement.models.ResponseList.ResponseSite;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;

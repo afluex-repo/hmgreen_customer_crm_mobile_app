@@ -13,5 +13,7 @@
         android:textColor="@color/white"
         android:padding="5dp"
         android:layout_height="wrap_content"
-        android:text="Sent Message" />
+        android:text="Sent Message"/>
+
+
 </LinearLayout>

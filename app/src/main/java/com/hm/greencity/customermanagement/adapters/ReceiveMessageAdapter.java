@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +20,6 @@ import java.util.List;
 public class ReceiveMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Object> messageList;
-
     private static final int VIEW_TYPE_SENT = 1;
     private static final int VIEW_TYPE_RECEIVED = 2;
 
@@ -79,22 +79,33 @@ public class ReceiveMessageAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public static class ReceivedMessageViewHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
         TextView textViewDescription;
-        TextView textViewAddedDate;
-        ImageView imageView; // ImageView for displaying image
+        TextView textViewAddedDate , admintextViewAddedDate,replyDate;
+        ImageView imageView,ReplyimageView; // ImageView for displaying image
+        LinearLayout userreply,adminreply;
 
         public ReceivedMessageViewHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
             textViewDescription = itemView.findViewById(R.id.textViewDescription);
             textViewAddedDate = itemView.findViewById(R.id.textViewAddedDate);
-            imageView = itemView.findViewById(R.id.imageView); // Initialize imageView
-
-            // Set click listener on imageView to show enlarged image in dialog
+            admintextViewAddedDate = itemView.findViewById(R.id.admintextViewAddedDate);
+            imageView = itemView.findViewById(R.id.imageView);
+            userreply = itemView.findViewById(R.id.userreply);
+            adminreply = itemView.findViewById(R.id.adminreply);
+            replyDate = itemView.findViewById(R.id.replyDate);
+            ReplyimageView = itemView.findViewById(R.id.ReplyimageView);
 
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     showEnlargedImageDialog(imageView.getContext(), imageView.getDrawable());
+                }
+            });
+
+            ReplyimageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showEnlargedImageDialog(ReplyimageView.getContext(), ReplyimageView.getDrawable());
                 }
             });
         }
@@ -103,36 +114,53 @@ public class ReceiveMessageAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             textViewTitle.setText(message.getTitle());
             textViewDescription.setText(message.getDescription());
             textViewAddedDate.setText(message.getAddedDate());
+            admintextViewAddedDate.setText(message.getReplyMessage());
+            replyDate.setText(message.getReplyDate());
 
-            // Check if the image URL is valid and not empty
+
+            if (message.getReplyImage() != null && !message.getReplyImage().isEmpty()) {
+                String imageUrl1 = "https://crm.hmgreencity.com" + message.getReplyImage();
+
+                Picasso.get()
+                        .load(imageUrl1)
+                        .placeholder(R.drawable.logo)
+                        .error(R.drawable.hm_green_new_logo)
+                        .into(ReplyimageView);
+                ReplyimageView.setVisibility(View.VISIBLE);
+            } else {
+                ReplyimageView.setVisibility(View.GONE);
+            }
+
+//            // modification
+
+            if (message.getReplyMessage() != null && !message.getReplyMessage().isEmpty()) {
+                adminreply.setVisibility(View.VISIBLE);
+            } else {
+                adminreply.setVisibility(View.GONE);
+            }
+
+            //
+            
             if (message.getImages() != null && !message.getImages().isEmpty()) {
-//                String imageUrl = message.getImages();
                 String imageUrl = "https://crm.hmgreencity.com" + message.getImages();
 
                 Picasso.get()
                         .load(imageUrl)
-                        .placeholder(R.drawable.logo) // Placeholder image while loading
-                        .error(R.drawable.hm_green_new_logo) // Error image if loading fails
+                        .placeholder(R.drawable.logo)
+                        .error(R.drawable.hm_green_new_logo)
                         .into(imageView);
 
-                imageView.setVisibility(View.VISIBLE); // Show ImageView
+                imageView.setVisibility(View.VISIBLE);
             } else {
-                imageView.setVisibility(View.GONE); // Hide ImageView if no image URL provided
+                imageView.setVisibility(View.GONE);
             }
         }
 
         private void showEnlargedImageDialog(Context context, Drawable imageDrawable) {
-            // Inflate dialog layout
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_enlarged_image, null);
-
-            // Initialize views
             ImageView imageViewEnlarged = dialogView.findViewById(R.id.imageViewEnlarged);
             ImageView closeButton = dialogView.findViewById(R.id.btnClose);
-
-            // Set image drawable to imageViewEnlarged
             imageViewEnlarged.setImageDrawable(imageDrawable);
-
-            // Create and show dialog
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setView(dialogView);
             AlertDialog dialog = builder.create();

@@ -1,7 +1,4 @@
 package com.hm.greencity.customermanagement;
-
-
-
 import static org.junit.Assert.*;
 
 import org.junit.Test;

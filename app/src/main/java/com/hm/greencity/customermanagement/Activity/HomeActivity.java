@@ -131,8 +131,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     //Back press disabled
     @Override
     public void onBackPressed() {
-    }
 
+    }
 
     private void getDashboard() {
 
@@ -179,18 +179,14 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                     d.setText("");
                     d.setTextSize(15);
                     pieChart.setDescription(d);
-
                     pieChart.animateY(1400, Easing.EasingOption.EaseInCubic);
-
                     PieDataSet dataSet = new PieDataSet(entries, "Amount");
                     dataSet.setValueFormatter(new PercentFormatter());
                     dataSet.setSliceSpace(3f); //pie divided space
                     dataSet.setSelectionShift(5f);
                     dataSet.setColors(JOYFUL_COLORS1);
-
                     PieData data = new PieData(dataSet);
                     data.setValueTextSize(15f);
-
                     data.setValueTextColor(Color.YELLOW);
 
                     pieChart.setData(data);
@@ -396,14 +392,11 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);
         builder.create();
-
         final android.app.AlertDialog dialog = builder.show();
-
 
         this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
         this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
         this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
-
 
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);

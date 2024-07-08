@@ -10,7 +10,6 @@ android:orientation="vertical"
 tools:context=".Activity.CustomerLedgerReport"
 tools:openDrawer="start">
 
-<!--Charts: Pie Chart and Bar Chart-->
 
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
@@ -28,11 +27,11 @@ tools:openDrawer="start">
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
-                android:layout_weight="2"
-                >
+                android:layout_weight="2">
                 <ImageView
                     android:id="@+id/backarrow"
                     android:layout_width="28dp"
+                    android:visibility="gone"
                     android:layout_height="28dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"

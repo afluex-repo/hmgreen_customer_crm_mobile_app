@@ -1,19 +1,15 @@
 package com.hm.greencity.customermanagement.Activity;
-
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-
 import android.content.DialogInterface;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,14 +19,11 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.AdapterDueInstallment;
 import com.hm.greencity.customermanagement.common.Utils;
-import com.hm.greencity.customermanagement.login.LoginActivity;
-import com.hm.greencity.customermanagement.models.CustomerMyProfile;
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponseDueInstallment;
 import com.hm.greencity.customermanagement.models.ResponseList.LstBlock;
 import com.hm.greencity.customermanagement.models.ResponseList.LstPhase;
@@ -40,11 +33,9 @@ import com.hm.greencity.customermanagement.common.NetworkUtils;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.models.ResponseList.ResponseSite;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -53,15 +44,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class DueInstallment extends BaseActivity /*implements NavigationView.OnNavigationItemSelectedListener*/{
-
-
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
-
     private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12, E13, custSearch;
-
     @BindView(R.id.btn_search)
     ImageView btnSearch;
     @BindView(R.id.recyclerview1)
@@ -75,6 +63,8 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
     TextView selectBlock;
     EditText etBookingNumber;
     EditText etPlotNumber;
+    ImageView backarrow;
+    public static Fragment currentFragment;
     private List<LstSite> lstsites;
     private List<LstPhase> lstSectors,sublstSectors;
     private List<LstBlock> lstBlocks,sublstBlocks;
@@ -82,6 +72,7 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
     private String PK_SectorID, PK_SiteID, PK_BlockID;
     private PopupMenu sitemenu, sectorMenu, blockMenu;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +87,7 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         navigationView = (NavigationView) findViewById(R.id.navigation_id);
+        backarrow= (ImageView)findViewById(R.id.backarrow);
 //        navigationView.setNavigationItemSelectedListener(DueInstallment.this);
 
 
@@ -112,6 +104,8 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
         if (NetworkUtils.getConnectivityStatus(context) != 0)
             getData();
         else showMessage(R.string.alert_internet);
+
+
     }
 
 
@@ -143,24 +137,12 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
     public void getSearchData(String siteid, String sectorid, String blockid, String booking, String plotid, String start, String end) {
         showLoading();
         JsonObject object = new JsonObject();
-
-        //    -request POST 'http://demo1.afluex.com/webapi/DueInstallmentList' \
-//            --form 'CustomerID="96"' \
-//            --form 'BookingNumber=""' \
-//            --form 'FromDate=""' \
-//            --form 'ToDate=""' \
-//            --form 'SiteID=""' \
-//            --form 'PhaseID=""' \
-//            --form 'BlockID=""' \
-//            --form 'PlotNumber=""'
-
         //  object.addProperty("LoginId", PreferencesManager.getInstance(context).getLoginId());
         object.addProperty("LoginId", PreferencesManager.getInstance(context).getLoginId());
 //        object.addProperty("CustomerID", PreferencesManager.getInstance(context).getUserId());
         object.addProperty("FromDate", start);
         object.addProperty("ToDate", end);
         object.addProperty("SiteID", siteid);
-
         object.addProperty("PhaseID", sectorid);
         object.addProperty("BlockID", blockid);
         object.addProperty("BookingNumber", booking);
@@ -222,13 +204,6 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
         lstBlocks = new ArrayList<>();
         sublstBlocks = new ArrayList<>();
 
-
-        //  SelectSite = new ArrayList<String>();
-        //  SelectSector = new ArrayList<String>();
-        // SelectBlock = new ArrayList<String>();
-        // SelectSiteType=new ArrayList<String>();
-
-
         tvSelectSite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -239,16 +214,10 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
                         blockMenu.getMenu().clear();
                         sectorMenu.getMenu().clear();
                         tvSelectSite.setText(lstsites.get(position).getSiteName());
-
                         PK_SiteID = lstsites.get(position).getSiteID();
                         setSector(lstsites.get(position).getSiteID());
-
-                        //  getSector();
-                        //  packageMenu = lstPackages.get(position).getProductName();
                         return true;
                     }
-
-
                 });
                 sitemenu.show();
             }
@@ -265,15 +234,11 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
                         tvSector.setText(sublstSectors.get(position).getPhaseName());
                         PK_SectorID = sublstSectors.get(position).getPhaseID();
                         setBlock(sublstSectors.get(position).getPhaseID());
-                        //  packageMenu = lstPackages.get(position).getProductName();
                         return true;
                     }
                 });
                 sectorMenu.show();
-
             }
-
-
         });
 
         selectBlock.setOnClickListener(new View.OnClickListener() {
@@ -285,8 +250,6 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
                         int position = item.getOrder();
                         selectBlock.setText(sublstBlocks.get(position).getBlockName());
                         PK_BlockID = sublstBlocks.get(position).getBlockID();
-
-                        //  packageMenu = lstPackages.get(position).getProductName();
                         return true;
                     }
                 });
@@ -335,8 +298,6 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
                 }
             }
         });
-
-
         bottomSheetDialog.setCancelable(false);
         bottomSheetDialog.setCanceledOnTouchOutside(false);
         bottomSheetDialog.show();
@@ -345,11 +306,9 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
     private void datePicker(final TextView et) {
         Calendar cal = Calendar.getInstance();
         int mYear, mMonth, mDay;
-
         mYear = cal.get(Calendar.YEAR);
         mMonth = cal.get(Calendar.MONTH);
         mDay = cal.get(Calendar.DAY_OF_MONTH);
-
         DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -359,7 +318,6 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
         datePickerDialog.getDatePicker().setMaxDate(cal.getTimeInMillis());
         datePickerDialog.show();
     }
-
 
     public void getProductLst() {
         JsonObject jsonObject = new JsonObject();
@@ -379,34 +337,7 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
 
                         //  PK_SiteID = response.body().getLstSite().get(i).getSiteID();
 
-
                     }
-
-//                    ----------------------------
-
-
-                    // Toast.makeText(ReInvestment.this, response+"", Toast.LENGTH_SHORT).show();
-//                    for (int i = 0; i < lstSectors.size(); i++) {
-//
-//                        sectorMenu.getMenu().add(0, 0, i, lstSectors.get(i).getPhaseName());
-//
-//                        PK_SectorID = response.body().getLstPhase().get(i).getPhaseID();
-//
-//                        // Toast.makeText(context,selectSiteTypeid+ "", Toast.LENGTH_SHORT).show();
-//                        //  getPackage();
-//
-//                    }
-//                    for (int i = 0; i < lstBlocks.size(); i++) {
-//
-//                        blockMenu.getMenu().add(0, 0, i, lstBlocks.get(i).getBlockName());
-//
-//                        PK_BlockID = response.body().getLstBlock().get(i).getBlockID();
-//
-//                        // Toast.makeText(context,selectSiteTypeid+ "", Toast.LENGTH_SHORT).show();
-//                        //  getPackage();
-//
-//                    }
-
 
                 } else
                     showMessage(response.body().getMessage());

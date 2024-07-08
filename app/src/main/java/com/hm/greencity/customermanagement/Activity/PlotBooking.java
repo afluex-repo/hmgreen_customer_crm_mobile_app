@@ -1,9 +1,8 @@
 package com.hm.greencity.customermanagement.Activity;
-
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,13 +12,14 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.JsonObject;
@@ -29,19 +29,15 @@ import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.NetworkUtils;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.common.Utils;
-import com.hm.greencity.customermanagement.login.LoginActivity;
-import com.hm.greencity.customermanagement.models.CustomerMyProfile;
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponsePloatBooking;
 import com.hm.greencity.customermanagement.models.ResponseList.LstBlock;
 import com.hm.greencity.customermanagement.models.ResponseList.LstPhase;
 import com.hm.greencity.customermanagement.models.ResponseList.LstSite;
 import com.hm.greencity.customermanagement.models.ResponseList.ResponseSite;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,10 +45,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavigationItemSelectedListener*/{
-
-
-
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
@@ -63,7 +57,6 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
     ImageView btnSearch;
     @BindView(R.id.recyclerview1)
     RecyclerView recyclerview1;
-
 
     private BottomSheetDialog bottomSheetDialog;
     TextView tvStartDate;
@@ -87,12 +80,18 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
         ButterKnife.bind(this);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_id);
-        toggle = new ActionBarDrawerToggle(PlotBooking.this, drawerLayout, R.string.nav_open, R.string.nav_close);
+
+       toggle = new ActionBarDrawerToggle(PlotBooking.this, drawerLayout, R.string.nav_open, R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+       toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
+        toggle.setDrawerArrowDrawable(new DrawerArrowDrawable(this));
         navigationView = (NavigationView) findViewById(R.id.navigation_id);
+
+
 //        navigationView.setNavigationItemSelectedListener(PlotBooking.this);
 
 
@@ -109,6 +108,18 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
         if (NetworkUtils.getConnectivityStatus(context) != 0)
             getData();
         else showMessage(R.string.alert_internet);
+
+
+
+
+        toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Perform your action here
+                Intent intent = new Intent(getApplicationContext(), HomeTestActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -370,35 +381,7 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
                         sitemenu.getMenu().add(0, 0, i, lstsites.get(i).getSiteName());
 
                         //  PK_SiteID = response.body().getLstSite().get(i).getSiteID();
-
-
                     }
-
-//                    ----------------------------
-
-
-                    // Toast.makeText(ReInvestment.this, response+"", Toast.LENGTH_SHORT).show();
-//                    for (int i = 0; i < lstSectors.size(); i++) {
-//
-//                        sectorMenu.getMenu().add(0, 0, i, lstSectors.get(i).getPhaseName());
-//
-//                        PK_SectorID = response.body().getLstPhase().get(i).getPhaseID();
-//
-//                        // Toast.makeText(context,selectSiteTypeid+ "", Toast.LENGTH_SHORT).show();
-//                        //  getPackage();
-//
-//                    }
-//                    for (int i = 0; i < lstBlocks.size(); i++) {
-//
-//                        blockMenu.getMenu().add(0, 0, i, lstBlocks.get(i).getBlockName());
-//
-//                        PK_BlockID = response.body().getLstBlock().get(i).getBlockID();
-//
-//                        // Toast.makeText(context,selectSiteTypeid+ "", Toast.LENGTH_SHORT).show();
-//                        //  getPackage();
-//
-//                    }
-
 
                 } else
                     showMessage(response.body().getMessage());
@@ -467,6 +450,7 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
 
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -690,5 +674,12 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
                 }).show();
     }
 
+    public void replaceFragment(Fragment fragment, String tag) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame, fragment, tag); // 'fragment_container' is the ID of your container
+        fragmentTransaction.addToBackStack(null); // Optional: add this if you want to add the transaction to the back stack
+        fragmentTransaction.commit();
+    }
 
 }

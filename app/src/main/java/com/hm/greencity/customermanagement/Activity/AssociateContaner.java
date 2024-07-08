@@ -1,7 +1,7 @@
 package com.hm.greencity.customermanagement.Activity;
-
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,17 +26,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class AssociateContaner extends BaseActivity /*implements NavigationView.OnNavigationItemSelectedListener*/ {
 
-    //    DrawerMenuItems drawerMenuItems;
-//    @BindView(R.id.img_side_menu)
-//    ImageButton imgSideMenu;
-//    @BindView(R.id.rl_clickmenu)
-//    RelativeLayout rlClickmenu;
-//    @BindView(R.id.tv_title)
-//    TextView tvTitle;
-//    @BindView(R.id.toolbar)
-//    Toolbar toolbar;
     @BindView(R.id.frame)
     FrameLayout frame;
 //    @BindView(R.id.nav_view)
@@ -49,39 +41,37 @@ public class AssociateContaner extends BaseActivity /*implements NavigationView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
         ButterKnife.bind(this);
+//        Toolbar containertoolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(containertoolbar);
+//
+//        ReplaceFragment(new AssosiateDashboard(), "HM Group OF Company");
+
+        // Find and set the toolbar
         Toolbar containertoolbar = findViewById(R.id.toolbar);
         setSupportActionBar(containertoolbar);
-//        navView.setNavigationItemSelectedListener(this);
-//        View hView = navView.getHeaderView(0);
-//        drawerMenuItems = new DrawerMenuItems(hView);
-//        imgSideMenu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                if (!(currentFragment instanceof AssosiateDashboard))
-//                    ReplaceFragment(new AssosiateDashboard(), "HM Green City");
-////                goToActivity(context, AssociateContaner.class, null);
-//            }
-//        });
 
-//        TextView nav_user = (TextView) hView.findViewById(R.id.tv_username);
-//
-//        TextView nav_id = (TextView) hView.findViewById(R.id.tv_status);
-//        nav_id.setText(PreferencesManager.getInstance(context).getLoginId());
-//        nav_user.setText(PreferencesManager.getInstance(context).getFull_Name());
+// Enable the Up button
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
-//        rlClickmenu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                if (!(currentFragment instanceof AssosiateDashboard))
-////                if (!(currentFragment instanceof AssosiateDashboard))
-////                if (!(currentFragment instanceof AssosiateDashboard))
-//                    ReplaceFragment(new AssosiateDashboard(), "HM Green City");
-//            }
-//        });
+// Replace the fragment
+        ReplaceFragment(new AssosiateDashboard(), "HM Group OF Company");
 
-        ReplaceFragment(new AssosiateDashboard(), "HM Green City");
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // Handle the back button press
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 
     @Override
     protected void onResume() {
@@ -117,11 +107,7 @@ public class AssociateContaner extends BaseActivity /*implements NavigationView.
 
     public void ReplaceFragment(Fragment setFragment, String title) {
         new Handler().postDelayed(() -> {
-
-
             currentFragment = setFragment;
-
-
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.frame, setFragment);

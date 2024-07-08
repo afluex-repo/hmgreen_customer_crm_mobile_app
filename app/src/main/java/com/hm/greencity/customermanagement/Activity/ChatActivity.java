@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.Activity;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -16,13 +15,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.hm.greencity.customermanagement.Network.ChatService;
 import com.hm.greencity.customermanagement.Network.RetrofitClient;
 import com.hm.greencity.customermanagement.R;
@@ -33,9 +30,7 @@ import com.hm.greencity.customermanagement.models.chatModel.FetchMessageRequest;
 import com.hm.greencity.customermanagement.models.chatModel.QueryItem;
 import com.hm.greencity.customermanagement.models.chatModel.ResponseChat;
 import com.hm.greencity.customermanagement.models.chatModel.getResponseChat;
-
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -47,7 +42,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
     private static final int REQUEST_CAMERA_CAPTURE = 1;
@@ -58,7 +52,7 @@ public class ChatActivity extends AppCompatActivity {
     private Button buttonSend;
     private ImageView imageView;
     private Uri selectedImageUri;
-    private Uri capturedImageUri; // Declare selectedImageUri here
+    private Uri capturedImageUri;
     private ChatService chatService;
     private List<Object> messageList = new ArrayList<>();
     private ReceiveMessageAdapter messageAdapter;
@@ -72,16 +66,11 @@ public class ChatActivity extends AppCompatActivity {
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
-
         initview();
         onclicklistener();
-
-        // Initialize PreferencesManager
-//        PreferencesManager.initializeInstance(this);
-
-
         fetchMessages();
         startPeriodicFetching();
+
     }
 
     private void onclicklistener() {
@@ -103,25 +92,30 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+//        binding.call.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String phone_number = "9651997374";
+//                Intent phone_intent = new Intent(Intent.ACTION_DIAL);
+//                phone_intent.setData(Uri.parse("tel:" + phone_number));
+//                startActivity(phone_intent);
+//            }
+//        });
+
     }
 
     private void initview() {
         recyclerView = findViewById(R.id.recyclerView);
         editTextMessage = findViewById(R.id.messaget);
-        // buttonSend = findViewById(R.id.buttonSend);
         imageView = findViewById(R.id.imageView);
-
         preferencesManager = PreferencesManager.getInstance(this);
-
         chatService = RetrofitClient.getClient().create(ChatService.class);
         messageAdapter = new ReceiveMessageAdapter(messageList);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(messageAdapter);
-
 
     }
 
@@ -143,6 +137,7 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
         builder.show();
+
     }
 
     private void openCamera() {
@@ -184,7 +179,6 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -208,12 +202,10 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-
-
     private void sendMessage() {
+
         String messageContent = editTextMessage.getText().toString();
         if (!messageContent.isEmpty() || selectedImageUri != null) {
-            // Retrieve user ID from PreferencesManager
             PreferencesManager preferencesManager = PreferencesManager.getInstance(this);
             String userId = preferencesManager.getUserId();
             if (userId == null || userId.isEmpty()) {
@@ -222,7 +214,7 @@ public class ChatActivity extends AppCompatActivity {
             }
 
             RequestBody fkUserId = RequestBody.create(MediaType.parse("text/plain"), userId); // Example user ID
-            RequestBody title = RequestBody.create(MediaType.parse("text/plain"), "test"); // Example title
+            RequestBody title = RequestBody.create(MediaType.parse("text/plain"), "App"); // Example title
             RequestBody description = RequestBody.create(MediaType.parse("text/plain"), messageContent);
 
             MultipartBody.Part imagePart = null;
@@ -267,7 +259,6 @@ public class ChatActivity extends AppCompatActivity {
             Toast.makeText(this, "Message cannot be empty", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 //private void sendMessage() {
 //    String messageContent = editTextMessage.getText().toString();
@@ -339,7 +330,6 @@ public class ChatActivity extends AppCompatActivity {
 
     // Helper method to convert InputStream to byte array
 
-
     public byte[] getBytes(InputStream inputStream) throws IOException {
         ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
         int bufferSize = 1024;
@@ -408,7 +398,6 @@ public class ChatActivity extends AppCompatActivity {
         handler.removeCallbacks(runnable);
     }
 
-
     private String getRealPathFromURI(Uri contentUri) {
         String[] proj = { MediaStore.Images.Media.DATA };
         Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
@@ -421,4 +410,5 @@ public class ChatActivity extends AppCompatActivity {
         cursor.close();
         return path;
     }
+
 }

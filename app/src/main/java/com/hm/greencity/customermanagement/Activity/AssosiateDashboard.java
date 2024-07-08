@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.Activity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -98,7 +97,6 @@ public class AssosiateDashboard extends BaseFragment {
     @BindView(R.id.tv_total_inactive)
     TextView tvTotalInactive;
 
-
     @BindView(R.id.tv_total_payout)
     TextView tvTotalPayout;
 
@@ -195,8 +193,6 @@ public class AssosiateDashboard extends BaseFragment {
 //    @BindView(R.id.textViewdueInstallment1)
 //     ImageView textViewdueInstallment1;
 
-
-
 //    @BindView(R.id.rl_clickmenu)
 //    RelativeLayout rl_clickmenu;
 //
@@ -249,8 +245,6 @@ public class AssosiateDashboard extends BaseFragment {
 
 
        //floating ACTION BUTTON
-
-
 
 
 //        textViewdueInstallment1.setOnClickListener(new View.OnClickListener() {

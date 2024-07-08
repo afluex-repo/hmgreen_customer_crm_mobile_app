@@ -49,7 +49,7 @@
                         android:layout_marginStart="0dp"
                         android:layout_centerVertical="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hm_logo_new_final" />
+                        android:src="@drawable/roundlogo" />
                 </RelativeLayout>
 
                 <TextView

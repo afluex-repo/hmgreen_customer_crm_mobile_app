@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.Activity;
-
 import android.content.Intent;
 import android.os.Handler;
 
@@ -12,7 +11,6 @@ import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     private static int SPLASH_TIME_OUT = 3000;
 
     @Override
@@ -23,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 if (!PreferencesManager.getInstance(getApplicationContext()).getUserType().equalsIgnoreCase("")) {
 
                     if (PreferencesManager.getInstance(getApplicationContext()).getUserType().equalsIgnoreCase("Trad Associate")) {

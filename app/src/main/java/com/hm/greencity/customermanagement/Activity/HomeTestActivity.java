@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
@@ -33,6 +34,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.google.gson.JsonObject;
+import com.hm.greencity.customermanagement.GalleryActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
@@ -63,21 +65,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-
 public class HomeTestActivity extends BaseActivity implements IPickCancel, IPickResult {
-
     @BindView(R.id.profile_img)
     ImageView profileImg;
-
     @BindView(R.id.support)
     ImageButton support;
-
     @BindView(R.id.tv_username)
     TextView tvUsername;
-
     @BindView(R.id.tv_activestatus)
     TextView associateDetails;
-
     @BindView(R.id.tv_loginId)
     TextView tvLoginId;
     @BindView(R.id.user_profile)
@@ -113,7 +109,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     PieChart pieChart;
     @BindView(R.id.languagechange)
     ImageView languagechange;
-
     @BindView(R.id.chatImage)
     ImageView chatImage;
     @BindView(R.id.imageView6)
@@ -122,6 +117,14 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     ImageView imageView7;
     @BindView(R.id.imageView8)
     ImageView imageView8;
+    @BindView(R.id.call)
+    ImageView call;
+    @BindView(R.id.gallery)
+    ImageView gallery;
+    @BindView(R.id.searchView)
+    SearchView searchView;
+    private CardView cvPlotBooking, cvCustomerDetails, cvMySummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -129,14 +132,67 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         setContentView(R.layout.fragment_dashboard_test);
         ButterKnife.bind(this);
 
+
         tvUsername.setText(PreferencesManager.getInstance(context).getFull_Name());
         tvLoginId.setText(PreferencesManager.getInstance(context).getLoginId());
         getDashboard();
+
+
+        TextView textView3 = findViewById(R.id.textView3);
+        TextView textView4 = findViewById(R.id.textView4);
+        TextView textView5 = findViewById(R.id.textView5);
+        TextView textView6 = findViewById(R.id.textView6);
+        TextView textView7 = findViewById(R.id.textView7);
+        TextView textView8 = findViewById(R.id.textView8);
+
+        TextView textView31 = findViewById(R.id.textView31);
+        TextView textView51 = findViewById(R.id.textView51);
+        TextView chattext = findViewById(R.id.chattext);
+
+        cvPlotBooking = findViewById(R.id.cv_plotBooking);
+        cvCustomerDetails = findViewById(R.id.cv_customerDetails);
+        cvMySummary = findViewById(R.id.cv_mysummary);
+        cvnewCard1 = findViewById(R.id.cv_newCard1);
+        cvnewCard2 = findViewById(R.id.cv_newCard2);
+        cvnewCard3 = findViewById(R.id.cv_newCard3);
+        cvchange_password = findViewById(R.id.cv_change_password);
+        cvlogout = findViewById(R.id.cv_logout);
+        newcardview2 = findViewById(R.id.new_cardview2);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterTextView(textView3,cvPlotBooking, newText);
+                filterTextView(textView4,cvCustomerDetails, newText);
+                filterTextView(textView5,cvMySummary, newText);
+                filterTextView(textView6, cvnewCard1,newText);
+                filterTextView(textView7,cvnewCard2, newText);
+                filterTextView(textView8,cvnewCard3, newText);
+                filterTextView(textView31,cvchange_password, newText);
+                filterTextView(textView51,cvlogout, newText);
+                filterTextView(chattext,newcardview2, newText);
+
+                return true;
+            }
+        });
+
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToActivity(context, GalleryActivity.class, null);
+
+            }
+        });
+
         cvMyLedger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToActivity(context, CustomerLedgerReport.class, null);
-
             }
         });
 
@@ -155,7 +211,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
             }
         });
-
         cvLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,49 +228,42 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 finish();
             }
         });
-
         cvAboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 uploadFeedback();
             }
         });
-
         support.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 aboutMe();
             }
         });
-
         cvChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 changePassword();
             }
         });
-
         profileImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showProfile();
             }
         });
-
         languagechange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showChangeLanguageDialog();
             }
         });
-
         chatImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                startActivity(new Intent(HomeTestActivity.this,ChatActivity.class));
             }
         });
-
         imageView6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -234,9 +282,31 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 openyoutube();
             }
         });
-
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                String phone_number = "9651997374";
+//                Intent phone_intent = new Intent(Intent.ACTION_DIAL);
+//                phone_intent.setData(Uri.parse("tel:" + phone_number));
+//                startActivity(phone_intent);
+                showChangeLanguageDialog();
+            }
+        });
 
     }
+
+    // Helper method to filter TextView based on search query
+    private void filterTextView(TextView textView,CardView cardView, String query) {
+        String textViewText = textView.getText().toString().toLowerCase();
+        query = query.toLowerCase();
+
+        if (textViewText.contains(query)) {
+            cardView.setVisibility(View.VISIBLE);
+        } else {
+            cardView.setVisibility(View.GONE);
+        }
+    }
+
 
     private void openinsta() {
         String url = "https://www.instagram.com/hm_green_city_2k?igsh=YXNnemQ5aWt5ZW5o";
@@ -256,9 +326,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
-
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -268,7 +335,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 .error(R.drawable.user_icon)
                 .into(profileImg);
     }
-
     private void getDashboard() {
         showLoading();
         JsonObject jsonObject = new JsonObject();
@@ -289,14 +355,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 //                    totalPaidAmount.setText("\u20B9" + response.body().getDashBoardData().get(0).getTotalPaidAmount());
 //                    totalPendingAmount.setText("\u20B9" + response.body().getDashBoardData().get(0).getTotalPending());
                     associateDetails.setText(response.body().getDashBoardData().get(0).getAssociateDetails());
-
                     float totalPayableAmount = Float.parseFloat(response.body().getDashBoardData().get(0).getTotalPlotAmount());
                     float totalRemainingAmount = Float.parseFloat(response.body().getDashBoardData().get(0).getTotalPending());
                     float totalPaidAmount = Float.parseFloat(response.body().getDashBoardData().get(0).getTotalPaidAmount());
-
                     float perPaid = (totalPaidAmount / totalPayableAmount) * 100;
                     float perRemaining = (totalRemainingAmount / totalPayableAmount) * 100;
-
                     pieChart = (PieChart) findViewById(R.id.pie_chart);
                     pieChart.setUsePercentValues(true);
                     pieChart.getDescription().setEnabled(true);
@@ -345,8 +408,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         });
 
     }
-
-
     private void showProfile() {
 
         showLoading();
@@ -372,7 +433,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         });
 
     }
-
     protected void customAlertDialog(final String firstName, String accountNo, String address, String bankName, String bankBranch, String bankHolderName, String city, final String customberId, String dob, String email, Object gaurdianName, Object gaurdianRelation, Object gender, String ifsc, Object joiningDate, final String lastName, String mobile, String panNumber, String pinCode, String sponsorId, String name, String sponsorName, String state, String profile) {
         AlertDialog.Builder builder = new AlertDialog.Builder(HomeTestActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
@@ -435,7 +495,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         });
 
     }
-
     private void changePassword() {
 
 
@@ -512,8 +571,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
 
     }
-
-
     private void uploadFeedback() {
 
 
@@ -591,7 +648,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
 
     }
-
     //====================================================| About |====================================================
     public void aboutMe() {
         String message = "Associate Management - 2022\n Version - 1.0\n" +
@@ -599,42 +655,30 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n"+
                 "Website:  http://crm.hmgreencity.com/home";
 
-        // Create a SpannableString
         SpannableString spannableString = new SpannableString(message);
-
-        // Find the index of the URL
         int startIndexWebsite = message.indexOf("http://crm.hmgreencity.com/home");
         int endIndexWebsite = startIndexWebsite + "http://crm.hmgreencity.com/home".length();
-
-        // Apply clickable span for the website
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                // Handle click action for the website
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://crm.hmgreencity.com/home"));
                 startActivity(intent);
             }
         }, startIndexWebsite, endIndexWebsite, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        // Create AlertDialog with custom message
         AlertDialog alertDialog = new AlertDialog.Builder(HomeTestActivity.this)
                 .setTitle("Contact Details")
                 .setMessage(spannableString)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        // Positive button clicked
                     }
                 })
                 .show();
-
-        // Make links clickable
         TextView messageTextView = alertDialog.findViewById(android.R.id.message);
         if (messageTextView != null) {
             messageTextView.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -657,7 +701,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         }
     }
-
     private ProgressDialog pd;
     private File profileFile;
 
@@ -669,7 +712,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         pd.setCancelable(false);
         pd.show();
     }
-
 //    private void uploadFile(File file, String type) {
 //        try {
 //            showProgressDialog();
@@ -712,7 +754,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 //            e.printStackTrace();
 //        }
 //    }
-
     private void uploadFile(File homeWorkFile) {
 
 //        LoggerUtil.logItem(compressedImageFile.length());
@@ -767,14 +808,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         });
     }
 
-
     @Override
     public void onCancelClick() {
 
     }
-
     private PickImageDialog dialog;
-
     void showDialog() {
         PickSetup pickSetup = new PickSetup();
         pickSetup.setTitle("Select Profile Picture");
@@ -787,7 +825,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         dialog.show(this);
     }
 
-
     @Override
     public void onPickResult(PickResult pickResult) {
         if (pickResult.getError() == null) {
@@ -798,8 +835,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         }
 
     }
-
-
     private void viewProfle() {
 
 
@@ -846,8 +881,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
 
     }
-
-
     private void showChangeLanguageDialog() {
 
         final String [] listItems = {"English","हिंदी"};
@@ -872,7 +905,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         androidx.appcompat.app.AlertDialog mDialog = mBuilder.create();
         mDialog.show();
     }
-
     private void setLocale(String lang) {
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
@@ -886,17 +918,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         editor.apply();
 
     }
-
     public void loadLocale(){
         SharedPreferences prefs = getSharedPreferences("Setings", Activity.MODE_PRIVATE);
         String language = prefs.getString("My_Lang","");
         setLocale(language);
     }
-
-
-
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();

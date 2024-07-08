@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <include layout="@layout/action_bar" />
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:elevation="5dp"
-                    android:src="@drawable/hm_logo_new_final" />
+                    android:src="@drawable/roundlogo" />
 
 <!--                <ImageView-->
 <!--                    android:id="@+id/img_member"-->

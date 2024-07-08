@@ -21,18 +21,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorPrimary"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
                     <RelativeLayout
                         android:id="@+id/rl_clickmenu"
                         android:layout_width="40dp"
@@ -41,61 +38,61 @@
                         android:layout_centerVertical="true"
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center">
-
-                        <ImageView
-                            android:id="@+id/img_side_menu"
-                            android:layout_width="58dp"
-                            android:layout_height="58dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/hm_logo_new_final" />
-
-
                     </RelativeLayout>
-
                     <TextView
                         android:id="@+id/tv_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="@string/hm_greencity"
+                        android:visibility="gone"
+                        android:text="HM Group OF Company"
                         android:textAppearance="@style/TextField_Bold"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
-
+                    <SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:queryHint="Search..."
+                        app:layout_constraintTop_toTopOf="parent"/>
                     <ImageButton
-                        android:id="@+id/support"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:id="@+id/call"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="40dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_baseline_contacts_24"
+                        android:clickable="true"
+                        android:onClick="makePhoneCall"
+                        android:background="@drawable/baseline_language_24"
+                        android:scaleX="0.9"
+                      android:backgroundTint="@color/white"
+                        android:scaleY="0.9" />
+                    <ImageButton
+                        android:id="@+id/support"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/baseline_contact_support_24"
                         android:scaleX="0.9"
                         android:scaleY="0.9" />
-
                 </RelativeLayout>
-
             </androidx.appcompat.widget.Toolbar>
-
         </com.google.android.material.appbar.AppBarLayout>
-
         <View
             android:id="@+id/llcontainer1"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-
-            android:background="@color/colorPrimary"
+            android:layout_height="180dp"
+            android:background="@drawable/shape_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar" />
-
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingHorizontal="8dp"
+            android:layout_marginEnd="10dp"
             android:paddingBottom="8dp"
             android:layout_marginTop="?attr/actionBarSize"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -104,43 +101,102 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                tools:ignore="MissingConstraints">
+                <ImageView
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitXY"
+                    android:paddingStart="0dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/roundlogo"
+                    tools:ignore="MissingConstraints" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/lexend"
+                        android:text="HM Group OF Company"
+                        android:textAppearance="@style/TextField_Bold"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email -hmcity7374@gmail.com "
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_marginStart="20dp"
+                        android:textAppearance="@style/TextField_Bold"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Helpline No- 9651997374  "
+                        android:layout_marginTop="0dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_marginStart="20dp"
+                        android:textAppearance="@style/TextField_Bold"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="website- https://hmgroupcompanies.com  "
+                        android:layout_marginTop="0dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_marginStart="20dp"
+                        android:textAppearance="@style/TextField_Bold"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
             <androidx.cardview.widget.CardView
                 android:id="@+id/user_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="22dp"
                 android:background="@color/white"
                 android:paddingVertical="8dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="8dp"
+                android:layout_marginTop="135dp"
+                android:layout_marginStart="20dp"
                 app:cardElevation="18dp"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toStartOf="@+id/cv_plotBooking"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="16dp"
-                    android:paddingBottom="8dp"
-                   >
-
+                    android:paddingBottom="8dp">
                     <ImageView
                         android:id="@+id/profile_img"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5"
                         app:srcCompat="@drawable/user_icon"
                         tools:ignore="VectorDrawableCompat" />
-
-
                     <TextView
                         android:id="@+id/tv_username"
                         android:layout_width="0dp"
@@ -156,28 +212,25 @@
                         app:layout_constraintEnd_toStartOf="@+id/profile_img"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/profile_img" />
-
                     <TextView
                         android:id="@+id/tv_loginId"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:paddingHorizontal="4dp"
-
                         android:text=""
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/profile_img"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_username" />
-
                     <TextView
                         android:id="@+id/tv_activestatus"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:paddingHorizontal="4dp"
-
+                        android:visibility="gone"
                         android:text=""
                         android:textColor="@color/colorAccent"
                         android:textSize="16sp"
@@ -185,50 +238,48 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_loginId" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mydashboard"
                 android:textSize="18sp"
+                android:fontFamily="@font/lexend"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/user_profile"
                 app:layout_constraintTop_toBottomOf="@+id/user_profile" />
-
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_plotBooking"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
+                android:layout_marginStart="10dp"
                 android:background="@color/white"
+                android:padding="5dp"
                 android:outlineAmbientShadowColor="@color/grey"
                 android:outlineSpotShadowColor="@color/grey"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 app:layout_constraintWidth_percent="0.33">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:layout_gravity="center"
                     android:layout_height="match_parent"
-                    android:padding="8dp">
-
+                    android:padding="9dp">
                     <ImageView
                         android:id="@+id/imageView3"
                         android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/booking"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/mybooking"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="VectorDrawableCompat" />
-
                     <TextView
                         android:id="@+id/tv_total_direct"
                         android:layout_width="wrap_content"
@@ -241,109 +292,107 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/my_bookings"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/lexend"
+                        android:layout_marginTop="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_direct" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_customerDetails"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:background="@color/white"
-
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                android:padding="0dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toEndOf="@+id/cv_plotBooking"
                 app:layout_constraintTop_toTopOf="@+id/cv_plotBooking"
                 app:layout_constraintWidth_percent="0.33">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:padding="8dp">
-
                     <ImageView
                         android:id="@+id/imageView4"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_people_black_24dp"
-                        tools:ignore="VectorDrawableCompat"
-                        app:tint="#2471A3" />
-
+                        app:srcCompat="@drawable/ledge"
+                        tools:ignore="VectorDrawableCompat" />
                     <TextView
                         android:id="@+id/tv_total_active"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="00"
-                        android:visibility="gone"
                         android:textColor="@color/white"
                         android:textSize="22sp"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
                     <TextView
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/my_ledger"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/lexend"
+                        android:layout_marginTop="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_active" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_mysummary"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="0dp"
                 android:background="@color/white"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                android:layout_marginEnd="20dp"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toEndOf="@+id/cv_customerDetails"
                 app:layout_constraintTop_toTopOf="@+id/cv_customerDetails"
                 app:layout_constraintWidth_percent="0.33">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:layout_gravity="center"
                     android:layout_height="match_parent"
                     android:padding="8dp">
-
                     <ImageView
                         android:id="@+id/imageView5"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_attach_money_black_24dp"
+                        android:layout_marginTop="4dp"
+                        android:src="@drawable/instalaation"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="VectorDrawableCompat"
-                        app:tint="#2471A3" />
-
+                        tools:ignore="VectorDrawableCompat" />
                     <TextView
                         android:id="@+id/tv_total_inactive"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="0dp"
                         android:text="00"
                         android:visibility="gone"
                         android:textColor="@color/white"
@@ -351,101 +400,41 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
                     <TextView
                         android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/dueinstallment"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/lexend"
+                        android:layout_marginTop="0dp"
+                        android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_inactive" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_newCard1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:outlineAmbientShadowColor="@color/grey"
-                android:outlineSpotShadowColor="@color/grey"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_plotBooking"
-                app:layout_constraintWidth_percent="0.33">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp">
-
-                    <!-- Your content here -->
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:src="@drawable/instagram1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="VectorDrawableCompat"/>
-                    <TextView
-                        android:id="@+id/tvtotal_inactive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="00"
-                        android:visibility="gone"
-                        android:textColor="@color/white"
-                        android:textSize="22sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Instagram"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvtotal_inactive" />
-
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_newCard2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:background="@color/white"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toEndOf="@id/cv_newCard1"
                 app:layout_constraintTop_toTopOf="@id/cv_newCard1"
                 app:layout_constraintWidth_percent="0.33">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="8dp">
-
-                    <!-- Your content here -->
                     <ImageView
                         android:id="@+id/imageView7"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:src="@drawable/fb"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/fb2"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -467,43 +456,42 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Facebook"
+                        android:layout_marginTop="0dp"
                         android:textSize="13sp"
+                        android:fontFamily="@font/lexend"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvtotalinactive" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_newCard3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:background="@color/white"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                android:padding="10dp"
+                android:layout_marginTop="0dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toEndOf="@id/cv_newCard2"
                 app:layout_constraintTop_toTopOf="@id/cv_newCard2"
                 app:layout_constraintWidth_percent="0.33">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:layout_gravity="center"
                     android:layout_height="match_parent"
                     android:padding="8dp">
-
-                    <!-- Your content here -->
                     <ImageView
                         android:id="@+id/imageView8"
                         android:layout_width="42dp"
                         android:layout_height="42dp"
-                        android:src="@drawable/youtube"
+                        android:src="@drawable/youtube1"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="VectorDrawableCompat" />
-
                     <TextView
                         android:id="@+id/totalinactive"
                         android:layout_width="wrap_content"
@@ -521,89 +509,142 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="YouTube"
+                        android:layout_marginTop="0dp"
                         android:textSize="13sp"
+                        android:fontFamily="@font/lexend"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/totalinactive" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
-
             <LinearLayout
                 android:id="@+id/graph"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:orientation="vertical"
                 android:weightSum="100"
-                android:layout_marginTop="95dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cv_customerDetails">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_margin="15dp"
                     android:layout_weight="100"
                     android:orientation="vertical">
-
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:cardCornerRadius="3dp"
-                        app:cardElevation="3dp">
-
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="6dp"
+                        android:padding="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="15dp">
                         <com.github.mikephil.charting.charts.PieChart
                             android:id="@+id/pie_chart"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" />
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
-
             </LinearLayout>
-
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/myprofile"
                 android:textSize="18sp"
-                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lexend"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/user_profile"
-                app:layout_constraintTop_toBottomOf="@+id/graph" />
-
+                app:layout_constraintTop_toBottomOf="@+id/graph"/>
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_change_password"
+                android:id="@+id/cv_newCard1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:background="@color/white"
                 android:outlineAmbientShadowColor="@color/grey"
                 android:outlineSpotShadowColor="@color/grey"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
                 app:cardUseCompatPadding="true"
+                android:layout_marginStart="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView1"
                 app:layout_constraintWidth_percent="0.33">
-
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/insta2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="VectorDrawableCompat"/>
+                    <TextView
+                        android:id="@+id/tvtotal_inactive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00"
+                        android:visibility="gone"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Instagram"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/lexend"
+                        android:layout_marginTop="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvtotal_inactive" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_change_password"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:background="@color/white"
+                android:outlineAmbientShadowColor="@color/grey"
+                android:outlineSpotShadowColor="@color/grey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                android:layout_marginTop="5dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_newCard1"
+                app:layout_constraintWidth_percent="0.33">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="8dp">
-
                     <ImageView
                         android:id="@+id/imageView31"
                         android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/ic_work_black_24dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/editpass"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="VectorDrawableCompat"
                         app:tint="#2471A3" />
-
                     <TextView
                         android:id="@+id/tv_total_direct1"
                         android:layout_width="wrap_content"
@@ -616,37 +657,36 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView31" />
-
                     <TextView
                         android:id="@+id/textView31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/editpassword"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/lexend"
+                        android:textAlignment="center"
+                        android:layout_marginTop="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_direct1" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_aboutUs"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_height="120dp"
                 android:background="@color/white"
-
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toEndOf="@+id/cv_change_password"
                 app:layout_constraintTop_toTopOf="@+id/cv_change_password"
                 app:layout_constraintWidth_percent="0.33">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="8dp">
-
                     <ImageView
                         android:id="@+id/imageView41"
                         android:layout_width="48dp"
@@ -657,7 +697,6 @@
                         app:srcCompat="@drawable/ic_settings_black_24dp"
                         tools:ignore="VectorDrawableCompat"
                         app:tint="#2471A3" />
-
                     <TextView
                         android:id="@+id/tv_total_active1"
                         android:layout_width="wrap_content"
@@ -670,7 +709,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView41" />
-
                     <TextView
                         android:id="@+id/textView41"
                         android:layout_width="wrap_content"
@@ -681,37 +719,33 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_active1" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_logout"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_marginStart="4dp"
                 android:background="@color/white"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
                 app:cardUseCompatPadding="true"
-                app:layout_constraintStart_toEndOf="@+id/cv_aboutUs"
-                app:layout_constraintTop_toTopOf="@+id/cv_aboutUs"
+                app:layout_constraintStart_toEndOf="@+id/cv_change_password"
+                app:layout_constraintTop_toTopOf="@+id/cv_change_password"
                 app:layout_constraintWidth_percent="0.33">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="8dp">
-
                     <ImageView
                         android:id="@+id/imageView51"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_info_black_24dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/logout"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="VectorDrawableCompat"
-                        app:tint="#2471A3" />
-
+                        tools:ignore="VectorDrawableCompat"/>
                     <TextView
                         android:id="@+id/tv_total_inactive1"
                         android:layout_width="wrap_content"
@@ -724,29 +758,28 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView51" />
-
                     <TextView
                         android:id="@+id/textView51"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/LogouT"
                         android:textSize="13sp"
+                        android:fontFamily="@font/lexend"
+                        android:layout_marginTop="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_inactive1" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
-
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/new_cardview1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_height="120dp"
+                android:visibility="gone"
+                android:layout_marginTop="120dp"
                 android:background="@color/white"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cv_logout"
@@ -755,18 +788,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="8dp">
-
                     <ImageView
                         android:id="@+id/languagechange"
-                        android:layout_width="48dp"
+                        android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:src="@drawable/baseline_language_24"
+                        android:src="@drawable/lang"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="VectorDrawableCompat"
-                        app:tint="#2471A3" />
-
+                        tools:ignore="VectorDrawableCompat"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -778,34 +808,32 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/languagechange" />
-
                     <TextView
                         android:id="@+id/languagechangetext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/language_setting"
                         android:textSize="13sp"
+                        android:layout_marginTop="0dp"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/languagechange" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!-- Content of the new CardView -->
-
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/new_cardview2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="0dp"
                 android:background="@color/white"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginBottom="0dp"
                 app:cardUseCompatPadding="true"
-                app:layout_constraintStart_toEndOf="@+id/new_cardview1"
-                app:layout_constraintTop_toTopOf="@+id/new_cardview1"
+                app:layout_constraintStart_toEndOf="@+id/cv_logout"
+                app:layout_constraintTop_toTopOf="@+id/cv_logout"
                 app:layout_constraintWidth_percent="0.33">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -815,7 +843,8 @@
                         android:id="@+id/chatImage"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/baseline_chat_24"
+                        android:src="@drawable/chat"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -838,10 +867,63 @@
                         android:layout_height="wrap_content"
                         android:text="@string/chat_with_us"
                         android:textSize="13sp"
+                        android:fontFamily="@font/lexend"
+                        android:layout_marginTop="2dp"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/chatImage" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/new_cardview3"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:visibility="gone"
+                android:layout_marginTop="0dp"
+                android:background="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintStart_toEndOf="@id/new_cardview1"
+                app:layout_constraintTop_toBottomOf="@+id/cv_newCard1"
+                app:layout_constraintWidth_percent="0.33">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+                    <ImageView
+                        android:id="@+id/gallery"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:src="@drawable/baseline_photo_library_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="VectorDrawableCompat"
+                        app:tint="#2471A3" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00"
+                        android:visibility="gone"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/gallery" />
+                    <TextView
+                        android:id="@+id/languagechangetext1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gallery"
+                        android:layout_marginTop="5dp"
+                        android:textSize="13sp"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/gallery" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

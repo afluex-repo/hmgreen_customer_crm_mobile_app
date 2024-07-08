@@ -57,9 +57,7 @@
                             android:layout_alignParentTop="true"
                             android:layout_alignParentEnd="true"
                             android:contentDescription="@string/app_name"
-                            android:src="@mipmap/ic_launcher_round" />
-
-
+                            android:src="@drawable/roundlogo" />
                         <TextView
                             android:id="@+id/clientName"
                             android:layout_width="0dp"
