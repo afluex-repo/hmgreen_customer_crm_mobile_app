@@ -42,11 +42,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CustomerLedgerReport extends BaseActivity /*implements NavigationView.OnNavigationItemSelectedListener */{
-
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
-
     @BindView(R.id.tv_plot_rate)
     TextView tvPlotRate;
     @BindView(R.id.tv_plot_area)
@@ -73,17 +71,14 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
     TextView tvBalance;
     @BindView(R.id.recyclerview1)
     RecyclerView recyclerview1;
-
     BottomSheetDialog bottomSheetDialog;
     TextView tvSelectSite;
     TextView tvSector;
     TextView selectBlock;
     EditText etBookingNumber;
     EditText etPlotNumber;
-
     @BindView(R.id.btnsearchbutton)
     ImageView btnsearchbutton;
-
     private List<LstSite> lstsites;
     private List<LstPhase> lstSectors, sublstSectors;
     private List<LstBlock> lstBlocks, sublstBlocks;
@@ -108,6 +103,8 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.backarrow);
 
         navigationView = (NavigationView) findViewById(R.id.navigation_id);
 //        navigationView.setNavigationItemSelectedListener(CustomerLedgerReport.this);

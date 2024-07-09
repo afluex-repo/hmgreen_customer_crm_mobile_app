@@ -85,10 +85,12 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
         drawerLayout.addDrawerListener(toggle);
        toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.backarrow);
 
 
 
-        toggle.setDrawerArrowDrawable(new DrawerArrowDrawable(this));
+//        toggle.setDrawerArrowDrawable(new DrawerArrowDrawable(this));
         navigationView = (NavigationView) findViewById(R.id.navigation_id);
 
 
@@ -454,6 +456,7 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Toast.makeText(context, "back press", Toast.LENGTH_SHORT).show();
        goToActivityWithFinish(context,HomeTestActivity.class,null);
         if (toggle.onOptionsItemSelected(item)) {
             return true;

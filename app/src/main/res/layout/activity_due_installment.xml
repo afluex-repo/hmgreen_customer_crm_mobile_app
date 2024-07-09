@@ -72,6 +72,7 @@
         android:id="@+id/navigation_id"
         android:layout_width="1dp"
         android:layout_height="1dp"
+    android:visibility="gone"
         android:layout_gravity="start"
         android:background="@color/white_color"
         app:itemIconTint="@color/dark_grey_color"

@@ -85,6 +85,8 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.backarrow);
 
         navigationView = (NavigationView) findViewById(R.id.navigation_id);
         backarrow= (ImageView)findViewById(R.id.backarrow);
