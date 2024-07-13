@@ -1042,8 +1042,9 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="10dp"
             android:text="@string/my_dashboard"
+            android:layout_marginStart="15dp"
             android:fontFamily="@font/lexend"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -1059,7 +1060,7 @@
             android:outlineSpotShadowColor="@color/grey"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -1116,7 +1117,7 @@
             android:background="@color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="0dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintStart_toEndOf="@+id/cv_plotBooking"
             app:layout_constraintTop_toTopOf="@+id/cv_plotBooking"
@@ -1185,7 +1186,7 @@
                 <ImageView
                     android:id="@+id/imageViewdueInstallment"
                     android:layout_width="38dp"
-                    android:layout_height="38dp"
+                    android:layout_height="33dp"
                     android:src="@drawable/ic_attach_money_black_24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1212,6 +1213,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/my_summary"
                     android:textSize="13sp"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
                     android:fontFamily="@font/lexend"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1253,10 +1255,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-
-
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_newCard1"
             android:layout_width="0dp"
@@ -1317,7 +1315,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_newCard2"
             android:layout_width="0dp"
@@ -1325,7 +1322,7 @@
             android:background="@color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintStart_toEndOf="@id/cv_newCard1"
             app:layout_constraintTop_toTopOf="@id/cv_newCard1"
@@ -1373,7 +1370,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_newCard3"
             android:layout_width="0dp"
@@ -1381,7 +1377,7 @@
             android:background="@color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintStart_toEndOf="@id/cv_newCard2"
             app:layout_constraintTop_toTopOf="@id/cv_newCard2"
@@ -1448,8 +1444,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:outlineAmbientShadowColor="@color/grey"
-            android:outlineSpotShadowColor="@color/grey"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true"
@@ -1485,10 +1479,11 @@
                 <TextView
                     android:id="@+id/tv_plot_ledger"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="@string/plot_ledger"
                     android:textSize="13sp"
                     android:textColor="@color/black"
+                    android:textAlignment="center"
                     android:fontFamily="@font/lexend"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1538,7 +1533,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/plot_avaibility"
                     android:textAlignment="center"
-                    android:textSize="11sp"
+                    android:textSize="13sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/lexend"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1550,7 +1545,6 @@
             android:id="@+id/cv_contactus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:background="@color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
@@ -1561,11 +1555,11 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="2dp">
+                android:padding="8dp">
                 <ImageView
                     android:id="@+id/imageViewdueInstallment1"
                     android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/lang"
                     app:tint="#2596be"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1575,7 +1569,7 @@
                     android:id="@+id/tv_total_inactivedueInstallment1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="0dp"
                     android:text="00"
                     android:visibility="gone"
                     android:textColor="@color/white"
@@ -1586,7 +1580,7 @@
                 <TextView
                     android:id="@+id/textViewdueInstallment1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:fontFamily="@font/lexend"
                     android:text="@string/language_setting"
                     android:textAlignment="center"
@@ -1625,11 +1619,11 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="5dp">
+                android:padding="6dp">
                 <ImageView
                     android:id="@+id/imageView31"
                     android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_height="42dp"
                     app:tint="#2596be"
                     android:background="@drawable/editp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1640,7 +1634,7 @@
                     android:id="@+id/tv_total_direct1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="0dp"
                     android:text="00"
                     android:textColor="@color/white"
                     android:textSize="22sp"
@@ -1651,9 +1645,10 @@
                 <TextView
                     android:id="@+id/textView31"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="@string/edit_password"
-                    android:textSize="12sp"
+                    android:textSize="13sp"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
                     android:fontFamily="@font/lexend"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1678,8 +1673,8 @@
                 android:padding="8dp">
                 <ImageView
                     android:id="@+id/imageView41"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     app:tint="#2596be"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1702,9 +1697,9 @@
                 <TextView
                     android:id="@+id/textView41"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="@string/support"
-                    android:textSize="12sp"
+                    android:textSize="13sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/lexend"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1731,8 +1726,8 @@
                 android:padding="8dp">
                 <ImageView
                     android:id="@+id/imageView51"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:src="@drawable/logout"
                     app:tint="#2596be"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1758,6 +1753,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Logout"
                     android:textSize="13sp"
+                    android:fontFamily="@font/lexend"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
