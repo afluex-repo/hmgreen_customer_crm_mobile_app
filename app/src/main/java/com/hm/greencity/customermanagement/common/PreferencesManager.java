@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 
 
 public class PreferencesManager {
+
     private static final String PREF_NAME = "com.hmgreencitycustomer";
     private static final String Full_Name = "Full_Name";
     private static final String UserId = "UserId";

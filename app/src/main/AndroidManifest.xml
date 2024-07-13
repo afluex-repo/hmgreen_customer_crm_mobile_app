@@ -29,6 +29,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.SendQueryActivity"
+            android:theme="@style/AppTheme.NoAction"
+            android:exported="false" />
+        <activity
             android:name=".ImageDetailActivity"
             android:exported="false" />
         <activity
@@ -116,9 +120,10 @@
         <activity
             android:name=".Activity.AssociateContaner"
             android:exported="false"
-            android:label="HM Green City"
+            android:label="HM Group OF Company"
             android:parentActivityName=".Activity.AssociateContaner"
             android:theme="@style/AppTheme.NoActionBar1" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.hm.greencity.customermanagement.com.vansuita.pickimage.provider"

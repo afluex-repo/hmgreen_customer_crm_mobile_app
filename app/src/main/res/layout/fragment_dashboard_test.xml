@@ -8,8 +8,6 @@
     android:fitsSystemWindows="true"
     android:overScrollMode="always"
     android:scrollbars="none">
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -51,6 +49,7 @@
                     <SearchView
                         android:id="@+id/searchView"
                         android:layout_width="200dp"
+                        android:paddingTop="5dp"
                         android:layout_height="wrap_content"
                         android:queryHint="Search..."
                         app:layout_constraintTop_toTopOf="parent"/>
@@ -58,14 +57,14 @@
                         android:id="@+id/call"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginEnd="40dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/baseline_language_24"
+                        android:backgroundTint="@color/white"
                         android:clickable="true"
                         android:onClick="makePhoneCall"
-                        android:background="@drawable/baseline_language_24"
                         android:scaleX="0.9"
-                      android:backgroundTint="@color/white"
                         android:scaleY="0.9" />
                     <ImageButton
                         android:id="@+id/support"
@@ -75,7 +74,7 @@
                         android:layout_centerVertical="true"
                         android:background="@drawable/baseline_contact_support_24"
                         android:scaleX="0.9"
-                        android:scaleY="0.9" />
+                        android:scaleY="0.9"/>
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
@@ -128,47 +127,98 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:fontFamily="@font/lexend"
-                        android:text="HM Group OF Company"
+                        android:text="HM Group of Companies"
                         android:textAppearance="@style/TextField_Bold"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Email -hmcity7374@gmail.com "
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:layout_marginStart="20dp"
-                        android:textAppearance="@style/TextField_Bold"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Helpline No- 9651997374  "
-                        android:layout_marginTop="0dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:layout_marginStart="20dp"
-                        android:textAppearance="@style/TextField_Bold"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="website- https://hmgroupcompanies.com  "
-                        android:layout_marginTop="0dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:layout_marginStart="20dp"
-                        android:textAppearance="@style/TextField_Bold"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/email"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:scaleType="fitXY"
+                            android:paddingStart="0dp"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/gmail"
+                            tools:ignore="MissingConstraints" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="hmcity7374@gmail.com "
+                            android:fontFamily="sans-serif-condensed"
+                            android:layout_marginStart="10dp"
+                            android:textAppearance="@style/TextField_Bold"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/calling"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:scaleType="fitXY"
+                            android:paddingStart="0dp"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/phone"
+                            tools:ignore="MissingConstraints" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 9651997374  "
+                            android:layout_marginTop="0dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:layout_marginStart="10dp"
+                            android:textAppearance="@style/TextField_Bold"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:orientation="horizontal"
+                       android:layout_height="wrap_content">
+                       <ImageView
+                           android:id="@+id/website"
+                           android:layout_width="20dp"
+                           android:layout_height="20dp"
+                           android:layout_marginTop="0dp"
+                           android:layout_alignParentStart="true"
+                           android:layout_centerVertical="true"
+                           android:scaleType="fitXY"
+                           android:paddingStart="0dp"
+                           android:layout_marginStart="20dp"
+                           android:src="@drawable/language"
+                           tools:ignore="MissingConstraints" />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="https://hmgroupcompanies.com  "
+                           android:layout_marginTop="0dp"
+                           android:fontFamily="sans-serif-condensed"
+                           android:layout_marginStart="10dp"
+                           android:textAppearance="@style/TextField_Bold"
+                           android:textColor="@color/white"
+                           android:textSize="14sp" />
+                   </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <androidx.cardview.widget.CardView
                 android:id="@+id/user_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="22dp"
+                android:layout_marginEnd="18dp"
                 android:background="@color/white"
                 android:paddingVertical="8dp"
                 app:cardBackgroundColor="@color/white"
@@ -275,11 +325,12 @@
                         android:layout_width="48dp"
                         android:layout_height="42dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/mybooking"
+                        android:background="@drawable/editpass2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="VectorDrawableCompat" />
+                        tools:ignore="VectorDrawableCompat"
+                        app:tint="#2596be" />
                     <TextView
                         android:id="@+id/tv_total_direct"
                         android:layout_width="wrap_content"
@@ -298,6 +349,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/my_bookings"
                         android:textSize="12sp"
+                        android:textColor="@color/black"
                         android:textAlignment="center"
                         android:fontFamily="@font/lexend"
                         android:layout_marginTop="0dp"
@@ -332,6 +384,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ledge"
+                        app:tint="#2596be"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
                         android:id="@+id/tv_total_active"
@@ -351,6 +404,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/my_ledger"
                         android:textSize="12sp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/lexend"
                         android:layout_marginTop="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -387,6 +441,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#2596be"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
                         android:id="@+id/tv_total_inactive"
@@ -406,6 +461,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/dueinstallment"
                         android:textSize="12sp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/lexend"
                         android:layout_marginTop="0dp"
                         android:textAlignment="center"
@@ -431,9 +487,9 @@
                     android:padding="8dp">
                     <ImageView
                         android:id="@+id/imageView7"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:src="@drawable/fb2"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/fb"
                         android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -456,7 +512,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Facebook"
-                        android:layout_marginTop="0dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="5dp"
                         android:textSize="13sp"
                         android:fontFamily="@font/lexend"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -484,9 +541,9 @@
                     android:padding="8dp">
                     <ImageView
                         android:id="@+id/imageView8"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:src="@drawable/youtube1"
+                        android:layout_width="32dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/youtube"
                         android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -509,8 +566,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="YouTube"
-                        android:layout_marginTop="0dp"
+                        android:layout_marginTop="5dp"
                         android:textSize="13sp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/lexend"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -583,10 +641,10 @@
                     android:padding="8dp">
                     <ImageView
                         android:id="@+id/imageView6"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/insta2"
+                        android:src="@drawable/instagram2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -609,8 +667,9 @@
                         android:layout_height="wrap_content"
                         android:text="Instagram"
                         android:textSize="12sp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/lexend"
-                        android:layout_marginTop="0dp"
+                        android:layout_marginTop="5dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvtotal_inactive" />
@@ -639,7 +698,7 @@
                         android:layout_width="48dp"
                         android:layout_height="45dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/editpass"
+                        android:background="@drawable/editp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -663,6 +722,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/editpassword"
                         android:textSize="12sp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/lexend"
                         android:textAlignment="center"
                         android:layout_marginTop="0dp"
@@ -742,6 +802,7 @@
                         android:layout_height="48dp"
                         android:layout_marginTop="8dp"
                         android:src="@drawable/logout"
+                        app:tint="#2596be"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -764,6 +825,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/LogouT"
                         android:textSize="13sp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/lexend"
                         android:layout_marginTop="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -867,6 +929,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/chat_with_us"
                         android:textSize="13sp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/lexend"
                         android:layout_marginTop="2dp"
                         android:textAlignment="center"

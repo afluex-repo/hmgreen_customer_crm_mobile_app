@@ -5,9 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
-
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -22,7 +19,6 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:background="@drawable/edit_text_border"/>
-
 
     <EditText
         android:id="@+id/edt_feedback"
@@ -40,7 +36,6 @@
         app:layout_constraintStart_toStartOf="@+id/feedback_title"
         app:layout_constraintTop_toBottomOf="@+id/feedback_title" />
 
-
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
@@ -51,7 +46,6 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_feedback"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
         <Button
             android:id="@+id/customer_cancel_button"
             android:layout_width="match_parent"
@@ -65,7 +59,6 @@
             android:paddingRight="25dp"
             android:text="@string/Cancel"
             android:textColor="@color/white_color" />
-
         <Button
             android:id="@+id/customer_save_button"
             android:layout_width="match_parent"

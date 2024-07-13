@@ -189,6 +189,9 @@ public class AssosiateDashboard extends BaseFragment {
     CardView cvLogout;
     @BindView(R.id.add_fab)
     FloatingActionButton  add_fab;
+//    @Nullable
+//    @BindView(R.id.chatImage)
+//    ImageView chatImage;
 
 //    @BindView(R.id.textViewdueInstallment1)
 //     ImageView textViewdueInstallment1;
@@ -312,7 +315,7 @@ public class AssosiateDashboard extends BaseFragment {
     }
 
 
-    @OnClick({R.id.cv_plotBooking, R.id.cv_customerDetails, R.id.cv_mysummary, R.id.cv_plot_ledger, R.id.cv_plot_avaibility, R.id.cv_contactus, R.id.cv_change_password, R.id.cv_aboutUs, R.id.cv_logout, R.id.support,R.id.textViewdueInstallment1,R.id.imageViewinsta,R.id.chatImage,R.id.imageViewfb,R.id.imageViewyoutube})
+    @OnClick({R.id.cv_plotBooking, R.id.cv_customerDetails, R.id.cv_mysummary, R.id.cv_plot_ledger, R.id.cv_plot_avaibility, R.id.cv_contactus, R.id.cv_change_password, R.id.cv_aboutUs, R.id.cv_logout, R.id.support,R.id.textViewdueInstallment1,R.id.imageViewinsta,R.id.imageViewfb,R.id.imageViewyoutube})
     public void onClick(View view) {
         switch (view.getId()) {
 
@@ -381,6 +384,7 @@ public class AssosiateDashboard extends BaseFragment {
             case R.id.imageViewyoutube:
                 openyoutube();
                 break;
+
         }
     }
 

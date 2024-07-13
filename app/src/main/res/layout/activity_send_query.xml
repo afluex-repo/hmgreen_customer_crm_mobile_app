@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SendQueryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:layout_height="?actionBarSize"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:id="@+id/backbutton"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/baseline_arrow_back_24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="22dp"
+            android:text="Send Query"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/btn_search"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="110dp"/>
+    </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/feedback_title"
+        android:layout_marginTop="66dp"
+        android:textSize="16sp"
+        android:layout_marginHorizontal="8dp"
+        android:hint="@string/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:background="@drawable/edit_text_border"/>
+
+    <EditText
+        android:id="@+id/edt_feedback"
+        android:layout_width="0dip"
+        android:layout_height="300dp"
+        android:layout_weight="1"
+        android:hint="Write your query here......"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="2000"
+        android:textAlignment="viewStart"
+        android:gravity="start"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintEnd_toEndOf="@+id/feedback_title"
+        app:layout_constraintStart_toStartOf="@+id/feedback_title"
+        app:layout_constraintTop_toBottomOf="@+id/feedback_title" />
+
+
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/edt_feedback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="50"
+            android:drawableStart="@drawable/baseline_attach_file_24"
+            android:background="@color/grey"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="Attach File"
+            android:textColor="@color/white_color" />
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="50"
+            android:background="@color/dark_grey_color"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="@string/send"
+            android:textColor="@color/white_color" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="gone"
+            android:layout_margin="16dp"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

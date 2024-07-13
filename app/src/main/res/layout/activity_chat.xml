@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.ChatActivity">
 
+
     <LinearLayout
         android:id="@+id/toolbarLayout"
         android:layout_width="match_parent"
@@ -63,18 +64,36 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
-
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="end"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/createquery"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:shadowRadius="10"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:layout_marginEnd="10dp"
+            android:textAllCaps="false"
+            android:text="Create Query"
+            android:background="@color/colorPrimary"
+            android:layout_height="40dp"/>
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="57dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/chatlayout"
         android:layout_below="@id/toolbarLayout" />
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/chatlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,14 +101,12 @@
         android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal">
-
         <ImageButton
             android:id="@+id/attachbtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@null"
             android:src="@drawable/baseline_attach_file_24" />
-
         <EditText
             android:id="@+id/messaget"
             android:layout_width="0dp"
@@ -98,23 +115,19 @@
             android:background="@null"
             android:hint="Start Typing"
             android:inputType="textCapSentences|textMultiLine"
-            android:padding="15dp" />
+            android:padding="15dp"/>
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:visibility="gone"
             android:layout_margin="16dp"/>
-
         <!-- ImageView here -->
-
         <ImageButton
             android:id="@+id/buttonSend"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@null"
-            android:src="@drawable/baseline_send_24" />
-
+            android:src="@drawable/baseline_send_24"/>
     </LinearLayout>
-
 </RelativeLayout>

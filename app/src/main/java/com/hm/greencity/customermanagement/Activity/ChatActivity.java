@@ -74,10 +74,18 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void onclicklistener() {
+        binding.createquery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ChatActivity.this,SendQueryActivity.class);
+                startActivity(intent);
+            }
+        });
+
         binding.buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendMessage();
+              //  sendMessage();
             }
         });
 
@@ -341,6 +349,7 @@ public class ChatActivity extends AppCompatActivity {
         }
         return byteBuffer.toByteArray();
     }
+
 
     private void fetchMessages() {
         PreferencesManager preferencesManager = PreferencesManager.getInstance(this);
