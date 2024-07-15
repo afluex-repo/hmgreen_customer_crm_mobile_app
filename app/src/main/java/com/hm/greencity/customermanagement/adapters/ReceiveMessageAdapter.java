@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
@@ -185,8 +184,6 @@ public class ReceiveMessageAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             builder.setView(dialogView);
             AlertDialog dialog = builder.create();
             dialog.show();
-
-
             closeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -195,26 +192,30 @@ public class ReceiveMessageAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             });
         }
 
+
         private void showAdminReplyDialog(Context context, QueryItem message) {
             Dialog dialog = new Dialog(context);
             dialog.setContentView(R.layout.item_admin_reply);
             TextView replyDateTextView = dialog.findViewById(R.id.replyDate);
             TextView adminReplyDateTextView = dialog.findViewById(R.id.admintextViewAddedDate);
             ImageView replyImageView = dialog.findViewById(R.id.ReplyimageView);
-            TextView noDataTextView = dialog.findViewById(R.id.noDataTextView); // TextView for showing no data message
+            TextView noDataTextView = dialog.findViewById(R.id.noDataTextView);
 
             replyDateTextView.setText(message.getReplyDate());
-            adminReplyDateTextView.setText(message.getReplyMessage());
-
-            // Set click listener for the image view inside the dialog
+            if (message.getReplyMessage() != null && !message.getReplyMessage().isEmpty()) {
+                adminReplyDateTextView.setText(message.getReplyMessage());
+                adminReplyDateTextView.setVisibility(View.VISIBLE);
+                noDataTextView.setVisibility(View.GONE);
+            } else {
+                adminReplyDateTextView.setVisibility(View.GONE);
+                noDataTextView.setVisibility(View.VISIBLE);
+            }
             replyImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Show enlarged image dialog if image exists
                     if (replyImageView.getDrawable() != null) {
                         showEnlargedImageDialog(replyImageView.getContext(), replyImageView.getDrawable());
                     } else {
-                        // Handle case where image is not available
                         Toast.makeText(context, "No image available", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -225,26 +226,21 @@ public class ReceiveMessageAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
                 Picasso.get()
                         .load(imageUrl)
-                        .placeholder(R.drawable.logoh) // Placeholder image
-                        .error(R.drawable.logo) // Error image if loading fails
+                        .placeholder(R.drawable.logoh)
+                        .error(R.drawable.logo)
                         .into(replyImageView);
 
-                replyImageView.setVisibility(View.VISIBLE); // Ensure image view is visible if there's an image to show
-                noDataTextView.setVisibility(View.GONE); // Hide no data message if image exists
+                replyImageView.setVisibility(View.VISIBLE);
+                noDataTextView.setVisibility(View.GONE);
             } else {
-                replyImageView.setVisibility(View.GONE); // Hide image view if no image
-                noDataTextView.setVisibility(View.VISIBLE); // Show no data message
+                replyImageView.setVisibility(View.GONE);
             }
 
             if (dialog.getWindow() != null) {
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             }
-
-            // Show the dialog
             dialog.show();
         }
-
-
 
     }
 }
