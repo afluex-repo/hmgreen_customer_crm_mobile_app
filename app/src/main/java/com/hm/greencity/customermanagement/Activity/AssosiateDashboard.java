@@ -1,7 +1,12 @@
 package com.hm.greencity.customermanagement.Activity;
+import static android.content.Context.MODE_PRIVATE;
+
+import static androidx.core.app.ActivityCompat.recreate;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,11 +22,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +47,7 @@ import com.hm.greencity.customermanagement.Fragment.AssociateBusinessReport;
 import com.hm.greencity.customermanagement.Fragment.AssociateLedgerReport;
 import com.hm.greencity.customermanagement.Fragment.AssociatePlotAvalivility;
 import com.hm.greencity.customermanagement.Fragment.CustomerListFragment;
+import com.hm.greencity.customermanagement.Network.LocaleHelper;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.NetworkUtils;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
@@ -46,9 +55,7 @@ import com.hm.greencity.customermanagement.constants.BaseFragment;
 import com.hm.greencity.customermanagement.login.LoginActivity;
 import com.hm.greencity.customermanagement.models.AssociateDashboard.ResponseAssociateDashboard;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
-
 import java.util.Locale;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -57,19 +64,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class AssosiateDashboard extends BaseFragment {
     Unbinder unbinder;
     EditText E1, E2, E3;
-
     @BindView(R.id.imageView2)
     ImageView imageView2;
-
     @BindView(R.id.support)
     ImageButton support;
-
     @BindView(R.id.profile_img)
     ImageView profile_img;
-
     @BindView(R.id.tv_total_downline)
     TextView tvTotalDownline;
     @BindView(R.id.textView2)
@@ -96,28 +100,20 @@ public class AssosiateDashboard extends BaseFragment {
     ImageView imageView5;
     @BindView(R.id.tv_total_inactive)
     TextView tvTotalInactive;
-
     @BindView(R.id.tv_total_payout)
     TextView tvTotalPayout;
-
     @BindView(R.id.tv_total_advance)
     TextView tvTotalAdvance;
-
     @BindView(R.id.tv_total_deduct)
     TextView tvTotalDeduct;
-
     @BindView(R.id.tv_total_balance)
     TextView tvTotalBalance;
-
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
-
     @BindView(R.id.tvlegType)
     TextView tvlegType;
-
     @BindView(R.id.showAll)
     TextView showAll;
-
     @BindView(R.id.tvlegActive)
     TextView tvlegActive;
     @BindView(R.id.tvLegInactive)
@@ -164,7 +160,6 @@ public class AssosiateDashboard extends BaseFragment {
     TextView totalbuisTotal;
     @BindView(R.id.text_dueInstallment)
     TextView text_dueInstallment;
-
     @BindView(R.id.tv_username)
     TextView tv_username;
     @BindView(R.id.tv_loginId)
@@ -189,40 +184,56 @@ public class AssosiateDashboard extends BaseFragment {
     CardView cvLogout;
     @BindView(R.id.add_fab)
     FloatingActionButton  add_fab;
-//    @Nullable
-//    @BindView(R.id.chatImage)
-//    ImageView chatImage;
 
-//    @BindView(R.id.textViewdueInstallment1)
-//     ImageView textViewdueInstallment1;
+    @BindView(R.id.textViewdueInstallment1)
+     TextView    textViewdueInstallment1;
+    @BindView(R.id.img_side_menu)
+    ImageView img_side_menu;
 
-//    @BindView(R.id.rl_clickmenu)
-//    RelativeLayout rl_clickmenu;
-//
-//    @BindView(R.id.img_side_menu)
-//    ImageButton img_side_menu;
+
+
+   // private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
     AssociateContaner associateContaner;
 
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "MissingInflatedId"})
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.associate_dashboard_new, container, false);
         unbinder = ButterKnife.bind(this, view);
 
+
         associateContaner = new AssociateContaner();
         tv_username.setText(PreferencesManager.getInstance(context).getFull_Name());
         tv_loginId.setText(PreferencesManager.getInstance(context).getLoginId());
 
 
-//        rl_clickmenu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                img_side_menu.setBackground(context.getDrawable(R.drawable.hm_logo_new_final));
-//            }
-//        });
+        TextView textView3 = view.findViewById(R.id.textView3);
+        TextView textView4 = view.findViewById(R.id.textView4);
+        TextView textView5 = view.findViewById(R.id.textView5);
+        TextView textView6 = view.findViewById(R.id.textView6);
+        TextView textView7 = view.findViewById(R.id.textView7);
+        TextView textView8 = view.findViewById(R.id.textView8);
+
+        TextView textView31 = view.findViewById(R.id.textView31);
+        TextView textView51 = view.findViewById(R.id.textView51);
+        TextView chattext = view.findViewById(R.id.chattext);
+
+
+//        cvPlotBooking = view.findViewById(R.id.cv_plotBooking);
+//        cvCustomerDetails = view.findViewById(R.id.cv_customerDetails);
+//        cvmysummary = view.findViewById(R.id.cv_mysummary);
+//        cvnewCard1 = view.findViewById(R.id.cv_newCard1);
+//        cvnewCard2 = view.findViewById(R.id.cv_newCard2);
+//        cvnewCard3 = view.findViewById(R.id.cv_newCard3);
+//        cvchange_password = view.findViewById(R.id.cv_change_password);
+//        cvlogout = view.findViewById(R.id.cv_logout);
+//        newcardview2 = view.findViewById(R.id.new_cardview2);
+
+
+
 
         Glide.with(context).load("http://crm.hmgreencity.com/" + PreferencesManager.getInstance(context).getProfilePic()).
                 apply(RequestOptions.circleCropTransform())
@@ -236,6 +247,21 @@ public class AssosiateDashboard extends BaseFragment {
 
         } else showMessage(R.string.alert_internet);
 
+
+        textViewdueInstallment1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showChangeLanguageDialog();
+            }
+        });
+
+        img_side_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFullScreenDialog(R.drawable.roundlogo);
+            }
+        });
+
         profile_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -246,29 +272,40 @@ public class AssosiateDashboard extends BaseFragment {
             }
         });
 
-
-       //floating ACTION BUTTON
-
-
-//        textViewdueInstallment1.setOnClickListener(new View.OnClickListener() {
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
-//            public void onClick(View v) {
-//              showChangeLanguageDialog();
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
 //            }
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                filterTextView(textView3,cvPlotBooking, newText);
+//                filterTextView(textView4,cvCustomerDetails, newText);
+//                filterTextView(textView5,cvmysummary, newText);
+//                filterTextView(textView6, cvnewCard1,newText);
+//                filterTextView(textView7,cvnewCard2, newText);
+//                filterTextView(textView8,cvnewCard3, newText);
+//                filterTextView(textView31,cvchange_password, newText);
+//                filterTextView(textView51,cvlogout, newText);
+//                filterTextView(chattext,newcardview2, newText);
 //
-//
+//                return true;
+//            }
 //        });
 
+
+
+//        imagelogo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showFullScreenDialog(R.drawable.roundlogo);
+//
+//            }
+//        });
 
         return view;
     }
 
-
-//    @Override
-//    public void onDestroy() {
-//        unbinder.unbind();
-//        super.onDestroy();
-//    }
 
     private void AssociateDashBoardTotals() {
         // showLoading();
@@ -485,21 +522,6 @@ public class AssosiateDashboard extends BaseFragment {
 
     }
 
-    //====================================================| About |====================================================
-//    public void aboutMe() {
-//        new androidx.appcompat.app.AlertDialog.Builder(getActivity())
-//                .setTitle("Contact Details")
-//                .setMessage("Associate Management 2022  \nVersion 1.0 \n" + getActivity().getString(R.string.developed_by) + "\n" +
-//                        "Contact us 9721497374 \nmail us hmcity7374@gmail.com")
-//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-////                        Toast.makeText(getApplicationContext(), "Thank You", Toast.LENGTH_SHORT);
-//                    }
-//                }).show();
-//    }
-
-
 
     public void aboutMe() {
         String message = "Associate Management - 2022\n Version - 1.0\n" +
@@ -577,23 +599,26 @@ public class AssosiateDashboard extends BaseFragment {
 
     private void showChangeLanguageDialog() {
         final String[] listItems = {"English", "हिंदी"};
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+        androidx.appcompat.app.AlertDialog.Builder mBuilder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
         mBuilder.setTitle("Choose Language...");
         mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) {
                     setLocale("en");
-                    getActivity().recreate();
                 } else if (i == 1) {
                     setLocale("hi");
-                    getActivity().recreate();
                 }
                 dialogInterface.dismiss();
+
+                // Recreate activity after setting locale
+                if (getActivity() != null) {
+                    getActivity().recreate();
+                }
             }
         });
 
-        AlertDialog mDialog = mBuilder.create();
+        androidx.appcompat.app.AlertDialog mDialog = mBuilder.create();
         mDialog.show();
     }
 
@@ -601,17 +626,43 @@ public class AssosiateDashboard extends BaseFragment {
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
-        config.locale = locale;
-        getActivity().getResources().updateConfiguration(config, getActivity().getResources().getDisplayMetrics());
+        config.setLocale(locale);
 
-        // SAVE data to SharedPreferences
-        SharedPreferences.Editor editor = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
-        editor.putString("My_Lang", lang);
-        editor.apply();
+        // Apply the configuration to the context
+        Context context = getActivity();
+        if (context != null) {
+            context = context.createConfigurationContext(config);
+
+            // Save language preference
+            SharedPreferences.Editor editor = context.getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
+            editor.putString("My_Lang", lang);
+            editor.apply();
+
+            // Notify user that locale is set
+            Toast.makeText(context, "Language changed to " + (lang.equals("en") ? "English" : "Hindi"), Toast.LENGTH_SHORT).show();
+        }
     }
 
+
+
+
+
+//    private void setLocale(String lang) {
+//        Locale locale = new Locale(lang);
+//        Locale.setDefault(locale);
+//        Configuration config = new Configuration();
+//        config.locale = locale;
+//        getActivity().getResources().updateConfiguration(config, getActivity().getResources().getDisplayMetrics());
+//
+//        // SAVE data to SharedPreferences
+//        SharedPreferences.Editor editor = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
+//        editor.putString("My_Lang", lang);
+//        editor.apply();
+//    }
+
+
     public void loadLocale() {
-        SharedPreferences prefs = getActivity().getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Settings", MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "");
         setLocale(language);
     }
@@ -670,7 +721,35 @@ public class AssosiateDashboard extends BaseFragment {
     }
 
 
+    private void showFullScreenDialog(int imageResId) {
+        Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_fullscreen_image);
 
+        ImageView dialogImageView = dialog.findViewById(R.id.dialog_imageview);
+        dialogImageView.setImageResource(imageResId);
+
+        dialogImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+    private void filterTextView(TextView textView,CardView cardView, String query) {
+        String textViewText = textView.getText().toString().toLowerCase();
+        query = query.toLowerCase();
+
+        if (textViewText.contains(query)) {
+            cardView.setVisibility(View.VISIBLE);
+        } else {
+            cardView.setVisibility(View.GONE);
+        }
+    }
 
 
 }

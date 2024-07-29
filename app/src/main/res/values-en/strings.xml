@@ -286,6 +286,22 @@
     <string name="customerid">CustomerID</string>
     <string name="chat_with_us">Chat with us</string>
     <string name="paidamount">Paid Amount :</string>
+    <string name="instagram">Instagram</string>
+    <string name="Facebook">Facebook</string>
+    <string name="Youtube">YouTube</string>
+    <string name="hm_group_of_companies">HM Group of Companies</string>
+    <string name="totaldownline">Total Downline</string>
+    <string name="totaldirects">Total Directs</string>
+    <string name="totalactive">Total Active</string>
+    <string name="totalinactive">Total Inactive</string>
+    <string name="totalpayout">Total Payout</string>
+    <string name="totalpaid_payout">Total Paid Payout</string>
+    <string name="totaldeduction">Total Deduction</string>
+    <string name="payoutbalance">Payout Balance</string>
+    <string name="Yuutube">YouTube</string>
+    <string name="facebooK">Facebook</string>
+    <string name="Totaldownline">Total downline</string>
+    <string name="Totaldirects">Total directs</string>
 
 
 </resources>

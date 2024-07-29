@@ -271,7 +271,12 @@
     <string name="starTdate">आरंभ करने की तिथि</string>
     <string name="customerid">ग्राहक आईडी</string>
     <string name="chat_with_us">हमारे साथ चैट करें</string>
-    <string name="paidamount">Paid Amount :</string>
+    <string name="paidamount">ुकाई गई राशि</string>
+    <string name="instagram">Instagram</string>
+    <string name="Facebook">फेसबुक</string>
+    <string name="Youtube">यूट्यूब</string>
+    <string name="Totaldownline">कुल डाउनलाइन</string>
+    <string name="Totaldirects">कुल निर्देश</string>
 
 
 </resources>

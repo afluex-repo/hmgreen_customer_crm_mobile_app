@@ -1,6 +1,7 @@
 package com.hm.greencity.customermanagement.Activity;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -68,6 +70,10 @@ import retrofit2.Response;
 public class HomeTestActivity extends BaseActivity implements IPickCancel, IPickResult {
     @BindView(R.id.profile_img)
     ImageView profileImg;
+
+    @BindView(R.id.imagelogo)
+    ImageView imagelogo;
+
     @BindView(R.id.support)
     ImageButton support;
     @BindView(R.id.tv_username)
@@ -181,6 +187,15 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
 
+        //............
+        imagelogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFullScreenDialog(R.drawable.roundlogo);
+
+            }
+        });
+
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -285,17 +300,12 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String phone_number = "9651997374";
-//                Intent phone_intent = new Intent(Intent.ACTION_DIAL);
-//                phone_intent.setData(Uri.parse("tel:" + phone_number));
-//                startActivity(phone_intent);
                 showChangeLanguageDialog();
             }
         });
 
     }
 
-    // Helper method to filter TextView based on search query
     private void filterTextView(TextView textView,CardView cardView, String query) {
         String textViewText = textView.getText().toString().toLowerCase();
         query = query.toLowerCase();
@@ -306,7 +316,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             cardView.setVisibility(View.GONE);
         }
     }
-
 
     private void openinsta() {
         String url = "https://www.instagram.com/hm_green_city_2k?igsh=YXNnemQ5aWt5ZW5o";
@@ -348,12 +357,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             public void onResponse(Call<HomeActivityDashBoard> call, Response<HomeActivityDashBoard> response) {
                 hideLoading();
                 if (response.body().getStatusCode().equalsIgnoreCase("200") && response.body().getDashBoardData().size() > 0) {
-
-//                    totalPaymentAmount.setText("\u20B9" + response.body().getDashBoardData().get(0).getTotalPlotAmount());
-//                    totalBookingNumber.setText(response.body().getDashBoardData().get(0).getTotalBooking());
-//                    totalPlotAmount.setText("\u20B9" + response.body().getDashBoardData().get(0).getTotalPlotAmount());
-//                    totalPaidAmount.setText("\u20B9" + response.body().getDashBoardData().get(0).getTotalPaidAmount());
-//                    totalPendingAmount.setText("\u20B9" + response.body().getDashBoardData().get(0).getTotalPending());
                     associateDetails.setText(response.body().getDashBoardData().get(0).getAssociateDetails());
                     float totalPayableAmount = Float.parseFloat(response.body().getDashBoardData().get(0).getTotalPlotAmount());
                     float totalRemainingAmount = Float.parseFloat(response.body().getDashBoardData().get(0).getTotalPending());
@@ -365,34 +368,24 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                     pieChart.getDescription().setEnabled(true);
                     pieChart.setExtraOffsets(5, 10, 5, 5);
                     pieChart.setDragDecelerationFrictionCoef(0.99f);
-                    pieChart.setDrawHoleEnabled(false); //false that shows filled up pie
+                    pieChart.setDrawHoleEnabled(false);
                     pieChart.setHoleColor(Color.WHITE);
-                    pieChart.setTransparentCircleRadius(61f); //31 or 91
-
-
+                    pieChart.setTransparentCircleRadius(61f);
                     ArrayList<PieEntry> entries = new ArrayList<>();
                     entries.add(new PieEntry(perPaid, "Paid"));
                     entries.add(new PieEntry(perRemaining, "Remaining"));
-
-
                     Description d = new Description();
                     d.setText("");
                     d.setTextSize(15);
-//                    d.setPosition(0,0);
                     pieChart.setDescription(d);
-
-
                     pieChart.animateY(1400, Easing.EasingOption.EaseInCubic);
-
                     PieDataSet dataSet = new PieDataSet(entries, "Amount");
                     dataSet.setValueFormatter(new PercentFormatter());
-                    dataSet.setSliceSpace(3f); //pie divided space
+                    dataSet.setSliceSpace(3f);
                     dataSet.setSelectionShift(5f);
                     dataSet.setColors(JOYFUL_COLORS1);
-
                     PieData data = new PieData(dataSet);
                     data.setValueTextSize(15f);
-
                     data.setValueTextColor(Color.YELLOW);
 
                     pieChart.setData(data);
@@ -928,5 +921,25 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         super.onBackPressed();
         finishAffinity();
         finish();
+    }
+
+
+
+    private void showFullScreenDialog(int imageResId) {
+        Dialog dialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_fullscreen_image);
+
+        ImageView dialogImageView = dialog.findViewById(R.id.dialog_imageview);
+        dialogImageView.setImageResource(imageResId);
+
+        dialogImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }
