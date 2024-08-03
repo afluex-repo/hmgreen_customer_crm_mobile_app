@@ -37,53 +37,46 @@
                 android:src="@drawable/hm_logo"
                 app:civ_circle_background_color="@color/colorPrimaryDark" />
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="?actionBarSize"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/nameptv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="HM Group OF Company"
-                    android:layout_marginTop="15dp"
+                    android:text="HM GROUP OF COMPANIES"
+                    android:layout_marginTop="0dp"
                     android:layout_marginStart="10dp"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"/>
+
                 <TextView
-                   android:visibility="gone"
-                    android:id="@+id/onlinetv"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="5dp"
+                    android:text="Helpline No- 9651997374  "
                     android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
             </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Helpline No-\n 9651997374  "
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="50dp"
-                android:textAppearance="@style/TextField_Bold"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_height="wrap_content">
+        android:layout_marginTop="80dp"
+        android:layout_height="50dp">
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/createquery"
             android:layout_width="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="0dp"
             android:gravity="center"
             android:shadowRadius="10"
             android:padding="10dp"

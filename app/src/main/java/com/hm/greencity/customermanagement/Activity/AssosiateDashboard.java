@@ -1,10 +1,6 @@
 package com.hm.greencity.customermanagement.Activity;
 import static android.content.Context.MODE_PRIVATE;
-
-import static androidx.core.app.ActivityCompat.recreate;
-
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -19,7 +15,6 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -30,14 +25,12 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -47,7 +40,6 @@ import com.hm.greencity.customermanagement.Fragment.AssociateBusinessReport;
 import com.hm.greencity.customermanagement.Fragment.AssociateLedgerReport;
 import com.hm.greencity.customermanagement.Fragment.AssociatePlotAvalivility;
 import com.hm.greencity.customermanagement.Fragment.CustomerListFragment;
-import com.hm.greencity.customermanagement.Network.LocaleHelper;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.NetworkUtils;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
@@ -184,13 +176,12 @@ public class AssosiateDashboard extends BaseFragment {
     CardView cvLogout;
     @BindView(R.id.add_fab)
     FloatingActionButton  add_fab;
-
     @BindView(R.id.textViewdueInstallment1)
      TextView    textViewdueInstallment1;
     @BindView(R.id.img_side_menu)
     ImageView img_side_menu;
-
-
+    @BindView(R.id.associateSearchView)
+    SearchView associateSearchView;
 
    // private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 

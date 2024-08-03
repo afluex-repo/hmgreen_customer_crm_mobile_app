@@ -45,7 +45,7 @@
                         android:text="HM Group OF Company"
                         android:textAppearance="@style/TextField_Bold"
                         android:textColor="@color/white"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
                     <SearchView
                         android:id="@+id/searchView"
                         android:layout_width="200dp"
@@ -131,7 +131,7 @@
                         android:text="@string/hm_group_of_companies"
                         android:textAppearance="@style/TextField_Bold"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"

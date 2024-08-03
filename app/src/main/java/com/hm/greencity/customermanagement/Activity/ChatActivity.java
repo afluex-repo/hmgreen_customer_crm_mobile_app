@@ -44,6 +44,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
     private static final int REQUEST_CAMERA_CAPTURE = 1;
