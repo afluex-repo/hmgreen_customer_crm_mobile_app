@@ -31,7 +31,6 @@ tools:openDrawer="start">
                 <ImageView
                     android:id="@+id/backarrow"
                     android:layout_width="28dp"
-                    android:visibility="gone"
                     android:layout_height="28dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"

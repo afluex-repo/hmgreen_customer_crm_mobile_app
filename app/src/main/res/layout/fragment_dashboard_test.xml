@@ -150,6 +150,7 @@
                             android:src="@drawable/gmail"
                             tools:ignore="MissingConstraints" />
                         <TextView
+                            android:id="@+id/mail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="hmcity7374@gmail.com "
@@ -176,6 +177,7 @@
                             android:src="@drawable/phone"
                             tools:ignore="MissingConstraints" />
                         <TextView
+                            android:id="@+id/Call"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=" 9651997374  "
@@ -203,6 +205,7 @@
                            android:src="@drawable/language"
                            tools:ignore="MissingConstraints" />
                        <TextView
+                           android:id="@+id/WebSite"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="https://hmgroupcompanies.com  "

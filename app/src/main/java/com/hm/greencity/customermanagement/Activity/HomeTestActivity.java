@@ -1,4 +1,5 @@
 package com.hm.greencity.customermanagement.Activity;
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -6,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
@@ -26,6 +28,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.mikephil.charting.animation.Easing;
@@ -68,6 +72,7 @@ import retrofit2.Response;
 
 
 public class HomeTestActivity extends BaseActivity implements IPickCancel, IPickResult {
+    private static final int REQUEST_CALL_PERMISSION = 1;
     @BindView(R.id.profile_img)
     ImageView profileImg;
 
@@ -96,14 +101,10 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     CardView cvMyLedger;
     @BindView(R.id.cv_mysummary)
     CardView cvDueInstallment;
-    //    @BindView(R.id.pie_chart)
-//    PieChart pieChart;
+
     @BindView(R.id.constraintLayout2)
     ConstraintLayout constraintLayout2;
-//    83, 156, 255
 
-    //    238 164 127
-//    0 83 156
     public static final int[] JOYFUL_COLORS1 = new int[]{Color.rgb(238, 164, 127), Color.rgb(0, 83, 156)};
     @BindView(R.id.cv_change_password)
     CardView cvChangePassword;
@@ -129,6 +130,14 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     ImageView gallery;
     @BindView(R.id.searchView)
     SearchView searchView;
+    @BindView(R.id.mail)
+    TextView mail;
+    @BindView(R.id.Call)
+    TextView Call;
+    @BindView(R.id.WebSite)
+    TextView website;
+
+
     private CardView cvPlotBooking, cvCustomerDetails, cvMySummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
 
@@ -184,6 +193,27 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 filterTextView(chattext,newcardview2, newText);
 
                 return true;
+            }
+        });
+
+
+        Call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makePhoneCall();
+            }
+        });
+
+        mail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmail();
+            }
+        });
+        website.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebsite();
             }
         });
 
@@ -330,7 +360,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         startActivity(intent);
     }
     private void openyoutube() {
-        String url = "https://youtube.com/@Hm.city7374?si=PYfmNKUSZ66UNA17";
+        String url = "https://youtube.com/@hmgroupofcompanies-s3j?si=aQNXn4h0oceo00RW";
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);
@@ -941,5 +971,44 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         });
 
         dialog.show();
+    }
+
+
+    private void sendEmail() {
+        String emailAddress = "hmcity7374@gmail.com";
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", emailAddress, null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email here");
+
+        if (emailIntent.resolveActivity(this.getPackageManager()) != null) {
+            startActivity(emailIntent);
+        }
+    }
+
+    private void makePhoneCall() {
+        String phoneNumber = "+91-9651997374";
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PERMISSION);
+        } else {
+            startCallIntent(phoneNumber);
+        }
+    }
+
+    private void startCallIntent(String phoneNumber) {
+        Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
+        if (callIntent.resolveActivity(this.getPackageManager()) != null) {
+            startActivity(callIntent);
+        }
+    }
+
+    private void openWebsite() {
+        String url = "https://hmgroupcompanies.com";
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        if (browserIntent.resolveActivity(this.getPackageManager()) != null) {
+            startActivity(browserIntent);
+        }
     }
 }

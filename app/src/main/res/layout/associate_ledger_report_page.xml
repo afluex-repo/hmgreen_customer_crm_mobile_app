@@ -10,7 +10,6 @@
     tools:context=".Activity.CustomerLedgerReport"
     tools:openDrawer="start">
 
-    <!--Charts: Pie Chart and Bar Chart-->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -38,7 +37,7 @@
                         <RelativeLayout
                             android:id="@+id/rl_clickmenu"
                             android:layout_width="75dp"
-                            android:layout_height="40dp"
+                            android:layout_height="50dp"
                             android:layout_alignParentStart="true"
                             android:background="?attr/selectableItemBackground"
                             android:gravity="center">
@@ -49,13 +48,13 @@
                                 android:layout_height="28dp"
                                 android:layout_centerVertical="true"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/baseline_arrow_back_24"
-                                android:visibility="gone" />
+                                android:src="@drawable/baseline_arrow_back_24" />
 
                             <ImageButton
                                 android:id="@+id/img_side_menu"
                                 android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="10dp"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="35dp"

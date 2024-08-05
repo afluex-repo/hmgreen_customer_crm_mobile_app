@@ -1,5 +1,7 @@
 package com.hm.greencity.customermanagement.Activity;
 import static android.content.Context.MODE_PRIVATE;
+
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +33,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
@@ -59,6 +65,7 @@ import retrofit2.Response;
 
 public class AssosiateDashboard extends BaseFragment {
     Unbinder unbinder;
+    private static final int REQUEST_CALL_PERMISSION = 1;
     EditText E1, E2, E3;
     @BindView(R.id.imageView2)
     ImageView imageView2;
@@ -183,11 +190,18 @@ public class AssosiateDashboard extends BaseFragment {
     @BindView(R.id.associateSearchView)
     SearchView associateSearchView;
 
-   // private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
+    @BindView((R.id.call))
+    TextView call;
+
+    @BindView((R.id.mail))
+    TextView mail;
+
+    @BindView((R.id.webSite))
+    TextView webSite;
+
+    private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
     AssociateContaner associateContaner;
-
-
     @SuppressLint({"ClickableViewAccessibility", "MissingInflatedId"})
     @Nullable
     @Override
@@ -201,27 +215,38 @@ public class AssosiateDashboard extends BaseFragment {
         tv_loginId.setText(PreferencesManager.getInstance(context).getLoginId());
 
 
-        TextView textView3 = view.findViewById(R.id.textView3);
-        TextView textView4 = view.findViewById(R.id.textView4);
-        TextView textView5 = view.findViewById(R.id.textView5);
-        TextView textView6 = view.findViewById(R.id.textView6);
-        TextView textView7 = view.findViewById(R.id.textView7);
-        TextView textView8 = view.findViewById(R.id.textView8);
+        TextView textView3 = view.findViewById(R.id.tv_mybooking1);
+        TextView textView4 = view.findViewById(R.id.textViewmyLedger);
+        TextView textView5 = view.findViewById(R.id.textViewdueInstallment);
+        TextView textView6 = view.findViewById(R.id.textViewinsta);
+        TextView textView7 = view.findViewById(R.id.textViewfb);
+        TextView textView8 = view.findViewById(R.id.textViewyoutube);
 
-        TextView textView31 = view.findViewById(R.id.textView31);
-        TextView textView51 = view.findViewById(R.id.textView51);
-        TextView chattext = view.findViewById(R.id.chattext);
+        TextView textView31 = view.findViewById(R.id.tv_plot_ledger);
+        TextView textView51 = view.findViewById(R.id.textViewmyLedger1);
+        TextView chattext = view.findViewById(R.id.textViewdueInstallment1);
+
+        TextView textView9 = view.findViewById(R.id.textView31);
+        TextView textView10 = view.findViewById(R.id.textView51);
 
 
-//        cvPlotBooking = view.findViewById(R.id.cv_plotBooking);
-//        cvCustomerDetails = view.findViewById(R.id.cv_customerDetails);
-//        cvmysummary = view.findViewById(R.id.cv_mysummary);
-//        cvnewCard1 = view.findViewById(R.id.cv_newCard1);
-//        cvnewCard2 = view.findViewById(R.id.cv_newCard2);
-//        cvnewCard3 = view.findViewById(R.id.cv_newCard3);
-//        cvchange_password = view.findViewById(R.id.cv_change_password);
-//        cvlogout = view.findViewById(R.id.cv_logout);
-//        newcardview2 = view.findViewById(R.id.new_cardview2);
+
+       CardView cvplotBooking = view.findViewById(R.id.cv_plotBooking);
+        CardView cvcustomerDetails = view.findViewById(R.id.cv_customerDetails);
+        CardView cvmysummary = view.findViewById(R.id.cv_mysummary);
+        CardView cvnewCard1 = view.findViewById(R.id.cv_newCard1);
+        CardView cvnewCard2 = view.findViewById(R.id.cv_newCard2);
+        CardView cvnewCard3 = view.findViewById(R.id.cv_newCard3);
+
+        CardView cvnewCard4 = view.findViewById(R.id.cv_plot_ledger);
+        CardView cvnewCard5 = view.findViewById(R.id.cv_plot_avaibility);
+        CardView cvnewCard6 = view.findViewById(R.id.cv_contactus);
+
+        CardView cvchange_password = view.findViewById(R.id.cv_change_password);
+        CardView cvlogout = view.findViewById(R.id.cv_logout);
+        CardView newcardview2 = view.findViewById(R.id.new_cardview2);
+
+
 
 
 
@@ -256,34 +281,57 @@ public class AssosiateDashboard extends BaseFragment {
         profile_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                goToActivity(context, AssociateProfile.class, null);
                 goToActivity(AssociateProfile.class, null);
 
             }
         });
 
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                filterTextView(textView3,cvPlotBooking, newText);
-//                filterTextView(textView4,cvCustomerDetails, newText);
-//                filterTextView(textView5,cvmysummary, newText);
-//                filterTextView(textView6, cvnewCard1,newText);
-//                filterTextView(textView7,cvnewCard2, newText);
-//                filterTextView(textView8,cvnewCard3, newText);
-//                filterTextView(textView31,cvchange_password, newText);
-//                filterTextView(textView51,cvlogout, newText);
-//                filterTextView(chattext,newcardview2, newText);
-//
-//                return true;
-//            }
-//        });
+        associateSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                String query = newText != null ? newText : "";
+                filterTextView(textView3, cvplotBooking, query);
+                filterTextView(textView4, cvcustomerDetails, query);
+                filterTextView(textView5, cvmysummary, query);
+                filterTextView(textView6, cvnewCard1, query);
+                filterTextView(textView7, cvnewCard2, query);
+                filterTextView(textView8, cvnewCard3, query);
+                filterTextView(textView31, cvnewCard4, query);
+                filterTextView(textView51, cvnewCard5, query);
+                filterTextView(textView9, cvchange_password, query);
+                filterTextView(textView10, cvlogout, query);
+                filterTextView(chattext, cvnewCard6, query);
+
+
+                return true;
+            }
+        });
+
+      call.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              makePhoneCall();
+          }
+      });
+
+        mail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmail();
+            }
+        });
+
+        webSite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               openWebsite();
+            }
+        });
 
 
 //        imagelogo.setOnClickListener(new View.OnClickListener() {
@@ -429,7 +477,7 @@ public class AssosiateDashboard extends BaseFragment {
         startActivity(intent);
     }
     private void openyoutube() {
-        String url = "https://youtube.com/@Hm.city7374?si=PYfmNKUSZ66UNA17";
+        String url = "https://youtube.com/@hmgroupofcompanies-s3j?si=aQNXn4h0oceo00RW";
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);
@@ -731,16 +779,65 @@ public class AssosiateDashboard extends BaseFragment {
     }
 
 
-    private void filterTextView(TextView textView,CardView cardView, String query) {
-        String textViewText = textView.getText().toString().toLowerCase();
+    private void filterTextView(TextView textView, CardView cardView, String query) {
+        if (textView == null || cardView == null) {
+            Log.e("FilterTextView", "TextView or CardView is null.");
+            return;
+        }
+        if (query == null) {
+            query = "";
+        }
+        String textViewText = textView.getText() != null ? textView.getText().toString().toLowerCase() : "";
         query = query.toLowerCase();
-
+        Log.d("FilterTextView", "TextView text: " + textViewText);
+        Log.d("FilterTextView", "Query: " + query);
         if (textViewText.contains(query)) {
             cardView.setVisibility(View.VISIBLE);
         } else {
             cardView.setVisibility(View.GONE);
         }
     }
+
+
+    private void sendEmail() {
+        String emailAddress = "hmcity7374@gmail.com";
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", emailAddress, null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email here");
+
+        if (emailIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(emailIntent);
+        }
+    }
+
+    private void makePhoneCall() {
+        String phoneNumber = "+91-9651997374";
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PERMISSION);
+        } else {
+            startCallIntent(phoneNumber);
+        }
+    }
+
+    private void startCallIntent(String phoneNumber) {
+        Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
+        if (callIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(callIntent);
+        }
+    }
+
+    private void openWebsite() {
+        String url = "https://hmgroupcompanies.com";
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        if (browserIntent.resolveActivity(requireActivity().getPackageManager()) != null) {
+            startActivity(browserIntent);
+        }
+    }
+
+
 
 
 }

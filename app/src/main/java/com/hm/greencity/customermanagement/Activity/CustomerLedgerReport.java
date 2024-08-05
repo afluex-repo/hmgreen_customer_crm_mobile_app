@@ -100,7 +100,8 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
 
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_id);
-        toggle = new ActionBarDrawerToggle(CustomerLedgerReport.this, drawerLayout, R.string.nav_close, R.string.nav_close);
+
+        toggle = new ActionBarDrawerToggle(CustomerLedgerReport.this, drawerLayout, R.string.nav_open, R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
