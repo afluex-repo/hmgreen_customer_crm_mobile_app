@@ -302,6 +302,7 @@
     <string name="facebooK">Facebook</string>
     <string name="Totaldownline">Total downline</string>
     <string name="Totaldirects">Total directs</string>
+    <string name="business_report_android_textcolor">Business Report android:textColor=</string>
 
 
 </resources>

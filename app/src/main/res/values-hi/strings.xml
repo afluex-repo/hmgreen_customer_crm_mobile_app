@@ -277,6 +277,7 @@
     <string name="Youtube">यूट्यूब</string>
     <string name="Totaldownline">कुल डाउनलाइन</string>
     <string name="Totaldirects">कुल निर्देश</string>
+    <string name="business_report_android_textcolor">Business Report android:textColor=</string>
 
 
 </resources>
