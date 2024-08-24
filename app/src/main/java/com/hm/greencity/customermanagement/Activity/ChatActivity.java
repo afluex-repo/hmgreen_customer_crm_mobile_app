@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,7 +16,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -95,7 +93,7 @@ public class ChatActivity extends AppCompatActivity {
         binding.buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  sendMessage();
+                sendMessage();
             }
         });
 
@@ -247,7 +245,7 @@ public class ChatActivity extends AppCompatActivity {
                 }
             }
 
-            // Make Retrofit call
+
             chatService.sendMessage(fkUserId, title, description, imagePart).enqueue(new Callback<ResponseChat>() {
                 @Override
                 public void onResponse(Call<ResponseChat> call, Response<ResponseChat> response) {
@@ -369,7 +367,6 @@ public class ChatActivity extends AppCompatActivity {
             Toast.makeText(this, "User ID is invalid", Toast.LENGTH_SHORT).show();
             return;
         }
-
         FetchMessageRequest request = new FetchMessageRequest(userId);
         chatService.fetchMessages(request).enqueue(new Callback<getResponseChat>() {
             @Override
@@ -392,7 +389,6 @@ public class ChatActivity extends AppCompatActivity {
                     Toast.makeText(ChatActivity.this, "Failed to fetch messages", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<getResponseChat> call, Throwable t) {
                 Toast.makeText(ChatActivity.this, "Something went wrong: " + t.getMessage(), Toast.LENGTH_SHORT).show();

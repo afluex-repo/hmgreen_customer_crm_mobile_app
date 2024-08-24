@@ -41,6 +41,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.GalleryActivity;
+import com.hm.greencity.customermanagement.NotePad.NotePadActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
@@ -114,8 +115,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     CardView cvLogout;
     private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12, E13, custSearch;
     PieChart pieChart;
-    @BindView(R.id.languagechange)
-    ImageView languagechange;
+    @BindView(R.id.imagenotepad)
+    ImageView imagenotepad;
     @BindView(R.id.chatImage)
     ImageView chatImage;
     @BindView(R.id.imageView6)
@@ -193,6 +194,13 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 filterTextView(chattext,newcardview2, newText);
 
                 return true;
+            }
+        });
+
+        imagenotepad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeTestActivity.this,NotePadActivity.class));
             }
         });
 
@@ -297,12 +305,12 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 showProfile();
             }
         });
-        languagechange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showChangeLanguageDialog();
-            }
-        });
+//        languagechange.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showChangeLanguageDialog();
+//            }
+//        });
         chatImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -516,6 +524,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 dialog.cancel();
             }
         });
+
 
     }
     private void changePassword() {

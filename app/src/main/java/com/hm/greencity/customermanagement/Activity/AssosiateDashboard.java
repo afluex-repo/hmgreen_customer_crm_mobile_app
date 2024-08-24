@@ -46,6 +46,7 @@ import com.hm.greencity.customermanagement.Fragment.AssociateBusinessReport;
 import com.hm.greencity.customermanagement.Fragment.AssociateLedgerReport;
 import com.hm.greencity.customermanagement.Fragment.AssociatePlotAvalivility;
 import com.hm.greencity.customermanagement.Fragment.CustomerListFragment;
+import com.hm.greencity.customermanagement.NotePad.NotePadActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.NetworkUtils;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
@@ -198,6 +199,9 @@ public class AssosiateDashboard extends BaseFragment {
 
     @BindView((R.id.webSite))
     TextView webSite;
+    @BindView((R.id.notes))
+    TextView notes;
+
 
     private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
@@ -285,6 +289,12 @@ public class AssosiateDashboard extends BaseFragment {
 
             }
         });
+//        notes.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                goToActivity(NotePadActivity.class, null);
+//            }
+//        });
 
         associateSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -333,15 +343,6 @@ public class AssosiateDashboard extends BaseFragment {
             }
         });
 
-
-//        imagelogo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showFullScreenDialog(R.drawable.roundlogo);
-//
-//            }
-//        });
-
         return view;
     }
 
@@ -350,8 +351,6 @@ public class AssosiateDashboard extends BaseFragment {
         // showLoading();
         JsonObject object = new JsonObject();
         object.addProperty("CustomerID", PreferencesManager.getInstance(context).getCustomerID());
-//        object.addProperty("CustomerID","24");
-
 
         Call<ResponseAssociateDashboard> call = apiServices.AssociateDashBoard(object);
         call.enqueue(new Callback<ResponseAssociateDashboard>() {
@@ -391,19 +390,17 @@ public class AssosiateDashboard extends BaseFragment {
     }
 
 
-    @OnClick({R.id.cv_plotBooking, R.id.cv_customerDetails, R.id.cv_mysummary, R.id.cv_plot_ledger, R.id.cv_plot_avaibility, R.id.cv_contactus, R.id.cv_change_password, R.id.cv_aboutUs, R.id.cv_logout, R.id.support,R.id.textViewdueInstallment1,R.id.imageViewinsta,R.id.imageViewfb,R.id.imageViewyoutube})
+    @OnClick({R.id.cv_plotBooking, R.id.cv_customerDetails, R.id.cv_mysummary, R.id.cv_plot_ledger, R.id.cv_plot_avaibility, R.id.cv_contactus, R.id.cv_change_password, R.id.cv_aboutUs, R.id.cv_logout, R.id.support,R.id.textViewdueInstallment1,R.id.imageViewinsta,R.id.imageViewfb,R.id.imageViewyoutube,R.id.imagenotepad})
     public void onClick(View view) {
         switch (view.getId()) {
 
             case R.id.cv_plotBooking:
-//                ReplaceFragment(new AssociateBookingList(), "Booking List");
                 AssociateContaner.currentFragment = new AssociateBookingList();
                 FragmentTransaction fr4 = getFragmentManager().beginTransaction();
                 fr4.replace(R.id.frame, new AssociateBookingList()).addToBackStack(null);
                 fr4.commit();
                 break;
             case R.id.cv_customerDetails:
-//                ReplaceFragment(new CustomerListFragment(), "Customer Details");
                 AssociateContaner.currentFragment = new CustomerListFragment();
                 FragmentTransaction fr = getFragmentManager().beginTransaction();
                 fr.replace(R.id.frame, new CustomerListFragment()).addToBackStack(null);
@@ -411,25 +408,18 @@ public class AssosiateDashboard extends BaseFragment {
 
                 break;
             case R.id.cv_mysummary:
-//                ReplaceFragment(new AssociateBusinessReport(), "Business Summary");
-//                getActivity().getFragmentManager().beginTransaction().replace(R.id.frame,new AssociateBusinessReport()).commit();
                 AssociateContaner.currentFragment = new AssociateBusinessReport();
                 FragmentTransaction fr1 = getFragmentManager().beginTransaction();
-
                 fr1.replace(R.id.frame, new AssociateBusinessReport()).addToBackStack(null);
                 fr1.commit();
                 break;
             case R.id.cv_plot_ledger:
-//                ReplaceFragment(new AssociateLedgerReport(), "Ledger Summary");
-//                getActivity().getFragmentManager().beginTransaction().replace(R.id.frame, new AssociateLedgerReport()).commit();
                 AssociateContaner.currentFragment = new AssociateLedgerReport();
                 FragmentTransaction fr2 = getFragmentManager().beginTransaction();
                 fr2.replace(R.id.frame, new AssociateLedgerReport()).addToBackStack(null);
                 fr2.commit();
                 break;
             case R.id.cv_plot_avaibility:
-//                ReplaceFragment(new AssociatePlotAvalivility(), "Plot Availability");
-//                getActivity().getFragmentManager().beginTransaction().replace(R.id.frame, new AssociatePlotAvalivility()).commit();
                 AssociateContaner.currentFragment = new AssociatePlotAvalivility();
                 FragmentTransaction fr3 = getFragmentManager().beginTransaction();
                 fr3.replace(R.id.frame, new AssociatePlotAvalivility()).addToBackStack(null);
@@ -459,6 +449,9 @@ public class AssosiateDashboard extends BaseFragment {
                 break;
             case R.id.imageViewyoutube:
                 openyoutube();
+                break;
+            case R.id.imagenotepad:
+                goToActivity(NotePadActivity.class, null);
                 break;
 
         }
@@ -491,17 +484,15 @@ public class AssosiateDashboard extends BaseFragment {
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Change Password");
         final View inflateForm = getLayoutInflater().inflate(R.layout.custom_alert_change_password, null); // Get custom login form view.
-        builder.setView(inflateForm); // Set above view in alert dialog.
+        builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
 
         final android.app.AlertDialog dialog = builder.show();
 
-
         this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
         this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
         this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
-
 
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);
@@ -521,10 +512,6 @@ public class AssosiateDashboard extends BaseFragment {
                 if (!oldPassword.isEmpty()) {
                     if (newPassword.equals(compPassword)) {
 
-                        //    request POST 'http://demo1.afluex.com/webapi/ChnagePassword' \
-//            --form 'OldPassword="123456"' \
-//            --form 'NewPassword="12345"' \
-//            --form 'CustomerID="96"'
                         JsonObject jsonObject = new JsonObject();
                         jsonObject.addProperty("OldPassword", oldPassword);
                         jsonObject.addProperty("NewPassword", newPassword);
@@ -568,36 +555,27 @@ public class AssosiateDashboard extends BaseFragment {
                 "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n"+
                "Website:  http://crm.hmgreencity.com/home";
 
-        // Create a SpannableString
         SpannableString spannableString = new SpannableString(message);
-
-        // Find the index of the URL
         int startIndexWebsite = message.indexOf("http://crm.hmgreencity.com/home");
         int endIndexWebsite = startIndexWebsite + "http://crm.hmgreencity.com/home".length();
 
-        // Apply clickable span for the website
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                // Handle click action for the website
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://crm.hmgreencity.com/home"));
                 startActivity(intent);
             }
         }, startIndexWebsite, endIndexWebsite, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        // Create AlertDialog with custom message
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle("Contact Details")
                 .setMessage(spannableString)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        // Positive button clicked
                     }
                 })
                 .show();
 
-        // Make links clickable
         TextView messageTextView = alertDialog.findViewById(android.R.id.message);
         if (messageTextView != null) {
             messageTextView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -649,8 +627,6 @@ public class AssosiateDashboard extends BaseFragment {
                     setLocale("hi");
                 }
                 dialogInterface.dismiss();
-
-                // Recreate activity after setting locale
                 if (getActivity() != null) {
                     getActivity().recreate();
                 }
@@ -666,92 +642,25 @@ public class AssosiateDashboard extends BaseFragment {
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.setLocale(locale);
-
-        // Apply the configuration to the context
         Context context = getActivity();
         if (context != null) {
             context = context.createConfigurationContext(config);
 
-            // Save language preference
             SharedPreferences.Editor editor = context.getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
             editor.putString("My_Lang", lang);
             editor.apply();
-
-            // Notify user that locale is set
             Toast.makeText(context, "Language changed to " + (lang.equals("en") ? "English" : "Hindi"), Toast.LENGTH_SHORT).show();
         }
     }
 
 
 
-
-
-//    private void setLocale(String lang) {
-//        Locale locale = new Locale(lang);
-//        Locale.setDefault(locale);
-//        Configuration config = new Configuration();
-//        config.locale = locale;
-//        getActivity().getResources().updateConfiguration(config, getActivity().getResources().getDisplayMetrics());
-//
-//        // SAVE data to SharedPreferences
-//        SharedPreferences.Editor editor = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
-//        editor.putString("My_Lang", lang);
-//        editor.apply();
-//    }
-
-
     public void loadLocale() {
         SharedPreferences prefs = getActivity().getSharedPreferences("Settings", MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "");
         setLocale(language);
+
     }
-
-
-//     case R.id.img_profile:
-//            Toast.makeText(context, "Profile", Toast.LENGTH_SHORT).show();
-//    //goToActivity(ContainerActivity.this, Profile.class, null);
-//                    break;
-//                case R.id.tv_dashboard:
-//            if (!(currentFragment instanceof AssosiateDashboard))
-//    ReplaceFragment(new AssosiateDashboard(), "HM Green City");
-//                    break;
-//                case R.id.tv_customer_details:
-//            if (!(currentFragment instanceof CustomerListFragment))
-//    ReplaceFragment(new CustomerListFragment(), "Customer Details");
-//                    break;
-//                case R.id.tv_plot_booking:
-//            if (!(currentFragment instanceof AssociateBookingList))
-//    ReplaceFragment(new AssociateBookingList(), "Booking List");
-//                    break;
-//                case R.id.tv_plot_availability:
-//            if (!(currentFragment instanceof AssociatePlotAvalivility))
-//    ReplaceFragment(new AssociatePlotAvalivility(), "Plot Availability");
-//                    break;
-//
-//                case R.id.tv_business_summary:
-//            if (!(currentFragment instanceof AssociateBusinessReport))
-//    ReplaceFragment(new AssociateBusinessReport(), "Business Summary");
-//                    break;
-//
-//                    case R.id.tv_ledger:
-//            if (!(currentFragment instanceof AssociateLedgerReport))
-//    ReplaceFragment(new AssociateLedgerReport(), "Ledger Summary");
-//                    break;
-//
-//                case R.id.tv_profile:
-//    goToActivity(context, AssociateProfile.class, null);
-//
-//                    break;
-//
-//
-//                case R.id.tv_change_password:
-//    changePassword();
-//                    break;
-//
-//                case R.id.tv_logout:
-//    logoutDialog(context, LoginActivity .class);
-//                    break;
-
 
     @Override
     public void onDestroyView() {
