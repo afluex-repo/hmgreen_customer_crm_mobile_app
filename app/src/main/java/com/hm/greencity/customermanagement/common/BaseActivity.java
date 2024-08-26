@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.R;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.retrofit.ApiServices;
 import com.hm.greencity.customermanagement.retrofit.ServiceGenerator;
 
@@ -35,7 +36,7 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 
 @SuppressLint("Registered")
-public class BaseActivity extends AppCompatActivity implements
+public abstract class BaseActivity extends AppCompatActivity implements
         NetworkConnectionChecker.OnConnectivityChangedListener, View.OnClickListener, MvpView {
     private ProgressDialog mProgressDialog;
     private static final String TAG = "BaseActivity";
@@ -354,6 +355,8 @@ public class BaseActivity extends AppCompatActivity implements
 
         return false;
     }
+
+    public abstract void onNoteDelete(LstNotepad note);
 
 /*
     public void logoutDialog(Activity context, Class<?> activity) {

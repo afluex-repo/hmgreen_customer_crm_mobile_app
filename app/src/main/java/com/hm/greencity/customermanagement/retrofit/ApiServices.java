@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.retrofit;
-
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.models.AssociateBookingList.ResponseAssociateBookingList;
 import com.hm.greencity.customermanagement.models.AssociateBusinessReport.ResponseAssociateBusinessReport;
@@ -14,6 +13,9 @@ import com.hm.greencity.customermanagement.models.DueInstallment.ResponsePloatBo
 import com.hm.greencity.customermanagement.models.DueInstallmentDashBoard;
 import com.hm.greencity.customermanagement.models.HomeActivityDashBoard;
 import com.hm.greencity.customermanagement.models.LedgerReport.ResponseLedgerReport;
+import com.hm.greencity.customermanagement.models.Notes.CreateNote.ResCreateNote;
+import com.hm.greencity.customermanagement.models.Notes.DeleteNote.ResDeleteNote;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.ResGetNote;
 import com.hm.greencity.customermanagement.models.ResponseAssociateProfile;
 import com.hm.greencity.customermanagement.models.ResponseList.ResponseSite;
 import com.hm.greencity.customermanagement.models.ResponseLogin;
@@ -22,8 +24,6 @@ import com.hm.greencity.customermanagement.models.ResponseUpdateProfile;
 import com.hm.greencity.customermanagement.models.UpdateCustomerProfile;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
 import com.hm.greencity.customermanagement.models.chatModel.ResponseChat;
-
-
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -31,6 +31,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+
 
 public interface ApiServices {
 
@@ -76,7 +77,6 @@ public interface ApiServices {
     @POST("webapi/AssociateLedgerList")
     Call<AssociateLedgerList>AssociateLedgerReportList(@Body JsonObject login);
 
-
     @POST("webapi/AssociateDashBoard")
     Call<ResponseAssociateDashboard>AssociateDashBoard(@Body JsonObject login);
 
@@ -104,5 +104,14 @@ public interface ApiServices {
     @POST("WebAPI/SaveQuery")
     Call<ResponseChat>sendChat(@Body JsonObject object);
 
+
+    @POST("WebAPI/Notepad")
+    Call<ResCreateNote>createNote(@Body JsonObject requestObject);
+
+    @POST("WebAPI/GetNotepad")
+    Call<ResGetNote>getNotes(@Body JsonObject requestObject);
+
+    @POST("WebAPI/DeleteNotes")
+    Call<ResDeleteNote>deleteNote(@Body JsonObject requestObject);
 
 }

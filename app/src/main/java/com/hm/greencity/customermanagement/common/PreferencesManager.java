@@ -18,6 +18,10 @@ public class PreferencesManager {
     private static final String CustomerID = "CustomerID";
     private static final String producyInfoId = "producyInfoId";
     private static final String vendorId = "vendorId";
+
+    private static final String Pk_NoteId = "Pk_NoteId";
+
+
     public static PreferencesManager sInstance;
     private final SharedPreferences mPref;
     private static Context context;
@@ -84,13 +88,25 @@ public class PreferencesManager {
     }
 
     //UserId
+
     public void setUserId(String value) {
         mPref.edit().putString(UserId, value).apply();
     }
-
     public String getUserId() {
         return mPref.getString(UserId, "");
     }
+
+
+
+    // Method to save note ID
+    public void setPkNoteId(String value) {
+        mPref.edit().putString(Pk_NoteId, value).apply();
+    }
+
+    public String getPkNoteId() {
+        return mPref.getString(Pk_NoteId, "");
+    }
+
 
     //UserType
     public void setUserType(String value) {

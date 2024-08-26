@@ -49,6 +49,7 @@ import com.hm.greencity.customermanagement.constants.FileUtils;
 import com.hm.greencity.customermanagement.login.LoginActivity;
 import com.hm.greencity.customermanagement.models.CustomerMyProfile;
 import com.hm.greencity.customermanagement.models.HomeActivityDashBoard;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.models.ResponseStatusMessage;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
 import com.ortiz.touchview.TouchImageView;
@@ -341,6 +342,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 showChangeLanguageDialog();
             }
         });
+
+    }
+
+    @Override
+    public void onNoteDelete(LstNotepad note) {
 
     }
 

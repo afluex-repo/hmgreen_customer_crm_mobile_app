@@ -41,6 +41,7 @@ import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.login.LoginActivity;
 import com.hm.greencity.customermanagement.models.HomeActivityDashBoard;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
 
 import java.util.ArrayList;
@@ -124,6 +125,11 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         getDashboard();
         getDueInstallment();
 
+
+    }
+
+    @Override
+    public void onNoteDelete(LstNotepad note) {
 
     }
 

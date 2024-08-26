@@ -22,6 +22,7 @@ import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.constants.FileUtils;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.models.ResponseAssociateProfile;
 import com.hm.greencity.customermanagement.models.ResponseStatusMessage;
 import com.hm.greencity.customermanagement.models.ResponseUpdateProfile;
@@ -176,6 +177,11 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
               onBackPressed();
                 break;
         }
+    }
+
+    @Override
+    public void onNoteDelete(LstNotepad note) {
+
     }
 
     private void getData() {

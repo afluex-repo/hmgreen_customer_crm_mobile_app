@@ -30,9 +30,9 @@ public class MyAdapter extends ArrayAdapter<String> {
         View rowView = inflater.inflate(R.layout.list_item, parent, false);
 
         TextView textView = rowView.findViewById(R.id.textView);
-        Button openButton = rowView.findViewById(R.id.button);
-        ImageView deleteButton = rowView.findViewById(R.id.delete_button);
-        textView.setText(values.get(position));
+//        Button openButton = rowView.findViewById(R.id.button);
+//        ImageView deleteButton = rowView.findViewById(R.id.delete_button);
+//        textView.setText(values.get(position));
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,14 +44,14 @@ public class MyAdapter extends ArrayAdapter<String> {
         });
 
 
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Delete button clicked for item " + values.get(position), Toast.LENGTH_SHORT).show();
-                values.remove(position);
-                notifyDataSetChanged();
-            }
-        });
+//        deleteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context, "Delete button clicked for item " + values.get(position), Toast.LENGTH_SHORT).show();
+//                values.remove(position);
+//                notifyDataSetChanged();
+//            }
+//        });
 
         return rowView;
     }

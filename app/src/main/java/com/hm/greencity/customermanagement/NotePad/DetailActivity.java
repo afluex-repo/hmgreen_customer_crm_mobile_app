@@ -20,7 +20,7 @@ public class DetailActivity extends AppCompatActivity {
         ImageView backarrow = findViewById(R.id.backarrow);
 
 
-        String item = getIntent().getStringExtra("ITEM");
+        String item = getIntent().getStringExtra("NOTE_DETAILS");
         dataNotesTextView.setText(item);
 
         backarrow.setOnClickListener(new View.OnClickListener() {

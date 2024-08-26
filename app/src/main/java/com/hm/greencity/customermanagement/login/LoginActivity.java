@@ -20,6 +20,7 @@ import com.hm.greencity.customermanagement.Activity.HomeTestActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.models.ResponseLogin;
 
 import java.io.File;
@@ -160,6 +161,11 @@ public class LoginActivity extends BaseActivity {
         });
 
 //        saveAdminImageToInternalStorage();
+
+    }
+
+    @Override
+    public void onNoteDelete(LstNotepad note) {
 
     }
 

@@ -5,8 +5,8 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-
     <uses-sdk android:targetSdkVersion="30" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -33,17 +33,20 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".NotePad.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar1"
+            android:name=".NotePad.ShowNotePadActivity"
             android:exported="false" />
+        <activity
+            android:name=".NotePad.DetailActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar1" />
         <activity
             android:name=".NotePad.AddNoteActivity"
-            android:theme="@style/AppTheme.NoActionBar1"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar1" />
         <activity
             android:name=".NotePad.NotePadActivity"
-            android:theme="@style/AppTheme.NoActionBar1"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar1" />
         <activity
             android:name=".Activity.SendQueryActivity"
             android:exported="false"

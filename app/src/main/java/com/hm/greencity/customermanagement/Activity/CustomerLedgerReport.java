@@ -27,6 +27,7 @@ import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.common.Utils;
 import com.hm.greencity.customermanagement.models.LedgerReport.ResponseLedgerReport;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.models.ResponseList.LstBlock;
 import com.hm.greencity.customermanagement.models.ResponseList.LstPhase;
 import com.hm.greencity.customermanagement.models.ResponseList.LstSite;
@@ -145,6 +146,11 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                 searchhDialog();
             }
         });
+
+    }
+
+    @Override
+    public void onNoteDelete(LstNotepad note) {
 
     }
 

@@ -25,6 +25,7 @@ import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.AdapterDueInstallment;
 import com.hm.greencity.customermanagement.common.Utils;
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponseDueInstallment;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.models.ResponseList.LstBlock;
 import com.hm.greencity.customermanagement.models.ResponseList.LstPhase;
 import com.hm.greencity.customermanagement.models.ResponseList.LstSite;
@@ -107,6 +108,11 @@ public class DueInstallment extends BaseActivity /*implements NavigationView.OnN
             getData();
         else showMessage(R.string.alert_internet);
 
+
+    }
+
+    @Override
+    public void onNoteDelete(LstNotepad note) {
 
     }
 

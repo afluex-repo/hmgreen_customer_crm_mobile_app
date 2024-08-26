@@ -30,6 +30,7 @@ import com.hm.greencity.customermanagement.common.NetworkUtils;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.common.Utils;
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponsePloatBooking;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.models.ResponseList.LstBlock;
 import com.hm.greencity.customermanagement.models.ResponseList.LstPhase;
 import com.hm.greencity.customermanagement.models.ResponseList.LstSite;
@@ -122,6 +123,11 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onNoteDelete(LstNotepad note) {
+
     }
 
 
