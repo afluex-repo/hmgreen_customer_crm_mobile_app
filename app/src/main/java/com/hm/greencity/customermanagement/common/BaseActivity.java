@@ -39,7 +39,7 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 public abstract class BaseActivity extends AppCompatActivity implements
         NetworkConnectionChecker.OnConnectivityChangedListener, View.OnClickListener, MvpView {
     private ProgressDialog mProgressDialog;
-    private static final String TAG = "BaseActivity";
+    protected static final String TAG = "BaseActivity";
     protected static final int PHONE_STATE_PERMISSION_REQUEST_CODE = 12;
     public Activity context;
     public ApiServices apiServices, createServiceUtilityV2;

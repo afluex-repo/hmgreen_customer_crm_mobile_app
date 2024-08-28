@@ -10,7 +10,13 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
+import com.hm.greencity.customermanagement.NotePad.NoteAdapter;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
+import com.hm.greencity.customermanagement.retrofit.ApiServices;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileUtils {
 
@@ -217,5 +223,16 @@ public class FileUtils {
         return null;
     }
 
+
+
+    public static final List<LstNotepad> LST_NOTEPAD = new ArrayList<>();
+
+    public static NoteAdapter adapter;
+
+    public static void initializeAdapter(List<LstNotepad> lstNotepad, Context context, ApiServices apiServices) {
+        if (adapter == null) {
+            adapter = new NoteAdapter(lstNotepad, context, apiServices);
+        }
+    }
 
 }
