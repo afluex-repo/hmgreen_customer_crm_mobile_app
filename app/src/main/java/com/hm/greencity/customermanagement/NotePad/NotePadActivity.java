@@ -1,7 +1,5 @@
 package com.hm.greencity.customermanagement.NotePad;
-
 import static com.hm.greencity.customermanagement.constants.FileUtils.LST_NOTEPAD;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class NotePadActivity extends BaseActivity {
     ActivityNotePadBinding binding;
     private static final int REQUEST_CODE_ADD_NOTE = 1;
@@ -40,6 +39,7 @@ public class NotePadActivity extends BaseActivity {
 
         initview();
         onclicklistener();
+
     }
 
     @Override
@@ -71,6 +71,7 @@ public class NotePadActivity extends BaseActivity {
         });
     }
 
+
     private void initview() {
         FileUtils.initializeAdapter(FileUtils.LST_NOTEPAD, this, apiServices);
 
@@ -81,7 +82,6 @@ public class NotePadActivity extends BaseActivity {
         layoutManager.setStackFromEnd(true);
         binding.listView.setLayoutManager(layoutManager);
         binding.listView.setAdapter(FileUtils.adapter);
-
         getData();
     }
 
@@ -124,4 +124,6 @@ public class NotePadActivity extends BaseActivity {
     public void onNoteDelete(LstNotepad note) {
 
     }
+
+
 }

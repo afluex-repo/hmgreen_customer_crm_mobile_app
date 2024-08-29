@@ -650,10 +650,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView1"
                 app:layout_constraintWidth_percent="0.33">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="88dp"
                     android:padding="8dp">
+
                     <ImageView
                         android:id="@+id/imageView6"
                         android:layout_width="30dp"
@@ -663,28 +665,30 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="VectorDrawableCompat"/>
+                        tools:ignore="VectorDrawableCompat" />
+
                     <TextView
                         android:id="@+id/tvtotal_inactive"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="00"
-                        android:visibility="gone"
                         android:textColor="@color/white"
                         android:textSize="22sp"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/instagram"
-                        android:textSize="12sp"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/lexend"
                         android:layout_marginTop="5dp"
+                        android:fontFamily="@font/lexend"
+                        android:text="@string/instagram"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvtotal_inactive" />
@@ -854,12 +858,10 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/notepad"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:background="@color/white"
-                android:outlineAmbientShadowColor="@color/grey"
-                android:outlineSpotShadowColor="@color/grey"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cv_logout"
@@ -903,12 +905,56 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/notes" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
 
-
-
-
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gallery1"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:background="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintStart_toEndOf="@+id/notepad"
+                app:layout_constraintTop_toTopOf="@+id/notepad"
+                app:layout_constraintWidth_percent="0.33">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+                    <ImageView
+                        android:id="@+id/galleryimageView"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/gallery"
+                        tools:ignore="VectorDrawableCompat"
+                        app:tint="@color/colorPrimary" />
+                    <TextView
+                        android:id="@+id/gallerytextview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00"
+                        android:visibility="gone"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/galleryimageView" />
+                    <TextView
+                        android:id="@+id/gallerytextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gallery"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/gallerytextview" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView
@@ -964,56 +1010,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/chatImage" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/new_cardview3"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:visibility="gone"
-                android:layout_marginTop="0dp"
-                android:background="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintTop_toBottomOf="@+id/cv_newCard1"
-                app:layout_constraintWidth_percent="0.33">
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="8dp">
-                    <ImageView
-                        android:id="@+id/gallery"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:src="@drawable/baseline_photo_library_24"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="VectorDrawableCompat"
-                        app:tint="#2471A3" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="00"
-                        android:visibility="gone"
-                        android:textColor="@color/white"
-                        android:textSize="22sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/gallery" />
-                    <TextView
-                        android:id="@+id/languagechangetext1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Gallery"
-                        android:layout_marginTop="5dp"
-                        android:textSize="13sp"
-                        android:textAlignment="center"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/gallery" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

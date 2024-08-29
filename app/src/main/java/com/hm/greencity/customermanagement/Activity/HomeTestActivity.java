@@ -40,7 +40,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.google.gson.JsonObject;
-import com.hm.greencity.customermanagement.GalleryActivity;
 import com.hm.greencity.customermanagement.NotePad.NotePadActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.BaseActivity;
@@ -128,8 +127,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     ImageView imageView8;
     @BindView(R.id.call)
     ImageView call;
-    @BindView(R.id.gallery)
-    ImageView gallery;
+//    @BindView(R.id.gallery)
+//    ImageView gallery;
     @BindView(R.id.searchView)
     SearchView searchView;
     @BindView(R.id.mail)
@@ -138,6 +137,9 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     TextView Call;
     @BindView(R.id.WebSite)
     TextView website;
+
+    @BindView(R.id.galleryimageView)
+    ImageView galleryimageView;
 
 
     private CardView cvPlotBooking, cvCustomerDetails, cvMySummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
@@ -235,10 +237,10 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
 
-        gallery.setOnClickListener(new View.OnClickListener() {
+        galleryimageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToActivity(context, GalleryActivity.class, null);
+                goToActivity(context, GalleryActivity2.class, null);
 
             }
         });
@@ -265,6 +267,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
             }
         });
+
         cvLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -306,6 +309,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 showProfile();
             }
         });
+
 //        languagechange.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -343,6 +347,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
 
+
+
     }
 
     @Override
@@ -373,12 +379,14 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
+
     private void openyoutube() {
         String url = "https://youtube.com/@hmgroupofcompanies-s3j?si=aQNXn4h0oceo00RW";
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
+
     @Override
     protected void onResume() {
         super.onResume();

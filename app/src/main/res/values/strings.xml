@@ -243,7 +243,7 @@
     <string name="designation">Designation :</string>
     <string name="Email">Email :</string>
     <string name="Address">Address</string>
-    <string name="hmgreen_city">HM Group OF Company</string>
+    <string name="hmgreen_city">HM Group OF Companies</string>
     <string name="Plotdetails">Plot Details</string>
     <string name="Logout">logout</string>
     <string name="Associate_detail">Associate Detail :</string>
@@ -258,7 +258,7 @@
     <string name="paymentplan">Payment Plan :</string>
     <string name="paidamt">Paid Amt :</string>
     <string name="Save">Save</string>
-    <string name="hm_greencity">HM Group OF Company</string>
+    <string name="hm_greencity">HM Group OF Companies</string>
     <string name="mydashboard">My Dashboard</string>
     <string name="my_bookings">My Bookings</string>
     <string name="my_ledger">My Ledger</string>
@@ -303,6 +303,8 @@
     <string name="Totaldownline">Total downline</string>
     <string name="Totaldirects">Total directs</string>
     <string name="business_report_android_textcolor">Business Report android:textColor=</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

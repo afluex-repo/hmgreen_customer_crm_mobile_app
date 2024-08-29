@@ -1,60 +1,94 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="0dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:id="@+id/headerLayout"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
         android:background="@color/colorPrimary"
-        android:layout_height="?actionBarSize">
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <ImageView
-            android:layout_width="wrap_content"
             android:id="@+id/backarrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_marginStart="10dp"
-            android:layout_gravity="center"
             android:src="@drawable/backarrow"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintHorizontal_bias="0"/>
+
         <TextView
+            android:id="@+id/headerText"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Notes Details"
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:layout_gravity="center"
             android:gravity="center"
             android:textSize="18sp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintHorizontal_bias="0.5"/>
+
     </LinearLayout>
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/detailTextView"
-        android:layout_width="match_parent"
-        android:padding="10dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:visibility="gone"
+        android:padding="10dp"
         android:layout_margin="15dp"
-        android:textSize="20dp" />
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
         android:id="@+id/DataNotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:background="@null"
-        android:textSize="16sp" />
+        android:gravity="start"
+        android:hint="update note"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/detailTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_update"/>
 
     <Button
-        android:id="@+id/btn_update"
+        android:id="@+id/btn_update1"
+        android:visibility="gone"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:text="Update Note"
         android:background="@drawable/round_button"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:padding="15dp"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/DataNotes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal"
+        android:src="@drawable/baseline_done_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -75,7 +75,7 @@ public class GalleryActivity extends AppCompatActivity {
                 imagePaths.add(cursor.getString(dataColumnIndex));
             }
             cursor.close();
-            prepareRecyclerView(); // Move the RecyclerView preparation here after loading the data
+            prepareRecyclerView();
             imageRVAdapter.notifyDataSetChanged();
         }
     }

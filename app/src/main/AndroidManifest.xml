@@ -33,6 +33,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.GalleryActivity2"
+            android:theme="@style/AppTheme.NoActionBar1"
+            android:exported="false" />
+        <activity
             android:name=".NotePad.ShowNotePadActivity"
             android:exported="false" />
         <activity
