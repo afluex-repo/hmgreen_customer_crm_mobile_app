@@ -1,17 +1,13 @@
 package com.hm.greencity.customermanagement;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
 import android.widget.ImageView;
-import com.squareup.picasso.Picasso;
-import java.io.File;
+
 
 
 public class ImageDetailActivity extends AppCompatActivity {
-    String imgPath;
     private ImageView imageView;
-    private ScaleGestureDetector scaleGestureDetector;
     private float mScaleFactor = 1.0f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,31 +15,33 @@ public class ImageDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image_detail);
 
 
-        imgPath = getIntent().getStringExtra("imgPath");
-        imageView = findViewById(R.id.idIVImage);
-        scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+        ImageView imageView = findViewById(R.id.idIVImage);
+     //   TextView titleTextView = findViewById(R.id.titleTextViewDetail);
 
-        File imgFile = new File(imgPath);
-        if (imgFile.exists()) {
-            Picasso.get().load(imgFile).placeholder(R.drawable.logoh).into(imageView);
+        Intent intent = getIntent();
+        int imageResource = intent.getIntExtra("imageResource", -1);
+      //  String itemTitle = intent.getStringExtra("itemTitle");
+       // imageView.setImageResource(imageResource);
+
+
+        if (imageResource != -1) {
+            imageView.setImageResource(imageResource);
         }
+       //titleTextView.setText(itemTitle);
+
+
+
+
+
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent motionEvent) {
-        scaleGestureDetector.onTouchEvent(motionEvent);
-        return true;
+
+
+
+
 
     }
 
-    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
-        @Override
-        public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
-            mScaleFactor *= scaleGestureDetector.getScaleFactor();
-            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 10.0f));
-            imageView.setScaleX(mScaleFactor);
-            imageView.setScaleY(mScaleFactor);
-            return true;
-        }
-    }
-}
+
+
+

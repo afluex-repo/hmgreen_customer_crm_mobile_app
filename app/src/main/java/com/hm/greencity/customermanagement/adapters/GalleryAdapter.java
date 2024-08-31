@@ -1,6 +1,7 @@
 package com.hm.greencity.customermanagement.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hm.greencity.customermanagement.ImageDetailActivity;
+import com.hm.greencity.customermanagement.NotePad.DetailActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.models.Gallery.PhototsModel;
 
@@ -35,7 +38,15 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.Recycler
     public void onBindViewHolder(@NonNull GalleryAdapter.RecyclerViewViewHolder holder, int position) {
         PhototsModel phototsModel = lstdue.get(position);
         holder.imageIV.setImageResource(phototsModel.getImage());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), ImageDetailActivity.class);
+            intent.putExtra("imageResource", phototsModel.getImage());
+           // intent.putExtra("itemTitle", phototsModel.getTitle());
+            v.getContext().startActivity(intent);
+        });
     }
+
 
 
     @Override

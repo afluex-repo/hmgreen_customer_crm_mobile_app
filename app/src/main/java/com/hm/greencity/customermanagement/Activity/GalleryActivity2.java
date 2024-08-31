@@ -1,7 +1,10 @@
 package com.hm.greencity.customermanagement.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.hm.greencity.customermanagement.Fragment.DocumentFragment;
 import com.hm.greencity.customermanagement.Fragment.PhototFragment;
+import com.hm.greencity.customermanagement.Fragment.VideoFragment;
 import com.hm.greencity.customermanagement.adapters.ViewPagerAdapter;
 import com.hm.greencity.customermanagement.databinding.ActivityGallery2Binding;
 
@@ -28,8 +31,8 @@ public class GalleryActivity2 extends AppCompatActivity {
     private void setupViewPager() {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.add(new PhototFragment(), "Photos");
-        viewPagerAdapter.add(new PhototFragment(), "Videos");
-        viewPagerAdapter.add(new PhototFragment(), "Documents");
+        viewPagerAdapter.add(new VideoFragment(), "Videos");
+        viewPagerAdapter.add(new DocumentFragment(), "Documents");
 
         binding.pageViewer.setAdapter(viewPagerAdapter);
         binding.tabLayout.setupWithViewPager(binding.pageViewer);

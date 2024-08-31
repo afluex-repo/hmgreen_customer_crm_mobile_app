@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">HM Group OF Companies</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
 
