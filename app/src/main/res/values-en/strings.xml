@@ -303,6 +303,19 @@
     <string name="Totaldownline">Total downline</string>
     <string name="Totaldirects">Total directs</string>
     <string name="business_report_android_textcolor">Business Report android:textColor=</string>
+    <string name="notes">Notes</string>
+    <string name="gallery">Gallery</string>
+    <string name="Instagram" >Instagram</string>
+    <string name="hm_group_of_Companies" >Hm Group OF Companies</string>
+    <string name="Totalactive" >Total active</string>
+    <string name="Totalinactive" >Total inactive</string>
+    <string name="Totalpayout" >Total payout</string>
+    <string name="Totalpaid_payout">Totalpaid_payout</string>
+    <string name="Totaldeduction">Total deduction</string>
+    <string name="Payoutbalance">Payout balance</string>
+    <string name="InstagramM">Instagram</string>
+    <string name="faceBooK" >faceBooK</string>
+    <string name="YOutube" >YouTube</string>
 
 
 </resources>

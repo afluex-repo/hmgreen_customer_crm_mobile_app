@@ -9,6 +9,7 @@
     <string name="share_using">मोबाइल नंबर दर्ज करें.</string>
     <string name="permission_camera_rationale11">ऐप का उपयोग करने के लिए कुछ अनुमति की आवश्यकता होती है।</string>
     <string name="reqst_permission">अनुमति का अनुरोध करें?</string>
+
     <!-- Toolbar/ActionBar Title -->
     <string name="home_title">डैशबोर्ड</string>
     <string name="sales_title">बिक्री</string>
@@ -278,6 +279,19 @@
     <string name="Totaldownline">कुल डाउनलाइन</string>
     <string name="Totaldirects">कुल निर्देश</string>
     <string name="business_report_android_textcolor">Business Report android:textColor=</string>
+    <string name="notes">नोट्स </string>
+    <string name="gallery">गैलरी </string>
+    <string name="Instagram">इंस्टाग्राम  </string>
+    <string name="hm_group_of_Companies">एच एम ग्रुपऑफ़ कंपनियाँ </string>
+    <string name="Totalactive" >टोटल एक्टिव </string>
+    <string name="Totalinactive" >कुल निष्क्रिय </string>
+    <string name="Totalpayout" >कुल भुगतान </string>
+    <string name="Totalpaid_payout" >कुल भुगतान</string>
+    <string name="Totaldeduction" >कुल कटौती</string>
+    <string name="Payoutbalance" >भुगतान शेष</string>
+    <string name="InstagramM">इंस्टाग्राम</string>
+    <string name="faceBooK">फेसबुक</string>
+    <string name="YOutube" >यूट्यूब</string>
 
 
 </resources>

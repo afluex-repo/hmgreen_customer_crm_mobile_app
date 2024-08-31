@@ -123,12 +123,13 @@
                     android:orientation="vertical"
                     android:layout_marginTop="15dp"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:fontFamily="@font/lexend"
-                        android:text="@string/hm_group_of_companies"
+                        android:text="@string/hm_group_of_Companies"
                         android:textAppearance="@style/TextField_Bold"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
@@ -686,7 +687,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/lexend"
-                        android:text="@string/instagram"
+                        android:text="@string/Instagram"
                         android:textColor="@color/black"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -896,7 +897,7 @@
                         android:id="@+id/textnotes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Notes"
+                        android:text="@string/notes"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/black"
                         android:textSize="13sp"
@@ -948,7 +949,7 @@
                         android:id="@+id/gallerytextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gallery"
+                        android:text="@string/gallery"
                         android:textSize="13sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

@@ -25,7 +25,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-
 public class DetailActivity extends BaseActivity {
 ActivityDetailBinding binding;
     @Override
@@ -107,6 +106,8 @@ ActivityDetailBinding binding;
         });
     }
 
+
+
     public void getData() {
 //        showLoading();
         JsonObject object = new JsonObject();
@@ -146,5 +147,7 @@ ActivityDetailBinding binding;
             }
         });
     }
+
+
 
 }

@@ -421,7 +421,7 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/totalactive"
+                    android:text="@string/Totalactive"
                     android:fontFamily="@font/lexend"
                     android:textColor="@color/lightbalck"
                     android:textSize="13sp"
@@ -471,7 +471,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/totalinactive"
+                    android:text="@string/Totalinactive"
                     android:fontFamily="@font/lexend"
                     android:textColor="@color/lightbalck"
                     android:textSize="13sp"
@@ -520,7 +520,7 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/totalpayout"
+                    android:text="@string/Totalpayout"
                     android:fontFamily="@font/lexend"
                     android:textColor="@color/lightbalck"
                     android:textSize="13sp"
@@ -568,7 +568,7 @@
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/totalpaid_payout"
+                    android:text="@string/Totalpaid_payout"
                     android:fontFamily="@font/lexend"
                     android:textColor="@color/lightbalck"
                     android:textSize="13sp"
@@ -616,7 +616,7 @@
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/totaldeduction"
+                    android:text="@string/Totaldeduction"
                     android:fontFamily="@font/lexend"
                     android:textColor="@color/lightbalck"
                     android:textSize="13sp"
@@ -664,7 +664,7 @@
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/payoutbalance"
+                    android:text="@string/Payoutbalance"
                     android:fontFamily="@font/lexend"
                     android:textColor="@color/lightbalck"
                     android:textSize="13sp"
@@ -1305,7 +1305,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cv_newCard1"
             app:layout_constraintWidth_percent="0.33">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1390,7 +1389,7 @@
                     android:id="@+id/textViewfb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/facebooK"
+                    android:text="@string/faceBooK"
                     android:textSize="13sp"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/black"
@@ -1447,7 +1446,7 @@
                     android:id="@+id/textViewyoutube"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Yuutube"
+                    android:text="@string/YOutube"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/lexend"
@@ -1479,8 +1478,6 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp">
 
-                <!-- Your content here -->
-
                 <ImageView
                     android:id="@+id/imageViewinsta"
                     android:layout_width="48dp"
@@ -1506,7 +1503,7 @@
                     android:id="@+id/textViewinsta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Instagram"
+                    android:text="@string/InstagramM"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/black"
                     android:textSize="13sp"
@@ -1514,8 +1511,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/insta" />
-
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
