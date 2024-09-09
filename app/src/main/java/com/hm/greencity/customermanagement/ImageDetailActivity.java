@@ -2,46 +2,44 @@ package com.hm.greencity.customermanagement;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
-
+import com.bumptech.glide.Glide;
 
 
 public class ImageDetailActivity extends AppCompatActivity {
     private ImageView imageView;
-    private float mScaleFactor = 1.0f;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_detail);
 
-
-        ImageView imageView = findViewById(R.id.idIVImage);
-     //   TextView titleTextView = findViewById(R.id.titleTextViewDetail);
+        imageView = findViewById(R.id.idIVImage);
 
         Intent intent = getIntent();
-        int imageResource = intent.getIntExtra("imageResource", -1);
-      //  String itemTitle = intent.getStringExtra("itemTitle");
-       // imageView.setImageResource(imageResource);
+        String imageUrl = intent.getStringExtra("imageUrl");
 
-
-        if (imageResource != -1) {
-            imageView.setImageResource(imageResource);
+        if (!imageUrl.startsWith("http")) {
+            imageUrl = "https://crm.hmgreencity.com/" + imageUrl;
         }
-       //titleTextView.setText(itemTitle);
+
+        Log.d("ImageDetailActivity", "Received image URL: " + imageUrl);
+
+        if (imageUrl == null || imageUrl.isEmpty()) {
+            Log.d("ImageDetailActivity", "Image URL is null or empty");
+            imageView.setImageResource(R.drawable.news_icon);
+        } else {
+            Log.d("ImageDetailActivity", "Loading image from URL: " + imageUrl);
 
 
+            Glide.with(this)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.logo)
+                    .error(R.drawable.camera)
+                    .fallback(R.drawable.news_icon)
+                    .into(imageView);
 
-
-
+        }
     }
-
-
-
-
-
-
-    }
-
-
-
-
+}

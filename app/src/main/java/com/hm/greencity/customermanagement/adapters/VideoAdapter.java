@@ -10,18 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.hm.greencity.customermanagement.R;
-import com.hm.greencity.customermanagement.models.Video.Video;
+import com.hm.greencity.customermanagement.models.Gallery.Lstgallery;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
 
-    private List<Video> videoList;
-    private Context context;
+    private final List<Lstgallery> mediaList;
+    private final Context context;
 
-    public VideoAdapter(Context context, List<Video> videoList) {
+    public VideoAdapter(List<Lstgallery> mediaList, Context context) {
+        this.mediaList = mediaList;
         this.context = context;
-        this.videoList = videoList;
+
     }
 
     @NonNull
@@ -33,27 +34,32 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     @Override
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
-        Video video = videoList.get(position);
-        holder.title.setText(video.getTitle());
+        Lstgallery mediaItem = mediaList.get(position);
+        String mediaType = mediaItem.getMediaType();
+        String document = mediaItem.getDocuments();
 
-        String thumbnailUrl = video.getThumbnailUrl();
-        if (thumbnailUrl == null || thumbnailUrl.isEmpty()) {
-            // Load default thumbnail image if the URL is invalid
-            Picasso.get().load(R.drawable.thubnail).into(holder.thumbnail);
+        if ("VideoLinks".equals(mediaType)) {
+            Picasso.get()
+                    .load(R.drawable.you)
+                    .into(holder.thumbnail);
+
+            holder.itemView.setOnClickListener(v -> {
+                if (document != null && !document.isEmpty()) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(document));
+                    context.startActivity(intent);
+                }
+            });
         } else {
-            // Load video thumbnail from URL
-            Picasso.get().load(thumbnailUrl).placeholder(R.drawable.thubnail).into(holder.thumbnail);
+            holder.thumbnail.setImageResource(R.drawable.camera);
+            holder.itemView.setOnClickListener(null);
         }
 
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(video.getUrl()));
-            context.startActivity(intent);
-        });
+        holder.title.setText("Click to watch");
     }
 
     @Override
     public int getItemCount() {
-        return videoList.size();
+        return mediaList.size();
     }
 
     public static class VideoViewHolder extends RecyclerView.ViewHolder {
@@ -66,4 +72,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             title = itemView.findViewById(R.id.title);
         }
     }
+
+
 }

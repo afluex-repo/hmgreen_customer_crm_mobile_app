@@ -72,6 +72,7 @@ public class ChatActivity extends AppCompatActivity {
         fetchMessages();
         startPeriodicFetching();
 
+
     }
 
     private void onclicklistener() {
@@ -195,6 +196,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -219,7 +221,6 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void sendMessage() {
-
         String messageContent = editTextMessage.getText().toString();
         if (!messageContent.isEmpty() || selectedImageUri != null) {
             PreferencesManager preferencesManager = PreferencesManager.getInstance(this);
@@ -228,11 +229,9 @@ public class ChatActivity extends AppCompatActivity {
                 Toast.makeText(this, "User ID is invalid", Toast.LENGTH_SHORT).show();
                 return;
             }
-
             RequestBody fkUserId = RequestBody.create(MediaType.parse("text/plain"), userId); // Example user ID
             RequestBody title = RequestBody.create(MediaType.parse("text/plain"), "App"); // Example title
             RequestBody description = RequestBody.create(MediaType.parse("text/plain"), messageContent);
-
             MultipartBody.Part imagePart = null;
             if (selectedImageUri != null) {
                 try {
@@ -244,8 +243,6 @@ public class ChatActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
-
             chatService.sendMessage(fkUserId, title, description, imagePart).enqueue(new Callback<ResponseChat>() {
                 @Override
                 public void onResponse(Call<ResponseChat> call, Response<ResponseChat> response) {
@@ -395,6 +392,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void startPeriodicFetching() {
         runnable = new Runnable() {

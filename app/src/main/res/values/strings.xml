@@ -308,17 +308,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notes">Notes</string>
     <string name="gallery">Gallery</string>
-    <string name="Instagram" />
-    <string name="hm_group_of_Companies" />
-    <string name="Totalactive" />
-    <string name="Totalinactive" />
-    <string name="Totalpayout" />
-    <string name="Totalpaid_payout" />
-    <string name="Totaldeduction" />
-    <string name="Payoutbalance" />
+    <string name="Instagram">Gallery</string>
+    <string name="hm_group_of_Companies">HM Group OF Companies</string>
+    <string name="Totalactive">Totalactive</string>
+    <string name="Totalinactive">Total inactive</string>
+    <string name="Totalpayout">Total payout</string>
+    <string name="Totalpaid_payout">Total paid payout</string>
+    <string name="Totaldeduction">Total deduction</string>
+    <string name="Payoutbalance">Payout balance</string>
     <string name="InstagramM">Instagram</string>
-    <string name="faceBooK" />
-    <string name="YOutube" />
+    <string name="faceBooK">FaceBooK</string>
+    <string name="YOutube">YouTube</string>
 
 
 </resources>

@@ -201,6 +201,8 @@ public class AssosiateDashboard extends BaseFragment {
     TextView webSite;
     @BindView((R.id.notes))
     TextView notes;
+    @BindView(R.id.gallery1)
+    CardView gallery1;
 
 
     private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
@@ -342,6 +344,14 @@ public class AssosiateDashboard extends BaseFragment {
                openWebsite();
             }
         });
+
+        gallery1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToActivity(GalleryActivity2.class, null);
+            }
+        });
+
 
         return view;
     }

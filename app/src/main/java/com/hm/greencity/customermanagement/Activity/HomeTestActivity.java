@@ -140,7 +140,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
     @BindView(R.id.galleryimageView)
     ImageView galleryimageView;
-
+    @BindView(R.id.dgitalcardimageView)
+    ImageView dgitalcardimageView;
 
     private CardView cvPlotBooking, cvCustomerDetails, cvMySummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
@@ -204,6 +205,12 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeTestActivity.this,NotePadActivity.class));
+            }
+        });
+        dgitalcardimageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeTestActivity.this,HomeDigitalCardActivity.class));
             }
         });
 
@@ -618,8 +625,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
     }
     private void uploadFeedback() {
-
-
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(HomeTestActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Send Feedback");

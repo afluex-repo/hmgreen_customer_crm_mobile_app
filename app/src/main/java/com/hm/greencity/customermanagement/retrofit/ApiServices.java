@@ -11,6 +11,7 @@ import com.hm.greencity.customermanagement.models.CustomerMyProfile;
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponseDueInstallment;
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponsePloatBooking;
 import com.hm.greencity.customermanagement.models.DueInstallmentDashBoard;
+import com.hm.greencity.customermanagement.models.Gallery.ResGallery;
 import com.hm.greencity.customermanagement.models.HomeActivityDashBoard;
 import com.hm.greencity.customermanagement.models.LedgerReport.ResponseLedgerReport;
 import com.hm.greencity.customermanagement.models.Notes.CreateNote.ResCreateNote;
@@ -115,7 +116,12 @@ public interface ApiServices {
     @POST("WebAPI/DeleteNotes")
     Call<ResDeleteNote>deleteNote(@Body JsonObject requestObject);
 
-    @POST("/WebAPI/UpdateNotes")
+    @POST("WebAPI/UpdateNotes")
     Call<ResUpdateNote>updateNote(@Body JsonObject requestObject);
+
+
+    @POST("WebAPI/GetGalleryDetails")
+    Call<ResGallery>getGallery();
+
 
 }

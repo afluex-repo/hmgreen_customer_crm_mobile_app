@@ -3,24 +3,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.hm.greencity.customermanagement.Network.RetrofitClient;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.PdfAdapter;
-import com.hm.greencity.customermanagement.models.PDF.PdfItem;
+import com.hm.greencity.customermanagement.models.Gallery.Lstgallery;
+import com.hm.greencity.customermanagement.models.Gallery.ResGallery;
+import com.hm.greencity.customermanagement.retrofit.ApiServices;
 import java.util.ArrayList;
 import java.util.List;
-
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DocumentFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PdfAdapter pdfAdapter;
-    private List<PdfItem> pdfList;
+    private List<Lstgallery> pdfList;
 
     @Nullable
     @Override
@@ -29,34 +34,51 @@ public class DocumentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_document, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
         int numberOfColumns = 3;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), numberOfColumns);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-
         pdfList = new ArrayList<>();
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 1"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 2"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 3"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 4"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 5"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 6"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 7"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 8"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 9"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 10"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 11"));
-        pdfList.add(new PdfItem("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", " PDF 12"));
-
-
-
         pdfAdapter = new PdfAdapter(pdfList, getContext());
         recyclerView.setAdapter(pdfAdapter);
 
-
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        fetchGalleryData();
+    }
+
+    private void fetchGalleryData() {
+        ApiServices apiService = RetrofitClient.getClient().create(ApiServices.class);
+        Call<ResGallery> call = apiService.getGallery();
+        call.enqueue(new Callback<ResGallery>() {
+            @Override
+            public void onResponse(Call<ResGallery> call, Response<ResGallery> response) {
+                if (response.isSuccessful()) {
+                    ResGallery resGallery = response.body();
+                    if (resGallery != null && resGallery.getLstgallery() != null) {
+                        List<Lstgallery> filteredList = new ArrayList<>();
+                        for (Lstgallery item : resGallery.getLstgallery()) {
+                            if ("Document".equals(item.getMediaType())) {
+                                filteredList.add(item);
+                            }
+                        }
+                        pdfList.clear();
+                        pdfList.addAll(filteredList);
+                        pdfAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Failed to fetch gallery data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResGallery> call, Throwable t) {
+                Toast.makeText(getContext(), "An error occurred: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
