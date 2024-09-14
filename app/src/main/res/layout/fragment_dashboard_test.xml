@@ -134,6 +134,7 @@
                         android:textAppearance="@style/TextField_Bold"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -153,7 +154,7 @@
                             tools:ignore="MissingConstraints" />
                         <TextView
                             android:id="@+id/mail"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="hmcity7374@gmail.com "
                             android:fontFamily="sans-serif-condensed"
@@ -180,7 +181,7 @@
                             tools:ignore="MissingConstraints" />
                         <TextView
                             android:id="@+id/Call"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text=" 9651997374  "
                             android:layout_marginTop="0dp"
@@ -208,7 +209,7 @@
                            tools:ignore="MissingConstraints" />
                        <TextView
                            android:id="@+id/WebSite"
-                           android:layout_width="wrap_content"
+                           android:layout_width="match_parent"
                            android:layout_height="wrap_content"
                            android:text="https://hmgroupcompanies.com  "
                            android:layout_marginTop="0dp"
@@ -929,7 +930,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/gallery"
                         tools:ignore="VectorDrawableCompat"
-                        app:tint="@color/colorPrimary" />
+                        app:tint="#0E6583" />
                     <TextView
                         android:id="@+id/gallerytextview"
                         android:layout_width="wrap_content"
@@ -947,7 +948,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/gallery"
+                        android:textColor="@color/black"
                         android:textSize="13sp"
+                        android:fontFamily="@font/lexend"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/gallerytextview" />
@@ -996,7 +999,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Business Card"
+                        android:textColor="@color/black"
                         android:textSize="13sp"
+                        android:fontFamily="@font/lexend"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

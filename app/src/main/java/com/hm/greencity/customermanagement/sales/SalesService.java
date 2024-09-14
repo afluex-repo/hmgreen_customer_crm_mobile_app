@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.sales;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,6 +9,7 @@ import com.hm.greencity.customermanagement.database.SQLiteDAO;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
 
 public class SalesService {
 

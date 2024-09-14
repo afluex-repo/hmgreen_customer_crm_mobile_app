@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.constants;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,12 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-
 import com.google.gson.Gson;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.DialogUtil;
@@ -27,22 +24,19 @@ import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.common.Utils;
 import com.hm.greencity.customermanagement.retrofit.ApiServices;
 import com.hm.greencity.customermanagement.retrofit.ServiceGenerator;
-
 import java.util.Random;
-
 import static com.hm.greencity.customermanagement.common.AppConfig.PAYLOAD_BUNDLE;
 
 
 public abstract class BaseFragment extends Fragment implements MvpView {
-    // Toolbar toolbar;
     protected static final int ASK_SEND_SMS_PERMISSION_REQUEST_CODE = 14;
     private static final String TAG = "BaseFragment";
     private ProgressDialog mProgressDialog;
     protected final Gson gson = new Gson();
-    //protected Entity mEntity;
     protected String latitude = "0", longitude = "0", lastActiveTime;
     public Activity context;
     public ApiServices apiServices, createServiceUtilityV2;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -136,7 +130,7 @@ public abstract class BaseFragment extends Fragment implements MvpView {
     public void onViewCreatedStuff(View view, @Nullable Bundle savedInstanceState) {
     }
 
-    ;
+
 
     public String generatePin() {
         Random random = new Random();

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -136,7 +138,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     @BindView(R.id.Call)
     TextView Call;
     @BindView(R.id.WebSite)
-    TextView website;
+    TextView WebSite;
 
     @BindView(R.id.galleryimageView)
     ImageView galleryimageView;
@@ -222,16 +224,29 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
 
+
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendEmail();
+              //  sendEmail();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("plain/text");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "hmcity7374@gmail.com" });
+                intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "mail body");
+                startActivity(Intent.createChooser(intent, ""));
+
             }
         });
-        website.setOnClickListener(new View.OnClickListener() {
+
+        WebSite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWebsite();
+               // openWebsite();
+                Uri uri = Uri.parse("https://hmgroupcompanies.com");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
             }
         });
 
@@ -1012,6 +1027,9 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         if (emailIntent.resolveActivity(this.getPackageManager()) != null) {
             startActivity(emailIntent);
         }
+
+
+
     }
 
     private void makePhoneCall() {
@@ -1033,10 +1051,9 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     }
 
     private void openWebsite() {
-        String url = "https://hmgroupcompanies.com";
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        if (browserIntent.resolveActivity(this.getPackageManager()) != null) {
-            startActivity(browserIntent);
-        }
+        Uri uri = Uri.parse("https://hmgroupcompanies.com"); // missing 'http://' will cause crashed
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+
     }
 }

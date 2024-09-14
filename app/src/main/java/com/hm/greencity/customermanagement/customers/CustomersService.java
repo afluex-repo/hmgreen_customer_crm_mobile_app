@@ -1,15 +1,13 @@
 package com.hm.greencity.customermanagement.customers;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-
 import com.hm.greencity.customermanagement.database.ConstantKey;
 import com.hm.greencity.customermanagement.database.SQLiteDAO;
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
 
 public class CustomersService {
 

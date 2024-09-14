@@ -1,6 +1,5 @@
 package com.hm.greencity.customermanagement.Activity;
 import static android.content.Context.MODE_PRIVATE;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -203,7 +202,8 @@ public class AssosiateDashboard extends BaseFragment {
     TextView notes;
     @BindView(R.id.gallery1)
     CardView gallery1;
-
+     @BindView(R.id.digitalcardimageview)
+     ImageView digitalcardimageview;
 
     private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
@@ -291,6 +291,16 @@ public class AssosiateDashboard extends BaseFragment {
 
             }
         });
+
+        digitalcardimageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToActivity(HomeDigitalCardActivity.class, null);
+
+            }
+        });
+
+
 //        notes.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -334,14 +344,22 @@ public class AssosiateDashboard extends BaseFragment {
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendEmail();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("plain/text");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "hmcity7374@gmail.com" });
+                intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "mail body");
+                startActivity(Intent.createChooser(intent, ""));
             }
         });
 
         webSite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               openWebsite();
+              // openWebsite();
+                Uri uri = Uri.parse("https://hmgroupcompanies.com");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
 
@@ -754,6 +772,8 @@ public class AssosiateDashboard extends BaseFragment {
         if (browserIntent.resolveActivity(requireActivity().getPackageManager()) != null) {
             startActivity(browserIntent);
         }
+
+
     }
 
 
