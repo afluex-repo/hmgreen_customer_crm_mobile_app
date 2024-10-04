@@ -1,7 +1,11 @@
 package com.hm.greencity.customermanagement.constants;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.net.Uri;
@@ -17,6 +21,7 @@ import com.hm.greencity.customermanagement.retrofit.ApiServices;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class FileUtils {
 
@@ -233,6 +238,20 @@ public class FileUtils {
         if (adapter == null) {
             adapter = new NoteAdapter(lstNotepad, context, apiServices);
         }
+    }
+
+    public static  void setLocale(String lang, Context context) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        context.getResources().updateConfiguration(config,context.getResources().getDisplayMetrics());
+
+        //SAVE data to sharepref
+        SharedPreferences.Editor editor = context.getSharedPreferences("Setings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang",lang);
+        editor.apply();
+
     }
 
 }

@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.adapters;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 public class AdapterAssociateBookingLst extends RecyclerView.Adapter<AdapterAssociateBookingLst.ViewHolder> {
 
@@ -50,8 +50,6 @@ public class AdapterAssociateBookingLst extends RecyclerView.Adapter<AdapterAsso
         viewHolder.tvDiscount.setText(models.get(i).getDiscount());
         viewHolder.tvPaidAmt.setText(models.get(i).getPaidAmount());
         viewHolder.tvNetAmnt.setText(models.get(i).getPaymentPlanID());
-
-
 
     }
 

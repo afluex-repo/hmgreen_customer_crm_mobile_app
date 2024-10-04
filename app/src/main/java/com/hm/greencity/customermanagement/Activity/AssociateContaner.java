@@ -31,8 +31,6 @@ public class AssociateContaner extends BaseActivity /*implements NavigationView.
 
     @BindView(R.id.frame)
     FrameLayout frame;
-//    @BindView(R.id.nav_view)
-//    NavigationView navView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
     public static Fragment currentFragment;
@@ -56,29 +54,22 @@ public class AssociateContaner extends BaseActivity /*implements NavigationView.
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-// Replace the fragment
+
         ReplaceFragment(new AssosiateDashboard(), "HM Group OF Company");
 
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            // Handle the back button press
             onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
     @Override
     protected void onResume() {
         super.onResume();
-
     }
-
 
     //    @Override
 //    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -102,8 +93,6 @@ public class AssociateContaner extends BaseActivity /*implements NavigationView.
 //                break;
 //        }
 //    }
-
-
 
     public void ReplaceFragment(Fragment setFragment, String title) {
         new Handler().postDelayed(() -> {

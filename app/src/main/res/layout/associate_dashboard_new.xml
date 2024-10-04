@@ -234,30 +234,31 @@
                     android:src="@drawable/user_icon"
                     tools:ignore="VectorDrawableCompat" />
                 <TextView
+                    android:id="@+id/customer"
                     android:layout_width="wrap_content"
-                    android:text="Hello!"
+                    android:text="Hello! Partner"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:padding="4dp"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     tools:ignore="MissingConstraints" />
+
                 <TextView
                     android:id="@+id/tv_username"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    app:layout_constraintHorizontal_bias="0"
-                    android:padding="4dp"
                     android:ellipsize="end"
-                    android:layout_marginStart="53dp"
+                    android:maxLines="1"
+                    android:padding="0dp"
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/profile_img"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/profile_img" />
+                    app:layout_constraintTop_toBottomOf="@+id/customer" />
                 <TextView
                     android:id="@+id/tv_loginId"
                     android:layout_width="0dp"
@@ -1301,16 +1302,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp">
+
                 <ImageView
                     android:id="@+id/imagenotepad"
                     android:layout_width="48dp"
-                    android:layout_height="40dp"
-                    app:tint="#2596be"
+                    android:layout_height="38dp"
                     android:src="@drawable/baseline_note_alt_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="VectorDrawableCompat"/>
+                    app:tint="#2596be"
+                    tools:ignore="VectorDrawableCompat" />
                 <TextView
                     android:id="@+id/notes"
                     android:layout_width="wrap_content"
@@ -1327,7 +1329,7 @@
                     android:id="@+id/textnotes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notes"
+                    android:text="@string/Notes"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/black"
                     android:textSize="13sp"
@@ -1430,7 +1432,7 @@
                     android:id="@+id/digitalcardtextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Digital Card"
+                    android:text="@string/digital_card"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:fontFamily="@font/lexend"

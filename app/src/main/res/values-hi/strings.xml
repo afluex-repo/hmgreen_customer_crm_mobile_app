@@ -292,6 +292,9 @@
     <string name="InstagramM">इंस्टाग्राम</string>
     <string name="faceBooK">फेसबुक</string>
     <string name="YOutube" >यूट्यूब</string>
+    <string name="digital_card">डिजिटल कार्ड</string>
+    <string name="hm_group_of_companies">एच एम ग्रुपऑफ़ कंपनियाँ</string>
+    <string name="Notes">नोट्स</string>
 
 
 </resources>

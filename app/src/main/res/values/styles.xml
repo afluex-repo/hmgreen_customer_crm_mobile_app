@@ -28,6 +28,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_margin">10dp</item>
     </style>
+
     <style name="viewParent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -52,7 +53,6 @@
     <style name="TextField_Bold" parent="android:Widget.Holo.Light.TextView">
         <item name="fontPath">fonts/montserrat_bold.ttf</item>
     </style>
-
 
 
     <!-- NoActionBar theme. -->

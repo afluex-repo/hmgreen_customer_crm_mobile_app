@@ -319,6 +319,8 @@
     <string name="InstagramM">Instagram</string>
     <string name="faceBooK">FaceBooK</string>
     <string name="YOutube">YouTube</string>
+    <string name="digital_card">Digital Card</string>
+    <string name="Notes">Notes</string>
 
 
 </resources>

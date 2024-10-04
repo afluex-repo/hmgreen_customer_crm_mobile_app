@@ -4,12 +4,10 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -27,7 +25,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -50,10 +47,10 @@ import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.NetworkUtils;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.constants.BaseFragment;
+import com.hm.greencity.customermanagement.constants.FileUtils;
 import com.hm.greencity.customermanagement.login.LoginActivity;
 import com.hm.greencity.customermanagement.models.AssociateDashboard.ResponseAssociateDashboard;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
-import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -61,6 +58,7 @@ import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 
 public class AssosiateDashboard extends BaseFragment {
@@ -650,9 +648,9 @@ public class AssosiateDashboard extends BaseFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) {
-                    setLocale("en");
+                    FileUtils.setLocale("en",context.getBaseContext());
                 } else if (i == 1) {
-                    setLocale("hi");
+                    FileUtils.setLocale("hi",context.getBaseContext());
                 }
                 dialogInterface.dismiss();
                 if (getActivity() != null) {
@@ -665,12 +663,12 @@ public class AssosiateDashboard extends BaseFragment {
         mDialog.show();
     }
 
-    private void setLocale(String lang) {
+  /*  private void setLocale(String lang) {
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.setLocale(locale);
-        Context context = getActivity();
+        Context context = getContext();
         if (context != null) {
             context = context.createConfigurationContext(config);
 
@@ -679,14 +677,14 @@ public class AssosiateDashboard extends BaseFragment {
             editor.apply();
             Toast.makeText(context, "Language changed to " + (lang.equals("en") ? "English" : "Hindi"), Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
 
 
     public void loadLocale() {
         SharedPreferences prefs = getActivity().getSharedPreferences("Settings", MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "");
-        setLocale(language);
+//        setLocale(language);
 
     }
 

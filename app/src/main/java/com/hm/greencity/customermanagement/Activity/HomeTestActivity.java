@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,7 +15,6 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -63,7 +60,6 @@ import com.vansuita.pickimage.listeners.IPickCancel;
 import com.vansuita.pickimage.listeners.IPickResult;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.MediaType;
@@ -145,6 +141,9 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     @BindView(R.id.dgitalcardimageView)
     ImageView dgitalcardimageView;
 
+    @BindView(R.id.receiptImage)
+    ImageView receiptImage;
+
     private CardView cvPlotBooking, cvCustomerDetails, cvMySummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
 
@@ -215,6 +214,13 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 startActivity(new Intent(HomeTestActivity.this,HomeDigitalCardActivity.class));
             }
         });
+        receiptImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeTestActivity.this,ReceiptActivity2.class));
+            }
+        });
+
 
 
         Call.setOnClickListener(new View.OnClickListener() {
@@ -947,6 +953,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
 
     }
+
+
     private void showChangeLanguageDialog() {
 
         final String [] listItems = {"English","हिंदी"};
@@ -956,11 +964,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i==0){
-                    setLocale("en");
+                    FileUtils.setLocale("en",getBaseContext());
                     recreate();
                 }
                 else if (i==1){
-                    setLocale("hi");
+                    FileUtils.setLocale("hi",getBaseContext());
                     recreate();
                 }
                 dialogInterface.dismiss();
@@ -971,24 +979,25 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         androidx.appcompat.app.AlertDialog mDialog = mBuilder.create();
         mDialog.show();
     }
-    private void setLocale(String lang) {
+   /* private void setLocale(String lang, Context context) {
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+        context.getResources().updateConfiguration(config,context.getResources().getDisplayMetrics());
 
         //SAVE data to sharepref
         SharedPreferences.Editor editor = getSharedPreferences("Setings", MODE_PRIVATE).edit();
         editor.putString("My_Lang",lang);
         editor.apply();
 
-    }
+    }*/
     public void loadLocale(){
         SharedPreferences prefs = getSharedPreferences("Setings", Activity.MODE_PRIVATE);
         String language = prefs.getString("My_Lang","");
-        setLocale(language);
+//        setLocale(language);
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

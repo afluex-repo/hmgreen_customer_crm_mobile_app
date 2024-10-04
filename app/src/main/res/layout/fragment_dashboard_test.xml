@@ -257,8 +257,9 @@
                         app:srcCompat="@drawable/user_icon"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
+                        android:id="@+id/customer"
                         android:layout_width="wrap_content"
-                        android:text="Hello!"
+                        android:text="Hello! Customer"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:padding="4dp"
@@ -269,18 +270,17 @@
                         android:id="@+id/tv_username"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        app:layout_constraintHorizontal_bias="0"
-                        android:padding="4dp"
                         android:ellipsize="end"
-                        android:layout_marginStart="53dp"
+                        android:maxLines="1"
+                        android:padding="0dp"
                         android:text=""
+                        android:layout_marginStart="10dp"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toStartOf="@+id/profile_img"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/profile_img" />
+                        app:layout_constraintTop_toBottomOf="@+id/customer" />
                     <TextView
                         android:id="@+id/tv_loginId"
                         android:layout_width="0dp"
@@ -288,6 +288,7 @@
                         android:maxLines="1"
                         android:paddingHorizontal="4dp"
                         android:text=""
+                        android:padding="5dp"
                         android:textColor="@color/black"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/profile_img"
@@ -696,6 +697,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/tvtotal_inactive" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_change_password"
                 android:layout_width="0dp"
@@ -708,7 +711,7 @@
                 android:layout_marginTop="5dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_newCard1"
+                app:layout_constraintTop_toBottomOf="@+id/notepad"
                 app:layout_constraintWidth_percent="0.33">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -752,6 +755,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_direct1" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_aboutUs"
                 android:layout_width="0dp"
@@ -854,6 +859,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_inactive1" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/notepad"
                 android:layout_width="0dp"
@@ -863,7 +869,7 @@
                 app:cardElevation="6dp"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_logout"
+                app:layout_constraintTop_toBottomOf="@+id/cv_newCard1"
                 app:layout_constraintWidth_percent="0.33">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -905,6 +911,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/notes" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/gallery1"
@@ -956,8 +964,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/gallerytextview" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:id="@+id/dgitalcard"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
@@ -998,7 +1006,7 @@
                         android:id="@+id/digitaltextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Business Card"
+                        android:text="@string/digital_card"
                         android:textColor="@color/black"
                         android:textSize="13sp"
                         android:fontFamily="@font/lexend"
@@ -1008,8 +1016,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/dgitalcardtextview" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
-
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/new_cardview2"
                 android:layout_width="0dp"
@@ -1021,8 +1027,8 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginBottom="0dp"
                 app:cardUseCompatPadding="true"
-                app:layout_constraintStart_toEndOf="@+id/cv_logout"
-                app:layout_constraintTop_toTopOf="@+id/cv_logout"
+                app:layout_constraintStart_toEndOf="@+id/gallery1"
+                app:layout_constraintTop_toTopOf="@+id/gallery1"
                 app:layout_constraintWidth_percent="0.33">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -1063,6 +1069,61 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/chatImage" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/receiptCard"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="4dp"
+                android:background="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintStart_toEndOf="@+id/gallery1"
+                app:layout_constraintTop_toBottomOf="@+id/new_cardview2"
+                app:layout_constraintWidth_percent="0.33">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+                    <ImageView
+                        android:id="@+id/receiptImage"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/baseline_receipt_24"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#2471A3"
+                        tools:ignore="VectorDrawableCompat" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/receiptImage" />
+                    <TextView
+                        android:id="@+id/receipttext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Receipt"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lexend"
+                        android:layout_marginTop="2dp"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/receiptImage" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -68,7 +68,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:text="@string/hm_green_city"
+                            android:text="@string/hm_group_of_companies"
                             android:textAppearance="@style/TextField_Bold"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
