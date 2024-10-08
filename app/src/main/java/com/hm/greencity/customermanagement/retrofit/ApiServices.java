@@ -18,6 +18,8 @@ import com.hm.greencity.customermanagement.models.Notes.CreateNote.ResCreateNote
 import com.hm.greencity.customermanagement.models.Notes.DeleteNote.ResDeleteNote;
 import com.hm.greencity.customermanagement.models.Notes.GetNote.ResGetNote;
 import com.hm.greencity.customermanagement.models.Notes.UpdateNote.ResUpdateNote;
+import com.hm.greencity.customermanagement.models.PlotAllotmentReport.ResponseAllotmentReport;
+import com.hm.greencity.customermanagement.models.PrintReport.ResponsePrintReport;
 import com.hm.greencity.customermanagement.models.ResponseAssociateProfile;
 import com.hm.greencity.customermanagement.models.ResponseList.ResponseSite;
 import com.hm.greencity.customermanagement.models.ResponseLogin;
@@ -123,5 +125,11 @@ public interface ApiServices {
     @POST("WebAPI/GetGalleryDetails")
     Call<ResGallery>getGallery();
 
+
+    @POST("WebAPI/PlotAllotmentReport")
+    Call<ResponseAllotmentReport> getAllotmentReport(@Body JsonObject requestObject);
+
+    @POST("WebAPI/PrintAllotment")
+    Call<ResponsePrintReport> getPrintReport(@Body JsonObject requestObject);
 
 }

@@ -125,9 +125,8 @@ public class AssosiateDashboardOld extends BaseFragment {
     TextView totalbuisTotal;
     @BindView(R.id.text_dueInstallment)
     TextView text_dueInstallment;
-
-
     List<Lstdue> lstduesAdapter;
+
 
     @Nullable
     @Override
@@ -176,8 +175,6 @@ public class AssosiateDashboardOld extends BaseFragment {
         JsonObject object = new JsonObject();
         object.addProperty("CustomerID", PreferencesManager.getInstance(context).getCustomerID());
 //        object.addProperty("CustomerID","24");
-
-
         Call<ResponseAssociateDashboard> call = apiServices.AssociateDashBoard(object);
         call.enqueue(new Callback<ResponseAssociateDashboard>() {
             @Override
@@ -243,7 +240,6 @@ public class AssosiateDashboardOld extends BaseFragment {
                 hideLoading();
 
             }
-
             @Override
             public void onFailure(Call<ResponseAssociateDueInstallment> call, Throwable t) {
                 hideLoading();

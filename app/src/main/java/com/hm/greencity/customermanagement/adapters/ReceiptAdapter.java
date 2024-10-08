@@ -1,21 +1,24 @@
 package com.hm.greencity.customermanagement.adapters;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
+import com.hm.greencity.customermanagement.Activity.PrintReceiptActivity;
 import com.hm.greencity.customermanagement.R;
-import com.hm.greencity.customermanagement.models.ReceiptModel;
+import com.hm.greencity.customermanagement.models.PlotAllotmentReport.LstPlotReport;
 import java.util.List;
 
 
 public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.ViewHolder> {
-    private List<ReceiptModel> models;
+    private List<LstPlotReport> models;
     private Context context;
 
-    public ReceiptAdapter(List<ReceiptModel> models, Context context) {
+    public ReceiptAdapter(List<LstPlotReport> models, Context context) {
         this.models = models;
         this.context = context;
     }
@@ -29,13 +32,20 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ReceiptAdapter.ViewHolder holder, int i) {
-        holder.CustomerID.setText(models.get(i).getCustomerID());
+        holder.CustomerID.setText(models.get(i).getCustomerLoginId());
         holder.CustomerName.setText(models.get(i).getCustomerName());
-        holder.BusinessPartnerID.setText(models.get(i).getBusinessPartnerID());
-        holder.amount.setText(models.get(i).getAmount());
+        holder.BusinessPartnerID.setText(models.get(i).getpK_BookingDetailsId());
+        holder.amount.setText(models.get(i).getPaidAmount());
         holder.BookingNumber.setText(models.get(i).getBookingNumber());
-        holder.Plot.setText(models.get(i).getPlot());
-        holder.Mode.setText(models.get(i).getMode());
+        holder.Plot.setText(models.get(i).getPlotNumber());
+        holder.Mode.setText(models.get(i).getPaymentMode());
+
+
+        holder.print.setOnClickListener(v -> {
+            Intent intent = new Intent(context, PrintReceiptActivity.class);
+            intent.putExtra("PK_BookingDetailsId", models.get(i).getpK_BookingDetailsId());
+            context.startActivity(intent);
+        });
 
     }
 
@@ -46,6 +56,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView CustomerID,CustomerName,BusinessPartnerID,AllotmentDate,amount,BookingNumber,Plot,Mode;
+        AppCompatButton print;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             CustomerID = itemView.findViewById(R.id.CustomerID);
@@ -56,6 +67,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.ViewHold
             BookingNumber = itemView.findViewById(R.id.BookingNumber);
             Plot = itemView.findViewById(R.id.Plot);
             Mode = itemView.findViewById(R.id.Mode);
+            print = itemView.findViewById(R.id.print);
         }
     }
 }
