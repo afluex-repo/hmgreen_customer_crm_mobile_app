@@ -1,15 +1,16 @@
 package com.hm.greencity.customermanagement.Network;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import java.util.concurrent.TimeUnit;
-
+import com.hm.greencity.customermanagement.retrofit.ApiServices;
 
 public class RetrofitClient {
-
     private static Retrofit retrofit = null;
     private static final String BASE_URL = "https://crm.hmgreencity.com/";
 
+    // Singleton pattern for Retrofit client
     public static Retrofit getClient() {
         if (retrofit == null) {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
@@ -23,5 +24,10 @@ public class RetrofitClient {
                     .build();
         }
         return retrofit;
+    }
+
+    // Method to get ApiServices instance
+    public static ApiServices getApiServices() {
+        return getClient().create(ApiServices.class);
     }
 }

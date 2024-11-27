@@ -109,16 +109,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-//        binding.call.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String phone_number = "9651997374";
-//                Intent phone_intent = new Intent(Intent.ACTION_DIAL);
-//                phone_intent.setData(Uri.parse("tel:" + phone_number));
-//                startActivity(phone_intent);
-//            }
-//        });
-
     }
 
     private void initview() {
@@ -181,7 +171,6 @@ public class ChatActivity extends AppCompatActivity {
                 new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
                 PERMISSION_REQUEST_CODE);
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -195,8 +184,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         }
     }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -273,75 +260,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-//private void sendMessage() {
-//    String messageContent = editTextMessage.getText().toString();
-//    if (!messageContent.isEmpty() || selectedImageUri != null) {
-//        // Retrieve user ID from PreferencesManager
-//        PreferencesManager preferencesManager = PreferencesManager.getInstance(this);
-//        String userId = preferencesManager.getUserId();
-//
-//        // Check if userId is valid
-//        if (userId == null || userId.isEmpty()) {
-//            Toast.makeText(this, "User ID is invalid", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//
-//        RequestBody fkUserId = RequestBody.create(MediaType.parse("text/plain"), userId); // Example user ID
-//        RequestBody title = RequestBody.create(MediaType.parse("text/plain"), "test"); // Example title
-//        RequestBody description = RequestBody.create(MediaType.parse("text/plain"), messageContent);
-//
-//        MultipartBody.Part imagePart = null;
-//        if (selectedImageUri != null) {
-//            try {
-//                InputStream inputStream = getContentResolver().openInputStream(selectedImageUri);
-//                byte[] bytes = getBytes(inputStream);
-//                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), bytes);
-//                imagePart = MultipartBody.Part.createFormData("QueryImage", "image.jpg", requestFile);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        // Make Retrofit call
-//        chatService.sendMessage(fkUserId, title, description, imagePart).enqueue(new Callback<ResponseChat>() {
-//            @Override
-//            public void onResponse(Call<ResponseChat> call, Response<ResponseChat> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    String statusCode = response.body().getStatusCode();
-//                    String message = response.body().getMessage();
-//
-//                    if ("200".equals(statusCode)) {
-//                        Toast.makeText(ChatActivity.this, message, Toast.LENGTH_SHORT).show();
-//                        editTextMessage.setText(""); // Clear the message box
-//                        selectedImageUri = null; // Clear the selected image URI
-//                        binding.imageView.setVisibility(View.GONE);
-//                    } else {
-//                        Toast.makeText(ChatActivity.this, "Failed to send message: " + message, Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    // Log error details
-//                    try {
-//                        String errorBody = response.errorBody().string();
-//                        Log.e("SendMessageError", "Error body: " + errorBody);
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    Toast.makeText(ChatActivity.this, "Failed to send message", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseChat> call, Throwable t) {
-//                Toast.makeText(ChatActivity.this, "Something went wrong: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-//                Log.e("SendMessageFailure", "Error: " + t.getMessage(), t);
-//            }
-//        });
-//    } else {
-//        Toast.makeText(this, "Message cannot be empty", Toast.LENGTH_SHORT).show();
-//    }
-//}
 
-    // Helper method to convert InputStream to byte array
 
     public byte[] getBytes(InputStream inputStream) throws IOException {
         ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();

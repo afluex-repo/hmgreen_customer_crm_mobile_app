@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
     <external-files-path name="documents" path="Documents/" />
+
+        <cache-path name="cache" path="." />
+        <!-- Optionally, allow access to external files -->
+        <external-path name="external_files" path="." />
+
 </paths>
 

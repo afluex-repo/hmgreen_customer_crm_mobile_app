@@ -1,7 +1,6 @@
 package com.hm.greencity.customermanagement.models.Notes.GetNote;
 import com.google.gson.annotations.SerializedName;
 
-
 public class LstNotepad {
     @SerializedName("Pk_NoteId")
     public String pk_NoteId;

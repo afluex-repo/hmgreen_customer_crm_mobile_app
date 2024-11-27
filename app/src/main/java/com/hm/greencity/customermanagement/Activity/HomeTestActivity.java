@@ -482,7 +482,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
     }
     private void showProfile() {
-
         showLoading();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("LoginId", PreferencesManager.getInstance(context).getLoginId());
@@ -725,15 +724,15 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         String message = "Associate Management - 2022\n Version - 1.0\n" +
                 getString(R.string.developed_by) + "\n"  +
                 "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n"+
-                "Website:  http://crm.hmgreencity.com/home";
+                "Website: https://hmgroupcompanies.com";
 
         SpannableString spannableString = new SpannableString(message);
-        int startIndexWebsite = message.indexOf("http://crm.hmgreencity.com/home");
-        int endIndexWebsite = startIndexWebsite + "http://crm.hmgreencity.com/home".length();
+        int startIndexWebsite = message.indexOf("https://hmgroupcompanies.com");
+        int endIndexWebsite = startIndexWebsite + "https://hmgroupcompanies.com".length();
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://crm.hmgreencity.com/home"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hmgroupcompanies.com"));
                 startActivity(intent);
             }
         }, startIndexWebsite, endIndexWebsite, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

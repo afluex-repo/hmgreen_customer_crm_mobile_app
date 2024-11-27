@@ -47,7 +47,7 @@
                     android:id="@+id/nameptv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="HM GROUP OF COMPANIES"
+                    android:text="@string/hm_group_of_companies"
                     android:layout_marginTop="0dp"
                     android:layout_marginStart="10dp"
                     android:textColor="@color/white"
@@ -60,7 +60,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_gravity="start"
                     android:layout_marginTop="5dp"
-                    android:text="Helpline No- 9651997374  "
+                    android:text="@string/helpline_no_9651997374"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -83,7 +83,7 @@
             android:textColor="@color/white"
             android:layout_marginEnd="10dp"
             android:textAllCaps="false"
-            android:text="Create Query"
+            android:text="@string/create_query"
             android:background="@color/colorPrimary"
             android:layout_height="40dp"/>
     </LinearLayout>

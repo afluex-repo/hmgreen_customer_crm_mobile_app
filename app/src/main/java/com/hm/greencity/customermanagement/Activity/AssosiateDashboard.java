@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
@@ -25,6 +26,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -42,6 +45,7 @@ import com.hm.greencity.customermanagement.Fragment.AssociateBusinessReport;
 import com.hm.greencity.customermanagement.Fragment.AssociateLedgerReport;
 import com.hm.greencity.customermanagement.Fragment.AssociatePlotAvalivility;
 import com.hm.greencity.customermanagement.Fragment.CustomerListFragment;
+import com.hm.greencity.customermanagement.Network.RetrofitClient;
 import com.hm.greencity.customermanagement.NotePad.NotePadActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.NetworkUtils;
@@ -50,7 +54,10 @@ import com.hm.greencity.customermanagement.constants.BaseFragment;
 import com.hm.greencity.customermanagement.constants.FileUtils;
 import com.hm.greencity.customermanagement.login.LoginActivity;
 import com.hm.greencity.customermanagement.models.AssociateDashboard.ResponseAssociateDashboard;
+import com.hm.greencity.customermanagement.models.BusinessCard.GetBusinessCard.ResGetBusinessCard;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
+import com.hm.greencity.customermanagement.retrofit.ApiServices;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -212,48 +219,32 @@ public class AssosiateDashboard extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.associate_dashboard_new, container, false);
         unbinder = ButterKnife.bind(this, view);
-
-
         associateContaner = new AssociateContaner();
         tv_username.setText(PreferencesManager.getInstance(context).getFull_Name());
         tv_loginId.setText(PreferencesManager.getInstance(context).getLoginId());
-
-
         TextView textView3 = view.findViewById(R.id.tv_mybooking1);
         TextView textView4 = view.findViewById(R.id.textViewmyLedger);
         TextView textView5 = view.findViewById(R.id.textViewdueInstallment);
         TextView textView6 = view.findViewById(R.id.textViewinsta);
         TextView textView7 = view.findViewById(R.id.textViewfb);
         TextView textView8 = view.findViewById(R.id.textViewyoutube);
-
         TextView textView31 = view.findViewById(R.id.tv_plot_ledger);
         TextView textView51 = view.findViewById(R.id.textViewmyLedger1);
         TextView chattext = view.findViewById(R.id.textViewdueInstallment1);
-
         TextView textView9 = view.findViewById(R.id.textView31);
         TextView textView10 = view.findViewById(R.id.textView51);
-
-
-
        CardView cvplotBooking = view.findViewById(R.id.cv_plotBooking);
         CardView cvcustomerDetails = view.findViewById(R.id.cv_customerDetails);
         CardView cvmysummary = view.findViewById(R.id.cv_mysummary);
         CardView cvnewCard1 = view.findViewById(R.id.cv_newCard1);
         CardView cvnewCard2 = view.findViewById(R.id.cv_newCard2);
         CardView cvnewCard3 = view.findViewById(R.id.cv_newCard3);
-
         CardView cvnewCard4 = view.findViewById(R.id.cv_plot_ledger);
         CardView cvnewCard5 = view.findViewById(R.id.cv_plot_avaibility);
         CardView cvnewCard6 = view.findViewById(R.id.cv_contactus);
-
         CardView cvchange_password = view.findViewById(R.id.cv_change_password);
         CardView cvlogout = view.findViewById(R.id.cv_logout);
         CardView newcardview2 = view.findViewById(R.id.new_cardview2);
-
-
-
-
-
 
         Glide.with(context).load("http://crm.hmgreencity.com/" + PreferencesManager.getInstance(context).getProfilePic()).
                 apply(RequestOptions.circleCropTransform())
@@ -293,18 +284,10 @@ public class AssosiateDashboard extends BaseFragment {
         digitalcardimageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToActivity(HomeDigitalCardActivity.class, null);
-
+                // Call API to check if the business card exists
+                checkBusinessCardExistence();
             }
         });
-
-
-//        notes.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                goToActivity(NotePadActivity.class, null);
-//            }
-//        });
 
         associateSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -415,11 +398,9 @@ public class AssosiateDashboard extends BaseFragment {
         });
     }
 
-
     @OnClick({R.id.cv_plotBooking, R.id.cv_customerDetails, R.id.cv_mysummary, R.id.cv_plot_ledger, R.id.cv_plot_avaibility, R.id.cv_contactus, R.id.cv_change_password, R.id.cv_aboutUs, R.id.cv_logout, R.id.support,R.id.textViewdueInstallment1,R.id.imageViewinsta,R.id.imageViewfb,R.id.imageViewyoutube,R.id.imagenotepad})
     public void onClick(View view) {
         switch (view.getId()) {
-
             case R.id.cv_plotBooking:
                 AssociateContaner.currentFragment = new AssociateBookingList();
                 FragmentTransaction fr4 = getFragmentManager().beginTransaction();
@@ -431,7 +412,6 @@ public class AssosiateDashboard extends BaseFragment {
                 FragmentTransaction fr = getFragmentManager().beginTransaction();
                 fr.replace(R.id.frame, new CustomerListFragment()).addToBackStack(null);
                 fr.commit();
-
                 break;
             case R.id.cv_mysummary:
                 AssociateContaner.currentFragment = new AssociateBusinessReport();
@@ -452,7 +432,6 @@ public class AssosiateDashboard extends BaseFragment {
                 fr3.commit();
                 break;
             case R.id.cv_contactus:
-
                 break;
             case R.id.cv_change_password:
                 changePassword();
@@ -461,6 +440,8 @@ public class AssosiateDashboard extends BaseFragment {
                 showChangeLanguageDialog();
                 break;
             case R.id.cv_aboutUs:
+                goToActivity(ChatActivity.class, null);
+                break;
             case R.id.support:
                 aboutMe();
                 break;
@@ -482,7 +463,6 @@ public class AssosiateDashboard extends BaseFragment {
 
         }
     }
-
     private void openinsta() {
         String url = "https://www.instagram.com/hm_green_city_2k?igsh=YXNnemQ5aWt5ZW5o";
         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -501,11 +481,7 @@ public class AssosiateDashboard extends BaseFragment {
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
-
-
     private void changePassword() {
-
-
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Change Password");
@@ -571,24 +547,21 @@ public class AssosiateDashboard extends BaseFragment {
             }
         });
 
-
     }
-
-
     public void aboutMe() {
         String message = "Associate Management - 2022\n Version - 1.0\n" +
                 getString(R.string.developed_by) + "\n"  +
                 "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n"+
-               "Website:  http://crm.hmgreencity.com/home";
+               "Website:  https://hmgroupcompanies.com";
 
         SpannableString spannableString = new SpannableString(message);
-        int startIndexWebsite = message.indexOf("http://crm.hmgreencity.com/home");
-        int endIndexWebsite = startIndexWebsite + "http://crm.hmgreencity.com/home".length();
+        int startIndexWebsite = message.indexOf("https://hmgroupcompanies.com");
+        int endIndexWebsite = startIndexWebsite + "https://hmgroupcompanies.com".length();
 
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://crm.hmgreencity.com/home"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hmgroupcompanies.com"));
                 startActivity(intent);
             }
         }, startIndexWebsite, endIndexWebsite, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -607,9 +580,6 @@ public class AssosiateDashboard extends BaseFragment {
             messageTextView.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
-
-
-
     private void logout() {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
         builder1.setTitle("Logout");
@@ -637,9 +607,6 @@ public class AssosiateDashboard extends BaseFragment {
         alert11.show();
 
     }
-
-
-
     private void showChangeLanguageDialog() {
         final String[] listItems = {"English", "हिंदी"};
         androidx.appcompat.app.AlertDialog.Builder mBuilder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
@@ -662,39 +629,17 @@ public class AssosiateDashboard extends BaseFragment {
         androidx.appcompat.app.AlertDialog mDialog = mBuilder.create();
         mDialog.show();
     }
-
-  /*  private void setLocale(String lang) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        Context context = getContext();
-        if (context != null) {
-            context = context.createConfigurationContext(config);
-
-            SharedPreferences.Editor editor = context.getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
-            editor.putString("My_Lang", lang);
-            editor.apply();
-            Toast.makeText(context, "Language changed to " + (lang.equals("en") ? "English" : "Hindi"), Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
-
-
     public void loadLocale() {
         SharedPreferences prefs = getActivity().getSharedPreferences("Settings", MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "");
 //        setLocale(language);
 
     }
-
     @Override
     public void onDestroyView() {
         unbinder.unbind();
         super.onDestroyView();
     }
-
-
     private void showFullScreenDialog(int imageResId) {
         Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -712,8 +657,6 @@ public class AssosiateDashboard extends BaseFragment {
 
         dialog.show();
     }
-
-
     private void filterTextView(TextView textView, CardView cardView, String query) {
         if (textView == null || cardView == null) {
             Log.e("FilterTextView", "TextView or CardView is null.");
@@ -732,20 +675,16 @@ public class AssosiateDashboard extends BaseFragment {
             cardView.setVisibility(View.GONE);
         }
     }
-
-
     private void sendEmail() {
         String emailAddress = "hmcity7374@gmail.com";
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                 "mailto", emailAddress, null));
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email here");
-
         if (emailIntent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(emailIntent);
         }
     }
-
     private void makePhoneCall() {
         String phoneNumber = "+91-9651997374";
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
@@ -756,14 +695,12 @@ public class AssosiateDashboard extends BaseFragment {
             startCallIntent(phoneNumber);
         }
     }
-
     private void startCallIntent(String phoneNumber) {
         Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
         if (callIntent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(callIntent);
         }
     }
-
     private void openWebsite() {
         String url = "https://hmgroupcompanies.com";
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -775,6 +712,47 @@ public class AssosiateDashboard extends BaseFragment {
     }
 
 
+    private void checkBusinessCardExistence() {
+        ApiServices apiServices = RetrofitClient.getApiServices();
+        JsonObject request = new JsonObject();
+        request.addProperty("Fk_UserID", PreferencesManager.getInstance(context).getUserId());
+        Call<ResGetBusinessCard> call = apiServices.getcarddetails(request);
+        call.enqueue(new Callback<ResGetBusinessCard>() {
+            @Override
+            public void onResponse(Call<ResGetBusinessCard> call, Response<ResGetBusinessCard> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ResGetBusinessCard businessCard = response.body();
+                    // Check if business card details are present
+                    if (businessCard != null && !TextUtils.isEmpty(businessCard.getName())) {
+                        // Business card exists, go to HomeDigitalCardActivity
+                        goToActivity(FinalBusinessCardActivity.class, null);
+                    } else {
+                        // No business card created, prompt to create a new one
+                        Toast.makeText(requireContext(), "You don't have a business card. Please create one.", Toast.LENGTH_SHORT).show();
+                        // Optionally, open the card creation activity or show the relevant screen
+                        goToActivity(HomeDigitalCardActivity.class, null);  // For example, navigate to the create card screen
+                    }
+                } else {
+                    // Response unsuccessful, handle error
+                    Toast.makeText(requireContext(), "Failed to fetch business card details", Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResGetBusinessCard> call, Throwable t) {
+                // Handle failure
+                Toast.makeText(requireContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    public void goToActivity(Class<?> targetActivity, Bundle bundle) {
+        Intent intent = new Intent(requireContext(), targetActivity);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
+    }
 
 }

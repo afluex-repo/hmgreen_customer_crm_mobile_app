@@ -74,7 +74,6 @@ public class AddNoteActivity extends BaseActivity {
                     Log.e("Response Error", response.toString());
                 }
             }
-
             @Override
             public void onFailure(Call<ResCreateNote> call, Throwable t) {
                 hideLoading();

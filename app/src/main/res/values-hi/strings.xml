@@ -20,7 +20,7 @@
     <string name="settings_title">समायोजन</string>
     <string name="profiles_title">प्रोफाइल</string>
     <string name="users_title">उपयोगकर्ताओं</string>
-    <string name="developed_by"><a href='http://crm.hmgreencity.com/Home/'>http://crm.hmgreencity.com/Home/</a></string>
+    <string name="developed_by"><a href='https://hmgroupcompanies.com'>https://hmgroupcompanies.com/</a></string>
 
     <!--Social media-->
     <string name="facebook"><a href='http://www.facebook.com'>f</a></string>
@@ -282,7 +282,7 @@
     <string name="notes">नोट्स </string>
     <string name="gallery">गैलरी </string>
     <string name="Instagram">इंस्टाग्राम  </string>
-    <string name="hm_group_of_Companies">एच एम ग्रुपऑफ़ कंपनियाँ </string>
+    <string name="hm_group_of_Companies">एच एम ग्रुपऑफ़ कंपनीज </string>
     <string name="Totalactive" >टोटल एक्टिव </string>
     <string name="Totalinactive" >कुल निष्क्रिय </string>
     <string name="Totalpayout" >कुल भुगतान </string>
@@ -293,8 +293,25 @@
     <string name="faceBooK">फेसबुक</string>
     <string name="YOutube" >यूट्यूब</string>
     <string name="digital_card">डिजिटल कार्ड</string>
-    <string name="hm_group_of_companies">एच एम ग्रुपऑफ़ कंपनियाँ</string>
+    <string name="hm_group_of_companies">एच एम ग्रुपऑफ़ कंपनीज</string>
     <string name="Notes">नोट्स</string>
+    <string name="write_your_query_here">अपना प्रश्न यहां लिखें......</string>
+    <string name="send_query">प्रश्न भेजें</string>
+    <string name="attach_file">फ़ाइल जोड़ें</string>
+    <string name="create_query">क्वेरी बनाएं</string>
+    <string name="helpline_no_9651997374">हेल्पलाइन नंबर- 9651997374</string>
+    <string name="customeriD">ग्राहक आईडी</string>
+    <string name="Customer_name">ग्राहक का नाम</string>
+    <string name="business_partner_id">बिजनेस पार्टनर आईडी</string>
+    <string name="allotmentdate">आवंटन तिथि</string>
+    <string name="amount">मात्रा</string>
+    <string name="bookingNumber">बुकिंग संख्या</string>
+    <string name="plot">प्लाट</string>
+    <string name="mode">तरीका</string>
+    <string name="print">छाप</string>
+    <string name="receipt">रसीद</string>
+    <string name="add_notes">नोट्स जोड़ें</string>
+    <string name="start_typing">टाइप करना प्रारंभ करें....</string>
 
 
 </resources>

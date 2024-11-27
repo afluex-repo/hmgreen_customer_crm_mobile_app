@@ -6,6 +6,10 @@ import com.hm.greencity.customermanagement.models.AssociateDashboard.ResponseAss
 import com.hm.greencity.customermanagement.models.AssociateDueInstallment.ResponseAssociateDueInstallment;
 import com.hm.greencity.customermanagement.models.AssociateLedgerList;
 import com.hm.greencity.customermanagement.models.AssociatePlotAvalibility.ResponseAssociatePlotAvalibility;
+import com.hm.greencity.customermanagement.models.BusinessCard.CreateBusinessCard.ResCreateBusinessCard;
+import com.hm.greencity.customermanagement.models.BusinessCard.GetBusinessCard.ReqGetBusinessCard;
+import com.hm.greencity.customermanagement.models.BusinessCard.GetBusinessCard.ResGetBusinessCard;
+import com.hm.greencity.customermanagement.models.BusinessCard.UpdateBusinessCard.ResUpdateBusinessCard;
 import com.hm.greencity.customermanagement.models.CustomerList.ResponseCustomerList;
 import com.hm.greencity.customermanagement.models.CustomerMyProfile;
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponseDueInstallment;
@@ -131,5 +135,61 @@ public interface ApiServices {
 
     @POST("WebAPI/PrintAllotment")
     Call<ResponsePrintReport> getPrintReport(@Body JsonObject requestObject);
+
+//    @POST("WebAPI/SaveBussinessCard")
+//    Call<ResCreateBusinessCard> businesscard(@Body JsonObject requestObject);
+
+    @Multipart
+    @POST("WebAPI/SaveBussinessCard")
+    Call<ResCreateBusinessCard> businesscard(
+            @Part("Fk_UserID") RequestBody userID,
+            @Part("Name") RequestBody documentNumber,
+            @Part("BussinessName") RequestBody panNumber,
+            @Part("JobTitle") RequestBody adharNumber,
+            @Part("Description") RequestBody accountHolderName,
+            @Part("MobileNo") RequestBody bankName,
+            @Part("EmailId") RequestBody ifscCode,
+            @Part("Address") RequestBody bankBranch,
+            @Part("Whatsapp") RequestBody whatsapp,
+            @Part("Instagram") RequestBody instagram,
+            @Part("Facebook") RequestBody facebook,
+            @Part("Linkdin") RequestBody linkdin,
+            @Part("Telegram") RequestBody telegram,
+            @Part MultipartBody.Part CoverImage,
+            @Part MultipartBody.Part Profile
+
+    );
+
+
+//    @POST("WebAPI/GetBussinessCard")
+//    Call<ResGetBusinessCard> getcarddetails(@Body JsonObject object);
+
+    @POST("WebAPI/GetBussinessCard")
+    Call<ResGetBusinessCard> getcarddetails(@Body JsonObject jsonObject);
+
+
+
+    @Multipart
+    @POST("WebAPI/UpdateBussinessCard")
+    Call<ResUpdateBusinessCard> updatecard(
+            @Part("Pk_BussinessCardId") RequestBody businessId,
+            @Part("Fk_UserID") RequestBody userID,
+            @Part("Name") RequestBody documentNumber,
+            @Part("BussinessName") RequestBody panNumber,
+            @Part("JobTitle") RequestBody adharNumber,
+            @Part("Description") RequestBody accountHolderName,
+            @Part("MobileNo") RequestBody bankName,
+            @Part("EmailId") RequestBody ifscCode,
+            @Part("Address") RequestBody bankBranch,
+            @Part("Whatsapp") RequestBody whatsapp,
+            @Part("Instagram") RequestBody instagram,
+            @Part("Facebook") RequestBody facebook,
+            @Part("Linkdin") RequestBody linkdin,
+            @Part("Telegram") RequestBody telegram,
+            @Part MultipartBody.Part CoverImage,
+            @Part MultipartBody.Part Profile
+    );
+
+
 
 }

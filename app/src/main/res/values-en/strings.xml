@@ -21,7 +21,7 @@
     <string name="settings_title">Settings</string>
     <string name="profiles_title">Profiles</string>
     <string name="users_title">Users</string>
-    <string name="developed_by"><a href='http://crm.hmgreencity.com/Home/'>http://crm.hmgreencity.com/Home/</a></string>
+    <string name="developed_by"><a href='https://hmgroupcompanies.com'>https://hmgroupcompanies.com/</a></string>
 
     <!--Social media-->
     <string name="facebook"><a href='http://www.facebook.com'>f</a></string>
@@ -318,6 +318,23 @@
     <string name="YOutube" >YouTube</string>
     <string name="digital_card">Digital Card</string>
     <string name="Notes">Notes</string>
+    <string name="write_your_query_here">Write your query here......</string>
+    <string name="send_query">Send Query</string>
+    <string name="attach_file">Attach File</string>
+    <string name="create_query">Create Query</string>
+    <string name="helpline_no_9651997374">Helpline No- 9651997374</string>
+    <string name="customeriD">Customer ID</string>
+    <string name="Customer_name">Customer Name</string>
+    <string name="business_partner_id">Business Partner ID</string>
+    <string name="allotmentdate">Allotment Date</string>
+    <string name="amount">Amount</string>
+    <string name="bookingNumber">Booking Number</string>
+    <string name="plot">Plot</string>
+    <string name="mode">Mode</string>
+    <string name="print">Print</string>
+    <string name="receipt">Receipt</string>
+    <string name="add_notes">Add Notes</string>
+    <string name="start_typing">Start typing ....</string>
 
 
 </resources>

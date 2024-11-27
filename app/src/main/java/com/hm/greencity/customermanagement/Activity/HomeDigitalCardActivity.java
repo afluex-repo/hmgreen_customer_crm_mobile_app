@@ -16,7 +16,6 @@ ActivityHomeDigitalCardBinding binding;
         initview();
         onclicklistener();
 
-
     }
 
     private void onclicklistener() {

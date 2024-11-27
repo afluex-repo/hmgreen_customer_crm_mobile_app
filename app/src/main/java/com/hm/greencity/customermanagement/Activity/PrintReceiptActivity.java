@@ -102,13 +102,18 @@ public class PrintReceiptActivity extends BaseActivity {
     }
 
     private void createPdf(Bitmap bitmap) {
+        if (bitmap == null) {
+            Toast.makeText(this, "Bitmap is null", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Log.d("PDF", "Creating PDF...");
         PdfDocument pdfDocument = new PdfDocument();
         PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(bitmap.getWidth(), bitmap.getHeight(), 1).create();
         PdfDocument.Page page = pdfDocument.startPage(pageInfo);
         Canvas canvas = page.getCanvas();
         canvas.drawBitmap(bitmap, 0, 0, null);
         pdfDocument.finishPage(page);
-
 
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
         if (storageDir != null && !storageDir.exists()) {
@@ -120,19 +125,20 @@ public class PrintReceiptActivity extends BaseActivity {
             customDir.mkdirs();
         }
 
-        File file = new File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS) + "/MyCustomDirectory/", "receipt_" + System.currentTimeMillis() + ".pdf");
+        File file = new File(customDir, "receipt_" + System.currentTimeMillis() + ".pdf");
 
         try (FileOutputStream out = new FileOutputStream(file)) {
             pdfDocument.writeTo(out);
             Toast.makeText(this, "Receipt saved as PDF: " + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
             showDownloadNotification(file);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("PDF", "Failed to save PDF: " + e.getMessage());
             Toast.makeText(this, "Failed to save receipt: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         } finally {
             pdfDocument.close();
         }
     }
+
 
     private void showDownloadNotification(File file) {
         Uri fileUri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".fileprovider", file);
@@ -159,8 +165,6 @@ public class PrintReceiptActivity extends BaseActivity {
             }
         }
     }
-
-
 
     public void PrintData(String id) {
         showLoading();
@@ -202,7 +206,6 @@ public class PrintReceiptActivity extends BaseActivity {
                     binding.plotno.setText(resVisitorList.getPlotNo());
                     binding.paymentfor.setText(resVisitorList.getReasonOfPayment());
                     binding.bookingfor.setText(resVisitorList.getpK_BookingId());
-
 
 
                     Log.d(TAG, "API Status: " + apiStatus);

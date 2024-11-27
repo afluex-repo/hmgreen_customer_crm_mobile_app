@@ -20,6 +20,7 @@ public class PreferencesManager {
     private static final String vendorId = "vendorId";
 
     private static final String Pk_NoteId = "Pk_NoteId";
+    private static final String Pk_BussinessCardId = "Pk_BussinessCardId";
 
 
     public static PreferencesManager sInstance;
@@ -54,6 +55,17 @@ public class PreferencesManager {
     //Full_Name
     public void setProducyInfoId(String value) {
         mPref.edit().putString(producyInfoId, value).apply();
+    }
+
+    // Method to save Pk_BussinessCardId value in SharedPreferences
+    public void setPkBussinessCardId(String value) {
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.putString(Pk_BussinessCardId, value);
+        editor.apply();
+    }
+    // Method to retrieve Pk_BussinessCardId value from SharedPreferences
+    public String getPkBussinessCardId() {
+        return mPref.getString(Pk_BussinessCardId, null);  // Default value is null if not found
     }
 
     public String getProducyInfoId() {
@@ -95,7 +107,6 @@ public class PreferencesManager {
     public String getUserId() {
         return mPref.getString(UserId, "");
     }
-
 
 
     // Method to save note ID

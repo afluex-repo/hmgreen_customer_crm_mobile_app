@@ -32,7 +32,7 @@ public class GalleryActivity2 extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.add(new PhototFragment(), "Photos");
         viewPagerAdapter.add(new VideoFragment(), "Videos");
-        viewPagerAdapter.add(new DocumentFragment(), "Documents");
+        //viewPagerAdapter.add(new DocumentFragment(), "Documents");
 
         binding.pageViewer.setAdapter(viewPagerAdapter);
         binding.tabLayout.setupWithViewPager(binding.pageViewer);

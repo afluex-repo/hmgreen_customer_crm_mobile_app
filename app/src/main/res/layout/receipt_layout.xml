@@ -21,7 +21,7 @@
                     android:paddingTop="5dp"
                     android:textColor="#a7a7a7"
                     android:textStyle="bold"
-                    android:text="Customer ID"/>
+                    android:text="@string/customeriD"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -49,7 +49,7 @@
                     android:paddingTop="5dp"
                     android:textColor="#a7a7a7"
                     android:textStyle="bold"
-                    android:text="Customer Name"/>
+                    android:text="@string/Customer_name"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -75,7 +75,7 @@
                     android:paddingTop="5dp"
                     android:textColor="#a7a7a7"
                     android:textStyle="bold"
-                    android:text="Business Partner ID"/>
+                    android:text="@string/business_partner_id"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -107,7 +107,7 @@
                     android:paddingTop="5dp"
                     android:textColor="#a7a7a7"
                     android:textStyle="bold"
-                    android:text="Allotment Date"/>
+                    android:text="@string/allotmentdate"/>
 
                 <TextView
                     android:id="@+id/AllotmentDate"
@@ -136,7 +136,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:text="Amount"
+                    android:text="@string/amount"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:paddingTop="5dp"
@@ -163,7 +163,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:text="Booking Number"
+                    android:text="@string/bookingNumber"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:paddingTop="5dp"
@@ -190,7 +190,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:text="Plot"
+                    android:text="@string/plot"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:paddingTop="5dp"
@@ -217,7 +217,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:text="Mode"
+                    android:text="@string/mode"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:paddingTop="5dp"
@@ -245,7 +245,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:textSize="12sp"
-                    android:text="Print"
+                    android:text="@string/print"
                     android:textStyle="bold"
                     android:paddingTop="5dp"
                     android:paddingStart="10dp"
