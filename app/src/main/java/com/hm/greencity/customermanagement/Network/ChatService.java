@@ -1,6 +1,7 @@
 package com.hm.greencity.customermanagement.Network;
-import com.google.gson.JsonObject;
-import com.hm.greencity.customermanagement.models.Notes.CreateNote.ResCreateNote;
+import com.hm.greencity.customermanagement.models.GetSite.ReqGetSite;
+import com.hm.greencity.customermanagement.models.GetSite.ResGetSite;
+import com.hm.greencity.customermanagement.models.Site.ResSite;
 import com.hm.greencity.customermanagement.models.chatModel.FetchMessageRequest;
 import com.hm.greencity.customermanagement.models.chatModel.ResponseChat;
 import com.hm.greencity.customermanagement.models.chatModel.getResponseChat;
@@ -27,9 +28,11 @@ public interface ChatService {
     @POST("WebAPI/GetQueryList")
     Call<getResponseChat> fetchMessages(@Body FetchMessageRequest request);
 
+    @POST("WebAPI/GetVisitRequest")
+    Call<ResGetSite>getvisitorlist(@Body ReqGetSite reqGetSite);
 
-
-
+    @POST("WebAPI/sitelist")
+    Call<ResSite>site();
 
 
 

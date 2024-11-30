@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SiteVisitActivity">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:weightSum="3"
+        android:layout_marginStart="10dp"
+        android:background="@color/colorPrimary"
+        android:layout_height="?actionBarSize">
+        <ImageView
+            android:id="@+id/backarrow"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:inputType="text"
+            android:text="@string/site_visit_request"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/visitlist"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="50dp"
+            android:text="@string/show_visitor"
+            android:textStyle="bold"
+            android:padding="7dp"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/card_desihn"
+            android:layout_marginEnd="0dp"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/sitevisitimage"
+            android:scaleType="centerCrop"
+            android:layout_height="300dp"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_marginTop="150dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/card_desihn"
+                    android:backgroundTint="#C6C4C4"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="gone"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <AutoCompleteTextView
+
+                                android:layout_width="match_parent"
+                                android:background="@color/white"
+                                android:paddingTop="6dp"
+                                android:layout_height="40dp"
+                                android:inputType="none"
+                                android:hint="Categoery" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                         <Spinner
+                             android:id="@+id/Site"
+                             android:layout_width="0dp"
+                              android:backgroundTint="@color/white"
+                             android:layout_weight="1"
+                             android:layout_gravity="center"
+                              android:background="@drawable/card_desihn"
+                             android:padding="10dp"
+                             android:layout_height="wrap_content">
+                         </Spinner>
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:visibility="gone"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:textSize="14sp"
+                            android:drawableEnd="@drawable/baseline_keyboard_arrow_down_24"
+                            android:background="@drawable/card_desihn"
+                            android:backgroundTint="@color/white"
+                            android:inputType="text"
+                            android:padding="10dp"
+                            android:text="Sites"
+                            android:textColor="@color/black" />
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:textSize="14sp"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp"
+                            android:drawableEnd="@drawable/ic_calendar"
+                            android:background="@drawable/card_desihn"
+                            android:backgroundTint="@color/white"
+                            android:inputType="text"
+                            android:padding="10dp"
+                            android:hint="Date"
+                            android:textColor="@color/black" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/customername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="14sp"
+                        android:background="@drawable/card_desihn"
+                        android:backgroundTint="@color/white"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:hint="@string/customername"
+                        android:textColor="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/mobilenumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/card_desihn"
+                        android:backgroundTint="@color/white"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:hint="@string/mobilenumber"
+                        android:textColor="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/numberofcumtomer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/card_desihn"
+                        android:backgroundTint="@color/white"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:inputType="text"
+                        android:hint="@string/number_of_customer"
+                        android:textColor="@color/black" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submitbtn"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="340dp"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/submit"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:background="@drawable/round_button"
+                    android:layout_marginEnd="40dp"
+                    android:layout_height="wrap_content">
+                </androidx.appcompat.widget.AppCompatButton>
+            </androidx.cardview.widget.CardView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

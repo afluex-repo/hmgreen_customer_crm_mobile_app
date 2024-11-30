@@ -119,7 +119,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Customer ID "
+                            android:text="@string/customerid"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="14sp"
@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Booking for "
+                            android:text="@string/booking_for"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="14sp"
@@ -173,7 +173,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Reference ID"
+                            android:text="@string/reference_id"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="14sp"
@@ -200,7 +200,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Receipt No."
+                            android:text="@string/receipt_no"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="14sp"
@@ -240,8 +240,8 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_height="130dp">
                 <LinearLayout
                     android:layout_width="0dp"
@@ -275,7 +275,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Bank "
+                            android:text="@string/bank"
                             android:fontFamily="sans-serif-condensed"
                             android:layout_gravity="center"
                             android:textAlignment="center"
@@ -306,7 +306,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Bank Branch "
+                            android:text="@string/bank_branch"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="12sp"
@@ -335,7 +335,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Transaction No. "
+                            android:text="@string/transaction_no"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="12sp"
@@ -375,7 +375,7 @@
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
-                        android:text="Payment Details"
+                        android:text="@string/payment_details"
                         android:textStyle="bold"
                         android:layout_gravity="end"
                         android:gravity="end"
@@ -401,7 +401,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Paid Amount"
+                            android:text="@string/paid_amount"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="12sp"
@@ -429,7 +429,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Total Amount"
+                            android:text="@string/total_amount"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="12sp"
@@ -456,7 +456,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Deposite Amount"
+                            android:text="@string/deposite_amount"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="12sp"
@@ -483,7 +483,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Balance Amount"
+                            android:text="@string/balance_amount"
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="12sp"
@@ -508,12 +508,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:padding="5dp"
-                android:text="DATES"
+                android:text="@string/dates"
                 android:layout_gravity="center"
                 android:textSize="16sp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp"
+                android:layout_marginEnd="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"/>
@@ -532,7 +532,7 @@
                     android:gravity="center"
                     android:fontFamily="sans-serif-condensed"
                     android:background="@color/grey"
-                    android:text="Booking Date"
+                    android:text="@string/booking_date"
                     android:layout_height="match_parent"/>
                 <TextView
                     android:layout_width="0dp"
@@ -542,7 +542,7 @@
                     android:gravity="center"
                     android:fontFamily="sans-serif-condensed"
                     android:background="@color/colorPrimary"
-                    android:text="Transaction Date"
+                    android:text="@string/transaction_date"
                     android:layout_height="match_parent"/>
                 <TextView
                     android:layout_width="0dp"
@@ -552,7 +552,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:background="@color/grey"
                     android:gravity="center"
-                    android:text="Payment Date"
+                    android:text="@string/payment_date"
                     android:layout_height="match_parent"/>
                 <TextView
                     android:layout_width="0dp"
@@ -563,7 +563,7 @@
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:gravity="center"
-                    android:text="Entry Date"
+                    android:text="@string/entry_date"
                     android:layout_height="match_parent"/>
             </LinearLayout>
             <LinearLayout
@@ -621,7 +621,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:padding="5dp"
-                android:text="ADDRESS"
+                android:text="@string/address"
                 android:layout_gravity="center"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"
@@ -645,7 +645,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:background="@color/grey"
                     android:padding="5dp"
-                    android:text="Address"
+                    android:text="@string/Address"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_width="0dp"
@@ -656,7 +656,7 @@
                     android:padding="5dp"
                     android:fontFamily="sans-serif-condensed"
                     android:background="@color/colorPrimary"
-                    android:text="State"
+                    android:text="@string/state"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_width="0dp"
@@ -667,7 +667,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:background="@color/grey"
                     android:gravity="center"
-                    android:text="Site"
+                    android:text="@string/site"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_width="0dp"
@@ -679,7 +679,7 @@
                     android:textSize="12sp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="City"
+                    android:text="@string/city"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_width="0dp"
@@ -691,7 +691,7 @@
                     android:textSize="12sp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Sector"
+                    android:text="@string/sector"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
             <LinearLayout
@@ -761,7 +761,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:padding="5dp"
-                android:text="PLOT DETAILS"
+                android:text="@string/plot_details"
                 android:layout_gravity="center"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"
@@ -785,7 +785,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:background="@color/grey"
                     android:padding="5dp"
-                    android:text="Plot No."
+                    android:text="@string/plot_no"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_width="0dp"
@@ -796,7 +796,7 @@
                     android:padding="5dp"
                     android:fontFamily="sans-serif-condensed"
                     android:background="@color/colorPrimary"
-                    android:text="Payment for"
+                    android:text="@string/payment_for"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_width="0dp"
@@ -807,7 +807,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:background="@color/grey"
                     android:gravity="center"
-                    android:text="Booking For"
+                    android:text="@string/booking_for"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>

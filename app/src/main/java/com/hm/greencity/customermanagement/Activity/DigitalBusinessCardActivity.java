@@ -337,6 +337,7 @@ ActivityDigitalBusinessCardBinding binding;
             }
         });
     }
+
     private void getData() {
         ApiServices apiServices = RetrofitClient.getApiServices();
         JsonObject requestLogin = new JsonObject();
@@ -361,10 +362,14 @@ ActivityDigitalBusinessCardBinding binding;
                     loadImage(binding.profileImage, resGetNote.getImage());
                     loadImage(binding.bgimage, resGetNote.getBackgroundImage());
 
-                    //Toast.makeText(DigitalBusinessCardActivity.this, "", Toast.LENGTH_LONG).show();
+                    binding.submitbutton.setVisibility(View.GONE);
+                    binding.updatebtn.setVisibility(View.VISIBLE);
+
                 } else {
                     Toast.makeText(DigitalBusinessCardActivity.this, "Response unsuccessful: " + response.message(), Toast.LENGTH_SHORT).show();
                     Log.e("Response Error", response.message());
+                    binding.submitbutton.setVisibility(View.VISIBLE);
+                    binding.updatebtn.setVisibility(View.GONE);
                 }
             }
             @Override

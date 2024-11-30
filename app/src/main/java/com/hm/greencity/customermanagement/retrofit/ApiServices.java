@@ -16,6 +16,8 @@ import com.hm.greencity.customermanagement.models.DueInstallment.ResponseDueInst
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponsePloatBooking;
 import com.hm.greencity.customermanagement.models.DueInstallmentDashBoard;
 import com.hm.greencity.customermanagement.models.Gallery.ResGallery;
+import com.hm.greencity.customermanagement.models.GetSite.ReqGetSite;
+import com.hm.greencity.customermanagement.models.GetSite.ResGetSite;
 import com.hm.greencity.customermanagement.models.HomeActivityDashBoard;
 import com.hm.greencity.customermanagement.models.LedgerReport.ResponseLedgerReport;
 import com.hm.greencity.customermanagement.models.Notes.CreateNote.ResCreateNote;
@@ -29,6 +31,9 @@ import com.hm.greencity.customermanagement.models.ResponseList.ResponseSite;
 import com.hm.greencity.customermanagement.models.ResponseLogin;
 import com.hm.greencity.customermanagement.models.ResponseStatusMessage;
 import com.hm.greencity.customermanagement.models.ResponseUpdateProfile;
+import com.hm.greencity.customermanagement.models.Site.ResSite;
+import com.hm.greencity.customermanagement.models.SiteVisit.ReqSiteVisit;
+import com.hm.greencity.customermanagement.models.SiteVisit.ResSiteVisit;
 import com.hm.greencity.customermanagement.models.UpdateCustomerProfile;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
 import com.hm.greencity.customermanagement.models.chatModel.ResponseChat;
@@ -167,8 +172,6 @@ public interface ApiServices {
     @POST("WebAPI/GetBussinessCard")
     Call<ResGetBusinessCard> getcarddetails(@Body JsonObject jsonObject);
 
-
-
     @Multipart
     @POST("WebAPI/UpdateBussinessCard")
     Call<ResUpdateBusinessCard> updatecard(
@@ -190,6 +193,13 @@ public interface ApiServices {
             @Part MultipartBody.Part Profile
     );
 
+    @POST("WebAPI/SaveVisitor")
+    Call<ResSiteVisit> savesitevisit(@Body ReqSiteVisit reqSiteVisit);
+
+//    @POST("WebAPI/GetVisitRequest")
+//    Call<ResGetSite>getvisitorlist(@Body ReqGetSite reqGetSite);
+//    @POST("WebAPI/sitelist")
+//    Call<ResSite>site();
 
 
 }

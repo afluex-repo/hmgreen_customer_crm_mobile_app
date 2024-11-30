@@ -32,7 +32,6 @@ import retrofit2.Response;
 
 
 
-
 public class FinalBusinessCardActivity extends AppCompatActivity {
     ActivityFinalBusinessCardBinding binding;
     private ApiServices apiServices;
@@ -54,11 +53,16 @@ public class FinalBusinessCardActivity extends AppCompatActivity {
     }
 
     private void onclicklistener() {
-        binding.backarrow.setOnClickListener(v -> {
-            Intent intent = new Intent(FinalBusinessCardActivity.this, DigitalBusinessCardActivity.class);
-            startActivity(intent);
-            finish();
+        binding.backarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinalBusinessCardActivity.this, AssociateContaner.class);
+                startActivity(intent);
+                finish();
+            }
         });
+
+
         binding.update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

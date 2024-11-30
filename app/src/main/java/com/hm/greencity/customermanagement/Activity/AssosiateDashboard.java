@@ -210,6 +210,9 @@ public class AssosiateDashboard extends BaseFragment {
      @BindView(R.id.digitalcardimageview)
      ImageView digitalcardimageview;
 
+     @BindView(R.id.siteVisitcard)
+     CardView siteVisitcard;
+
     private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
     AssociateContaner associateContaner;
@@ -277,6 +280,13 @@ public class AssosiateDashboard extends BaseFragment {
             @Override
             public void onClick(View view) {
                 goToActivity(AssociateProfile.class, null);
+
+            }
+        });
+        siteVisitcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToActivity(SiteVisitActivity.class, null);
 
             }
         });

@@ -358,12 +358,10 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
 
     public void getProductLst() {
         JsonObject jsonObject = new JsonObject();
-
         Call<ResponseSite> call = apiServices.sitelist(jsonObject);
         call.enqueue(new Callback<ResponseSite>() {
             @Override
             public void onResponse(Call<ResponseSite> call, Response<ResponseSite> response) {
-
                 hideLoading();
                 if (response.body().getStatusCode().equalsIgnoreCase("200")) {
                     lstsites = response.body().getLstSite();
@@ -371,47 +369,14 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                     lstBlocks = response.body().getLstBlock();
                     for (int i = 0; i < lstsites.size(); i++) {
                         sitemenu.getMenu().add(0, 0, i, lstsites.get(i).getSiteName());
-
-                        //  PK_SiteID = response.body().getLstSite().get(i).getSiteID();
-
-
                     }
-
-//                    ----------------------------
-
-
-                    // Toast.makeText(ReInvestment.this, response+"", Toast.LENGTH_SHORT).show();
-                   /* for (int i = 0; i < lstSectors.size(); i++) {
-
-                        sectorMenu.getMenu().add(0, 0, i, lstSectors.get(i).getPhaseName());
-
-                        PK_SectorID = response.body().getLstPhase().get(i).getPhaseID();
-
-                        // Toast.makeText(context,selectSiteTypeid+ "", Toast.LENGTH_SHORT).show();
-                        //  getPackage();
-
-                    }
-                    for (int i = 0; i < lstBlocks.size(); i++) {
-
-                        blockMenu.getMenu().add(0, 0, i, lstBlocks.get(i).getBlockName());
-
-                        PK_BlockID = response.body().getLstBlock().get(i).getBlockID();
-
-                        // Toast.makeText(context,selectSiteTypeid+ "", Toast.LENGTH_SHORT).show();
-                        //  getPackage();
-
-                    }
-*/
 
                 } else
                     showMessage(response.body().getMessage());
-
             }
-
             @Override
             public void onFailure(Call<ResponseSite> call, Throwable t) {
                 hideLoading();
-                // Toast.makeText(ReInvestment.this,t+ "", Toast.LENGTH_SHORT).show();
             }
 
         });

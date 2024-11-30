@@ -1,26 +1,21 @@
 package com.hm.greencity.customermanagement.adapters;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.models.LedgerReport.PlotLadger;
-
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AdapterLedgerCustomer extends RecyclerView.Adapter<AdapterLedgerCustomer.ViewHolder> {
 
+
+public class AdapterLedgerCustomer extends RecyclerView.Adapter<AdapterLedgerCustomer.ViewHolder> {
     private List<PlotLadger> models;
     private Context context;
-
     public AdapterLedgerCustomer(List<PlotLadger> models, Context context) {
         this.models = models;
         this.context = context;
@@ -32,6 +27,7 @@ public class AdapterLedgerCustomer extends RecyclerView.Adapter<AdapterLedgerCus
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_ladger_report, viewGroup, false);
         return new ViewHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {

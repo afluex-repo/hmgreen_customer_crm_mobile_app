@@ -26,11 +26,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
                     <ImageView
                         android:id="@+id/bgimage"
                         android:layout_width="match_parent"
@@ -42,7 +40,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
                     <TextView
                         android:id="@+id/textOverlay"
                         android:layout_width="wrap_content"
@@ -57,11 +54,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.331" />
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/nnerLayout"
                     android:layout_width="match_parent"
@@ -80,7 +73,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintHorizontal_bias="0.1"
                         app:layout_constraintVertical_bias="1.0" />
-
                     <ImageView
                         android:id="@+id/cameraIcon"
                         android:layout_width="wrap_content"
@@ -92,10 +84,8 @@
                         app:layout_constraintTop_toTopOf="@id/profileImage"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintVertical_bias="0.5"
-                        android:layout_margin="8dp" /> <!-- Adjust margin as needed -->
-
+                        android:layout_margin="8dp" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -124,7 +114,7 @@
                             android:layout_height="wrap_content">
                             <EditText
                                 android:id="@+id/company_name"
-                                android:hint="Name"
+                                android:hint="@string/name"
                                 android:inputType="textAutoCorrect"
                                 android:layout_marginBottom="10dp"
                                 android:layout_marginStart="10dp"
@@ -148,7 +138,7 @@
                             android:layout_height="wrap_content">
                             <EditText
                                 android:id="@+id/businessnaem"
-                                android:hint="Business Name"
+                                android:hint="@string/business_name"
                                 android:inputType="textAutoCorrect"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
@@ -172,7 +162,7 @@
                             android:layout_height="wrap_content">
                             <EditText
                                 android:id="@+id/jobtitle"
-                                android:hint="Job Title"
+                                android:hint="@string/job_title"
                                 android:inputType="textAutoCorrect"
                                 android:layout_marginBottom="10dp"
                                 android:layout_marginStart="10dp"
@@ -197,7 +187,7 @@
                             android:layout_height="wrap_content">
                             <EditText
                                 android:id="@+id/designation"
-                                android:hint="Business Description"
+                                android:hint="@string/business_description"
                                 android:inputType="textAutoCorrect"
                                 android:layout_marginBottom="10dp"
                                 android:layout_marginStart="10dp"
@@ -241,7 +231,7 @@
                                 android:layout_marginEnd="10dp"
                                 android:layout_marginBottom="10dp"
                                 android:background="@null"
-                                android:hint="Phone"
+                                android:hint="@string/phone"
                                 android:inputType="textAutoCorrect"
                                 android:textSize="14sp" />
                             <View
@@ -260,7 +250,7 @@
                        android:layout_height="wrap_content">
                        <EditText
                            android:id="@+id/Whatsapp"
-                           android:hint="Whatsapp"
+                           android:hint="@string/whatsapp"
                            android:inputType="textAutoCorrect"
                            android:layout_marginStart="10dp"
                            android:layout_marginEnd="10dp"
@@ -286,7 +276,7 @@
                           android:layout_height="wrap_content">
                           <EditText
                               android:id="@+id/email"
-                              android:hint="Email"
+                              android:hint="@string/email"
                               android:inputType="textAutoCorrect"
                               android:layout_marginBottom="10dp"
                               android:layout_marginStart="10dp"
@@ -329,7 +319,7 @@
                                 android:layout_marginEnd="10dp"
                                 android:layout_marginBottom="10dp"
                                 android:background="@null"
-                                android:hint="FaceBook Id"
+                                android:hint="@string/facebook_id"
                                 android:inputType="textAutoCorrect"
                                 android:textSize="14sp" />
                             <View
@@ -347,7 +337,7 @@
                          android:layout_height="wrap_content">
                          <EditText
                              android:id="@+id/insta"
-                             android:hint="Instagram Id"
+                             android:hint="@string/instagram_id"
                              android:inputType="textAutoCorrect"
                              android:layout_marginStart="10dp"
                              android:layout_marginEnd="10dp"
@@ -372,7 +362,7 @@
                            android:layout_height="wrap_content">
                            <EditText
                                android:id="@+id/telegram"
-                               android:hint="Telegram Id"
+                               android:hint="@string/telegram_id"
                                android:inputType="textAutoCorrect"
                                android:layout_marginBottom="10dp"
                                android:layout_marginStart="10dp"
@@ -398,7 +388,7 @@
                          android:layout_height="wrap_content">
                          <EditText
                              android:id="@+id/linkedIn"
-                             android:hint="LinkedIn Id"
+                             android:hint="@string/linkedin_id"
                              android:inputType="textAutoCorrect"
                              android:layout_marginBottom="10dp"
                              android:layout_marginStart="10dp"
@@ -438,7 +428,7 @@
                             android:layout_height="wrap_content">
                             <EditText
                                 android:id="@+id/address"
-                                android:hint="Address"
+                                android:hint="@string/address"
                                 android:inputType="textAutoCorrect"
                                 android:layout_marginBottom="10dp"
                                 android:layout_marginStart="10dp"
@@ -462,7 +452,7 @@
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/submitbutton"
                         android:layout_width="match_parent"
-                        android:text="Submit"
+                        android:text="@string/submit"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="60dp"
@@ -474,7 +464,7 @@
                         android:visibility="gone"
                         android:id="@+id/updatebtn"
                         android:layout_width="match_parent"
-                        android:text="Update"
+                        android:text="@string/update"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="60dp"

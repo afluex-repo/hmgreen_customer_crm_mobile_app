@@ -27,13 +27,13 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="0dp"
-                    android:text="Skip"
+                    android:text="@string/skip"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/businesscard"
                     android:layout_width="0dp"
-                    android:text="Create Business Card"
+                    android:text="@string/create_business_card"
                     android:layout_weight="1"
                     android:layout_gravity="end"
                     android:gravity="end"

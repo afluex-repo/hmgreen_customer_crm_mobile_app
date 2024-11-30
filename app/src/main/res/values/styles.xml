@@ -71,6 +71,13 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+        <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <!-- Customize the dropdown here -->
+            <!-- For example, change the corner radius, border color, etc. -->
+        </style>
+
+
+
 
 
 
