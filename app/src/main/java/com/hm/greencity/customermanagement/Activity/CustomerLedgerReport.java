@@ -98,34 +98,20 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ladger_report);
         ButterKnife.bind(this);
-
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_id);
-
         toggle = new ActionBarDrawerToggle(CustomerLedgerReport.this, drawerLayout, R.string.nav_open, R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.backarrow);
-
         navigationView = (NavigationView) findViewById(R.id.navigation_id);
-//        navigationView.setNavigationItemSelectedListener(CustomerLedgerReport.this);
         navigationView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToActivityWithFinish(context,HomeTestActivity.class,null);
-//               goToActivityWithFinish(context,HomeTestActivity.class,null);
             }
         });
-
-//        View hView = navigationView.getHeaderView(0);
-//        TextView nav_user = (TextView) hView.findViewById(R.id.nav_header);
-//
-//        TextView nav_id = (TextView) hView.findViewById(R.id.nav_header_id);
-//        nav_id.setText(PreferencesManager.getInstance(context).getLoginId());
-
-//        nav_user.setText("Welcome " + PreferencesManager.getInstance(context).getFull_Name());
 
         llcontainer = findViewById(R.id.container1);
         cvcontainer = findViewById(R.id.container);
@@ -163,15 +149,11 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
         object.addProperty("PhaseID", sector);
         object.addProperty("BlockID", block);
         object.addProperty("PlotNumber", plotnumber);
-
-
         Call<ResponseLedgerReport> call = apiServices.LedgerReportList(object);
         call.enqueue(new Callback<ResponseLedgerReport>() {
             @Override
             public void onResponse(Call<ResponseLedgerReport> call, Response<ResponseLedgerReport> response) {
                 hideLoading();
-                // LoggerUtil.logItem(response.body());
-
                 if (response.body().getStatusCode().equalsIgnoreCase("200")) {
                     llcontainer.setVisibility(View.VISIBLE);
                     cvcontainer.setVisibility(View.VISIBLE);
@@ -200,8 +182,6 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
 
         });
     }
-
-
     private void searchhDialog() {
         bottomSheetDialog = new BottomSheetDialog(context);
         View sheetView = context.getLayoutInflater().inflate(R.layout.dilog_ledger, null);
@@ -219,23 +199,12 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
         PK_SiteID ="";
         PK_SectorID="";
         PK_BlockID="";
-
         getProductLst();
-
-        //  getSector();
-        //  getBlock();
-
         lstsites = new ArrayList<>();
         lstSectors = new ArrayList<>();
         sublstSectors = new ArrayList<>();
         lstBlocks = new ArrayList<>();
         sublstBlocks = new ArrayList<>();
-
-
-        //  SelectSite = new ArrayList<String>();
-        //  SelectSector = new ArrayList<String>();
-        // SelectBlock = new ArrayList<String>();
-        // SelectSiteType=new ArrayList<String>();
         tvSelectSite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -243,19 +212,13 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         int position = item.getOrder();
-
                         selectBlock.setText("");
                         tvSector.setText("");
                         blockMenu.getMenu().clear();
                         sectorMenu.getMenu().clear();
                         tvSelectSite.setText(lstsites.get(position).getSiteName());
-
                         PK_SiteID = lstsites.get(position).getSiteID();
                         setSector(lstsites.get(position).getSiteID());
-
-
-                        //  getSector();
-                        //  packageMenu = lstPackages.get(position).getProductName();
                         return true;
                     }
                 });
@@ -271,14 +234,10 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                     public boolean onMenuItemClick(MenuItem item) {
                         int position = item.getOrder();
                         selectBlock.setText("");
-
                         blockMenu.getMenu().clear();
                         tvSector.setText(sublstSectors.get(position).getPhaseName());
                         PK_SectorID = sublstSectors.get(position).getPhaseID();
                         setBlock(sublstSectors.get(position).getPhaseID());
-
-
-                        //  packageMenu = lstPackages.get(position).getProductName();
                         return true;
                     }
                 });
@@ -298,23 +257,18 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                         int position = item.getOrder();
                         selectBlock.setText(sublstBlocks.get(position).getBlockName());
                         PK_BlockID = sublstBlocks.get(position).getBlockID();
-
-                        //  packageMenu = lstPackages.get(position).getProductName();
                         return true;
                     }
                 });
                 blockMenu.show();
             }
         });
-
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
-
-
         btnSearch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -330,8 +284,6 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                 }
             }
         });
-
-
         bottomSheetDialog.setCancelable(false);
         bottomSheetDialog.setCanceledOnTouchOutside(false);
         bottomSheetDialog.show();
@@ -340,7 +292,6 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
     private void datePicker(final TextView et) {
         Calendar cal = Calendar.getInstance();
         int mYear, mMonth, mDay;
-
         mYear = cal.get(Calendar.YEAR);
         mMonth = cal.get(Calendar.MONTH);
         mDay = cal.get(Calendar.DAY_OF_MONTH);
@@ -382,9 +333,7 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
         });
     }
 
-
     private void setSector(String siteID) {
-
         sublstSectors.clear();
         sectorMenu.getMenu().clear();
         for (int i = 0; i < lstSectors.size(); i++) {
@@ -392,25 +341,11 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                 sublstSectors.add(lstSectors.get(i));
             }
         }
-
-
         for (int i = 0; i < sublstSectors.size(); i++) {
-
             sectorMenu.getMenu().add(0, 0, i, sublstSectors.get(i).getPhaseName());
-
-             // PK_SectorID = sublstSectors.get(i).getPhaseID();
-
-            // Toast.makeText(context,selectSiteTypeid+ "", Toast.LENGTH_SHORT).show();
-            //  getPackage();
-
         }
-
-
     }
-
-
     private void setBlock(String blockID) {
-
         sublstBlocks.clear();
         blockMenu.getMenu().clear();
         for (int i = 0; i < lstBlocks.size(); i++) {
@@ -446,13 +381,11 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("My Profile");
-        final View inflateForm = getLayoutInflater().inflate(R.layout.customer_alert_dialog, null); // Get custom login form view.
-        builder.setView(inflateForm); // Set above view in alert dialog.
+        final View inflateForm = getLayoutInflater().inflate(R.layout.customer_alert_dialog, null);
+        builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
-
-        final android.app.AlertDialog dialog = builder.show(); // Because only AlertDialog has cancel method.
-
+        final android.app.AlertDialog dialog = builder.show();
         this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
         this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
         this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
@@ -464,10 +397,6 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
         this.E9 = (EditText) inflateForm.findViewById(R.id.customer_bankBranch);
         this.E10 = (EditText) inflateForm.findViewById(R.id.customer_pan_no);
         this.E11 = (EditText) inflateForm.findViewById(R.id.customer_bankname);
-//        this.E10
-//        this.E8=
-
-
         E1.setText(firstName + " " + lastName);
         E2.setText(mobile);
         E3.setText(email);
@@ -479,7 +408,6 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
         E9.setText(bankBranch);
         E10.setText(panNumber);
         E11.setText(bankName);
-
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         supplierSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -490,104 +418,20 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
 
     }
 
-
-    //====================================================| Navigation |====================================================
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//        drawerLayout.closeDrawer(Gravity.LEFT);
-//       goToActivityWithFinish(context,HomeTestActivity.class,null);
-////        if (menuItem.getItemId() == R.id.due_installment_list) {
-////            goToActivity(context, DueInstallment.class, null);
-////
-////        }
-////        if (menuItem.getItemId() == R.id.all_ledger) {
-////            goToActivity(context, CustomerLedgerReport.class, null);
-////
-////        }
-////        if (menuItem.getItemId() == R.id.my_booking_list) {
-////
-////            goToActivity(context, PlotBooking.class, null);
-////        }
-////        if (menuItem.getItemId() == R.id.my_profile) {
-////            showLoading();
-////            JsonObject jsonObject = new JsonObject();
-////            jsonObject.addProperty("LoginId", PreferencesManager.getInstance(context).getLoginId());
-////            Call<CustomerMyProfile> customerMyProfileCall = apiServices.getProfile(jsonObject);
-////            customerMyProfileCall.enqueue(new Callback<CustomerMyProfile>() {
-////                @Override
-////                public void onResponse(Call<CustomerMyProfile> call, Response<CustomerMyProfile> response) {
-////                    hideLoading();
-////                    if (response.body().getStatusCode().equalsIgnoreCase("200"))
-////                        customAlertDialog(response.body().getFirstName(), response.body().getAccountNo(), response.body().getAddress(), response.body().getBankName(), response.body().getBankBranch(), response.body().getBankHolderName(),
-////                                response.body().getCity(), response.body().getCustomberId(), response.body().getDob(), response.body().getEmail(), response.body().getGaurdianName(), response.body().getGaurdianRelation(), response.body().getGender(), response.body().getIfsc(), response.body().getJoiningDate(), response.body().getLastName(), response.body().getMobile(), response.body().getPanNumber(), response.body().getPinCode(), response.body().getSponsorId(), response.body().getFirstName(), response.body().getSponsorName(), response.body().getState());
-////                    else
-////                        showMessage(response.body().getMessage());
-////                }
-////
-////
-////                @Override
-////                public void onFailure(Call<CustomerMyProfile> call, Throwable throwable) {
-////
-////                }
-////            });
-////
-////
-//////            Intent intent = new Intent(HomeActivity.this, ProductsActivity.class);
-//////            startActivity(intent);
-////        }
-////        if (menuItem.getItemId() == R.id.dashboard) {
-////           goToActivityWithFinish(context,HomeTestActivity.class,null);
-//////            Intent intent = new Intent(HomeActivity.this, SuppliersActivity.class);
-//////            startActivity(intent);
-////        }
-////        if (menuItem.getItemId() == R.id.profiles_id) {
-//////            Intent intent = new Intent(HomeActivity.this, ProfilesActivity.class);
-//////            startActivity(intent);
-////        }
-////        if (menuItem.getItemId() == R.id.change_password) {
-////
-////            changePassword();
-//////            Intent intent = new Intent(HomeActivity.this, UsersActivity.class);
-//////            startActivity(intent);
-////        }
-////        if (menuItem.getItemId() == R.id.about_developer) {
-////            aboutMe();
-////        }
-////        if (menuItem.getItemId() == R.id.log_out) {
-////            PreferencesManager.getInstance(context).clear();
-////            //===============================================| Remove SharedPreferences |===========================================
-//////            SharedPreferences.Editor editor = preferences.edit();
-//////            editor.clear(); //Remove from login.xml file
-//////            editor.commit();
-////
-////            //======================================================================================================================
-////
-//////               goToActivity(LoginActivity.class,);
-////            goToActivityWithFinish(context, LoginActivity.class, null);
-////
-////        }
-//        return false;
-//    }
-
     private void changePassword() {
 
 
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Change Password");
-        final View inflateForm = getLayoutInflater().inflate(R.layout.custom_alert_change_password, null); // Get custom login form view.
-        builder.setView(inflateForm); // Set above view in alert dialog.
+        final View inflateForm = getLayoutInflater().inflate(R.layout.custom_alert_change_password, null);
+        builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
-
         final android.app.AlertDialog dialog = builder.show();
-
-
         this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
         this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
         this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
-
-
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -596,8 +440,6 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                 dialog.cancel();
             }
         });
-
-
         supplierSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -606,11 +448,6 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                 String compPassword = E3.getText().toString().trim();
                 if (!oldPassword.isEmpty()) {
                     if (newPassword.equals(compPassword)) {
-
-                        //    request POST 'http://demo1.afluex.com/webapi/ChnagePassword' \
-//            --form 'OldPassword="123456"' \
-//            --form 'NewPassword="12345"' \
-//            --form 'CustomerID="96"'
                         JsonObject jsonObject = new JsonObject();
                         jsonObject.addProperty("OldPassword", oldPassword);
                         jsonObject.addProperty("NewPassword", newPassword);
@@ -640,10 +477,8 @@ public class CustomerLedgerReport extends BaseActivity /*implements NavigationVi
                 } else {
                     showMessage("Enter old password");
                 }
-
             }
         });
-
 
     }
 

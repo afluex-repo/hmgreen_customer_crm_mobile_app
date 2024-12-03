@@ -57,6 +57,8 @@ public class SiteVisitorListActivity extends AppCompatActivity {
         layoutManager.setStackFromEnd(true);
         binding.visitorlistrecyclerview.setLayoutManager(layoutManager);
         binding.visitorlistrecyclerview.setAdapter(messageAdapter);
+
+
     }
 
     private void fetchvisitor() {

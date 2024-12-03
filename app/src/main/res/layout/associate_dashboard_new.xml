@@ -45,6 +45,19 @@
                         android:layout_height="wrap_content"
                         android:queryHint="Search..."
                         app:layout_constraintTop_toTopOf="parent"/>
+                    <ImageButton
+                        android:id="@+id/language"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/baseline_language_24"
+                        android:backgroundTint="@color/white"
+                        android:clickable="true"
+                        android:onClick="makePhoneCall"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9" />
                 </RelativeLayout>
                 <TextView
                     android:visibility="gone"
@@ -59,13 +72,14 @@
                     android:textSize="16sp" />
                 <ImageButton
                     android:id="@+id/support"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_settings_black_24dp"
+                    android:background="@drawable/baseline_contact_support_24"
                     android:scaleX="0.9"
-                    android:scaleY="0.9" />
+                    android:scaleY="0.9"
+                    app:tint="@color/white" />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -217,14 +231,12 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="16dp"
                 android:paddingBottom="8dp">
-
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_img"
                     android:layout_width="80dp"
@@ -235,7 +247,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.5"
                     tools:ignore="VectorDrawableCompat" />
-
                 <TextView
                     android:id="@+id/customer"
                     android:layout_width="wrap_content"
@@ -262,7 +273,6 @@
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/customer" />
-
                 <TextView
                     android:id="@+id/tv_loginId"
                     android:layout_width="0dp"
@@ -275,7 +285,6 @@
                     app:layout_constraintEnd_toStartOf="@+id/profile_img"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_username" />
-
                 <TextView
                     android:id="@+id/tv_activestatus"
                     android:layout_width="wrap_content"
@@ -1334,7 +1343,7 @@
                     android:id="@+id/textnotes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Notes"
+                    android:text="@string/notes"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/black"
                     android:textSize="13sp"
@@ -1608,7 +1617,7 @@
 
         <TextView
             android:id="@+id/textView11"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="235dp"
             android:text="@string/Plotdetails"
@@ -1724,6 +1733,7 @@
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_contactus"
+            android:visibility="gone"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:background="@color/white"
@@ -1737,7 +1747,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="8dp">
-
                 <ImageView
                     android:id="@+id/imageViewdueInstallment1"
                     android:layout_width="56dp"
@@ -1785,7 +1794,7 @@
             android:fontFamily="@font/lexend"
             android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cv_contactus" />
+            app:layout_constraintTop_toBottomOf="@+id/cv_plot_ledger" />
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_change_password"
             android:layout_width="0dp"
@@ -1881,7 +1890,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chat_with_us"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
                     android:fontFamily="@font/lexend"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1951,36 +1961,39 @@
             app:cardCornerRadius="10dp"
             app:cardElevation="6dp"
             app:cardUseCompatPadding="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cv_change_password"
+            app:layout_constraintStart_toEndOf="@+id/cv_plot_avaibility"
+           app:layout_constraintTop_toTopOf="@+id/cv_plot_avaibility"
             app:layout_constraintWidth_percent="0.33">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="8dp">
+
                 <ImageView
                     android:id="@+id/sitevisitimage"
                     android:layout_width="48dp"
                     android:layout_height="42dp"
-                    app:tint="#2596be"
                     android:background="@drawable/sitevisit"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="VectorDrawableCompat"/>
+                    app:tint="#2596be"
+                    tools:ignore="VectorDrawableCompat" />
+
                 <TextView
                     android:id="@+id/sitevisittext"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/site_visit"
-                    android:textSize="13sp"
                     android:layout_marginTop="45dp"
+                    android:fontFamily="@font/lexend"
                     android:gravity="center"
+                    android:text="@string/site_visit"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/lexend"
+                    android:textSize="13sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

@@ -284,7 +284,7 @@
     <string name="sEarch">Search</string>
     <string name="starTdate">Start Date</string>
     <string name="customerid">CustomerID</string>
-    <string name="chat_with_us">Chat with us</string>
+    <string name="chat_with_us">Drop a support request</string>
     <string name="paidamount">Paid Amount :</string>
     <string name="instagram">Instagram</string>
     <string name="Facebook">Facebook</string>
@@ -303,7 +303,7 @@
     <string name="Totaldownline">Total downline</string>
     <string name="Totaldirects">Total directs</string>
     <string name="business_report_android_textcolor">Business Report android:textColor=</string>
-    <string name="notes">Notes</string>
+    <string name="notes"> My Notes</string>
     <string name="gallery">Gallery</string>
     <string name="Instagram" >Instagram</string>
     <string name="hm_group_of_Companies" >Hm Group OF Companies</string>

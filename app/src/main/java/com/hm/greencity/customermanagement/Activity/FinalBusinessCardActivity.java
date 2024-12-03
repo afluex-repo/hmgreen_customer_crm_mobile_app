@@ -62,7 +62,6 @@ public class FinalBusinessCardActivity extends AppCompatActivity {
             }
         });
 
-
         binding.update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +70,7 @@ public class FinalBusinessCardActivity extends AppCompatActivity {
                finish();
             }
         });
+
         binding.share.setOnClickListener(view -> {
             binding.visitingCard.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(), "Capturing Card Image", Toast.LENGTH_SHORT).show();
@@ -119,6 +119,8 @@ public class FinalBusinessCardActivity extends AppCompatActivity {
                     binding.contact.setOnClickListener(v -> openSMS(phone));
                     binding.call.setOnClickListener(v -> makeCall(phone));
                     binding.linkedIn.setOnClickListener(v -> openUrl(linkedinUrl));
+
+
                 } else {
                     Toast.makeText(FinalBusinessCardActivity.this, "Response unsuccessful: " + response.message(), Toast.LENGTH_SHORT).show();
                     Log.e("Response Error", response.message());
@@ -172,27 +174,7 @@ public class FinalBusinessCardActivity extends AppCompatActivity {
         }
     }
 
-//    public Bitmap ViewShot(View v) {
-//        int height = v.getHeight();
-//        int width = v.getWidth();
-//        Bitmap b = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-//        Canvas c = new Canvas (b);
-//        v.layout(0, 0 , v.getLayoutParams().width=720, v.getLayoutParams().height=470);
-//        v.draw(c);
-//
-//        Intent intent =new Intent(Intent.ACTION_SEND);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        intent.setType("image/jpeg");
-//        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-//        b.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-//        String path = MediaStore.Images.Media.insertImage(getContentResolver(),
-//                b, "Title", null);
-//        Uri imageUri =  Uri.parse(path);
-//        intent.putExtra(Intent.EXTRA_STREAM, imageUri);
-//        startActivity(Intent.createChooser(intent, "Select"));
-//        return b;
-//
-//    }
+
     public Bitmap ViewShot(View v) {
         int height = v.getHeight();
         int width = v.getWidth();

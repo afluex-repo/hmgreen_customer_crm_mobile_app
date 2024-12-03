@@ -2,7 +2,6 @@ package com.hm.greencity.customermanagement.Activity;
 import static com.hm.greencity.customermanagement.Activity.FinalBusinessCardActivity.BASE_URL;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
@@ -24,11 +23,13 @@ import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.Network.RetrofitClient;
 import com.hm.greencity.customermanagement.Network.RetrofitClient1;
 import com.hm.greencity.customermanagement.R;
+import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.databinding.ActivityDigitalBusinessCardBinding;
 import com.hm.greencity.customermanagement.models.BusinessCard.CreateBusinessCard.ResCreateBusinessCard;
 import com.hm.greencity.customermanagement.models.BusinessCard.GetBusinessCard.ResGetBusinessCard;
 import com.hm.greencity.customermanagement.models.BusinessCard.UpdateBusinessCard.ResUpdateBusinessCard;
+import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.retrofit.ApiServices;
 import com.squareup.picasso.Picasso;
 import java.io.File;
@@ -43,7 +44,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class DigitalBusinessCardActivity extends AppCompatActivity {
+
+public class DigitalBusinessCardActivity extends BaseActivity {
 ActivityDigitalBusinessCardBinding binding;
     private static final int REQUEST_CODE_CAMERA = 1;
     private static final int REQUEST_CODE_GALLERY = 2;
@@ -61,7 +63,14 @@ ActivityDigitalBusinessCardBinding binding;
         setContentView(binding.getRoot());
         initview();
         onclicklistener();
+
     }
+
+    @Override
+    public void onNoteDelete(LstNotepad note) {
+
+    }
+
     private void onclicklistener() {
         binding.submitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,9 +112,13 @@ ActivityDigitalBusinessCardBinding binding;
         });
 
     }
+
     private void initview() {
+        binding.submitbutton.setVisibility(View.VISIBLE);
+        binding.updatebtn.setVisibility(View.GONE);
         getData();
     }
+
     private void showImageSourceDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Select Image Source");
@@ -134,6 +147,7 @@ ActivityDigitalBusinessCardBinding binding;
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, REQUEST_CODE_CAMERA);
     }
+
     private void openGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(galleryIntent, REQUEST_CODE_GALLERY);
@@ -268,9 +282,9 @@ ActivityDigitalBusinessCardBinding binding;
         }
         return file.exists() ? file : null;
     }
+
     private void updateCard() {
-        // Create RequestBody for text data
-        RequestBody businessId = RequestBody.create(MultipartBody.FORM, PreferencesManager.getInstance(this).getPkBussinessCardId());
+        RequestBody businessId = RequestBody.create(MultipartBody.FORM, PreferencesManager.getInstance(this).getPk_BussinessCardId());
         RequestBody userId = RequestBody.create(MultipartBody.FORM, PreferencesManager.getInstance(this).getUserId());
         RequestBody companyName = RequestBody.create(MultipartBody.FORM, binding.companyName.getText().toString());
         RequestBody businessName = RequestBody.create(MultipartBody.FORM, binding.businessnaem.getText().toString());
@@ -284,11 +298,8 @@ ActivityDigitalBusinessCardBinding binding;
         RequestBody facebook = RequestBody.create(MultipartBody.FORM, binding.fb.getText().toString());
         RequestBody linkdin = RequestBody.create(MultipartBody.FORM, binding.linkedIn.getText().toString());
         RequestBody telegram = RequestBody.create(MultipartBody.FORM, binding.telegram.getText().toString());
-        // Convert ImageView images to File
         File profileImageFile = getFileFromImageView(binding.profileImage);
         File coverImageFile = getFileFromImageView(binding.bgimage);
-
-        // Create MultipartBody.Part for images
         MultipartBody.Part profileImagePart = profileImageFile != null ?
                 MultipartBody.Part.createFormData("Profile", profileImageFile.getName(),
                         RequestBody.create(MediaType.parse("image/jpeg"), profileImageFile)) : null;
@@ -296,7 +307,6 @@ ActivityDigitalBusinessCardBinding binding;
         MultipartBody.Part coverImagePart = coverImageFile != null ?
                 MultipartBody.Part.createFormData("CoverImage", coverImageFile.getName(),
                         RequestBody.create(MediaType.parse("image/jpeg"), coverImageFile)) : null;
-        // Call your API with multipart data
         ApiServices apiServices = RetrofitClient1.getClient("https://crm.hmgreencity.com/").create(ApiServices.class);
         Call<ResUpdateBusinessCard> call = apiServices.updatecard(
                 businessId,
@@ -316,15 +326,13 @@ ActivityDigitalBusinessCardBinding binding;
                 coverImagePart,
                 profileImagePart
         );
-
-        // Enqueue the call
         call.enqueue(new Callback<ResUpdateBusinessCard>() {
             @Override
             public void onResponse(Call<ResUpdateBusinessCard> call, Response<ResUpdateBusinessCard> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Intent intent = new Intent(DigitalBusinessCardActivity.this, FinalBusinessCardActivity.class);
                     startActivity(intent);
-                    Toast.makeText(DigitalBusinessCardActivity.this, "Document Uploaded Successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DigitalBusinessCardActivity.this, "Document update Successfully", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(DigitalBusinessCardActivity.this, "Response unsuccessful: " + response.message(), Toast.LENGTH_SHORT).show();
                     Log.e("Response Error", response.toString());
@@ -334,6 +342,57 @@ ActivityDigitalBusinessCardBinding binding;
             public void onFailure(Call<ResUpdateBusinessCard> call, Throwable t) {
                 Toast.makeText(DigitalBusinessCardActivity.this, "Upload Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.e("Upload Error", t.toString());
+            }
+        });
+    }
+
+    private void getData1() {
+        ApiServices apiServices = RetrofitClient.getApiServices();
+        JsonObject requestLogin = new JsonObject();
+        requestLogin.addProperty("Fk_UserID", PreferencesManager.getInstance(this).getUserId());
+
+        Call<ResGetBusinessCard> call = apiServices.getcarddetails(requestLogin);
+        call.enqueue(new Callback<ResGetBusinessCard>() {
+            @Override
+            public void onResponse(Call<ResGetBusinessCard> call, Response<ResGetBusinessCard> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // If the response is successful and the body is not null, set the business card data
+                    ResGetBusinessCard resGetNote = response.body();
+
+                    // Save Business Card ID in Preferences
+                    PreferencesManager.getInstance(context).setPk_BussinessCardId(resGetNote.getPk_BussinessCardId());
+                    // Populate the UI with the business card data
+                    binding.companyName.setText(resGetNote.getName());
+                    binding.jobtitle.setText(resGetNote.getJobTitle());
+                    binding.businessnaem.setText(resGetNote.getDescription());
+                    binding.phone.setText(resGetNote.getMobileNo());
+                    binding.email.setText(resGetNote.getEmailId());
+                    binding.address.setText(resGetNote.getAddress());
+                    binding.fb.setText(resGetNote.getFacebook());
+                    binding.insta.setText(resGetNote.getInstagram());
+                    binding.Whatsapp.setText(resGetNote.getWhatsapp());
+                    binding.linkedIn.setText(resGetNote.getLinkdin());
+                    binding.telegram.setText(resGetNote.getLinkdin());
+
+                    // Load images if available
+                    loadImage(binding.profileImage, resGetNote.getImage());
+                    loadImage(binding.bgimage, resGetNote.getBackgroundImage());
+
+                    // Hide the "Submit" button and show the "Update" button since the card exists
+                    binding.submitbutton.setVisibility(View.GONE);
+                    binding.updatebtn.setVisibility(View.VISIBLE);
+                } else {
+                    // If no business card data is found, show the "Submit" button
+                    binding.submitbutton.setVisibility(View.VISIBLE);
+                    binding.updatebtn.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResGetBusinessCard> call, Throwable t) {
+                // Handle failure cases (network failure, etc.)
+                Toast.makeText(DigitalBusinessCardActivity.this, "Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Log.e("CreateNote Error", t.toString());
             }
         });
     }
@@ -348,37 +407,45 @@ ActivityDigitalBusinessCardBinding binding;
             public void onResponse(Call<ResGetBusinessCard> call, Response<ResGetBusinessCard> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     ResGetBusinessCard resGetNote = response.body();
-                    binding.companyName.setText(resGetNote.getName());
-                    binding.jobtitle.setText(resGetNote.getJobTitle());
-                    binding.businessnaem.setText(resGetNote.getDescription());
-                    binding.phone.setText(resGetNote.getMobileNo());
-                    binding.email.setText(resGetNote.getEmailId());
-                    binding.address.setText(resGetNote.getAddress());
-                    binding.fb.setText(resGetNote.getFacebook());
-                    binding.insta.setText(resGetNote.getInstagram());
-                    binding.Whatsapp.setText(resGetNote.getWhatsapp());
-                    binding.linkedIn.setText(resGetNote.getLinkdin());
-                    binding.telegram.setText(resGetNote.getLinkdin());
-                    loadImage(binding.profileImage, resGetNote.getImage());
-                    loadImage(binding.bgimage, resGetNote.getBackgroundImage());
+                    // Ensure that the response contains valid data before proceeding
+                    if (resGetNote.getPk_BussinessCardId() != null) {
+                        PreferencesManager.getInstance(context).setPk_BussinessCardId(resGetNote.getPk_BussinessCardId());
+                        binding.companyName.setText(resGetNote.getName());
+                        binding.jobtitle.setText(resGetNote.getJobTitle());
+                        binding.businessnaem.setText(resGetNote.getDescription());
+                        binding.phone.setText(resGetNote.getMobileNo());
+                        binding.email.setText(resGetNote.getEmailId());
+                        binding.address.setText(resGetNote.getAddress());
+                        binding.fb.setText(resGetNote.getFacebook());
+                        binding.insta.setText(resGetNote.getInstagram());
+                        binding.Whatsapp.setText(resGetNote.getWhatsapp());
+                        binding.linkedIn.setText(resGetNote.getLinkdin());
+                        binding.telegram.setText(resGetNote.getLinkdin());
 
-                    binding.submitbutton.setVisibility(View.GONE);
-                    binding.updatebtn.setVisibility(View.VISIBLE);
+                        loadImage(binding.profileImage, resGetNote.getImage());
+                        loadImage(binding.bgimage, resGetNote.getBackgroundImage());
+                        binding.submitbutton.setVisibility(View.GONE);
+                        binding.updatebtn.setVisibility(View.VISIBLE);
 
+                    } else {
+                        binding.submitbutton.setVisibility(View.VISIBLE);
+                        binding.updatebtn.setVisibility(View.GONE);
+                    }
                 } else {
-                    Toast.makeText(DigitalBusinessCardActivity.this, "Response unsuccessful: " + response.message(), Toast.LENGTH_SHORT).show();
-                    Log.e("Response Error", response.message());
                     binding.submitbutton.setVisibility(View.VISIBLE);
                     binding.updatebtn.setVisibility(View.GONE);
                 }
             }
+
             @Override
             public void onFailure(Call<ResGetBusinessCard> call, Throwable t) {
+                // Handle failure cases (network failure, etc.)
                 Toast.makeText(DigitalBusinessCardActivity.this, "Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.e("CreateNote Error", t.toString());
             }
         });
     }
+
     private void loadImage(ImageView imageView, String imagePath) {
         if (imagePath != null && !imagePath.isEmpty()) {
             Picasso.get()

@@ -57,17 +57,6 @@ public class PreferencesManager {
         mPref.edit().putString(producyInfoId, value).apply();
     }
 
-    // Method to save Pk_BussinessCardId value in SharedPreferences
-    public void setPkBussinessCardId(String value) {
-        SharedPreferences.Editor editor = mPref.edit();
-        editor.putString(Pk_BussinessCardId, value);
-        editor.apply();
-    }
-    // Method to retrieve Pk_BussinessCardId value from SharedPreferences
-    public String getPkBussinessCardId() {
-        return mPref.getString(Pk_BussinessCardId, null);  // Default value is null if not found
-    }
-
     public String getProducyInfoId() {
         return mPref.getString(producyInfoId, "");
     }
@@ -107,6 +96,18 @@ public class PreferencesManager {
     public String getUserId() {
         return mPref.getString(UserId, "");
     }
+    //businessid
+    public void setPk_BussinessCardId(String value) {
+        mPref.edit().putString(Pk_BussinessCardId, value).apply();
+    }
+    public String getPk_BussinessCardId() {
+        return mPref.getString(Pk_BussinessCardId, "");
+    }
+
+
+
+
+
 
 
     // Method to save note ID

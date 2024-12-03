@@ -39,9 +39,11 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.google.gson.JsonObject;
+import com.hm.greencity.customermanagement.Fragment.DocumentFragment;
 import com.hm.greencity.customermanagement.NotePad.NotePadActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.BaseActivity;
+import com.hm.greencity.customermanagement.common.NetworkUtils;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.constants.FileUtils;
 import com.hm.greencity.customermanagement.login.LoginActivity;
@@ -143,6 +145,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
     @BindView(R.id.receiptImage)
     ImageView receiptImage;
+    @BindView(R.id.documentcard)
+    CardView documentcard;
 
     private CardView cvPlotBooking, cvCustomerDetails, cvMySummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
@@ -202,10 +206,19 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
 
+        documentcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            startActivity(new Intent(HomeTestActivity.this,DocumentActivity.class));
+            finish();
+            }
+        });
+
         imagenotepad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeTestActivity.this,NotePadActivity.class));
+                finish();
             }
         });
         dgitalcardimageView.setOnClickListener(new View.OnClickListener() {
@@ -241,7 +254,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
                 intent.putExtra(Intent.EXTRA_TEXT, "mail body");
                 startActivity(Intent.createChooser(intent, ""));
-
             }
         });
 
@@ -299,18 +311,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         cvLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PreferencesManager.getInstance(context).clear();
-                //===============================================| Remove SharedPreferences |===========================================
-//            SharedPreferences.Editor editor = preferences.edit();
-//            editor.clear(); //Remove from login.xml file
-//            editor.commit();
-
-                //======================================================================================================================
-
-//               goToActivity(LoginActivity.class,);
-                Intent intent = new Intent(HomeTestActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                logout();
             }
         });
         cvAboutUs.setOnClickListener(new View.OnClickListener() {
@@ -338,12 +339,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
 
-//        languagechange.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showChangeLanguageDialog();
-//            }
-//        });
         chatImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -723,8 +718,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     public void aboutMe() {
         String message = "Associate Management - 2022\n Version - 1.0\n" +
                 getString(R.string.developed_by) + "\n"  +
-                "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n"+
-                "Website: https://hmgroupcompanies.com";
+                "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n";
+//                "Website: https://hmgroupcompanies.com";
 
         SpannableString spannableString = new SpannableString(message);
         int startIndexWebsite = message.indexOf("https://hmgroupcompanies.com");
@@ -783,53 +778,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         pd.setCancelable(false);
         pd.show();
     }
-//    private void uploadFile(File file, String type) {
-//        try {
-//            showProgressDialog();
-//            //creating request body for Profile file
-//            RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-//            RequestBody id = RequestBody.create(MediaType.parse("text/plain"), PreferencesManager.getInstance(context).getUserId());
-//            RequestBody typeBody = RequestBody.create(MediaType.parse("text/plain"), type);
-//            MultipartBody.Part body = MultipartBody.Part.createFormData("", file.getName(), requestBody);
-//            //creating our api
-//            ApiServices apiServices = ServiceGenerator.createServiceFile(ApiServices.class);
-//            //creating a call and calling the upload image method
-//            Call<JsonObject> call = apiServices.uploadImage(id, typeBody, body);
-//            //finally performing the call
-//            call.enqueue(new Callback<JsonObject>() {
-//                @Override
-//                public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
-//                    LoggerUtil.logItem(response.body());
-//                    Log.e("***********", call.request().url().toString());
-//                    pd.dismiss();
-//                    PreferencesManager.getInstance(context).setImage(response.body().get("ImageUrl").getAsString());
-////                    {"ImageUrl":"http://demo3.afluex.com//ProfilePicture/86_DWPE_1916200916302_cropped8846116371962730712.jpg",
-////                            "Pk_UserId":"2","Status":"0","DocumentType":"Profile"}
-//                    Gson gson = new GsonBuilder().create();
-//                    JsonObject jsonObject = gson.fromJson(response.body(), JsonObject.class);
-//                    if (jsonObject.get("Status").getAsString().equalsIgnoreCase("0")) {
-//                        PreferencesManager.getInstance(context).setProfilePic(jsonObject.get("ImageUrl").getAsString());
-//                    }
-//
-//                }
-//
-//                @Override
-//                public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
-//                    Log.e("***********", call.request().url().toString());
-//                    Log.e("***********", "= " + t.getMessage());
-//                    //Log.e("***********", "= " + t.getLocalizedMessage());
-//                    showMessage(t.getMessage());
-//                }
-//            });
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
     private void uploadFile(File homeWorkFile) {
-
-//        LoggerUtil.logItem(compressedImageFile.length());
-//        LoggerUtil.logItem(homeWorkFile.length());
-
 
         showLoading();
         RequestBody requestBody;
@@ -837,43 +786,27 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         requestBody = RequestBody.create(MediaType.parse("image/*"), homeWorkFile);
         body = MultipartBody.Part.createFormData("ProfilePic", homeWorkFile.getName(), requestBody);
         RequestBody userId = RequestBody.create(MediaType.parse("text/plain"), PreferencesManager.getInstance(context).getUserId());
-        //RequestBody adharnumber = RequestBody.create(MediaType.parse("text/plain"), tvAdharNumber.getText().toString().trim());
         Call<ResponseStatusMessage> call = apiServices.uploadProfilePic(userId, body);
         call.enqueue(new Callback<ResponseStatusMessage>() {
             @Override
             public void onResponse(Call<ResponseStatusMessage> call, Response<ResponseStatusMessage> response) {
                 hideLoading();
-//                LoggerUtil.logItem(response.body());
                 try {
                     if (response.body().getStatusCode().equalsIgnoreCase("200")) {
-                        // hideLoading();
                         showMessage(response.body().getMessage());
                         PreferencesManager.getInstance(context).setProfilePic(response.body().getProfilePic());
-//                        Glide.with(context).load("http://crm.hmgreencity.com/"+response.body().getProfilePic()).
-//                                apply(RequestOptions.circleCropTransform())
-//                                .placeholder(R.drawable.user_icon)
-//                                .error(R.drawable.user_icon)
-//                                .into(profileImg);
-
-
                         Glide.with(context).load("http://crm.hmgreencity.com/" + response.body().getProfilePic()).
                                 apply(RequestOptions.circleCropTransform())
                                 .placeholder(R.drawable.user_icon)
                                 .error(R.drawable.user_icon)
                                 .into(profileImg);
-
-
                     } else showMessage(response.body().getMessage());
-
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseStatusMessage> call, Throwable t) {
-//                LoggerUtil.logItem(t.getMessage());
                 hideLoading();
             }
         });
@@ -890,7 +823,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         pickSetup.setGalleryIcon(R.mipmap.gallery_colored);
         pickSetup.setCameraIcon(R.mipmap.camera_colored);
         pickSetup.setCancelTextColor(R.color.colorAccent);
-
         dialog = PickImageDialog.build(pickSetup);
         dialog.setOnPickCancel(this);
         dialog.show(this);
@@ -907,32 +839,17 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
     }
     private void viewProfle() {
-
-
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
-//        builder.setIcon(R.mipmap.ic_launcher);
-//        builder.setTitle("My profile");
-        final View inflateForm = getLayoutInflater().inflate(R.layout.profile_picture_layout, null); // Get custom login form view.
-        builder.setView(inflateForm); // Set above view in alert dialog.
+        final View inflateForm = getLayoutInflater().inflate(R.layout.profile_picture_layout, null);
+        builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
-
         final android.app.AlertDialog dialog = builder.show();
-
-
-//        this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
-//        this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
-//        this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
-
-
         TouchImageView imageView = inflateForm.findViewById(R.id.iv_image_activity);
         Glide.with(context).load("http://crm.hmgreencity.com/" + PreferencesManager.getInstance(context).getProfilePic())
-//                .apply(RequestOptions.circleCropTransform())
                 .placeholder(R.drawable.user_icon)
                 .error(R.drawable.user_icon)
                 .into(imageView);
-
-
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -949,13 +866,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 dialog.cancel();
             }
         });
-
-
     }
-
-
     private void showChangeLanguageDialog() {
-
         final String [] listItems = {"English","हिंदी"};
         androidx.appcompat.app.AlertDialog.Builder mBuilder = new androidx.appcompat.app.AlertDialog.Builder(HomeTestActivity.this);
         mBuilder.setTitle("Choose Language...");
@@ -978,34 +890,17 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         androidx.appcompat.app.AlertDialog mDialog = mBuilder.create();
         mDialog.show();
     }
-   /* private void setLocale(String lang, Context context) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        context.getResources().updateConfiguration(config,context.getResources().getDisplayMetrics());
-
-        //SAVE data to sharepref
-        SharedPreferences.Editor editor = getSharedPreferences("Setings", MODE_PRIVATE).edit();
-        editor.putString("My_Lang",lang);
-        editor.apply();
-
-    }*/
     public void loadLocale(){
         SharedPreferences prefs = getSharedPreferences("Setings", Activity.MODE_PRIVATE);
         String language = prefs.getString("My_Lang","");
 //        setLocale(language);
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finishAffinity();
         finish();
     }
-
-
-
     private void showFullScreenDialog(int imageResId) {
         Dialog dialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -1023,8 +918,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
         dialog.show();
     }
-
-
     private void sendEmail() {
         String emailAddress = "hmcity7374@gmail.com";
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
@@ -1035,9 +928,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         if (emailIntent.resolveActivity(this.getPackageManager()) != null) {
             startActivity(emailIntent);
         }
-
-
-
     }
 
     private void makePhoneCall() {
@@ -1059,9 +949,37 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     }
 
     private void openWebsite() {
-        Uri uri = Uri.parse("https://hmgroupcompanies.com"); // missing 'http://' will cause crashed
+        Uri uri = Uri.parse("https://hmgroupcompanies.com");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+    }
 
+    private void logout() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setTitle("Logout");
+        builder1.setMessage("Do you really want to logout?");
+        builder1.setCancelable(true);
+        builder1.setPositiveButton(
+                "Yes",
+                (dialog, id) -> {
+                    if (NetworkUtils.getConnectivityStatus(context) != 0) {
+                        PreferencesManager.getInstance(context).clear();
+                        PreferencesManager.getInstance(context).setIsFirstTimeLaunch(false);
+                       Intent intent = new Intent(HomeTestActivity.this,LoginActivity.class);
+                       startActivity(intent);
+                       finish();
+                    } else
+                        showMessage(R.string.alert_internet);
+                    dialog.cancel();
+                });
+
+        builder1.setNegativeButton("No", (dialog, id) -> dialog.cancel());
+
+        AlertDialog alert11 = builder1.create();
+        alert11.setOnShowListener(arg0 -> {
+            alert11.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.red_color));
+            alert11.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        });
+        alert11.show();
     }
 }

@@ -306,7 +306,7 @@
     <string name="business_report_android_textcolor">Business Report android:textColor=</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="notes">Notes</string>
+    <string name="notes"> My Notes</string>
     <string name="gallery">Gallery</string>
     <string name="Instagram">Gallery</string>
     <string name="hm_group_of_Companies">HM Group OF Companies</string>

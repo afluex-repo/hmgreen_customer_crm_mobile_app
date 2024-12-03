@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.Activity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +10,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.JsonObject;
@@ -35,9 +32,7 @@ import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.listeners.IPickCancel;
 import com.vansuita.pickimage.listeners.IPickResult;
-
 import java.io.File;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -48,16 +43,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AssociateProfile extends BaseActivity implements IPickCancel, IPickResult {
 
+public class AssociateProfile extends BaseActivity implements IPickCancel, IPickResult {
     @BindView(R.id.img_back)
     ImageView imgBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
     @BindView(R.id.img)
     ImageView profileImage;
-//    @BindView(R.id.img_member)
-//    ImageView imgMember;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.tv_lastname)
@@ -92,6 +85,9 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
     TextView tvDob;
     @BindView(R.id.cardview2)
     CardView cardview2;
+    @BindView(R.id.changepassword)
+     TextView changepassword;
+    EditText E1, E2, E3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +104,13 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
                 viewProfle();
             }
         });
+        changepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changePassword();
+            }
+        });
+
     }
 
     @Override
@@ -118,23 +121,11 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
                 .placeholder(R.drawable.user_icon)
                 .error(R.drawable.user_icon)
                 .into(profileImage);
+
     }
 
     public void getUpdateProfile() {
         showLoading();
-       /* --form '="Testing Vikarma"' \
-        --form '="Singh"' \
-        --form '="8855220098"' \
-        --form 'EmailId="tesing@gmail.com"' \
-        --form '="Tefing"' \
-        --form 'AccountNumber="45345345345345"' \
-        --form '="ICICI"' \
-        --form '="Niralanagar"' \
-        --form '="ICIC5345O"' \
-        --form 'ProfilePicture=""' \
-        --form 'Address="LKo"' \
-        --form 'PanNumber="ert464566"' \
-        --form 'DoB="22/1/2202"'*/
         JsonObject object=new JsonObject();
         object.addProperty("CustomerID",PreferencesManager.getInstance(context).getCustomerID());
         object.addProperty("FirstName",tvName.getText().toString().trim());
@@ -165,7 +156,6 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
                 hideLoading();
             }
         });
-
     }
         @OnClick({R.id.img_back, R.id.btn_update})
     public void onClick(View view) {
@@ -181,16 +171,12 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
 
     @Override
     public void onNoteDelete(LstNotepad note) {
-
     }
 
     private void getData() {
         showLoading();
         JsonObject object = new JsonObject();
-        /*object.addProperty("CustomerID", PreferencesManager.getInstance(context).getCustomerID());*/
         object.addProperty("LoginID", PreferencesManager.getInstance(context).getLoginId());
-
-
         Call<ResponseAssociateProfile> call = apiServices.AssociateGetProfile(object);
         call.enqueue(new Callback<ResponseAssociateProfile>() {
             @Override
@@ -233,8 +219,6 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
             }
         });
     }
-
-
     private PickImageDialog dialog;
 
     void showDialog() {
@@ -251,27 +235,18 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        LoggerUtil.logItem("Reach onActivity");
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 profileFile = FileUtils.getFile(context, result.getUri());
-//                Glide.with(context).load(result.getUri()).
-//                        apply(RequestOptions.circleCropTransform())
-//                        .placeholder(R.drawable.user_icon)
-//                        .error(R.drawable.user_icon)
-//                        .into(imgUser);
                 uploadFile(profileFile);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
-//                LoggerUtil.logItem(error.getMessage());
             }
         }
     }
-
     private ProgressDialog pd;
     private File profileFile;
-
     private void showProgressDialog() {
         pd = new ProgressDialog(context);
         pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -280,27 +255,20 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
         pd.setCancelable(false);
         pd.show();
     }
-
-
     private void uploadFile(File homeWorkFile) {
-//        LoggerUtil.logItem(compressedImageFile.length());
-//        LoggerUtil.logItem(homeWorkFile.length());
         showLoading();
         RequestBody requestBody;
         MultipartBody.Part body = null;
         requestBody = RequestBody.create(MediaType.parse("image/*"), homeWorkFile);
         body = MultipartBody.Part.createFormData("ProfilePic", homeWorkFile.getName(), requestBody);
         RequestBody userId = RequestBody.create(MediaType.parse("text/plain"), PreferencesManager.getInstance(context).getUserId());
-        //RequestBody adharnumber = RequestBody.create(MediaType.parse("text/plain"), tvAdharNumber.getText().toString().trim());
         Call<ResponseStatusMessage> call = apiServices.uploadProfilePic(userId, body);
         call.enqueue(new Callback<ResponseStatusMessage>() {
             @Override
             public void onResponse(Call<ResponseStatusMessage> call, Response<ResponseStatusMessage> response) {
                 hideLoading();
-//                LoggerUtil.logItem(response.body());
                 try {
                     if (response.body().getStatusCode().equalsIgnoreCase("200")) {
-                        // hideLoading();
                         showMessage(response.body().getMessage());
                         PreferencesManager.getInstance(context).setProfilePic(response.body().getProfilePic());
                 Glide.with(context).load("http://crm.hmgreencity.com/"+response.body().getProfilePic()).
@@ -308,29 +276,19 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
                         .placeholder(R.drawable.user_icon)
                         .error(R.drawable.user_icon)
                         .into(profileImage);
-//                        21,682.7263776
-//                        21,696.0123619
-
                     } else showMessage(response.body().getMessage());
-
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseStatusMessage> call, Throwable t) {
-//                LoggerUtil.logItem(t.getMessage());
                 hideLoading();
             }
         });
     }
-
-
     @Override
     public void onCancelClick() {
-
     }
 
     @Override
@@ -341,37 +299,20 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
                     .setFixAspectRatio(true)
                     .start(context);
         }
-
     }
-
-
     private void viewProfle() {
-
-
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
-//        builder.setIcon(R.mipmap.ic_launcher);
-//        builder.setTitle("My profile");
         final View inflateForm = getLayoutInflater().inflate(R.layout.profile_picture_layout, null); // Get custom login form view.
-        builder.setView(inflateForm); // Set above view in alert dialog.
+        builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
 
         final android.app.AlertDialog dialog = builder.show();
-
-
-//        this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
-//        this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
-//        this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
-
-
         TouchImageView imageView=inflateForm.findViewById(R.id.iv_image_activity);
         Glide.with(context).load("http://crm.hmgreencity.com/"+PreferencesManager.getInstance(context).getProfilePic())
-//                .apply(RequestOptions.circleCropTransform())
                 .placeholder(R.drawable.user_icon)
                 .error(R.drawable.user_icon)
                 .into(imageView);
-
-
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -388,8 +329,70 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
                 dialog.cancel();
             }
         });
-
-
     }
+    private void changePassword() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setTitle("Change Password");
+        final View inflateForm = getLayoutInflater().inflate(R.layout.custom_alert_change_password, null);
+        builder.setView(inflateForm);
+        builder.setCancelable(true);
+        builder.create();
+
+        final android.app.AlertDialog dialog = builder.show();
+
+        this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
+        this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
+        this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
+
+        Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
+        Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+
+        supplierSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String oldPassword = E1.getText().toString().trim();
+                String newPassword = E2.getText().toString().trim();
+                String compPassword = E3.getText().toString().trim();
+                if (!oldPassword.isEmpty()) {
+                    if (newPassword.equals(compPassword)) {
+                        JsonObject jsonObject = new JsonObject();
+                        jsonObject.addProperty("OldPassword", oldPassword);
+                        jsonObject.addProperty("NewPassword", newPassword);
+                        jsonObject.addProperty("CustomerID", PreferencesManager.getInstance(context).getUserId());
+                        Call<UpdatePassword> updatePasswordCall = apiServices.updatePassword(jsonObject);
+                        updatePasswordCall.enqueue(new Callback<UpdatePassword>() {
+                            @Override
+                            public void onResponse(Call<UpdatePassword> call, Response<UpdatePassword> response) {
+                                if (response.body().getStatusCode().equalsIgnoreCase("200")) {
+                                    dialog.cancel();
+                                    showMessage(response.body().getMessage());
+                                } else {
+                                    showMessage(response.body().getMessage());
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<UpdatePassword> call, Throwable throwable) {
+
+                            }
+                        });
+                    } else {
+                        showMessage("Old and New Password are not same");
+                    }
+
+                } else {
+                    showMessage("Enter old password");
+                }
+
+            }
+        });
+    }
+
 
 }

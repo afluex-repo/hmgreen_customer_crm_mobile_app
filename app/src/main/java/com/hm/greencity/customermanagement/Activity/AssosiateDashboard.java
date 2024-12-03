@@ -27,7 +27,6 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -57,7 +56,6 @@ import com.hm.greencity.customermanagement.models.AssociateDashboard.ResponseAss
 import com.hm.greencity.customermanagement.models.BusinessCard.GetBusinessCard.ResGetBusinessCard;
 import com.hm.greencity.customermanagement.models.UpdatePassword;
 import com.hm.greencity.customermanagement.retrofit.ApiServices;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -212,6 +210,8 @@ public class AssosiateDashboard extends BaseFragment {
 
      @BindView(R.id.siteVisitcard)
      CardView siteVisitcard;
+     @BindView(R.id.language)
+     ImageButton language;
 
     private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
@@ -254,15 +254,11 @@ public class AssosiateDashboard extends BaseFragment {
                 .placeholder(R.drawable.user_icon)
                 .error(R.drawable.user_icon)
                 .into(profile_img);
-
         if (NetworkUtils.getConnectivityStatus(context) != 0) {
-
             AssociateDashBoardTotals();
-
         } else showMessage(R.string.alert_internet);
 
-
-        textViewdueInstallment1.setOnClickListener(new View.OnClickListener() {
+        language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showChangeLanguageDialog();
@@ -294,7 +290,6 @@ public class AssosiateDashboard extends BaseFragment {
         digitalcardimageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Call API to check if the business card exists
                 checkBusinessCardExistence();
             }
         });
@@ -304,7 +299,6 @@ public class AssosiateDashboard extends BaseFragment {
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 String query = newText != null ? newText : "";
@@ -319,8 +313,6 @@ public class AssosiateDashboard extends BaseFragment {
                 filterTextView(textView9, cvchange_password, query);
                 filterTextView(textView10, cvlogout, query);
                 filterTextView(chattext, cvnewCard6, query);
-
-
                 return true;
             }
         });
@@ -491,21 +483,19 @@ public class AssosiateDashboard extends BaseFragment {
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
+
     private void changePassword() {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Change Password");
-        final View inflateForm = getLayoutInflater().inflate(R.layout.custom_alert_change_password, null); // Get custom login form view.
+        final View inflateForm = getLayoutInflater().inflate(R.layout.custom_alert_change_password, null);
         builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
-
         final android.app.AlertDialog dialog = builder.show();
-
         this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
         this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
         this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
-
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -523,13 +513,11 @@ public class AssosiateDashboard extends BaseFragment {
                 String compPassword = E3.getText().toString().trim();
                 if (!oldPassword.isEmpty()) {
                     if (newPassword.equals(compPassword)) {
-
                         JsonObject jsonObject = new JsonObject();
                         jsonObject.addProperty("OldPassword", oldPassword);
                         jsonObject.addProperty("NewPassword", newPassword);
                         jsonObject.addProperty("CustomerID", PreferencesManager.getInstance(context).getUserId());
                         Call<UpdatePassword> updatePasswordCall = apiServices.updatePassword(jsonObject);
-
                         updatePasswordCall.enqueue(new Callback<UpdatePassword>() {
                             @Override
                             public void onResponse(Call<UpdatePassword> call, Response<UpdatePassword> response) {
@@ -540,7 +528,6 @@ public class AssosiateDashboard extends BaseFragment {
                                     showMessage(response.body().getMessage());
                                 }
                             }
-
                             @Override
                             public void onFailure(Call<UpdatePassword> call, Throwable throwable) {
 
@@ -556,18 +543,14 @@ public class AssosiateDashboard extends BaseFragment {
 
             }
         });
-
     }
     public void aboutMe() {
         String message = "Associate Management - 2022\n Version - 1.0\n" +
                 getString(R.string.developed_by) + "\n"  +
-                "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n"+
-               "Website:  https://hmgroupcompanies.com";
-
+                "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n";
         SpannableString spannableString = new SpannableString(message);
         int startIndexWebsite = message.indexOf("https://hmgroupcompanies.com");
         int endIndexWebsite = startIndexWebsite + "https://hmgroupcompanies.com".length();
-
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View view) {
@@ -590,6 +573,7 @@ public class AssosiateDashboard extends BaseFragment {
             messageTextView.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
+
     private void logout() {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
         builder1.setTitle("Logout");
@@ -615,8 +599,8 @@ public class AssosiateDashboard extends BaseFragment {
             alert11.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         });
         alert11.show();
-
     }
+
     private void showChangeLanguageDialog() {
         final String[] listItems = {"English", "हिंदी"};
         androidx.appcompat.app.AlertDialog.Builder mBuilder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
@@ -642,14 +626,14 @@ public class AssosiateDashboard extends BaseFragment {
     public void loadLocale() {
         SharedPreferences prefs = getActivity().getSharedPreferences("Settings", MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "");
-//        setLocale(language);
-
     }
     @Override
     public void onDestroyView() {
         unbinder.unbind();
         super.onDestroyView();
     }
+
+
     private void showFullScreenDialog(int imageResId) {
         Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -720,8 +704,6 @@ public class AssosiateDashboard extends BaseFragment {
 
 
     }
-
-
     private void checkBusinessCardExistence() {
         ApiServices apiServices = RetrofitClient.getApiServices();
         JsonObject request = new JsonObject();
@@ -755,8 +737,6 @@ public class AssosiateDashboard extends BaseFragment {
             }
         });
     }
-
-
     public void goToActivity(Class<?> targetActivity, Bundle bundle) {
         Intent intent = new Intent(requireContext(), targetActivity);
         if (bundle != null) {

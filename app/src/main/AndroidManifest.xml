@@ -33,13 +33,17 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activity.SiteVisitorListActivity"
+            android:name=".Activity.DocumentActivity"
             android:theme="@style/AppTheme.NoAction"
             android:exported="false" />
         <activity
+            android:name=".Activity.SiteVisitorListActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoAction" />
+        <activity
             android:name=".Activity.SiteVisitActivity"
-            android:theme="@style/AppTheme.NoAction"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoAction" />
         <activity
             android:name=".Activity.PrintReceiptActivity"
             android:exported="false"

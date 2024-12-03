@@ -47,6 +47,7 @@
 <!--                    android:elevation="5dp"-->
 <!--                    android:padding="5dp" />-->
 
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,11 +56,23 @@
                     app:cardCornerRadius="4dp"
                     app:cardElevation="4dp"
                     app:cardUseCompatPadding="true">
-
+                    <TextView
+                        android:id="@+id/changepassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/round_button"
+                        android:gravity="end"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="end"
+                        android:padding="3dp"
+                        android:text="Change Password"
+                        android:textAppearance="@style/TextField_Bold"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="40dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:paddingBottom="6dp">

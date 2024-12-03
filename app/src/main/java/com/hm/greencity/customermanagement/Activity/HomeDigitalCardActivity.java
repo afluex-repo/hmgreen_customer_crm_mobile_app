@@ -19,7 +19,7 @@ ActivityHomeDigitalCardBinding binding;
     }
 
     private void onclicklistener() {
-        binding.businesscard.setOnClickListener(new View.OnClickListener() {
+        binding.ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeDigitalCardActivity.this,DigitalBusinessCardActivity.class));

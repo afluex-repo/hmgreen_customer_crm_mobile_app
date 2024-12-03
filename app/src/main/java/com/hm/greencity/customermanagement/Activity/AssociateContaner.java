@@ -166,8 +166,6 @@ public class AssociateContaner extends BaseActivity /*implements NavigationView.
     }*/
 
     private void changePassword() {
-
-
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Change Password");
@@ -175,15 +173,10 @@ public class AssociateContaner extends BaseActivity /*implements NavigationView.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);
         builder.create();
-
         final android.app.AlertDialog dialog = builder.show();
-
-
         EditText E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
         EditText E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
         EditText E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
-
-
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +185,6 @@ public class AssociateContaner extends BaseActivity /*implements NavigationView.
                 dialog.cancel();
             }
         });
-
 
         supplierSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
