@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.models.SiteVisit;
-
 import com.google.gson.annotations.SerializedName;
 
 public class ReqSiteVisit {
@@ -15,14 +14,18 @@ public class ReqSiteVisit {
     public long mobileNo;
     @SerializedName("CustomerNo")
     public int customerNo;
+    @SerializedName("Fk_TeamId")
+    public String fk_TeamId;
 
-    public ReqSiteVisit(int fk_UserID, int siteID, String customerName, String date, long mobileNo, int customerNo) {
+    public ReqSiteVisit(int fk_UserID, int siteID, String customerName, String date, long mobileNo, int customerNo, String fk_TeamId) {
         this.fk_UserID = fk_UserID;
         this.siteID = siteID;
         this.customerName = customerName;
         this.date = date;
         this.mobileNo = mobileNo;
         this.customerNo = customerNo;
+        this.fk_TeamId = fk_TeamId;
+
     }
 
     public int getFk_UserID() {
@@ -71,5 +74,13 @@ public class ReqSiteVisit {
 
     public void setCustomerNo(int customerNo) {
         this.customerNo = customerNo;
+    }
+
+    public String getFk_TeamId() {
+        return fk_TeamId;
+    }
+
+    public void setFk_TeamId(String fk_TeamId) {
+        this.fk_TeamId = fk_TeamId;
     }
 }

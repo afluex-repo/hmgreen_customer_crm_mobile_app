@@ -1,12 +1,12 @@
 package com.hm.greencity.customermanagement.Activity;
+import android.os.Bundle;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
-import android.widget.Toast;
 import com.hm.greencity.customermanagement.Network.RetrofitClient;
 import com.hm.greencity.customermanagement.adapters.PdfAdapter;
-import com.hm.greencity.customermanagement.databinding.ActivityDetailBinding;
+import com.hm.greencity.customermanagement.databinding.ActivityDocumentBinding;
 import com.hm.greencity.customermanagement.models.Gallery.Lstgallery;
 import com.hm.greencity.customermanagement.models.Gallery.ResGallery;
 import com.hm.greencity.customermanagement.retrofit.ApiServices;
@@ -16,19 +16,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-
 public class DocumentActivity extends AppCompatActivity {
-ActivityDetailBinding binding;
-    private RecyclerView recyclerView;
+   ActivityDocumentBinding binding;
+    private RecyclerView recyclerview;
     private PdfAdapter pdfAdapter;
     private List<Lstgallery> pdfList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        binding =ActivityDetailBinding.inflate(getLayoutInflater());
+        binding = ActivityDocumentBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
+
+        recyclerview = binding.recyclerview;
+
         initview();
         onclicklistener();
     }
@@ -40,15 +41,13 @@ ActivityDetailBinding binding;
     private void initview() {
         int numberOfColumns = 3;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), numberOfColumns);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        binding.recyclerview.setLayoutManager(gridLayoutManager);
 
         pdfList = new ArrayList<>();
         pdfAdapter = new PdfAdapter(pdfList, getApplicationContext());
-        recyclerView.setAdapter(pdfAdapter);
+        binding.recyclerview.setAdapter(pdfAdapter);
         fetchGalleryData();
-
     }
-
 
     private void fetchGalleryData() {
         ApiServices apiService = RetrofitClient.getClient().create(ApiServices.class);
@@ -73,7 +72,6 @@ ActivityDetailBinding binding;
                     Toast.makeText(DocumentActivity.this, "Failed to fetch gallery data", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<ResGallery> call, Throwable t) {
                 Toast.makeText(DocumentActivity.this, "An error occurred: " + t.getMessage(), Toast.LENGTH_SHORT).show();

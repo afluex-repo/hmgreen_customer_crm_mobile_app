@@ -236,7 +236,6 @@ public class ChatActivity extends AppCompatActivity {
                     if (response.isSuccessful() && response.body() != null) {
                         String statusCode = response.body().getStatusCode();
                         String message = response.body().getMessage();
-
                         if ("200".equals(statusCode)) {
                             Toast.makeText(ChatActivity.this, message, Toast.LENGTH_SHORT).show();
                             editTextMessage.setText(""); // Clear the message box

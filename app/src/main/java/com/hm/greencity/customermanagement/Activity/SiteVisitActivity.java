@@ -18,9 +18,10 @@ import com.hm.greencity.customermanagement.databinding.ActivitySiteVisitBinding;
 import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.models.ResponseList.LstSite;
 import com.hm.greencity.customermanagement.models.Site.ResSite;
-import com.hm.greencity.customermanagement.models.Site.Site;
 import com.hm.greencity.customermanagement.models.SiteVisit.ReqSiteVisit;
 import com.hm.greencity.customermanagement.models.SiteVisit.ResSiteVisit;
+import com.hm.greencity.customermanagement.models.Team.LstTeam;
+import com.hm.greencity.customermanagement.models.Team.ResTeam;
 import com.hm.greencity.customermanagement.retrofit.ApiServices;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,6 +40,7 @@ public class SiteVisitActivity extends BaseActivity {
     private ChatService chatService;
     private List<LstSite> messageList = new ArrayList<>();
     private String selectedSiteId = "";
+    private String selectedTeamId = "";
 
 
     @Override
@@ -60,6 +62,7 @@ public class SiteVisitActivity extends BaseActivity {
 
     private void initview() {
         fetchSiteList();
+        fetchTeamList();
 
     }
 
@@ -113,11 +116,11 @@ public class SiteVisitActivity extends BaseActivity {
     private void getData() {
         int userId = Integer.parseInt(PreferencesManager.getInstance(this).getUserId());
         String siteId = selectedSiteId;
+        String teamId = selectedTeamId;
         String customerName = binding.customername.getText().toString().trim();
         String date = binding.date.getText().toString().trim();
         String mobileNo = binding.mobilenumber.getText().toString().trim();
         String customerNo = binding.numberofcumtomer.getText().toString().trim();
-        // Validate input
         if (siteId.isEmpty() || customerName.isEmpty() || date.isEmpty() || mobileNo.isEmpty() || customerNo.isEmpty()) {
             Toast.makeText(SiteVisitActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
@@ -128,7 +131,8 @@ public class SiteVisitActivity extends BaseActivity {
                 customerName,
                 date,
                 Long.parseLong(mobileNo),
-                Integer.parseInt(customerNo)
+                Integer.parseInt(customerNo),
+                teamId
         );
         Call<ResSiteVisit> call = apiServices.savesitevisit(reqSiteVisit);
         call.enqueue(new Callback<ResSiteVisit>() {
@@ -155,7 +159,7 @@ public class SiteVisitActivity extends BaseActivity {
         });
     }
 
-
+ //site drop down
     private void fetchSiteList() {
         ChatService chatService = RetrofitClient.getClient().create(ChatService.class);
         Call<ResSite> call = chatService.site();
@@ -166,7 +170,6 @@ public class SiteVisitActivity extends BaseActivity {
                     ResSite resSite = response.body();
                     if ("200".equals(resSite.getStatusCode())) {
                         List<LstSite> siteList = resSite.getLstSite();
-                      //  Log.d("SiteVisitActivity", "Site list size: " + siteList.size());
                         bindSiteListToSpinner(siteList);
                     } else {
                         Toast.makeText(SiteVisitActivity.this, resSite.getMessage(), Toast.LENGTH_SHORT).show();
@@ -181,35 +184,6 @@ public class SiteVisitActivity extends BaseActivity {
             }
         });
     }
-
-
-//    private void bindSiteListToSpinner(List<LstSite> siteList) {
-//        List<String> siteNames = new ArrayList<>();
-//        for (LstSite site : siteList) {
-//            if (site != null && site.getSiteName() != null) {
-//                siteNames.add(site.getSiteName());
-//            }
-//        }
-//        Log.d("SiteVisitActivity", "Site names: " + siteNames);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, siteNames);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        Spinner spinner = findViewById(R.id.Site);
-//        spinner.setAdapter(adapter);
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-//                String selectedSite = parentView.getItemAtPosition(position).toString();
-//                Toast.makeText(SiteVisitActivity.this, "Selected: " + selectedSite, Toast.LENGTH_SHORT).show();
-//            }
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parentView) {
-//            }
-//        });
-//    }
-
-
-
-
     private void bindSiteListToSpinner(List<LstSite> siteList) {
         List<String> siteNames = new ArrayList<>();
         final List<LstSite> finalSiteList = siteList;
@@ -218,8 +192,6 @@ public class SiteVisitActivity extends BaseActivity {
                 siteNames.add(site.getSiteName());
             }
         }
-
-     //   Log.d("SiteVisitActivity", "Site names: " + siteNames);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, siteNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner = findViewById(R.id.Site);
@@ -234,8 +206,6 @@ public class SiteVisitActivity extends BaseActivity {
                         break;
                     }
                 }
-              //  Log.d("SiteVisitActivity", "Selected Site ID: " + selectedSiteId);
-              //  Toast.makeText(SiteVisitActivity.this, "Selected: " + selectedSiteName, Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
@@ -243,7 +213,57 @@ public class SiteVisitActivity extends BaseActivity {
         });
     }
 
-
-
-
+//team
+    private void fetchTeamList() {
+        ChatService chatService = RetrofitClient.getClient().create(ChatService.class);
+        Call<ResTeam> call = chatService.team();
+        call.enqueue(new Callback<ResTeam>() {
+            @Override
+            public void onResponse(Call<ResTeam> call, Response<ResTeam> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ResTeam resSite = response.body();
+                    if ("200".equals(resSite.getStatus())) {
+                        List<LstTeam> siteList = resSite.getLstTeam();
+                        bindTeamListToSpinner(siteList);
+                    } else {
+                        Toast.makeText(SiteVisitActivity.this, resSite.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(SiteVisitActivity.this, "Failed to fetch sites", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<ResTeam> call, Throwable t) {
+                Toast.makeText(SiteVisitActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void bindTeamListToSpinner(List<LstTeam> siteList) {
+        List<String> siteNames = new ArrayList<>();
+        final List<LstTeam> finalSiteList = siteList;
+        for (LstTeam site : siteList) {
+            if (site != null && site.getTeamName() != null) {
+                siteNames.add(site.getTeamName());
+            }
+        }
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, siteNames);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner1 = findViewById(R.id.team);
+        spinner1.setAdapter(adapter1);
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String selectedSiteName = parentView.getItemAtPosition(position).toString();
+                for (LstTeam site : finalSiteList) {
+                    if (site.getTeamName().equals(selectedSiteName)) {
+                        selectedTeamId = site.getpK_TeamId();
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
 }

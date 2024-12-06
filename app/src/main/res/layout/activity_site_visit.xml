@@ -75,9 +75,10 @@
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="260dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="40dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/card_desihn"
                     android:backgroundTint="#C6C4C4"
@@ -152,6 +153,16 @@
                             android:textColor="@color/black" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
+                    <Spinner
+                        android:id="@+id/team"
+                        android:layout_width="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/card_desihn"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content">
+                    </Spinner>
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/customername"
                         android:layout_width="match_parent"
@@ -182,11 +193,12 @@
                         android:id="@+id/numberofcumtomer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                       android:layout_margin="10dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/card_desihn"
                         android:backgroundTint="@color/white"
                         android:padding="10dp"
+                        android:layout_marginBottom="20dp"
                         android:textSize="14sp"
                         android:inputType="text"
                         android:hint="@string/number_of_customer"
@@ -197,7 +209,7 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/submitbtn"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="340dp"
+                    android:layout_marginTop="380dp"
                     android:layout_marginStart="40dp"
                     android:text="@string/submit"
                     android:textStyle="bold"

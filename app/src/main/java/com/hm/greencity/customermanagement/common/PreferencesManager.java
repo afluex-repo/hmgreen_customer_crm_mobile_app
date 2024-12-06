@@ -22,7 +22,6 @@ public class PreferencesManager {
     private static final String Pk_NoteId = "Pk_NoteId";
     private static final String Pk_BussinessCardId = "Pk_BussinessCardId";
 
-
     public static PreferencesManager sInstance;
     private final SharedPreferences mPref;
     private static Context context;
@@ -97,16 +96,14 @@ public class PreferencesManager {
         return mPref.getString(UserId, "");
     }
     //businessid
+
+
     public void setPk_BussinessCardId(String value) {
         mPref.edit().putString(Pk_BussinessCardId, value).apply();
     }
     public String getPk_BussinessCardId() {
         return mPref.getString(Pk_BussinessCardId, "");
     }
-
-
-
-
 
 
 

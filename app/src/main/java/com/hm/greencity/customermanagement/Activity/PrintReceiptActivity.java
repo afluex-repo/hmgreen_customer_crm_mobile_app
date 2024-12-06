@@ -1,23 +1,20 @@
 package com.hm.greencity.customermanagement.Activity;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-import android.Manifest;
-import android.content.ActivityNotFoundException;
+import android.content.ContentValues;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import androidx.annotation.RequiresApi;
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.Network.RetrofitClient;
+import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.databinding.ActivityPrintReceiptBinding;
 import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
@@ -26,14 +23,18 @@ import com.hm.greencity.customermanagement.retrofit.ApiServices;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
+
 public class PrintReceiptActivity extends BaseActivity {
     private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
     ActivityPrintReceiptBinding binding;
+
+    private ResponsePrintReport responsePrintReport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +43,6 @@ public class PrintReceiptActivity extends BaseActivity {
         setContentView(binding.getRoot());
         initView();
         onClickListener();
-        requestPermissions();
-
-    }
-
-    @Override
-    public void onNoteDelete(LstNotepad note) {
-
     }
 
     private void initView() {
@@ -60,178 +54,139 @@ public class PrintReceiptActivity extends BaseActivity {
     }
 
     private void onClickListener() {
-        binding.backarrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(PrintReceiptActivity.this, ReceiptActivity2.class));
-            }
-        });
-
         binding.saveReceiptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(PrintReceiptActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    saveReceiptAsPDF();
+                if (responsePrintReport != null) {
+                    generatePDF(responsePrintReport);
                 } else {
-                    Toast.makeText(PrintReceiptActivity.this, "Permission not granted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PrintReceiptActivity.this, "Data not available", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void requestPermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
-        }
-    }
-
-    private void saveReceiptAsPDF() {
-        Bitmap bitmap = getBitmapFromView(binding.getRoot());
-        if (bitmap != null) {
-            createPdf(bitmap);
-        } else {
-            Toast.makeText(this, "Failed to create bitmap", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private Bitmap getBitmapFromView(View view) {
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        view.draw(canvas);
-        return bitmap;
-    }
-
-    private void createPdf(Bitmap bitmap) {
-        if (bitmap == null) {
-            Toast.makeText(this, "Bitmap is null", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Log.d("PDF", "Creating PDF...");
-        PdfDocument pdfDocument = new PdfDocument();
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(bitmap.getWidth(), bitmap.getHeight(), 1).create();
-        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
-        Canvas canvas = page.getCanvas();
-        canvas.drawBitmap(bitmap, 0, 0, null);
-        pdfDocument.finishPage(page);
-
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
-        if (storageDir != null && !storageDir.exists()) {
-            storageDir.mkdirs();
-        }
-
-        File customDir = new File(storageDir, "MyCustomDirectory");
-        if (!customDir.exists()) {
-            customDir.mkdirs();
-        }
-
-        File file = new File(customDir, "receipt_" + System.currentTimeMillis() + ".pdf");
-
-        try (FileOutputStream out = new FileOutputStream(file)) {
-            pdfDocument.writeTo(out);
-            Toast.makeText(this, "Receipt saved as PDF: " + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
-            showDownloadNotification(file);
-        } catch (IOException e) {
-            Log.e("PDF", "Failed to save PDF: " + e.getMessage());
-            Toast.makeText(this, "Failed to save receipt: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        } finally {
-            pdfDocument.close();
-        }
-    }
-
-
-    private void showDownloadNotification(File file) {
-        Uri fileUri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".fileprovider", file);
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(fileUri, "application/pdf");
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, "No application available to view PDF", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
     public void PrintData(String id) {
-        showLoading();
         JsonObject object = new JsonObject();
-        object.addProperty("PK_BookingDetailsId",Integer.parseInt(id));
-        Log.d("req datsa: ",""+object);
+        object.addProperty("PK_BookingDetailsId", Integer.parseInt(id));
         ApiServices apiService = RetrofitClient.getClient().create(ApiServices.class);
         Call<ResponsePrintReport> call = apiService.getPrintReport(object);
         call.enqueue(new Callback<ResponsePrintReport>() {
             @Override
             public void onResponse(Call<ResponsePrintReport> call, Response<ResponsePrintReport> response) {
-                int statusCode = response.code();
-                Log.d(TAG, "HTTP Status Code: " + statusCode);
                 if (response.isSuccessful() && response.body() != null) {
-                    hideLoading();
-                    ResponsePrintReport resVisitorList = response.body();
-                    String apiStatus = resVisitorList.getStatus();
-                    String apiMessage = resVisitorList.getMessage();
-                    binding.customerid.setText(resVisitorList.getCustomerLoginId());
-                    binding.bookingfor.setText(resVisitorList.getpK_BookingDetailsId());
-                    binding.receiptno.setText(resVisitorList.getReceiptNo());
-                    binding.bank.setText(resVisitorList.getBankName());
-                    binding.bankBranch.setText(resVisitorList.getBankBranch());
-                    binding.transationno.setText(resVisitorList.getTransactionNo());
-                    binding.paidamount.setText(resVisitorList.getPaidAmount());
-                    binding.totalAmount.setText(resVisitorList.getTotalPaid());
-                    binding.depositeAmount.setText(resVisitorList.getNetPlotAmount());
-                    binding.balanceAmount.setText(resVisitorList.getBalanceAmount());
-                    binding.bookingdate.setText(resVisitorList.getBookingDate());
-                    binding.transactiondate.setText(resVisitorList.getTransactionDate());
-                    binding.paymentdate.setText(resVisitorList.getPaymentDate());
-                    binding.entrydate.setText(resVisitorList.getEntryDate());
-                    binding.address.setText(resVisitorList.getAddress());
-                    binding.state.setText(resVisitorList.getState());
-                    binding.site.setText(resVisitorList.getSiteName());
-                    binding.city.setText(resVisitorList.getCity());
-                    binding.sector.setText(resVisitorList.getSectorName());
-
-                    binding.plotno.setText(resVisitorList.getPlotNo());
-                    binding.paymentfor.setText(resVisitorList.getReasonOfPayment());
-                    binding.bookingfor.setText(resVisitorList.getpK_BookingId());
-
-
-                    Log.d(TAG, "API Status: " + apiStatus);
-                    Log.d(TAG, "API Message: " + apiMessage);
-
+                    responsePrintReport = response.body(); // Store response
+                    binding.customerid.setText(responsePrintReport.getCustomerLoginId());
+                    binding.bookingfor.setText(responsePrintReport.getpK_BookingDetailsId());
+                    binding.receiptno.setText(responsePrintReport.getReceiptNo());
+                    binding.bank.setText(responsePrintReport.getBankName());
+                    binding.bankBranch.setText(responsePrintReport.getBankBranch());
+                    binding.transationno.setText(responsePrintReport.getTransactionNo());
+                    binding.paidamount.setText(responsePrintReport.getPaidAmount());
+                    binding.totalAmount.setText(responsePrintReport.getTotalPaid());
+                    binding.depositeAmount.setText(responsePrintReport.getNetPlotAmount());
+                    binding.balanceAmount.setText(responsePrintReport.getBalanceAmount());
+                    binding.bookingdate.setText(responsePrintReport.getBookingDate());
+                    binding.transactiondate.setText(responsePrintReport.getTransactionDate());
+                    binding.paymentdate.setText(responsePrintReport.getPaymentDate());
+                    binding.entrydate.setText(responsePrintReport.getEntryDate());
+                    binding.address.setText(responsePrintReport.getAddress());
+                    binding.state.setText(responsePrintReport.getState());
+                    binding.site.setText(responsePrintReport.getSiteName());
+                    binding.city.setText(responsePrintReport.getCity());
+                    binding.sector.setText(responsePrintReport.getSectorName());
+                    binding.plotno.setText(responsePrintReport.getPlotNo());
+                    binding.paymentfor.setText(responsePrintReport.getReasonOfPayment());
                 } else {
-                    Log.e(TAG, "Response Error: " + response.message());
-
-                    switch (statusCode) {
-                        case 404:
-                            Log.e(TAG, "Error: Resource not found.");
-                            break;
-                        case 500:
-                            Log.e(TAG, "Error: Server error.");
-                            break;
-                        default:
-                            Log.e(TAG, "Error: Unexpected status code.");
-                            break;
-                    }
+                    Log.e("PrintData", "Response Error: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<ResponsePrintReport> call, Throwable t) {
-                Log.e(TAG, "Network Failure: " + t.getMessage());
+                Log.e("PrintData", "Network Failure: " + t.getMessage());
             }
         });
+    }
+
+
+//    @RequiresApi(Build.VERSION_CODES.KITKAT)
+//    public void generatePDF(ResponsePrintReport data) {
+//        View receiptView = findViewById(R.id.receiptlayout);
+//        PdfDocument pdfDocument = new PdfDocument();
+//        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1080, 2220, 2).create();  // Set page size
+//        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+//        Canvas canvas = page.getCanvas();
+//        receiptView.measure(View.MeasureSpec.makeMeasureSpec(pageInfo.getPageWidth(), View.MeasureSpec.EXACTLY),
+//                View.MeasureSpec.makeMeasureSpec(pageInfo.getPageHeight(), View.MeasureSpec.EXACTLY));
+//        receiptView.layout(0, 0, receiptView.getMeasuredWidth(), receiptView.getMeasuredHeight());
+//        receiptView.draw(canvas);
+//        pdfDocument.finishPage(page);
+//        File file = new File(getExternalFilesDir(null), "Receipt_" + data.getReceiptNo() + ".pdf");
+//        try {
+//            if (!file.getParentFile().exists()) {
+//                file.getParentFile().mkdirs();
+//            }
+//            pdfDocument.writeTo(new FileOutputStream(file));
+//            Toast.makeText(getApplicationContext(), "PDF file generated..", Toast.LENGTH_SHORT).show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Toast.makeText(getApplicationContext(), "Failed to generate PDF file..", Toast.LENGTH_SHORT).show();
+//        }
+//        pdfDocument.close();
+//    }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    public void generatePDF(ResponsePrintReport data) {
+        View receiptView = findViewById(R.id.receiptlayout);
+        PdfDocument pdfDocument = new PdfDocument();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1080, 2220, 2).create();
+        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+        Canvas canvas = page.getCanvas();
+
+        receiptView.measure(View.MeasureSpec.makeMeasureSpec(pageInfo.getPageWidth(), View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(pageInfo.getPageHeight(), View.MeasureSpec.EXACTLY));
+        receiptView.layout(0, 0, receiptView.getMeasuredWidth(), receiptView.getMeasuredHeight());
+        receiptView.draw(canvas);
+        pdfDocument.finishPage(page);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "Receipt_" + data.getReceiptNo() + ".pdf");
+            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "application/pdf");
+            contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+            Uri pdfUri = getContentResolver().insert(MediaStore.Files.getContentUri("external"), contentValues);
+            try (OutputStream outputStream = getContentResolver().openOutputStream(pdfUri)) {
+                if (outputStream != null) {
+                    pdfDocument.writeTo(outputStream);
+                    Toast.makeText(getApplicationContext(), "PDF file generated in Downloads", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Failed to save PDF", Toast.LENGTH_SHORT).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Failed to generate PDF file..", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            File downloadFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            File file = new File(downloadFolder, "Receipt_" + data.getReceiptNo() + ".pdf");
+
+            try {
+                if (!downloadFolder.exists()) {
+                    downloadFolder.mkdirs();
+                }
+                pdfDocument.writeTo(new FileOutputStream(file));
+                Toast.makeText(getApplicationContext(), "PDF file generated in Downloads", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Failed to generate PDF file..", Toast.LENGTH_SHORT).show();
+            }
+        }
+        pdfDocument.close();
+    }
+
+
+    @Override
+    public void onNoteDelete(LstNotepad note) {
+
     }
 }

@@ -7,17 +7,15 @@ import com.hm.greencity.customermanagement.models.AssociateDueInstallment.Respon
 import com.hm.greencity.customermanagement.models.AssociateLedgerList;
 import com.hm.greencity.customermanagement.models.AssociatePlotAvalibility.ResponseAssociatePlotAvalibility;
 import com.hm.greencity.customermanagement.models.BusinessCard.CreateBusinessCard.ResCreateBusinessCard;
-import com.hm.greencity.customermanagement.models.BusinessCard.GetBusinessCard.ReqGetBusinessCard;
 import com.hm.greencity.customermanagement.models.BusinessCard.GetBusinessCard.ResGetBusinessCard;
 import com.hm.greencity.customermanagement.models.BusinessCard.UpdateBusinessCard.ResUpdateBusinessCard;
 import com.hm.greencity.customermanagement.models.CustomerList.ResponseCustomerList;
 import com.hm.greencity.customermanagement.models.CustomerMyProfile;
+import com.hm.greencity.customermanagement.models.DeleteBusinessCard.ResDeleteBusinesscard;
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponseDueInstallment;
 import com.hm.greencity.customermanagement.models.DueInstallment.ResponsePloatBooking;
 import com.hm.greencity.customermanagement.models.DueInstallmentDashBoard;
 import com.hm.greencity.customermanagement.models.Gallery.ResGallery;
-import com.hm.greencity.customermanagement.models.GetSite.ReqGetSite;
-import com.hm.greencity.customermanagement.models.GetSite.ResGetSite;
 import com.hm.greencity.customermanagement.models.HomeActivityDashBoard;
 import com.hm.greencity.customermanagement.models.LedgerReport.ResponseLedgerReport;
 import com.hm.greencity.customermanagement.models.Notes.CreateNote.ResCreateNote;
@@ -31,7 +29,6 @@ import com.hm.greencity.customermanagement.models.ResponseList.ResponseSite;
 import com.hm.greencity.customermanagement.models.ResponseLogin;
 import com.hm.greencity.customermanagement.models.ResponseStatusMessage;
 import com.hm.greencity.customermanagement.models.ResponseUpdateProfile;
-import com.hm.greencity.customermanagement.models.Site.ResSite;
 import com.hm.greencity.customermanagement.models.SiteVisit.ReqSiteVisit;
 import com.hm.greencity.customermanagement.models.SiteVisit.ResSiteVisit;
 import com.hm.greencity.customermanagement.models.UpdateCustomerProfile;
@@ -201,5 +198,8 @@ public interface ApiServices {
 //    @POST("WebAPI/sitelist")
 //    Call<ResSite>site();
 
+
+//    @POST("WebAPI/DeleteBussinessCard")
+//    Call<ResDeleteBusinesscard>deletecard(@Body JsonObject jsonObject);
 
 }

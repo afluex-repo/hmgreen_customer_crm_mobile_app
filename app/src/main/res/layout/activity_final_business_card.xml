@@ -14,6 +14,7 @@
     android:layout_height="?actionBarSize"
     tools:ignore="MissingConstraints">
     <ImageView
+        android:visibility="gone"
         android:id="@+id/backarrow"
         android:layout_width="40dp"
         android:layout_marginStart="0dp"
@@ -84,7 +85,7 @@
                             android:paddingStart="0dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/dasimage"
-                            tools:ignore="MissingConstraints" />
+                            tools:ignore="MissingConstraints"/>
                     </androidx.cardview.widget.CardView>
                     <TextView
                         android:id="@+id/name"
@@ -110,6 +111,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/ll">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/deletecard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
@@ -124,7 +126,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:padding="10dp"
-                            android:src="@drawable/qr" />
+                            android:src="@drawable/delete" />
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView

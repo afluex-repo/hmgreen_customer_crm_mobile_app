@@ -51,37 +51,40 @@ public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.ViewHolder> {
                 fullUrl = documentUrl;
             }
 
-            holder.itemView.setOnClickListener(v -> {
-                if (fullUrl != null && !fullUrl.isEmpty()) {
+            if (fullUrl != null && !fullUrl.isEmpty()) {
+                holder.itemView.setOnClickListener(v -> {
                     openDocument(fullUrl);
-                } else {
-                    Toast.makeText(context, "Document URL is empty", Toast.LENGTH_SHORT).show();
-                }
-            });
+                });
+            } else {
+                holder.itemView.setOnClickListener(null);
+            }
         } else {
             holder.iconImageView.setImageResource(R.drawable.camera);
             holder.titleTextView.setText("Unknown");
-
             holder.itemView.setOnClickListener(null);
         }
     }
 
+    private void openDocument(String documentUrl) {
+        try {
+            Uri documentUri = Uri.parse(documentUrl);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(documentUri, "application/pdf");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK);
+            if (intent.resolveActivity(context.getPackageManager()) != null) {
+                context.startActivity(intent);
+            } else {
+                Toast.makeText(context, "No PDF viewer found", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(context, "Error opening document: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     @Override
     public int getItemCount() {
         return itemList.size();
-    }
-
-    private void openDocument(String documentUrl) {
-        Uri documentUri = Uri.parse(documentUrl);
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(documentUri, "application/pdf");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-
-        if (intent.resolveActivity(context.getPackageManager()) != null) {
-            context.startActivity(intent);
-        } else {
-            Toast.makeText(context, "No PDF viewer found", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -378,6 +378,8 @@
     <string name="sector">Sector</string>
     <string name="plot_no">Plot No.</string>
     <string name="payment_for">Payment for</string>
+    <string name="https_hmgroupcompanies_com">https://hmgroupcompanies.com</string>
+    <string name="_00">00</string>
 
 
 </resources>

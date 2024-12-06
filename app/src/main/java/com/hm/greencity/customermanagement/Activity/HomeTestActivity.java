@@ -39,7 +39,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.google.gson.JsonObject;
-import com.hm.greencity.customermanagement.Fragment.DocumentFragment;
 import com.hm.greencity.customermanagement.NotePad.NotePadActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.BaseActivity;
@@ -71,15 +70,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class HomeTestActivity extends BaseActivity implements IPickCancel, IPickResult {
     private static final int REQUEST_CALL_PERMISSION = 1;
     @BindView(R.id.profile_img)
     ImageView profileImg;
-
     @BindView(R.id.imagelogo)
     ImageView imagelogo;
-
     @BindView(R.id.support)
     ImageButton support;
     @BindView(R.id.tv_username)
@@ -102,10 +98,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     CardView cvMyLedger;
     @BindView(R.id.cv_mysummary)
     CardView cvDueInstallment;
-
     @BindView(R.id.constraintLayout2)
     ConstraintLayout constraintLayout2;
-
     public static final int[] JOYFUL_COLORS1 = new int[]{Color.rgb(238, 164, 127), Color.rgb(0, 83, 156)};
     @BindView(R.id.cv_change_password)
     CardView cvChangePassword;
@@ -127,8 +121,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     ImageView imageView8;
     @BindView(R.id.call)
     ImageView call;
-//    @BindView(R.id.gallery)
-//    ImageView gallery;
     @BindView(R.id.searchView)
     SearchView searchView;
     @BindView(R.id.mail)
@@ -137,17 +129,14 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     TextView Call;
     @BindView(R.id.WebSite)
     TextView WebSite;
-
     @BindView(R.id.galleryimageView)
     ImageView galleryimageView;
     @BindView(R.id.dgitalcardimageView)
     ImageView dgitalcardimageView;
-
     @BindView(R.id.receiptImage)
     ImageView receiptImage;
     @BindView(R.id.documentcard)
     CardView documentcard;
-
     private CardView cvPlotBooking, cvCustomerDetails, cvMySummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
 
@@ -156,12 +145,10 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_dashboard_test);
         ButterKnife.bind(this);
-
-
         tvUsername.setText(PreferencesManager.getInstance(context).getFull_Name());
         tvLoginId.setText(PreferencesManager.getInstance(context).getLoginId());
         getDashboard();
-
+        Onclicklistener();
 
         TextView textView3 = findViewById(R.id.textView3);
         TextView textView4 = findViewById(R.id.textView4);
@@ -183,8 +170,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         cvchange_password = findViewById(R.id.cv_change_password);
         cvlogout = findViewById(R.id.cv_logout);
         newcardview2 = findViewById(R.id.new_cardview2);
-
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -206,14 +191,16 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
 
+    }
+
+    private void Onclicklistener() {
         documentcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            startActivity(new Intent(HomeTestActivity.this,DocumentActivity.class));
-            finish();
+                startActivity(new Intent(HomeTestActivity.this,DocumentActivity.class));
+                finish();
             }
         });
-
         imagenotepad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,21 +220,15 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 startActivity(new Intent(HomeTestActivity.this,ReceiptActivity2.class));
             }
         });
-
-
-
         Call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 makePhoneCall();
             }
         });
-
-
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  sendEmail();
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("plain/text");
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "hmcity7374@gmail.com" });
@@ -256,27 +237,21 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 startActivity(Intent.createChooser(intent, ""));
             }
         });
-
         WebSite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // openWebsite();
                 Uri uri = Uri.parse("https://hmgroupcompanies.com");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
 
             }
         });
-
-        //............
         imagelogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showFullScreenDialog(R.drawable.roundlogo);
-
             }
         });
-
         galleryimageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -284,14 +259,12 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
             }
         });
-
         cvMyLedger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToActivity(context, CustomerLedgerReport.class, null);
             }
         });
-
         cvDueInstallment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -299,7 +272,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
             }
         });
-
         cvMyBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -307,7 +279,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
             }
         });
-
         cvLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -338,11 +309,10 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 showProfile();
             }
         });
-
         chatImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(HomeTestActivity.this,ChatActivity.class));
+                startActivity(new Intent(HomeTestActivity.this,ChatActivity.class));
             }
         });
         imageView6.setOnClickListener(new View.OnClickListener() {
@@ -369,8 +339,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 showChangeLanguageDialog();
             }
         });
-
-
 
     }
 
@@ -422,11 +390,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     private void getDashboard() {
         showLoading();
         JsonObject jsonObject = new JsonObject();
-
         jsonObject.addProperty("LoginId", PreferencesManager.getInstance(context).getLoginId());
-
         Call<HomeActivityDashBoard> dashBoardCall = apiServices.getDashboard(jsonObject);
-
         dashBoardCall.enqueue(new Callback<HomeActivityDashBoard>() {
             @Override
             public void onResponse(Call<HomeActivityDashBoard> call, Response<HomeActivityDashBoard> response) {
@@ -462,12 +427,9 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                     PieData data = new PieData(dataSet);
                     data.setValueTextSize(15f);
                     data.setValueTextColor(Color.YELLOW);
-
                     pieChart.setData(data);
-
                 }
             }
-
             @Override
             public void onFailure(Call<HomeActivityDashBoard> call, Throwable throwable) {
                 hideLoading();
@@ -491,8 +453,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 else
                     showMessage(response.body().getMessage());
             }
-
-
             @Override
             public void onFailure(Call<CustomerMyProfile> call, Throwable throwable) {
                 hideLoading();
@@ -504,12 +464,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         AlertDialog.Builder builder = new AlertDialog.Builder(HomeTestActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("My Profile");
-        final View inflateForm = getLayoutInflater().inflate(R.layout.customer_alert_dialog, null); // Get custom login form view.
-        builder.setView(inflateForm); // Set above view in alert dialog.
+        final View inflateForm = getLayoutInflater().inflate(R.layout.customer_alert_dialog, null);
+        builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
-
-        final AlertDialog dialog = builder.show(); // Because only AlertDialog has cancel method.
+        final AlertDialog dialog = builder.show();
         ImageView imageView = inflateForm.findViewById(R.id.profile_img);
         this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
         this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
@@ -522,25 +481,17 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         this.E9 = (EditText) inflateForm.findViewById(R.id.customer_bankBranch);
         this.E10 = (EditText) inflateForm.findViewById(R.id.customer_pan_no);
         this.E11 = (EditText) inflateForm.findViewById(R.id.customer_bankname);
-//        PreferencesManager.getInstance(context).setProfilePic(profile);
         Glide.with(context).load("http://crm.hmgreencity.com/" + PreferencesManager.getInstance(context).getProfilePic()).
                 apply(RequestOptions.circleCropTransform())
                 .placeholder(R.drawable.user_icon)
                 .error(R.drawable.user_icon)
                 .into(imageView);
-
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                showDialog();
                 viewProfle();
             }
         });
-
-//        this.E10
-//        this.E8=
-
-
         E1.setText(firstName + " " + lastName);
         E2.setText(mobile);
         E3.setText(email);
@@ -564,24 +515,17 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
     }
     private void changePassword() {
-
-
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(HomeTestActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Change Password");
-        final View inflateForm = getLayoutInflater().inflate(R.layout.custom_alert_change_password, null); // Get custom login form view.
-        builder.setView(inflateForm); // Set above view in alert dialog.
+        final View inflateForm = getLayoutInflater().inflate(R.layout.custom_alert_change_password, null);
+        builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
-
         final android.app.AlertDialog dialog = builder.show();
-
-
         this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
         this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
         this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
-
-
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -599,17 +543,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 String compPassword = E3.getText().toString().trim();
                 if (!oldPassword.isEmpty()) {
                     if (newPassword.equals(compPassword)) {
-
-                        //    request POST 'http://demo1.afluex.com/webapi/ChnagePassword' \
-//            --form 'OldPassword="123456"' \
-//            --form 'NewPassword="12345"' \
-//            --form 'CustomerID="96"'
                         JsonObject jsonObject = new JsonObject();
                         jsonObject.addProperty("OldPassword", oldPassword);
                         jsonObject.addProperty("NewPassword", newPassword);
                         jsonObject.addProperty("CustomerID", PreferencesManager.getInstance(context).getUserId());
                         Call<UpdatePassword> updatePasswordCall = apiServices.updatePassword(jsonObject);
-
                         updatePasswordCall.enqueue(new Callback<UpdatePassword>() {
                             @Override
                             public void onResponse(Call<UpdatePassword> call, Response<UpdatePassword> response) {
@@ -620,7 +558,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                                     showMessage(response.body().getMessage());
                                 }
                             }
-
                             @Override
                             public void onFailure(Call<UpdatePassword> call, Throwable throwable) {
 
@@ -637,14 +574,13 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
 
-
     }
     private void uploadFeedback() {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(HomeTestActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Send Feedback");
-        final View inflateForm = getLayoutInflater().inflate(R.layout.feedback_form, null); // Get custom login form view.
-        builder.setView(inflateForm); // Set above view in alert dialog.
+        final View inflateForm = getLayoutInflater().inflate(R.layout.feedback_form, null);
+        builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
 
@@ -719,8 +655,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         String message = "Associate Management - 2022\n Version - 1.0\n" +
                 getString(R.string.developed_by) + "\n"  +
                 "Contact No.-  9651997374\n Mail - hmcity7374@gmail.com\n";
-//                "Website: https://hmgroupcompanies.com";
-
         SpannableString spannableString = new SpannableString(message);
         int startIndexWebsite = message.indexOf("https://hmgroupcompanies.com");
         int endIndexWebsite = startIndexWebsite + "https://hmgroupcompanies.com".length();
@@ -745,31 +679,21 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             messageTextView.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        Logger.logItem("Reach onActivity");
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 profileFile = FileUtils.getFile(context, result.getUri());
-
-//                Glide.with(context).load(result.getUri()).
-//                        apply(RequestOptions.circleCropTransform())
-//                        .placeholder(R.drawable.user_icon)
-//                        .error(R.drawable.user_icon)
-//                        .into(profileImg);
                 uploadFile(profileFile);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
-//                LoggerUtil.logItem(error.getMessage());
             }
         }
     }
     private ProgressDialog pd;
     private File profileFile;
-
     private void showProgressDialog() {
         pd = new ProgressDialog(context);
         pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -779,7 +703,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         pd.show();
     }
     private void uploadFile(File homeWorkFile) {
-
         showLoading();
         RequestBody requestBody;
         MultipartBody.Part body = null;
@@ -811,7 +734,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             }
         });
     }
-
     @Override
     public void onCancelClick() {
 
@@ -827,7 +749,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         dialog.setOnPickCancel(this);
         dialog.show(this);
     }
-
     @Override
     public void onPickResult(PickResult pickResult) {
         if (pickResult.getError() == null) {
@@ -893,7 +814,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     public void loadLocale(){
         SharedPreferences prefs = getSharedPreferences("Setings", Activity.MODE_PRIVATE);
         String language = prefs.getString("My_Lang","");
-//        setLocale(language);
     }
     @Override
     public void onBackPressed() {
@@ -924,12 +844,10 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 "mailto", emailAddress, null));
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email here");
-
         if (emailIntent.resolveActivity(this.getPackageManager()) != null) {
             startActivity(emailIntent);
         }
     }
-
     private void makePhoneCall() {
         String phoneNumber = "+91-9651997374";
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
@@ -940,20 +858,17 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             startCallIntent(phoneNumber);
         }
     }
-
     private void startCallIntent(String phoneNumber) {
         Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
         if (callIntent.resolveActivity(this.getPackageManager()) != null) {
             startActivity(callIntent);
         }
     }
-
     private void openWebsite() {
         Uri uri = Uri.parse("https://hmgroupcompanies.com");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
-
     private void logout() {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setTitle("Logout");
@@ -982,4 +897,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         });
         alert11.show();
     }
+
+
 }

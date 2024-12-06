@@ -45,19 +45,24 @@
                         android:layout_height="wrap_content"
                         android:queryHint="Search..."
                         app:layout_constraintTop_toTopOf="parent"/>
+
                     <ImageButton
                         android:id="@+id/language"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="38dp"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@drawable/baseline_language_24"
                         android:backgroundTint="@color/white"
                         android:clickable="true"
                         android:onClick="makePhoneCall"
+                        android:padding="18sp"
                         android:scaleX="0.9"
-                        android:scaleY="0.9" />
+                        android:scaleY="0.9"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                 </RelativeLayout>
                 <TextView
                     android:visibility="gone"
@@ -70,16 +75,19 @@
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
+
                 <ImageButton
                     android:id="@+id/support"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:background="@drawable/baseline_contact_support_24"
+                    android:padding="18dp"
                     android:scaleX="0.9"
                     android:scaleY="0.9"
-                    app:tint="@color/white" />
+                    app:tint="@color/white"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -104,18 +112,19 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             tools:ignore="MissingConstraints">
+
             <com.ortiz.touchview.TouchImageView
                 android:id="@+id/img_side_menu"
                 android:layout_width="58dp"
                 android:layout_height="58dp"
-                android:layout_marginTop="15dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:scaleType="fitXY"
-                android:paddingStart="0dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:paddingStart="0dp"
+                android:scaleType="fitXY"
                 android:src="@drawable/roundlogo"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -328,7 +337,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="00"
+                    android:text="@string/_00"
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/black"
                     android:textSize="22sp"
@@ -377,7 +386,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="00"
+                    android:text="@string/_00"
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/lightbalck"
                     android:textSize="22sp"
@@ -425,7 +434,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="00"
+                    android:text="@string/_00"
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/lightbalck"
                     android:textSize="22sp"
@@ -475,7 +484,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="00"
+                    android:text="@string/_00"
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/lightbalck"
                     android:textSize="22sp"
@@ -524,7 +533,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="00"
+                    android:text="@string/_00"
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/lightbalck"
                     android:textSize="22sp"
@@ -572,7 +581,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="00"
+                    android:text="@string/_00"
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/lightbalck"
                     android:textSize="22sp"
@@ -620,7 +629,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="00"
+                    android:text="@string/_00"
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/lightbalck"
                     android:textSize="22sp"
@@ -668,7 +677,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="00"
+                    android:text="@string/_00"
                     android:textAppearance="@style/TextField_Bold"
                     android:textColor="@color/lightbalck"
                     android:textSize="22sp"
@@ -781,7 +790,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/colorPrimary"
-                        android:paddingLeft="5dp"
+                        android:paddingStart="5dp"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
                         android:text="Team"
