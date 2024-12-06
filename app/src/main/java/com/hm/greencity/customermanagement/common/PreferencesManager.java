@@ -18,20 +18,16 @@ public class PreferencesManager {
     private static final String CustomerID = "CustomerID";
     private static final String producyInfoId = "producyInfoId";
     private static final String vendorId = "vendorId";
-
     private static final String Pk_NoteId = "Pk_NoteId";
     private static final String Pk_BussinessCardId = "Pk_BussinessCardId";
-
     public static PreferencesManager sInstance;
     private final SharedPreferences mPref;
     private static Context context;
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     private static final String IS_FIRST_INTRO = "IS_FIRST_INTRO";
-
     private PreferencesManager(Context context) {
         mPref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
-
     //for fragment
     public static synchronized void initializeInstance(Context context) {
         if (sInstance == null) {
@@ -95,19 +91,15 @@ public class PreferencesManager {
     public String getUserId() {
         return mPref.getString(UserId, "");
     }
-    //businessid
-
 
     public void setPk_BussinessCardId(String value) {
         mPref.edit().putString(Pk_BussinessCardId, value).apply();
     }
+
     public String getPk_BussinessCardId() {
         return mPref.getString(Pk_BussinessCardId, "");
     }
 
-
-
-    // Method to save note ID
     public void setPkNoteId(String value) {
         mPref.edit().putString(Pk_NoteId, value).apply();
     }
@@ -201,7 +193,8 @@ public class PreferencesManager {
         editor.clear();
         editor.apply();
         return true;
-
     }
+
+
 
 }

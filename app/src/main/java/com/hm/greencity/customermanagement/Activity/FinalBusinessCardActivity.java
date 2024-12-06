@@ -49,6 +49,7 @@ public class FinalBusinessCardActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
 
+        chatService = RetrofitClient.getClient().create(ChatService.class);
         initview();
         onclicklistener();
         cardView=findViewById(R.id.visitingCard);
@@ -86,12 +87,12 @@ public class FinalBusinessCardActivity extends BaseActivity {
             Bitmap screenshot = ViewShot(cardView);
         });
 
-//        binding.deletecard.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                deletecard();
-//            }
-//        });
+        binding.deletecard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletecard();
+            }
+        });
 
     }
 
@@ -107,7 +108,8 @@ public class FinalBusinessCardActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ResGetBusinessCard> call, Response<ResGetBusinessCard> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    PreferencesManager.getInstance(context).setLoginId(response.body().getPk_BussinessCardId());
+                    PreferencesManager.getInstance(context).setPk_BussinessCardId(response.body().getPk_BussinessCardId());
+                    Log.d("SavePreferences", "Business Card ID saved: " + response.body().getPk_BussinessCardId());
                     ResGetBusinessCard resGetNote = response.body();
                     binding.name.setText(resGetNote.getName());
                     binding.jobtitle.setText(resGetNote.getJobTitle());
@@ -115,40 +117,23 @@ public class FinalBusinessCardActivity extends BaseActivity {
                     binding.phone.setText(resGetNote.getMobileNo());
                     binding.email.setText(resGetNote.getEmailId());
                     binding.address.setText(resGetNote.getAddress());
-
                     binding.mobileno.setText(resGetNote.getMobileNo());
                     binding.cardemailid.setText(resGetNote.getEmailId());
                     binding.cardaddress.setText(resGetNote.getAddress());
                     binding.cardname.setText(resGetNote.getName());
                     loadImage(binding.imagelogo, resGetNote.getImage());
-
-                    String facebookUrl = resGetNote.getFacebook();
-                    String phone = resGetNote.getMobileNo();
-                    String instagramUrl = resGetNote.getInstagram();
-                    String telegramUrl = resGetNote.getTelegram();
-                    String whatsappUrl = resGetNote.getWhatsapp();
-                    String linkedinUrl = resGetNote.getLinkdin();
-
-                    binding.fb.setOnClickListener(v -> openUrl(facebookUrl));
-                    binding.insta.setOnClickListener(v -> openUrl(instagramUrl));
-                    binding.telegram.setOnClickListener(v -> openUrl(telegramUrl));
-                    binding.whatsapp.setOnClickListener(v -> openWhatsAppChat(whatsappUrl));
-                    binding.contact.setOnClickListener(v -> openSMS(phone));
-                    binding.call.setOnClickListener(v -> makeCall(phone));
-                    binding.linkedIn.setOnClickListener(v -> openUrl(linkedinUrl));
-
                 } else {
                     Toast.makeText(FinalBusinessCardActivity.this, "Response unsuccessful: " + response.message(), Toast.LENGTH_SHORT).show();
                     Log.e("Response Error", response.message());
                 }
             }
+
             @Override
             public void onFailure(Call<ResGetBusinessCard> call, Throwable t) {
                 Toast.makeText(FinalBusinessCardActivity.this, "Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.e("CreateNote Error", t.toString());
             }
         });
-
     }
     private void openUrl(String resourceId) {
         if (resourceId != null && !resourceId.isEmpty()) {
@@ -189,8 +174,6 @@ public class FinalBusinessCardActivity extends BaseActivity {
             Toast.makeText(this, "Invalid WhatsApp number", Toast.LENGTH_SHORT).show();
         }
     }
-
-
     public Bitmap ViewShot(View v) {
         int height = v.getHeight();
         int width = v.getWidth();
@@ -230,8 +213,6 @@ public class FinalBusinessCardActivity extends BaseActivity {
             }
         }
     }
-
-
     private void openSMS(String phoneNumber) {
         if (phoneNumber != null && !phoneNumber.isEmpty()) {
             Uri uri = Uri.parse("sms:" + phoneNumber);
@@ -259,67 +240,23 @@ public class FinalBusinessCardActivity extends BaseActivity {
             Toast.makeText(this, "Invalid phone number", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
-
-//    private void deletecard1() {
-//        ApiServices apiServices = RetrofitClient.getApiServices();
-//        JsonObject requestLogin = new JsonObject();
-//        requestLogin.addProperty("Fk_UserID", PreferencesManager.getInstance(this).getUserId());
-//        requestLogin.addProperty("Pk_BussinessCardId", PreferencesManager.getInstance(this).getPk_BussinessCardId()); // This might be an issue if you're passing the same userId for both Fk_UserID and Pk_BussinessCardId. Ensure it is correct.
-//        Call<ResDeleteBusinesscard> call = apiServices.deletecard(requestLogin);
-//        call.enqueue(new Callback<ResDeleteBusinesscard>() {
-//            @Override
-//            public void onResponse(Call<ResDeleteBusinesscard> call, Response<ResDeleteBusinesscard> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    ResDeleteBusinesscard resGetNote = response.body();
-//                    if ("200".equals(resGetNote.getStatus())) {
-//                        Toast.makeText(FinalBusinessCardActivity.this, "Business Card Deleted Successfully", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        // Handle any other response codes or messages
-//                        Toast.makeText(FinalBusinessCardActivity.this, "Failed: " + resGetNote.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    // Handle case where response is unsuccessful
-//                    Toast.makeText(FinalBusinessCardActivity.this, "Response unsuccessful: " + response.message(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResDeleteBusinesscard> call, Throwable t) {
-//                // Handle failure (network issues, etc.)
-//                Toast.makeText(FinalBusinessCardActivity.this, "Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
-//                Log.e("DeleteCard Error", t.toString());
-//            }
-//        });
-//    }
-
-
-
-
-
-
-
     private void deletecard() {
         PreferencesManager preferencesManager = PreferencesManager.getInstance(this);
         String userIdString = preferencesManager.getUserId();
         String businessIdString = preferencesManager.getPk_BussinessCardId();
         Log.d("DeleteCard", "userIdString: " + userIdString + ", businessIdString: " + businessIdString);
         if (userIdString == null || userIdString.isEmpty() || businessIdString == null || businessIdString.isEmpty()) {
-            // If any of the values is null or empty, show the error message and exit the method
             Toast.makeText(this, "User ID or Business Card ID is invalid", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        // Convert the strings to integers
-        int userId = Integer.parseInt(userIdString);  // Convert userId to int
-        int businessId = Integer.parseInt(businessIdString);  // Convert businessId to int
-
-        // Create the request object with userId and businessId
+        int userId = Integer.parseInt(userIdString);
+        int businessId = Integer.parseInt(businessIdString);
+        if (chatService == null) {
+            Log.e("DeleteCard", "chatService is not initialized!");
+            Toast.makeText(this, "Service is unavailable. Please try again.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         ReqDeleteBusinesscard request = new ReqDeleteBusinesscard(userId, businessId);
-
-        // Make the API call
         chatService.deletecard(request).enqueue(new Callback<ResDeleteBusinesscard>() {
             @Override
             public void onResponse(Call<ResDeleteBusinesscard> call, Response<ResDeleteBusinesscard> response) {
@@ -327,33 +264,25 @@ public class FinalBusinessCardActivity extends BaseActivity {
                     ResDeleteBusinesscard messagesResponse = response.body();
                     String statusCode = messagesResponse.getStatus();
                     String message = messagesResponse.getMessage();
-
                     if ("200".equals(statusCode)) {
-                        // Business card deleted successfully
                         Toast.makeText(FinalBusinessCardActivity.this, "Business Card Deleted Successfully", Toast.LENGTH_SHORT).show();
-
-                        // Optionally, navigate to another activity or refresh the screen
                         Intent intent = new Intent(FinalBusinessCardActivity.this, AssociateContaner.class);
                         startActivity(intent);
-                        finish(); // To close the current activity
+                        finish();
                     } else {
-                        // Handle other statuses (failure, etc.)
                         Toast.makeText(FinalBusinessCardActivity.this, message, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    // Handle case where response is unsuccessful (e.g., 404, 500 errors)
                     Toast.makeText(FinalBusinessCardActivity.this, "Failed to delete business card", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResDeleteBusinesscard> call, Throwable t) {
-                // Handle network errors or other issues
                 Toast.makeText(FinalBusinessCardActivity.this, "Something went wrong: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 
 
 
