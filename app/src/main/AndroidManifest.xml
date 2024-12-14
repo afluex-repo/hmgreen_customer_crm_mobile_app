@@ -22,9 +22,6 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
-
-
-
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="true" />
@@ -38,9 +35,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activity.DocumentActivity"
+            android:name=".Activity.EmiTrackingActivity"
             android:theme="@style/AppTheme.NoAction"
             android:exported="false" />
+        <activity
+            android:name=".Activity.DocumentActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoAction" />
         <activity
             android:name=".Activity.SiteVisitorListActivity"
             android:exported="false"

@@ -369,7 +369,6 @@ public class AssosiateDashboard extends BaseFragment {
             public void onResponse(Call<ResponseAssociateDashboard> call, Response<ResponseAssociateDashboard> response) {
                 hideLoading();
                 try {
-
                     if (response.body().getStatusCode().equalsIgnoreCase("200")) {
                         tvTotalDownline.setText(response.body().getTotalDownline());
                         tvTotalDirect.setText(response.body().getTotalDirects());
@@ -385,8 +384,6 @@ public class AssosiateDashboard extends BaseFragment {
                         paidRight.setText(response.body().getPaidBusinessRight());
                         totalbuisLeft.setText(response.body().getPaidBusinessLeft());
                         totalbuisRight.setText(response.body().getPaidBusinessRight());
-
-
                     } else showMessage(response.body().getMessage());
                 } catch (Exception e) {
                     showMessage("Server Issue");

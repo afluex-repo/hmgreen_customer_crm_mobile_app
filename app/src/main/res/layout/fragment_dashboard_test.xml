@@ -9,6 +9,7 @@
     android:overScrollMode="always"
     android:scrollbars="none">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -846,7 +847,7 @@
                         android:fontFamily="@font/lexend"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/notes" />
+                        app:layout_constraintTop_toBottomOf="@+id/notes"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -972,9 +973,9 @@
                     <ImageView
                         android:id="@+id/chatImage"
                         android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_height="45dp"
                         android:src="@drawable/chat"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -996,7 +997,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/chat_with_us"
-                        android:textSize="13sp"
+                        android:textSize="11sp"
                         android:textColor="@color/black"
                         android:fontFamily="@font/lexend"
                         android:layout_marginTop="2dp"
@@ -1162,9 +1163,50 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-
-
-
+            <androidx.cardview.widget.CardView
+                android:id="@+id/emicard"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:background="@color/white"
+                android:outlineAmbientShadowColor="@color/grey"
+                android:outlineSpotShadowColor="@color/grey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                android:layout_marginTop="5dp"
+                app:cardUseCompatPadding="true"
+               app:layout_constraintStart_toEndOf="@+id/documentcard"
+                app:layout_constraintTop_toBottomOf="@+id/cv_change_password"
+                app:layout_constraintWidth_percent="0.33">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+                    <ImageView
+                        android:id="@+id/emiimage"
+                        android:layout_width="48dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/accounting"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="VectorDrawableCompat"
+                        app:tint="#2471A3" />
+                    <TextView
+                        android:id="@+id/documenttext1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EMI Tracking"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lexend"
+                        android:textAlignment="center"
+                        android:layout_marginTop="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/emiimage" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -357,6 +357,18 @@
     <string name="payment_for">ुगतान के लिए</string>
     <string name="https_hmgroupcompanies_com">https://hmgroupcompanies.com</string>
     <string name="_00">00</string>
+    <string name="instamt">उदाहरण राशि</string>
+    <string name="paymentstatus">भुगतान स्थिति</string>
+    <string name="installmentno">किस्त संख्या</string>
+    <string name="paymentdate">भुगतान दिनांक</string>
+    <string name="companay">कंपनी</string>
+    <string name="accountheadid">खाताप्रमुखआईडी</string>
+    <string name="paymentmode">भुगतान मोड</string>
+    <string name="status">स्थिति</string>
+    <string name="latecharge">देरी से भुगतान का शुल्क</string>
+    <string name="transactionnumber">लेन-देन संख्या</string>
+    <string name="transactiondate">कार्यवाही की तिथि</string>
+    <string name="emi_tracking">ईएमआई ट्रैकिंग</string>
 
 
 </resources>

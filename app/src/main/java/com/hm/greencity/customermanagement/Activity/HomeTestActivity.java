@@ -70,6 +70,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
+
 public class HomeTestActivity extends BaseActivity implements IPickCancel, IPickResult {
     private static final int REQUEST_CALL_PERMISSION = 1;
     @BindView(R.id.profile_img)
@@ -135,8 +137,13 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     ImageView dgitalcardimageView;
     @BindView(R.id.receiptImage)
     ImageView receiptImage;
+    @BindView(R.id.emicard)
+    CardView emicard;
+
     @BindView(R.id.documentcard)
     CardView documentcard;
+
+
     private CardView cvPlotBooking, cvCustomerDetails, cvMySummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
 
@@ -149,18 +156,15 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         tvLoginId.setText(PreferencesManager.getInstance(context).getLoginId());
         getDashboard();
         Onclicklistener();
-
         TextView textView3 = findViewById(R.id.textView3);
         TextView textView4 = findViewById(R.id.textView4);
         TextView textView5 = findViewById(R.id.textView5);
         TextView textView6 = findViewById(R.id.textView6);
         TextView textView7 = findViewById(R.id.textView7);
         TextView textView8 = findViewById(R.id.textView8);
-
         TextView textView31 = findViewById(R.id.textView31);
         TextView textView51 = findViewById(R.id.textView51);
         TextView chattext = findViewById(R.id.chattext);
-
         cvPlotBooking = findViewById(R.id.cv_plotBooking);
         cvCustomerDetails = findViewById(R.id.cv_customerDetails);
         cvMySummary = findViewById(R.id.cv_mysummary);
@@ -194,6 +198,14 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     }
 
     private void Onclicklistener() {
+        emicard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeTestActivity.this,EmiTrackingActivity.class));
+                finish();
+            }
+        });
+
         documentcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,6 +213,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 finish();
             }
         });
+
         imagenotepad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -243,7 +256,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 Uri uri = Uri.parse("https://hmgroupcompanies.com");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
-
             }
         });
         imagelogo.setOnClickListener(new View.OnClickListener() {
@@ -256,7 +268,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             @Override
             public void onClick(View view) {
                 goToActivity(context, GalleryActivity2.class, null);
-
             }
         });
         cvMyLedger.setOnClickListener(new View.OnClickListener() {
@@ -436,8 +447,9 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 showMessage(throwable.getMessage());
             }
         });
-
     }
+
+
     private void showProfile() {
         showLoading();
         JsonObject jsonObject = new JsonObject();
@@ -458,8 +470,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 hideLoading();
             }
         });
-
     }
+
     protected void customAlertDialog(final String firstName, String accountNo, String address, String bankName, String bankBranch, String bankHolderName, String city, final String customberId, String dob, String email, Object gaurdianName, Object gaurdianRelation, Object gender, String ifsc, Object joiningDate, final String lastName, String mobile, String panNumber, String pinCode, String sponsorId, String name, String sponsorName, String state, String profile) {
         AlertDialog.Builder builder = new AlertDialog.Builder(HomeTestActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
@@ -511,9 +523,9 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 dialog.cancel();
             }
         });
-
-
     }
+
+
     private void changePassword() {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(HomeTestActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
@@ -534,7 +546,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 dialog.cancel();
             }
         });
-
         supplierSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -560,20 +571,16 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                             }
                             @Override
                             public void onFailure(Call<UpdatePassword> call, Throwable throwable) {
-
                             }
                         });
                     } else {
                         showMessage("Old and New Password are not same");
                     }
-
                 } else {
                     showMessage("Enter old password");
                 }
-
             }
         });
-
     }
     private void uploadFeedback() {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(HomeTestActivity.this);
@@ -583,15 +590,9 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         builder.setView(inflateForm);
         builder.setCancelable(true);
         builder.create();
-
         final android.app.AlertDialog dialog = builder.show();
-
-
         this.E1 = (EditText) inflateForm.findViewById(R.id.feedback_title);
         this.E2 = (EditText) inflateForm.findViewById(R.id.edt_feedback);
-//        this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
-
-
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
         Button cancelButton = (Button) inflateForm.findViewById(R.id.customer_cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -600,27 +601,20 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 dialog.cancel();
             }
         });
-
         supplierSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String title = E1.getText().toString().trim();
                 String feedback = E2.getText().toString().trim();
-//                String compPassword = E3.getText().toString().trim();
-//                if (!oldPassword.isEmpty())
-
                 {
                     if (!(E1.getText().toString().trim().isEmpty())&&!(E2.getText().toString().trim().isEmpty()))
-
                     {
                         JsonObject jsonObject = new JsonObject();
                         jsonObject.addProperty("Title", title);
                         jsonObject.addProperty("Description", feedback);
                         jsonObject.addProperty("Fk_UserId", PreferencesManager.getInstance(context).getUserId());
                         jsonObject.addProperty("AddedBy", PreferencesManager.getInstance(context).getUserId());
-
                         Call<UpdatePassword> updateFeedback = apiServices.uploadFeedback(jsonObject);
-
                         updateFeedback.enqueue(new Callback<UpdatePassword>() {
                             @Override
                             public void onResponse(Call<UpdatePassword> call, Response<UpdatePassword> response) {
@@ -631,10 +625,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                                     showMessage(response.body().getMessage());
                                 }
                             }
-
                             @Override
                             public void onFailure(Call<UpdatePassword> call, Throwable throwable) {
-
                             }
                         });
                     }
@@ -642,14 +634,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                     {
                         Toast.makeText(context, "Enter title and feedback both...", Toast.LENGTH_SHORT).show();
                     }
-
                 }
-
             }
         });
-
-
     }
+
     //====================================================| About |====================================================
     public void aboutMe() {
         String message = "Associate Management - 2022\n Version - 1.0\n" +

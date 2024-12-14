@@ -1,6 +1,7 @@
 package com.hm.greencity.customermanagement.common;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 
 public class PreferencesManager {
@@ -20,6 +21,9 @@ public class PreferencesManager {
     private static final String vendorId = "vendorId";
     private static final String Pk_NoteId = "Pk_NoteId";
     private static final String Pk_BussinessCardId = "Pk_BussinessCardId";
+    private static final String BookingNumber = "BookingNumber";
+
+
     public static PreferencesManager sInstance;
     private final SharedPreferences mPref;
     private static Context context;
@@ -100,6 +104,14 @@ public class PreferencesManager {
         return mPref.getString(Pk_BussinessCardId, "");
     }
 
+
+    public void setBookingNumber(String value) {
+        mPref.edit().putString(BookingNumber, value).apply();
+    }
+    public String getBookingNumber() {
+        return mPref.getString(BookingNumber, "");
+    }
+
     public void setPkNoteId(String value) {
         mPref.edit().putString(Pk_NoteId, value).apply();
     }
@@ -107,7 +119,6 @@ public class PreferencesManager {
     public String getPkNoteId() {
         return mPref.getString(Pk_NoteId, "");
     }
-
 
     //UserType
     public void setUserType(String value) {

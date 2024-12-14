@@ -29,13 +29,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-
 public class PrintReceiptActivity extends BaseActivity {
     private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
     ActivityPrintReceiptBinding binding;
-
     private ResponsePrintReport responsePrintReport;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         binding = ActivityPrintReceiptBinding.inflate(getLayoutInflater());
@@ -43,6 +40,7 @@ public class PrintReceiptActivity extends BaseActivity {
         setContentView(binding.getRoot());
         initView();
         onClickListener();
+
     }
 
     private void initView() {
@@ -52,7 +50,6 @@ public class PrintReceiptActivity extends BaseActivity {
             PrintData(visitorId);
         }
     }
-
     private void onClickListener() {
         binding.saveReceiptButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +62,6 @@ public class PrintReceiptActivity extends BaseActivity {
             }
         });
     }
-
     public void PrintData(String id) {
         JsonObject object = new JsonObject();
         object.addProperty("PK_BookingDetailsId", Integer.parseInt(id));
@@ -108,39 +104,11 @@ public class PrintReceiptActivity extends BaseActivity {
             }
         });
     }
-
-
-//    @RequiresApi(Build.VERSION_CODES.KITKAT)
-//    public void generatePDF(ResponsePrintReport data) {
-//        View receiptView = findViewById(R.id.receiptlayout);
-//        PdfDocument pdfDocument = new PdfDocument();
-//        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1080, 2220, 2).create();  // Set page size
-//        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
-//        Canvas canvas = page.getCanvas();
-//        receiptView.measure(View.MeasureSpec.makeMeasureSpec(pageInfo.getPageWidth(), View.MeasureSpec.EXACTLY),
-//                View.MeasureSpec.makeMeasureSpec(pageInfo.getPageHeight(), View.MeasureSpec.EXACTLY));
-//        receiptView.layout(0, 0, receiptView.getMeasuredWidth(), receiptView.getMeasuredHeight());
-//        receiptView.draw(canvas);
-//        pdfDocument.finishPage(page);
-//        File file = new File(getExternalFilesDir(null), "Receipt_" + data.getReceiptNo() + ".pdf");
-//        try {
-//            if (!file.getParentFile().exists()) {
-//                file.getParentFile().mkdirs();
-//            }
-//            pdfDocument.writeTo(new FileOutputStream(file));
-//            Toast.makeText(getApplicationContext(), "PDF file generated..", Toast.LENGTH_SHORT).show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            Toast.makeText(getApplicationContext(), "Failed to generate PDF file..", Toast.LENGTH_SHORT).show();
-//        }
-//        pdfDocument.close();
-//    }
-
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     public void generatePDF(ResponsePrintReport data) {
         View receiptView = findViewById(R.id.receiptlayout);
         PdfDocument pdfDocument = new PdfDocument();
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1080, 2220, 2).create();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1150, 2920, 2).create();
         PdfDocument.Page page = pdfDocument.startPage(pageInfo);
         Canvas canvas = page.getCanvas();
 
@@ -169,7 +137,6 @@ public class PrintReceiptActivity extends BaseActivity {
         } else {
             File downloadFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
             File file = new File(downloadFolder, "Receipt_" + data.getReceiptNo() + ".pdf");
-
             try {
                 if (!downloadFolder.exists()) {
                     downloadFolder.mkdirs();
@@ -183,10 +150,10 @@ public class PrintReceiptActivity extends BaseActivity {
         }
         pdfDocument.close();
     }
-
-
     @Override
     public void onNoteDelete(LstNotepad note) {
-
     }
+
+
+
 }

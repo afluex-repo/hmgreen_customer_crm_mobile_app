@@ -3,6 +3,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -89,11 +89,8 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.backarrow);
 
-
-
 //        toggle.setDrawerArrowDrawable(new DrawerArrowDrawable(this));
         navigationView = (NavigationView) findViewById(R.id.navigation_id);
-
 
 //        navigationView.setNavigationItemSelectedListener(PlotBooking.this);
 
@@ -104,16 +101,10 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
 //        nav_id.setText(PreferencesManager.getInstance(context).getLoginId());
 //        nav_user.setText("Welcome "+PreferencesManager.getInstance(context).getFull_Name());
 
-
         recyclerview1.setHasFixedSize(true);
-
-
         if (NetworkUtils.getConnectivityStatus(context) != 0)
             getData();
         else showMessage(R.string.alert_internet);
-
-
-
 
         toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
             @Override
@@ -125,9 +116,9 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
         });
     }
 
+
     @Override
     public void onNoteDelete(LstNotepad note) {
-
     }
 
 
@@ -135,26 +126,33 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
         showLoading();
         JsonObject object = new JsonObject();
         object.addProperty("LoginId", PreferencesManager.getInstance(context).getLoginId());
-//        LoggerUtil.logItem(object);
         Call<ResponsePloatBooking> call = apiServices.CustomerBookingList(object);
         call.enqueue(new Callback<ResponsePloatBooking>() {
             @Override
             public void onResponse(Call<ResponsePloatBooking> call, Response<ResponsePloatBooking> response) {
                 hideLoading();
-//                LoggerUtil.logItem(response.body());
-                if (response.body().getStatusCode().equalsIgnoreCase("200")) {
+                if (response.body() != null && response.body().getStatusCode().equalsIgnoreCase("200")) {
+                    String bookingNumber = response.body().getPloatBookingList().get(0).getBookingNumber();
+                    Log.d("BookingNumber", "Booking Number from API: " + bookingNumber);
+                    PreferencesManager.getInstance(context).setBookingNumber(bookingNumber);
+                    Log.d("BookingNumber", "Booking Number saved in SharedPreferences");
+                    String savedBookingNumber = PreferencesManager.getInstance(context).getBookingNumber();
+                    Log.d("BookingNumber", "Booking Number retrieved from SharedPreferences: " + savedBookingNumber);
                     AdapterPloatBooking adapter = new AdapterPloatBooking(response.body().getPloatBookingList(), context);
                     recyclerview1.setAdapter(adapter);
-                } else showMessage(response.body().getMessage());
+                } else {
+                    showMessage(response.body().getMessage());
+                }
             }
-
             @Override
             public void onFailure(Call<ResponsePloatBooking> call, Throwable t) {
                 hideLoading();
+                Log.e("Error", "Failed to fetch booking data: " + t.getMessage());
             }
-
         });
     }
+
+
 
     @OnClick(R.id.btn_search)
     public void onClick() {
@@ -174,7 +172,6 @@ public class PlotBooking extends BaseActivity /*implements NavigationView.OnNavi
         etPlotNumber = sheetView.findViewById(R.id.et_plot_number);
         Button btnCancel = sheetView.findViewById(R.id.btn_cancel);
         Button btnSearch1 = sheetView.findViewById(R.id.btn_search);
-
 
 
         sitemenu = new PopupMenu(context, tvSelectSite);

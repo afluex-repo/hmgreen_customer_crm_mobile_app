@@ -38,10 +38,8 @@ public class AdapterPloatBooking extends RecyclerView.Adapter<AdapterPloatBookin
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
 
-
         viewHolder.tvBookingNo.setText(models.get(i).getPlotInformation());
         viewHolder.tvPlotDetails.setText(models.get(i).getBookingNumber());
-
         viewHolder.tvPaidAmt.setText("Total Paid " + "\u20B9" + " " + models.get(i).getTotalPaid());
         viewHolder.plotamt.setText("Total: " + "\u20B9" + " " + models.get(i).getPlotAmount());
         viewHolder.tvArea.setText("Area " + models.get(i).getPlotArea());

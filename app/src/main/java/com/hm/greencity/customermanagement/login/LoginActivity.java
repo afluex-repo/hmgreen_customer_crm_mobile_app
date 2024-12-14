@@ -1,5 +1,4 @@
 package com.hm.greencity.customermanagement.login;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,36 +11,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.Activity.AssociateContaner;
-import com.hm.greencity.customermanagement.Activity.HomeActivity;
 import com.hm.greencity.customermanagement.Activity.HomeTestActivity;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.common.BaseActivity;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.models.Notes.GetNote.LstNotepad;
 import com.hm.greencity.customermanagement.models.ResponseLogin;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends BaseActivity {
 
+public class LoginActivity extends BaseActivity {
     public static final String TAG = "LoginActivity";
     private Button button;
     private EditText userName, passWord;
     private ImageView imageView;
     private TextView textView;
-
     private ImageView userPhoto;
     private EditText fullName, designation, email, phoneNumber, address, username, password, confirmPassword, search;
-
     SharedPreferences preferences;
     AlertDialog.Builder builder;
 

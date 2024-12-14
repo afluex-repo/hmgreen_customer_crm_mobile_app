@@ -380,6 +380,18 @@
     <string name="payment_for">Payment for</string>
     <string name="https_hmgroupcompanies_com">https://hmgroupcompanies.com</string>
     <string name="_00">00</string>
+    <string name="instamt">InstAmt</string>
+    <string name="paymentstatus">PaymentStatus</string>
+    <string name="installmentno">InstallmentNo</string>
+    <string name="paymentdate">PaymentDate</string>
+    <string name="companay">Companay</string>
+    <string name="accountheadid">AccountHeadId</string>
+    <string name="paymentmode">PaymentMode</string>
+    <string name="status">Status</string>
+    <string name="latecharge">LateCharge</string>
+    <string name="transactionnumber">TransactionNumber</string>
+    <string name="transactiondate">TransactionDate</string>
+    <string name="emi_tracking">EMI Tracking</string>
 
 
 </resources>

@@ -240,6 +240,8 @@ public class FinalBusinessCardActivity extends BaseActivity {
             Toast.makeText(this, "Invalid phone number", Toast.LENGTH_SHORT).show();
         }
     }
+
+
     private void deletecard() {
         PreferencesManager preferencesManager = PreferencesManager.getInstance(this);
         String userIdString = preferencesManager.getUserId();

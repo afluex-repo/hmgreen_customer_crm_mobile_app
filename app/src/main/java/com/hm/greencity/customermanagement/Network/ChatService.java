@@ -2,6 +2,8 @@ package com.hm.greencity.customermanagement.Network;
 import com.google.gson.JsonObject;
 import com.hm.greencity.customermanagement.models.DeleteBusinessCard.ReqDeleteBusinesscard;
 import com.hm.greencity.customermanagement.models.DeleteBusinessCard.ResDeleteBusinesscard;
+import com.hm.greencity.customermanagement.models.EmiTracking.ReqEmi;
+import com.hm.greencity.customermanagement.models.EmiTracking.ResEmi;
 import com.hm.greencity.customermanagement.models.GetSite.ReqGetSite;
 import com.hm.greencity.customermanagement.models.GetSite.ResGetSite;
 import com.hm.greencity.customermanagement.models.Site.ResSite;
@@ -43,5 +45,10 @@ public interface ChatService {
 
     @POST("WebAPI/DeleteBussinessCard")
     Call<ResDeleteBusinesscard>deletecard(@Body ReqDeleteBusinesscard reqDeleteBusinesscard);
+
+
+    @POST("WebAPI/GetEMILedger")
+    Call<ResEmi>emitracking(@Body ReqEmi reqEmi);
+
 
 }

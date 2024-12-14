@@ -1,10 +1,9 @@
 package com.hm.greencity.customermanagement.models;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseLogin {
 
+public class ResponseLogin {
     @SerializedName("StatusCode")
     @Expose
     private String statusCode;
@@ -95,5 +94,6 @@ public class ResponseLogin {
     public void setUserType(String userType) {
         UserType = userType;
     }
+
 
 }

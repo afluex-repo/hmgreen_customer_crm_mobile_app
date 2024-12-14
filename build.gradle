@@ -2,11 +2,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Deprecated, but still used for some libraries
+        jcenter()
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.3" // Update if needed
+        classpath "com.android.tools.build:gradle:4.1.3"
     }
 }
 
@@ -14,7 +14,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Deprecated, but still used for some libraries
+        jcenter()
         maven { url 'https://jitpack.io' }
     }
 }

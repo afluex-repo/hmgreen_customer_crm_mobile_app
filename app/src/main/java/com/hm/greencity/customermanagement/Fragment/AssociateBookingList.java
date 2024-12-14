@@ -116,7 +116,6 @@ public class AssociateBookingList  extends BaseFragment {
                         AdapterAssociateBookingLst adapter = new AdapterAssociateBookingLst(response.body().getLstBooking(), getContext());
                         recyclerview.setAdapter(adapter);
 
-
                     } else showMessage("Record Not Found!");
                     hideLoading();
                 } else showMessage(response.body().getMessage());
@@ -131,52 +130,92 @@ public class AssociateBookingList  extends BaseFragment {
 
         });
     }
-    private void getDataSearch(String startdate,String enddate,String siteid,String sectorid,String blockid,String customerid,String bookingno,String associateid,String plotnumber)
-    {
+//    private void getDataSearch(String startdate,String enddate,String siteid,String sectorid,String blockid,String customerid,String bookingno,String associateid,String plotnumber)
+//    {
+//        showLoading();
+//        JsonObject object = new JsonObject();
+//        object.addProperty("LoginId", PreferencesManager.getInstance(context).getLoginId());
+//        object.addProperty("BookingId","");
+//        object.addProperty("CustomerLoginID",customerid);
+//        object.addProperty("CustomerName",associateid);
+//        object.addProperty("SiteID",siteid);
+//        object.addProperty("PhaseID",sectorid);
+//        object.addProperty("BlockID",blockid);
+//        object.addProperty("PlotNumber",plotnumber);
+//        object.addProperty("BookingNumber",bookingno);
+//        object.addProperty("FromDate",startdate);
+//        object.addProperty("ToDate",enddate);
+//        Call<ResponseAssociateBookingList> call = apiServices.AssociateBookingList(object);
+//        call.enqueue(new Callback<ResponseAssociateBookingList>() {
+//            @Override
+//            public void onResponse(Call<ResponseAssociateBookingList> call, Response<ResponseAssociateBookingList> response) {
+//                if (response.isSuccessful()) {
+//                    if (response.body().getStatusCode().equalsIgnoreCase("200")) {
+//                        PreferencesManager.getInstance(context).setBookingNumber(response.body().getLstBooking().get(0).getBookingNumber());
+//                        hideLoading();
+//                        textContainer1.setVisibility(View.VISIBLE);
+//                        total_number_of_plot.setText("Total number of bookings "+response.body().getLstBooking().size());
+//                        AdapterAssociateBookingLst adapter = new AdapterAssociateBookingLst(response.body().getLstBooking(), getContext());
+//                        recyclerview.setAdapter(adapter);
+//                    } else showMessage("Record Not Found!");
+//                    hideLoading();
+//                } else showMessage(response.body().getMessage());
+//                hideLoading();
+//            }
+//            @Override
+//            public void onFailure(Call<ResponseAssociateBookingList> call, Throwable t) {
+//                hideLoading();
+//            }
+//        });
+//    }
+
+    public void getDataSearch(String startdate, String enddate, String siteid, String sectorid, String blockid, String customerid, String bookingno, String associateid, String plotnumber) {
         showLoading();
         JsonObject object = new JsonObject();
-
         object.addProperty("LoginId", PreferencesManager.getInstance(context).getLoginId());
-        object.addProperty("BookingId","");
-        object.addProperty("CustomerLoginID",customerid);
-        object.addProperty("CustomerName",associateid);
-        object.addProperty("SiteID",siteid);
-        object.addProperty("PhaseID",sectorid);
-        object.addProperty("BlockID",blockid);
-        object.addProperty("PlotNumber",plotnumber);
-        object.addProperty("BookingNumber",bookingno);
-        object.addProperty("FromDate",startdate);
-        object.addProperty("ToDate",enddate);
+        object.addProperty("BookingId", "");
+        object.addProperty("CustomerLoginID", customerid);
+        object.addProperty("CustomerName", associateid);
+        object.addProperty("SiteID", siteid);
+        object.addProperty("PhaseID", sectorid);
+        object.addProperty("BlockID", blockid);
+        object.addProperty("PlotNumber", plotnumber);
+        object.addProperty("BookingNumber", bookingno);
+        object.addProperty("FromDate", startdate);
+        object.addProperty("ToDate", enddate);
+
         Call<ResponseAssociateBookingList> call = apiServices.AssociateBookingList(object);
         call.enqueue(new Callback<ResponseAssociateBookingList>() {
             @Override
             public void onResponse(Call<ResponseAssociateBookingList> call, Response<ResponseAssociateBookingList> response) {
-
                 if (response.isSuccessful()) {
                     if (response.body().getStatusCode().equalsIgnoreCase("200")) {
+                        PreferencesManager.getInstance(context).setBookingNumber(response.body().getLstBooking().get(0).getBookingNumber());
+//                        String bookingNumber = response.body().getLstBooking().get(0).getBookingNumber();
+//                        Log.d("BookingNumber", "API Response Booking Number: " + bookingNumber);
+//                        PreferencesManager.getInstance(context).setBookingNumber(bookingNumber);
                         hideLoading();
                         textContainer1.setVisibility(View.VISIBLE);
-                        total_number_of_plot.setText("Total number of bookings "+response.body().getLstBooking().size());
-
+                        total_number_of_plot.setText("Total number of bookings " + response.body().getLstBooking().size());
                         AdapterAssociateBookingLst adapter = new AdapterAssociateBookingLst(response.body().getLstBooking(), getContext());
                         recyclerview.setAdapter(adapter);
-
-
-                    } else showMessage("Record Not Found!");
+                    } else {
+                        showMessage("Record Not Found!");
+                    }
                     hideLoading();
-                } else showMessage(response.body().getMessage());
-                hideLoading();
-
+                } else {
+                    showMessage(response.body().getMessage());
+                    hideLoading();
+                }
             }
 
             @Override
             public void onFailure(Call<ResponseAssociateBookingList> call, Throwable t) {
                 hideLoading();
+                Log.e("Error", "Failed to fetch booking data: " + t.getMessage());
             }
-
         });
     }
-
 
 
     private void searchhDialog() {
@@ -198,23 +237,15 @@ public class AssociateBookingList  extends BaseFragment {
         sitemenu = new PopupMenu(context, tv_select_site);
         sectorMenu = new PopupMenu(context, tv_sector);
         blockMenu = new PopupMenu(context, select_block);
-
         PK_SiteID ="";
         PK_SectorID="";
         PK_BlockID="";
-        getProductLst();        //  getSector();
-        //  getBlock();
+        getProductLst();
         lstsites = new ArrayList<>();
         lstSectors = new ArrayList<>();
         sublstSectors = new ArrayList<>();
         lstBlocks = new ArrayList<>();
         sublstBlocks = new ArrayList<>();
-
-
-        //  SelectSite = new ArrayList<String>();
-        //  SelectSector = new ArrayList<String>();
-        // SelectBlock = new ArrayList<String>();
-        // SelectSiteType=new ArrayList<String>();
         tv_select_site.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -225,16 +256,10 @@ public class AssociateBookingList  extends BaseFragment {
                         blockMenu.getMenu().clear();
                         sectorMenu.getMenu().clear();
                         tv_select_site.setText(lstsites.get(position).getSiteName());
-
                         PK_SiteID = lstsites.get(position).getSiteID();
                         setSector(lstsites.get(position).getSiteID());
-
-                        //  getSector();
-                        //  packageMenu = lstPackages.get(position).getProductName();
                         return true;
                     }
-
-
                 });
                 sitemenu.show();
             }
@@ -251,15 +276,11 @@ public class AssociateBookingList  extends BaseFragment {
                         tv_sector.setText(sublstSectors.get(position).getPhaseName());
                         PK_SectorID = sublstSectors.get(position).getPhaseID();
                         setBlock(sublstSectors.get(position).getPhaseID());
-                        //  packageMenu = lstPackages.get(position).getProductName();
                         return true;
                     }
                 });
                 sectorMenu.show();
-
             }
-
-
         });
 
         select_block.setOnClickListener(new View.OnClickListener() {
@@ -271,15 +292,12 @@ public class AssociateBookingList  extends BaseFragment {
                         int position = item.getOrder();
                         select_block.setText(sublstBlocks.get(position).getBlockName());
                         PK_BlockID = sublstBlocks.get(position).getBlockID();
-
-                        //  packageMenu = lstPackages.get(position).getProductName();
                         return true;
                     }
                 });
                 blockMenu.show();
             }
         });
-
         btn_cancel.setOnClickListener(v -> {
         searchDialog.dismiss();
     });
@@ -337,59 +355,35 @@ public class AssociateBookingList  extends BaseFragment {
                     lstBlocks = response.body().getLstBlock();
                     for (int i = 0; i < lstsites.size(); i++) {
                         sitemenu.getMenu().add(0, 0, i, lstsites.get(i).getSiteName());
-
-                        //  PK_SiteID = response.body().getLstSite().get(i).getSiteID();
                     }
-
-
-
                 } else
                     showMessage(response.body().getMessage());
-
             }
-
             @Override
             public void onFailure(Call<ResponseSite> call, Throwable t) {
                 hideLoading();
-                // Toast.makeText(ReInvestment.this,t+ "", Toast.LENGTH_SHORT).show();
             }
-
         });
     }
 
     private void setSector(String siteID) {
-
         sublstSectors.clear();
         sectorMenu.getMenu().clear();
-
         for (int i = 0; i < lstSectors.size(); i++)
         {
             Log.e("TAGsadfasf", "setSector: "+lstSectors.get(i).toString() );
             if (lstSectors.get(i).getPhaseSiteID().equalsIgnoreCase(siteID))
             {
-
                 sublstSectors.add(lstSectors.get(i));
             }
         }
-
-
         for (int i = 0; i < sublstSectors.size(); i++) {
-
             sectorMenu.getMenu().add(0, 0, i, sublstSectors.get(i).getPhaseName());
-
-             // PK_SectorID = sublstSectors.get(i).getPhaseID();
-
-            // Toast.makeText(context,selectSiteTypeid+ "", Toast.LENGTH_SHORT).show();
-            //  getPackage();
-
         }
-
-
     }
 
 
     private void setBlock(String blockID) {
-
         sublstBlocks.clear();
         blockMenu.getMenu().clear();
         for (int i = 0; i < lstBlocks.size(); i++)
@@ -399,16 +393,8 @@ public class AssociateBookingList  extends BaseFragment {
                 sublstBlocks.add(lstBlocks.get(i));
             }
         }
-
         for (int i = 0; i < sublstBlocks.size(); i++) {
-
             blockMenu.getMenu().add(0, 0, i, sublstBlocks.get(i).getBlockName());
-
-             // PK_BlockID = sublstBlocks.get(i).getBlockID();
-
-            // Toast.makeText(context,selectSiteTypeid+ "", Toast.LENGTH_SHORT).show();
-            //  getPackage();
-
         }
 
 
