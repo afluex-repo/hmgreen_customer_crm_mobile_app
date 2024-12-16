@@ -132,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:fontFamily="@font/lexend"
-                        android:text="@string/hm_group_of_Companies"
+                        android:text="@string/hm_group_of_companies"
                         android:textAppearance="@style/TextField_Bold"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
@@ -799,6 +799,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_total_inactive1" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/notepad"
                 android:layout_width="0dp"

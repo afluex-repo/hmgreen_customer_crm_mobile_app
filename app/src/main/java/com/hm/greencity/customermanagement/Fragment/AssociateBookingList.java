@@ -130,44 +130,7 @@ public class AssociateBookingList  extends BaseFragment {
 
         });
     }
-//    private void getDataSearch(String startdate,String enddate,String siteid,String sectorid,String blockid,String customerid,String bookingno,String associateid,String plotnumber)
-//    {
-//        showLoading();
-//        JsonObject object = new JsonObject();
-//        object.addProperty("LoginId", PreferencesManager.getInstance(context).getLoginId());
-//        object.addProperty("BookingId","");
-//        object.addProperty("CustomerLoginID",customerid);
-//        object.addProperty("CustomerName",associateid);
-//        object.addProperty("SiteID",siteid);
-//        object.addProperty("PhaseID",sectorid);
-//        object.addProperty("BlockID",blockid);
-//        object.addProperty("PlotNumber",plotnumber);
-//        object.addProperty("BookingNumber",bookingno);
-//        object.addProperty("FromDate",startdate);
-//        object.addProperty("ToDate",enddate);
-//        Call<ResponseAssociateBookingList> call = apiServices.AssociateBookingList(object);
-//        call.enqueue(new Callback<ResponseAssociateBookingList>() {
-//            @Override
-//            public void onResponse(Call<ResponseAssociateBookingList> call, Response<ResponseAssociateBookingList> response) {
-//                if (response.isSuccessful()) {
-//                    if (response.body().getStatusCode().equalsIgnoreCase("200")) {
-//                        PreferencesManager.getInstance(context).setBookingNumber(response.body().getLstBooking().get(0).getBookingNumber());
-//                        hideLoading();
-//                        textContainer1.setVisibility(View.VISIBLE);
-//                        total_number_of_plot.setText("Total number of bookings "+response.body().getLstBooking().size());
-//                        AdapterAssociateBookingLst adapter = new AdapterAssociateBookingLst(response.body().getLstBooking(), getContext());
-//                        recyclerview.setAdapter(adapter);
-//                    } else showMessage("Record Not Found!");
-//                    hideLoading();
-//                } else showMessage(response.body().getMessage());
-//                hideLoading();
-//            }
-//            @Override
-//            public void onFailure(Call<ResponseAssociateBookingList> call, Throwable t) {
-//                hideLoading();
-//            }
-//        });
-//    }
+
 
     public void getDataSearch(String startdate, String enddate, String siteid, String sectorid, String blockid, String customerid, String bookingno, String associateid, String plotnumber) {
         showLoading();

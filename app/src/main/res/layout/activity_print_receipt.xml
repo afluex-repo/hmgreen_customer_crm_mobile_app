@@ -71,13 +71,13 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:layout_height="wrap_content">
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="80dp"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:src="@drawable/logoh"
                         android:layout_gravity="center"
                         android:layout_marginStart="0dp"
-                        android:padding="0dp"
-                        android:layout_height="80dp"/>
+                        android:padding="30dp"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -139,7 +139,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginStart="40dp"
-                            android:textColor="#B3B0B0"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
@@ -166,7 +166,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginStart="45dp"
-                            android:textColor="#AEA7A7"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
@@ -193,7 +193,7 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="40dp"
                             android:textSize="12sp"
-                            android:textColor="#938F8F"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
@@ -220,7 +220,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginStart="45dp"
-                            android:textColor="#938F8F"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -299,7 +299,7 @@
                             android:fontFamily="sans-serif-condensed"
                             android:hint="xxxx"
                             android:textAlignment="center"
-                            android:textColorHint="#B3B0B0"
+                            android:textColorHint="@color/black"
                             android:textSize="14sp" />
                     </LinearLayout>
                     <LinearLayout
@@ -322,14 +322,14 @@
                         <TextView
                             android:id="@+id/bankBranch"
                             android:layout_width="match_parent"
-                            android:text="xxxx"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            android:fontFamily="sans-serif-condensed"
                             android:layout_marginStart="20dp"
-                            android:textColor="#AEA7A7"
-                            android:layout_height="wrap_content"/>
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="xxxx"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -355,7 +355,7 @@
                             android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textSize="12sp"
-                            android:textColor="#938F8F"
+                            android:textColor="@color/black"
                             android:fontFamily="sans-serif-condensed"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
@@ -421,7 +421,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginStart="40dp"
-                            android:textColor="#B3B0B0"
+                            android:textColor="@color/black"
 
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
@@ -449,7 +449,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginStart="40dp"
-                            android:textColor="#AEA7A7"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
@@ -476,7 +476,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginStart="20dp"
-                            android:textColor="#938F8F"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
@@ -503,7 +503,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginStart="20dp"
-                            android:textColor="#938F8F"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>

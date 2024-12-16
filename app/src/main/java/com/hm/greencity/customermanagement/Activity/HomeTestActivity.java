@@ -1,5 +1,6 @@
 package com.hm.greencity.customermanagement.Activity;
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -24,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -71,75 +73,106 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-
 public class HomeTestActivity extends BaseActivity implements IPickCancel, IPickResult {
     private static final int REQUEST_CALL_PERMISSION = 1;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.profile_img)
     ImageView profileImg;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.imagelogo)
     ImageView imagelogo;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.support)
     ImageButton support;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.tv_username)
     TextView tvUsername;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.tv_activestatus)
     TextView associateDetails;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.tv_loginId)
     TextView tvLoginId;
-    @BindView(R.id.user_profile)
-    CardView userProfile;
-    @BindView(R.id.imageView3)
-    ImageView imageView3;
-    @BindView(R.id.tv_total_direct)
-    TextView tvTotalDirect;
-    @BindView(R.id.textView3)
-    TextView textView3;
+//    @SuppressLint("NonConstantResourceId")
+////    @BindView(R.id.user_profile)
+////    CardView userProfile;
+//    @SuppressLint("NonConstantResourceId")
+//    @BindView(R.id.imageView3)
+//    ImageView imageView3;
+//    @SuppressLint("NonConstantResourceId")
+//    @BindView(R.id.tv_total_direct)
+//    TextView tvTotalDirect;
+//    @SuppressLint("NonConstantResourceId")
+//    @BindView(R.id.textView3)
+//    TextView textView3;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.cv_plotBooking)
     CardView cvMyBooking;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.cv_customerDetails)
     CardView cvMyLedger;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.cv_mysummary)
     CardView cvDueInstallment;
-    @BindView(R.id.constraintLayout2)
-    ConstraintLayout constraintLayout2;
+//    @SuppressLint("NonConstantResourceId")
+//    @BindView(R.id.constraintLayout2)
+//    ConstraintLayout constraintLayout2;
     public static final int[] JOYFUL_COLORS1 = new int[]{Color.rgb(238, 164, 127), Color.rgb(0, 83, 156)};
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.cv_change_password)
     CardView cvChangePassword;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.cv_aboutUs)
     CardView cvAboutUs;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.cv_logout)
     CardView cvLogout;
     private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12, E13, custSearch;
     PieChart pieChart;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.imagenotepad)
     ImageView imagenotepad;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.chatImage)
     ImageView chatImage;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.imageView6)
     ImageView imageView6;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.imageView7)
     ImageView imageView7;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.imageView8)
     ImageView imageView8;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.call)
     ImageView call;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.searchView)
     SearchView searchView;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.mail)
     TextView mail;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.Call)
     TextView Call;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.WebSite)
     TextView WebSite;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.galleryimageView)
     ImageView galleryimageView;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.dgitalcardimageView)
     ImageView dgitalcardimageView;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.receiptImage)
     ImageView receiptImage;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.emicard)
     CardView emicard;
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.documentcard)
     CardView documentcard;
 
@@ -287,7 +320,6 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             @Override
             public void onClick(View view) {
                 goToActivity(context, PlotBooking.class, null);
-
             }
         });
         cvLogout.setOnClickListener(new View.OnClickListener() {
@@ -405,8 +437,9 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         Call<HomeActivityDashBoard> dashBoardCall = apiServices.getDashboard(jsonObject);
         dashBoardCall.enqueue(new Callback<HomeActivityDashBoard>() {
             @Override
-            public void onResponse(Call<HomeActivityDashBoard> call, Response<HomeActivityDashBoard> response) {
+            public void onResponse(@NonNull Call<HomeActivityDashBoard> call, @NonNull Response<HomeActivityDashBoard> response) {
                 hideLoading();
+                assert response.body() != null;
                 if (response.body().getStatusCode().equalsIgnoreCase("200") && response.body().getDashBoardData().size() > 0) {
                     associateDetails.setText(response.body().getDashBoardData().get(0).getAssociateDetails());
                     float totalPayableAmount = Float.parseFloat(response.body().getDashBoardData().get(0).getTotalPlotAmount());
@@ -442,14 +475,12 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 }
             }
             @Override
-            public void onFailure(Call<HomeActivityDashBoard> call, Throwable throwable) {
+            public void onFailure(@NonNull Call<HomeActivityDashBoard> call, @NonNull Throwable throwable) {
                 hideLoading();
                 showMessage(throwable.getMessage());
             }
         });
     }
-
-
     private void showProfile() {
         showLoading();
         JsonObject jsonObject = new JsonObject();
@@ -457,8 +488,10 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         Call<CustomerMyProfile> customerMyProfileCall = apiServices.getProfile(jsonObject);
         customerMyProfileCall.enqueue(new Callback<CustomerMyProfile>() {
             @Override
-            public void onResponse(Call<CustomerMyProfile> call, Response<CustomerMyProfile> response) {
+            public void onResponse(@NonNull Call<CustomerMyProfile> call, @NonNull Response<CustomerMyProfile> response) {
                 hideLoading();
+                assert response.body() != null;
+                assert response.body() != null;
                 if (response.body().getStatusCode().equalsIgnoreCase("200"))
                     customAlertDialog(response.body().getFirstName(), response.body().getAccountNo(), response.body().getAddress(), response.body().getBankName(), response.body().getBankBranch(), response.body().getBankHolderName(),
                             response.body().getCity(), response.body().getCustomberId(), response.body().getDob(), response.body().getEmail(), response.body().getGaurdianName(), response.body().getGaurdianRelation(), response.body().getGender(), response.body().getIfsc(), response.body().getJoiningDate(), response.body().getLastName(), response.body().getMobile(), response.body().getPanNumber(), response.body().getPinCode(), response.body().getSponsorId(), response.body().getFirstName(), response.body().getSponsorName(), response.body().getState(), response.body().getProfilePic());
@@ -466,12 +499,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                     showMessage(response.body().getMessage());
             }
             @Override
-            public void onFailure(Call<CustomerMyProfile> call, Throwable throwable) {
+            public void onFailure(@NonNull Call<CustomerMyProfile> call, @NonNull Throwable throwable) {
                 hideLoading();
             }
         });
     }
-
     protected void customAlertDialog(final String firstName, String accountNo, String address, String bankName, String bankBranch, String bankHolderName, String city, final String customberId, String dob, String email, Object gaurdianName, Object gaurdianRelation, Object gender, String ifsc, Object joiningDate, final String lastName, String mobile, String panNumber, String pinCode, String sponsorId, String name, String sponsorName, String state, String profile) {
         AlertDialog.Builder builder = new AlertDialog.Builder(HomeTestActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
@@ -482,6 +514,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         builder.create();
         final AlertDialog dialog = builder.show();
         ImageView imageView = inflateForm.findViewById(R.id.profile_img);
+        TextView textView= inflateForm.findViewById(R.id.changepassword);
         this.E1 = (EditText) inflateForm.findViewById(R.id.customer_name);
         this.E2 = (EditText) inflateForm.findViewById(R.id.customer_phone_number);
         this.E3 = (EditText) inflateForm.findViewById(R.id.customer_email);
@@ -517,6 +550,12 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         E11.setText(bankName);
 
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.customer_save_button);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changePassword();
+            }
+        });
         supplierSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -561,7 +600,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                         Call<UpdatePassword> updatePasswordCall = apiServices.updatePassword(jsonObject);
                         updatePasswordCall.enqueue(new Callback<UpdatePassword>() {
                             @Override
-                            public void onResponse(Call<UpdatePassword> call, Response<UpdatePassword> response) {
+                            public void onResponse(@NonNull Call<UpdatePassword> call, @NonNull Response<UpdatePassword> response) {
+                                assert response.body() != null;
                                 if (response.body().getStatusCode().equalsIgnoreCase("200")) {
                                     dialog.cancel();
                                     showMessage(response.body().getMessage());
@@ -570,7 +610,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                                 }
                             }
                             @Override
-                            public void onFailure(Call<UpdatePassword> call, Throwable throwable) {
+                            public void onFailure(@NonNull Call<UpdatePassword> call, @NonNull Throwable throwable) {
                             }
                         });
                     } else {
@@ -617,7 +657,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                         Call<UpdatePassword> updateFeedback = apiServices.uploadFeedback(jsonObject);
                         updateFeedback.enqueue(new Callback<UpdatePassword>() {
                             @Override
-                            public void onResponse(Call<UpdatePassword> call, Response<UpdatePassword> response) {
+                            public void onResponse(@NonNull Call<UpdatePassword> call, @NonNull Response<UpdatePassword> response) {
+                                assert response.body() != null;
                                 if (response.body().getStatusCode().equalsIgnoreCase("200")) {
                                     dialog.cancel();
                                     showMessage(response.body().getMessage());
@@ -626,7 +667,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                                 }
                             }
                             @Override
-                            public void onFailure(Call<UpdatePassword> call, Throwable throwable) {
+                            public void onFailure(@NonNull Call<UpdatePassword> call, @NonNull Throwable throwable) {
                             }
                         });
                     }
@@ -649,7 +690,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         int endIndexWebsite = startIndexWebsite + "https://hmgroupcompanies.com".length();
         spannableString.setSpan(new ClickableSpan() {
             @Override
-            public void onClick(View view) {
+            public void onClick(@NonNull View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hmgroupcompanies.com"));
                 startActivity(intent);
             }
@@ -674,9 +715,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
+                assert result != null;
                 profileFile = FileUtils.getFile(context, result.getUri());
                 uploadFile(profileFile);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                assert result != null;
                 Exception error = result.getError();
             }
         }
@@ -701,9 +744,10 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
         Call<ResponseStatusMessage> call = apiServices.uploadProfilePic(userId, body);
         call.enqueue(new Callback<ResponseStatusMessage>() {
             @Override
-            public void onResponse(Call<ResponseStatusMessage> call, Response<ResponseStatusMessage> response) {
+            public void onResponse(@NonNull Call<ResponseStatusMessage> call, @NonNull Response<ResponseStatusMessage> response) {
                 hideLoading();
                 try {
+                    assert response.body() != null;
                     if (response.body().getStatusCode().equalsIgnoreCase("200")) {
                         showMessage(response.body().getMessage());
                         PreferencesManager.getInstance(context).setProfilePic(response.body().getProfilePic());
@@ -718,7 +762,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 }
             }
             @Override
-            public void onFailure(Call<ResponseStatusMessage> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseStatusMessage> call, @NonNull Throwable t) {
                 hideLoading();
             }
         });
@@ -827,6 +871,7 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
 
         dialog.show();
     }
+    @SuppressLint("QueryPermissionsNeeded")
     private void sendEmail() {
         String emailAddress = "hmcity7374@gmail.com";
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
@@ -847,12 +892,14 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
             startCallIntent(phoneNumber);
         }
     }
+    @SuppressLint("QueryPermissionsNeeded")
     private void startCallIntent(String phoneNumber) {
         Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
         if (callIntent.resolveActivity(this.getPackageManager()) != null) {
             startActivity(callIntent);
         }
     }
+
     private void openWebsite() {
         Uri uri = Uri.parse("https://hmgroupcompanies.com");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);

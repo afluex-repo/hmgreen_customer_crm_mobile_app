@@ -330,6 +330,7 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
             }
         });
     }
+
     private void changePassword() {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.ic_launcher);

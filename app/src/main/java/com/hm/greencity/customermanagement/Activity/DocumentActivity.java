@@ -1,5 +1,7 @@
 package com.hm.greencity.customermanagement.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -35,7 +37,13 @@ public class DocumentActivity extends AppCompatActivity {
     }
 
     private void onclicklistener() {
-
+        binding.backarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HomeTestActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initview() {

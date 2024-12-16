@@ -65,7 +65,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-
 public class AssosiateDashboard extends BaseFragment {
     Unbinder unbinder;
     private static final int REQUEST_CALL_PERMISSION = 1;
@@ -192,13 +191,10 @@ public class AssosiateDashboard extends BaseFragment {
     ImageView img_side_menu;
     @BindView(R.id.associateSearchView)
     SearchView associateSearchView;
-
     @BindView((R.id.call))
     TextView call;
-
     @BindView((R.id.mail))
     TextView mail;
-
     @BindView((R.id.webSite))
     TextView webSite;
     @BindView((R.id.notes))
@@ -207,13 +203,12 @@ public class AssosiateDashboard extends BaseFragment {
     CardView gallery1;
      @BindView(R.id.digitalcardimageview)
      ImageView digitalcardimageview;
-
      @BindView(R.id.siteVisitcard)
      CardView siteVisitcard;
      @BindView(R.id.language)
      ImageButton language;
-
     private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
+
 
     AssociateContaner associateContaner;
     @SuppressLint({"ClickableViewAccessibility", "MissingInflatedId"})
@@ -236,7 +231,7 @@ public class AssosiateDashboard extends BaseFragment {
         TextView chattext = view.findViewById(R.id.textViewdueInstallment1);
         TextView textView9 = view.findViewById(R.id.textView31);
         TextView textView10 = view.findViewById(R.id.textView51);
-       CardView cvplotBooking = view.findViewById(R.id.cv_plotBooking);
+        CardView cvplotBooking = view.findViewById(R.id.cv_plotBooking);
         CardView cvcustomerDetails = view.findViewById(R.id.cv_customerDetails);
         CardView cvmysummary = view.findViewById(R.id.cv_mysummary);
         CardView cvnewCard1 = view.findViewById(R.id.cv_newCard1);

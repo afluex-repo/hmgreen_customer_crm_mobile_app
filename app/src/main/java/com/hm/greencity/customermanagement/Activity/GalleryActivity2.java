@@ -9,6 +9,7 @@ import com.hm.greencity.customermanagement.common.PreferencesManager;
 import com.hm.greencity.customermanagement.databinding.ActivityGallery2Binding;
 
 
+
 public class GalleryActivity2 extends AppCompatActivity {
     private ActivityGallery2Binding binding;
     private ViewPagerAdapter viewPagerAdapter;
@@ -18,10 +19,10 @@ public class GalleryActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityGallery2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         initView();
         setupViewPager();
         onclicklistener();
+
     }
 
     private void onclicklistener() {
@@ -37,12 +38,9 @@ public class GalleryActivity2 extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     private void initView() {
-
     }
 
     private void setupViewPager() {

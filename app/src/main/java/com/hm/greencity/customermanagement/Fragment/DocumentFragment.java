@@ -1,4 +1,5 @@
 package com.hm.greencity.customermanagement.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,12 +7,15 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.hm.greencity.customermanagement.Activity.HomeTestActivity;
 import com.hm.greencity.customermanagement.Network.RetrofitClient;
 import com.hm.greencity.customermanagement.R;
 import com.hm.greencity.customermanagement.adapters.PdfAdapter;
+import com.hm.greencity.customermanagement.constants.BaseFragment;
+import com.hm.greencity.customermanagement.databinding.FragmentDocumentBinding;
 import com.hm.greencity.customermanagement.models.Gallery.Lstgallery;
 import com.hm.greencity.customermanagement.models.Gallery.ResGallery;
 import com.hm.greencity.customermanagement.retrofit.ApiServices;
@@ -21,8 +25,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DocumentFragment extends Fragment {
 
+
+public class DocumentFragment extends BaseFragment {
+FragmentDocumentBinding binding;
     private RecyclerView recyclerView;
     private PdfAdapter pdfAdapter;
     private List<Lstgallery> pdfList;
@@ -32,17 +38,27 @@ public class DocumentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_document, container, false);
-
+         binding =FragmentDocumentBinding.inflate(getLayoutInflater());
         recyclerView = view.findViewById(R.id.recycler_view);
         int numberOfColumns = 3;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), numberOfColumns);
         recyclerView.setLayoutManager(gridLayoutManager);
-
         pdfList = new ArrayList<>();
         pdfAdapter = new PdfAdapter(pdfList, getContext());
         recyclerView.setAdapter(pdfAdapter);
 
-        return view;
+        Onclicklistener();
+        return binding.getRoot();
+    }
+
+    private void Onclicklistener() {
+        binding.backarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireContext(), HomeTestActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -81,4 +97,6 @@ public class DocumentFragment extends Fragment {
             }
         });
     }
+
+
 }
