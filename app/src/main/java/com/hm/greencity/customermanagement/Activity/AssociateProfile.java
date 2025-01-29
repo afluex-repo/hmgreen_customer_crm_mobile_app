@@ -224,12 +224,13 @@ public class AssociateProfile extends BaseActivity implements IPickCancel, IPick
     void showDialog() {
         PickSetup pickSetup = new PickSetup();
         pickSetup.setTitle("Select Profile Picture");
-        pickSetup.setGalleryIcon(R.mipmap.gallery_colored);
-        pickSetup.setCameraIcon(R.mipmap.camera_colored);
+        pickSetup.setGalleryIcon(com.vansuita.pickimage.R.mipmap.gallery_colored);
+        pickSetup.setCameraIcon(com.vansuita.pickimage.R.mipmap.camera_colored);
         pickSetup.setCancelTextColor(R.color.colorAccent);
         dialog = PickImageDialog.build(pickSetup);
         dialog.setOnPickCancel(this);
         dialog.show(this);
+
     }
 
     @Override

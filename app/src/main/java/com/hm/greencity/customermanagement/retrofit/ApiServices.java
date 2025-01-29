@@ -6,6 +6,7 @@ import com.hm.greencity.customermanagement.models.AssociateDashboard.ResponseAss
 import com.hm.greencity.customermanagement.models.AssociateDueInstallment.ResponseAssociateDueInstallment;
 import com.hm.greencity.customermanagement.models.AssociateLedgerList;
 import com.hm.greencity.customermanagement.models.AssociatePlotAvalibility.ResponseAssociatePlotAvalibility;
+import com.hm.greencity.customermanagement.models.BroucherModel.ResBroucherModel;
 import com.hm.greencity.customermanagement.models.BusinessCard.CreateBusinessCard.ResCreateBusinessCard;
 import com.hm.greencity.customermanagement.models.BusinessCard.GetBusinessCard.ResGetBusinessCard;
 import com.hm.greencity.customermanagement.models.BusinessCard.UpdateBusinessCard.ResUpdateBusinessCard;
@@ -17,6 +18,7 @@ import com.hm.greencity.customermanagement.models.DueInstallment.ResponsePloatBo
 import com.hm.greencity.customermanagement.models.DueInstallmentDashBoard;
 import com.hm.greencity.customermanagement.models.Gallery.ResGallery;
 import com.hm.greencity.customermanagement.models.HomeActivityDashBoard;
+import com.hm.greencity.customermanagement.models.LayoutModel.ResLayoutModel;
 import com.hm.greencity.customermanagement.models.LedgerReport.ResponseLedgerReport;
 import com.hm.greencity.customermanagement.models.Notes.CreateNote.ResCreateNote;
 import com.hm.greencity.customermanagement.models.Notes.DeleteNote.ResDeleteNote;
@@ -201,5 +203,12 @@ public interface ApiServices {
 
 //    @POST("WebAPI/DeleteBussinessCard")
 //    Call<ResDeleteBusinesscard>deletecard(@Body JsonObject jsonObject);
+
+
+    @POST("WebAPI/GetSiteLayout")
+    Call<ResLayoutModel>getLayout();
+
+    @POST("WebAPI/GetSiteBrochure")
+    Call<ResBroucherModel>getBroucher();
 
 }

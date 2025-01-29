@@ -50,7 +50,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
                 }
             });
         } else {
-            holder.thumbnail.setImageResource(R.drawable.camera);
+            holder.thumbnail.setImageResource(com.vansuita.pickimage.R.drawable.camera);
             holder.itemView.setOnClickListener(null);
         }
 

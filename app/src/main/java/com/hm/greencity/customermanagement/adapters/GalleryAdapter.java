@@ -51,7 +51,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.Recycler
             Glide.with(context)
                     .load(documentUrl)
                     .placeholder(R.drawable.logo)
-                    .error(R.drawable.camera)
+                    .error(com.vansuita.pickimage.R.drawable.camera)
                     .fallback(R.drawable.chat)
                     .into(holder.imageIV);
         } else {

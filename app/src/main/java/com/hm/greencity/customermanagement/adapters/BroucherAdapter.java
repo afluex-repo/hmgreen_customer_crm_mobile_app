@@ -8,44 +8,46 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.hm.greencity.customermanagement.R;
-import com.hm.greencity.customermanagement.models.Gallery.Lstgallery;
+import com.hm.greencity.customermanagement.models.BroucherModel.Brochurelst;
+import com.hm.greencity.customermanagement.models.LayoutModel.LstSiteLayout;
+
 import java.util.List;
 
 
-public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.ViewHolder> {
-    private List<Lstgallery> itemList;
+public class BroucherAdapter extends RecyclerView.Adapter<BroucherAdapter.Viewholder> {
+    private List<Brochurelst> itemList;
     private Context context;
 
-
-    public PdfAdapter(List<Lstgallery> itemList, Context context) {
+    public BroucherAdapter(List<Brochurelst> itemList, Context context) {
         this.itemList = itemList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BroucherAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_pdf, parent, false);
-        return new ViewHolder(view);
+                .inflate(R.layout.pdf_layout, parent, false);
+        return new Viewholder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Lstgallery item = itemList.get(position);
-        String mediaType = item.getMediaType();
-        final String documentUrl = item.getDocuments();
+    public void onBindViewHolder(@NonNull BroucherAdapter.Viewholder holder, int position) {
+        Brochurelst item = itemList.get(position);
+        final String documentUrl = item.getSiteBrochure();
 
-        if ("Document".equals(mediaType)) {
-            holder.iconImageView.setImageResource(R.drawable.baseline_picture_as_pdf_24);
-            holder.titleTextView.setText("PDF Document");
+        if (documentUrl != null && documentUrl.endsWith(".pdf")) {
+            holder.iconImageView.setImageResource(R.drawable.broucher);
+            holder.titleTextView.setText(item.getSiteName());
 
             String fullUrl;
-            if (documentUrl != null && !documentUrl.startsWith("http") && !documentUrl.startsWith("https")) {
-                fullUrl = "https://crm.hmgreencity.com/" + documentUrl;
+            if (!documentUrl.startsWith("http") && !documentUrl.startsWith("https")) {
+                fullUrl = "https://crm.hmgreencity.com" + documentUrl;
             } else {
                 fullUrl = documentUrl;
             }
@@ -58,11 +60,12 @@ public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.ViewHolder> {
                 holder.itemView.setOnClickListener(null);
             }
         } else {
-            holder.iconImageView.setImageResource(com.vansuita.pickimage.R.drawable.camera);
             holder.titleTextView.setText("Unknown");
+            holder.iconImageView.setImageResource(R.drawable.logoh);
             holder.itemView.setOnClickListener(null);
         }
     }
+
 
     private void openDocument(String documentUrl) {
         try {
@@ -70,6 +73,7 @@ public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.ViewHolder> {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setDataAndType(documentUri, "application/pdf");
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK);
+
             if (intent.resolveActivity(context.getPackageManager()) != null) {
                 context.startActivity(intent);
             } else {
@@ -81,21 +85,20 @@ public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.ViewHolder> {
     }
 
 
+
     @Override
     public int getItemCount() {
         return itemList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class Viewholder extends RecyclerView.ViewHolder {
         ImageView iconImageView;
         TextView titleTextView;
-
-        public ViewHolder(@NonNull View itemView) {
+        public Viewholder(@NonNull View itemView) {
             super(itemView);
-            iconImageView = itemView.findViewById(R.id.pdf);
+
+            iconImageView = itemView.findViewById(R.id.pdf_thumbnail);
             titleTextView = itemView.findViewById(R.id.pdf_title);
         }
     }
-
-
 }

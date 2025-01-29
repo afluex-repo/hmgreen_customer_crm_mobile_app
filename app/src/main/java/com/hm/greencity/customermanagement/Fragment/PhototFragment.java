@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class PhototFragment extends Fragment {
     private FragmentPhototBinding binding;
     private List<Lstgallery> galleryList;
@@ -59,8 +60,6 @@ public class PhototFragment extends Fragment {
                                 filteredList.add(item);
                             }
                         }
-
-                        // Use a final copy of the list to update the adapter
                         List<Lstgallery> finalFilteredList = new ArrayList<>(filteredList);
                         galleryList.clear();
                         galleryList.addAll(finalFilteredList);

@@ -65,6 +65,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
+
+
 public class AssosiateDashboard extends BaseFragment {
     Unbinder unbinder;
     private static final int REQUEST_CALL_PERMISSION = 1;
@@ -207,6 +209,17 @@ public class AssosiateDashboard extends BaseFragment {
      CardView siteVisitcard;
      @BindView(R.id.language)
      ImageButton language;
+
+     @BindView(R.id.inappguide)
+     CardView inappguide;
+     @BindView(R.id.knowledgebase)
+     CardView knowledgebase;
+     @BindView(R.id.layout)
+     CardView layout;
+     @BindView(R.id.broucher)
+     CardView broucher;
+
+
     private CardView cvplotBooking, cvcustomerDetails, cvmysummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
 
 
@@ -282,6 +295,36 @@ public class AssosiateDashboard extends BaseFragment {
             }
         });
 
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToActivity(LayoutActivity.class, null);
+
+            }
+        });
+
+        broucher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToActivity(BrouchureActivity.class, null);
+            }
+        });
+
+        knowledgebase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToActivity(KnowledgeBaseActivity.class,null);
+            }
+        });
+
+
+        inappguide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToActivity(InAppGuidenceActivity.class, null);
+            }
+        });
+
         digitalcardimageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -330,6 +373,7 @@ public class AssosiateDashboard extends BaseFragment {
                 startActivity(Intent.createChooser(intent, ""));
             }
         });
+
 
         webSite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -536,6 +580,7 @@ public class AssosiateDashboard extends BaseFragment {
             }
         });
     }
+
     public void aboutMe() {
         String message = "Associate Management - 2022\n Version - 1.0\n" +
                 getString(R.string.developed_by) + "\n"  +
@@ -729,6 +774,8 @@ public class AssosiateDashboard extends BaseFragment {
             }
         });
     }
+
+
     public void goToActivity(Class<?> targetActivity, Bundle bundle) {
         Intent intent = new Intent(requireContext(), targetActivity);
         if (bundle != null) {

@@ -2,6 +2,7 @@ package com.hm.greencity.customermanagement.models.Gallery;
 import com.google.gson.annotations.SerializedName;
 
 
+
 public class Lstgallery {
     @SerializedName("Pk_GalleryId")
     public String pk_GalleryId;

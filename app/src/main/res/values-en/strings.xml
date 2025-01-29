@@ -263,7 +263,7 @@
     <string name="my_bookings">My Bookings</string>
     <string name="my_ledger">My Ledger</string>
     <string name="dueinstallment">Due Installment</string>
-    <string name="myprofile">My Profile</string>
+    <string name="myprofile">Company Profile</string>
     <string name="editpassword">Edit Password</string>
     <string name="Feedback">Feedback</string>
     <string name="LogouT">Logout</string>
@@ -392,6 +392,9 @@
     <string name="transactionnumber">TransactionNumber</string>
     <string name="transactiondate">TransactionDate</string>
     <string name="emi_tracking">EMI Tracking</string>
+    <string name="knowledge_base">Knowledge Base</string>
+    <string name="in_app_guide">In App Guide</string>
+    <string name="layout">Layout</string>
 
 
 </resources>

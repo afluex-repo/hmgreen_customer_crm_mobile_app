@@ -2,28 +2,24 @@ package com.hm.greencity.customermanagement.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.hm.greencity.customermanagement.Fragment.KeyTrabsportFragment;
-import com.hm.greencity.customermanagement.Fragment.PhototFragment;
-import com.hm.greencity.customermanagement.Fragment.VideoFragment;
+import com.hm.greencity.customermanagement.Fragment.CompanyProfileFragment;
 import com.hm.greencity.customermanagement.adapters.ViewPagerAdapter;
 import com.hm.greencity.customermanagement.common.PreferencesManager;
-import com.hm.greencity.customermanagement.databinding.ActivityGallery2Binding;
+import com.hm.greencity.customermanagement.databinding.ActivityKnowledgeBaseBinding;
 
 
 
-public class GalleryActivity2 extends AppCompatActivity {
-    private ActivityGallery2Binding binding;
+public class KnowledgeBaseActivity extends AppCompatActivity {
+ ActivityKnowledgeBaseBinding binding;
     private ViewPagerAdapter viewPagerAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        binding = ActivityKnowledgeBaseBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
-        binding = ActivityGallery2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         initView();
-        setupViewPager();
         onclicklistener();
+        setupViewPager();
 
     }
 
@@ -32,9 +28,9 @@ public class GalleryActivity2 extends AppCompatActivity {
             if (!PreferencesManager.getInstance(getApplicationContext()).getUserType().equalsIgnoreCase("")) {
                 Intent I;
                 if (PreferencesManager.getInstance(getApplicationContext()).getUserType().equalsIgnoreCase("Trad Associate")) {
-                    I = new Intent(GalleryActivity2.this, AssociateContaner.class);
+                    I = new Intent(KnowledgeBaseActivity.this, AssociateContaner.class);
                 } else {
-                    I = new Intent(GalleryActivity2.this, HomeTestActivity.class);
+                    I = new Intent(KnowledgeBaseActivity.this, HomeTestActivity.class);
                 }
                 startActivity(I);
                 finish();
@@ -48,14 +44,13 @@ public class GalleryActivity2 extends AppCompatActivity {
 
     private void setupViewPager() {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.add(new PhototFragment(), "Photos");
-        viewPagerAdapter.add(new VideoFragment(), "Videos");
-        viewPagerAdapter.add(new KeyTrabsportFragment(), "Key Transport");
+        viewPagerAdapter.add(new CompanyProfileFragment(), "About Company");
+      //  viewPagerAdapter.add(new VideoFragment(), "Videos");
+       // viewPagerAdapter.add(new KeyTrabsportFragment(), "Key Transport");
         binding.pageViewer.setAdapter(viewPagerAdapter);
         binding.tabLayout.setupWithViewPager(binding.pageViewer);
 
 
     }
-
 
 }

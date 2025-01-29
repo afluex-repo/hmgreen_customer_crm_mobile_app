@@ -250,7 +250,7 @@
     <string name="my_bookings">मेरी बुकिंग</string>
     <string name="my_ledger">मेरा खाता</string>
     <string name="dueinstallment">देय किस्त</string>
-    <string name="myprofile">मेरी प्रोफाइल</string>
+    <string name="myprofile">कंपनी प्रोफाइल</string>
     <string name="editpassword">पासवर्ड संपादित करें</string>
     <string name="Feedback">प्रतिक्रिया</string>
     <string name="LogouT">लॉग आउट</string>
@@ -369,6 +369,9 @@
     <string name="transactionnumber">लेन-देन संख्या</string>
     <string name="transactiondate">कार्यवाही की तिथि</string>
     <string name="emi_tracking">ईएमआई ट्रैकिंग</string>
+    <string name="knowledge_base">Knowledge Base</string>
+    <string name="in_app_guide">In App Guide</string>
+    <string name="layout">Layout</string>
 
 
 </resources>

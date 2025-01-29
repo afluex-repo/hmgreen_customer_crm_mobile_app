@@ -14,11 +14,9 @@ public class RetrofitClient {
 
     public static Retrofit getClient() {
         if (retrofit == null) {
-
             // Create logging interceptor for debugging requests
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);  // Log all request/response bodies
-
             // Create OkHttpClient with timeout and logging interceptor
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
                     .readTimeout(30, TimeUnit.SECONDS)  // Set read timeout to 30 seconds

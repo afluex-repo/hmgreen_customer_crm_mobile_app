@@ -1,14 +1,9 @@
 package com.hm.greencity.customermanagement.common;
-
 import android.app.Application;
-
-
 import com.hm.greencity.customermanagement.R;
-
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.viewpump.ViewPump;
-
 //import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 
@@ -30,7 +25,7 @@ public class AppController extends Application {
                         new CalligraphyConfig.Builder()
 
                                 .setDefaultFontPath("fonts/montserrat_medium.ttf")
-                                .setFontAttrId(R.attr.fontPath)
+                                .setFontAttrId(io.github.inflationx.calligraphy3.R.attr.fontPath)
                                 .build()))
                 .build());
     }

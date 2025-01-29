@@ -11,41 +11,41 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.hm.greencity.customermanagement.R;
-import com.hm.greencity.customermanagement.models.Gallery.Lstgallery;
+import com.hm.greencity.customermanagement.models.LayoutModel.LstSiteLayout;
 import java.util.List;
 
 
-public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.ViewHolder> {
-    private List<Lstgallery> itemList;
+
+
+public class layoutAdapter extends RecyclerView.Adapter<layoutAdapter.ViewHolder> {
+    private List<LstSiteLayout> itemList;
     private Context context;
 
-
-    public PdfAdapter(List<Lstgallery> itemList, Context context) {
+    public layoutAdapter(List<LstSiteLayout> itemList, Context context) {
         this.itemList = itemList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public layoutAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_pdf, parent, false);
+                .inflate(R.layout.pdf_layout, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Lstgallery item = itemList.get(position);
-        String mediaType = item.getMediaType();
-        final String documentUrl = item.getDocuments();
+    public void onBindViewHolder(@NonNull layoutAdapter.ViewHolder holder, int position) {
+        LstSiteLayout item = itemList.get(position);
+        final String documentUrl = item.getSiteLayout();
 
-        if ("Document".equals(mediaType)) {
-            holder.iconImageView.setImageResource(R.drawable.baseline_picture_as_pdf_24);
-            holder.titleTextView.setText("PDF Document");
+        if (documentUrl != null && documentUrl.endsWith(".pdf")) {
+            holder.iconImageView.setImageResource(R.drawable.pdf3);
+            holder.titleTextView.setText(item.getSiteName());
 
             String fullUrl;
-            if (documentUrl != null && !documentUrl.startsWith("http") && !documentUrl.startsWith("https")) {
-                fullUrl = "https://crm.hmgreencity.com/" + documentUrl;
+            if (!documentUrl.startsWith("http") && !documentUrl.startsWith("https")) {
+                fullUrl = "https://crm.hmgreencity.com" + documentUrl;
             } else {
                 fullUrl = documentUrl;
             }
@@ -58,11 +58,12 @@ public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.ViewHolder> {
                 holder.itemView.setOnClickListener(null);
             }
         } else {
-            holder.iconImageView.setImageResource(com.vansuita.pickimage.R.drawable.camera);
             holder.titleTextView.setText("Unknown");
+            holder.iconImageView.setImageResource(R.drawable.logoh);
             holder.itemView.setOnClickListener(null);
         }
     }
+
 
     private void openDocument(String documentUrl) {
         try {
@@ -70,6 +71,7 @@ public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.ViewHolder> {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setDataAndType(documentUri, "application/pdf");
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK);
+
             if (intent.resolveActivity(context.getPackageManager()) != null) {
                 context.startActivity(intent);
             } else {
@@ -86,16 +88,16 @@ public class PdfAdapter extends RecyclerView.Adapter<PdfAdapter.ViewHolder> {
         return itemList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iconImageView;
         TextView titleTextView;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            iconImageView = itemView.findViewById(R.id.pdf);
+            iconImageView = itemView.findViewById(R.id.pdf_thumbnail);
             titleTextView = itemView.findViewById(R.id.pdf_title);
         }
     }
+
 
 
 }

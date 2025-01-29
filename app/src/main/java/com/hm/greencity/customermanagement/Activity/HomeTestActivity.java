@@ -175,6 +175,11 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.documentcard)
     CardView documentcard;
+    @BindView(R.id.knowledgebase)
+    CardView knowledgebase;
+
+    @BindView(R.id.inApp)
+    CardView inApp;
 
 
     private CardView cvPlotBooking, cvCustomerDetails, cvMySummary,cvnewCard1,cvnewCard2,cvnewCard3,cvchange_password,cvlogout,newcardview2;
@@ -266,6 +271,21 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
                 startActivity(new Intent(HomeTestActivity.this,ReceiptActivity2.class));
             }
         });
+
+        knowledgebase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeTestActivity.this,KnowledgeBaseActivity.class));
+            }
+        });
+
+        inApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeTestActivity.this,InAppGuidenceActivity.class));
+            }
+        });
+
         Call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -775,8 +795,8 @@ public class HomeTestActivity extends BaseActivity implements IPickCancel, IPick
     void showDialog() {
         PickSetup pickSetup = new PickSetup();
         pickSetup.setTitle("Select Profile Picture");
-        pickSetup.setGalleryIcon(R.mipmap.gallery_colored);
-        pickSetup.setCameraIcon(R.mipmap.camera_colored);
+        pickSetup.setGalleryIcon(com.vansuita.pickimage.R.mipmap.gallery_colored);
+        pickSetup.setCameraIcon(com.vansuita.pickimage.R.mipmap.camera_colored);
         pickSetup.setCancelTextColor(R.color.colorAccent);
         dialog = PickImageDialog.build(pickSetup);
         dialog.setOnPickCancel(this);

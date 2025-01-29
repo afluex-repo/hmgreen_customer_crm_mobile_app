@@ -40,6 +40,7 @@ FragmentDocumentBinding binding;
         View view = inflater.inflate(R.layout.fragment_document, container, false);
          binding =FragmentDocumentBinding.inflate(getLayoutInflater());
         recyclerView = view.findViewById(R.id.recycler_view);
+
         int numberOfColumns = 3;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), numberOfColumns);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -66,6 +67,7 @@ FragmentDocumentBinding binding;
         super.onViewCreated(view, savedInstanceState);
         fetchGalleryData();
     }
+
 
     private void fetchGalleryData() {
         ApiServices apiService = RetrofitClient.getClient().create(ApiServices.class);

@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Activity.InAppGuidenceActivity">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="?actionBarSize">
+        <ImageView
+            android:id="@+id/backarrow"
+            android:layout_width="30dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_height="match_parent"
+            app:tint="@color/black" />
+        <TextView
+            android:layout_width="match_parent"
+            android:text="In App Guidence"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_height="match_parent"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:layout_height="1dp"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Purpose :-"
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="Welcome users and briefly introduce the app’s purpose.Welcome to [HM GROUP OF COMPANIES]! Whether you're buying, selling, or renting, we’ve got everything you need to make your real estate journey smooth and easy. Let’s take a quick tour!"
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="10dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/textview_border"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Step-by-Step Walkthrough"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Home Screen/Overview"
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="This is your main dashboard where you can [see all feature which is in this app]. You can access all your key features from here!"
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="10dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Key Features"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:layout_marginTop="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="•Search\n• Plot Details\n• My Dashboard\n• Dynamic Property Views\n• My Profile"
+                android:textStyle="normal"
+                android:paddingStart="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/grey"
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="1- Search"
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="here you can search for the feature of app if you don't get from dashboard.."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="2- Plot Details"
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="you can show the plot dettails like downline , total directs , total active , total payout etc."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="3- Dashboard"
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text=" In the dashboard section you can see many feature which is related to plot and user profile and query option . dashboard option list given below."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Plot Booking "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="This section show details about booking plot."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Customer details "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="This section show customer details name and mobile number and address."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• My Summery "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="It show the plot summery details which buy and sell."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• My Notes "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text=" In my notes , you can write some important data and save in this app  you can also delete  your note"
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Plot Availability "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="In this section you can see that if plot is available or not , which plot is booked alloted and reject all plot status you can see here.."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Logout  "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text=" From this section you can logout from the app and move to login screen ."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="4- Dynamic Property views   "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="Here you can see the social media profile of company and other key features, which is given below."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Social Media Plateform    "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="You can see here social media plateform of the Hm Group of Companies ,like Instagram ,facebook, youtube."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Gallery"
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text=" here you can visit the company gallery where you can see photos , videos and key transport.."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Brochure "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text=" In this section you can see company brochure.."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Logout "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="Here you can see some plot related layouts ."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="5- My Profile   "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text=" This is the app profile section where you have many option like app guidence and knowledge base ,
+     derop a support request for any query. detals od this feature given below."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Edit Password "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text=" In this section you can change your password which is used in login time ."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Drop a Support Request "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="  This is a query section where you can gerenerate any query regarding app , plots , data which you want to ask for admin.."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• In App Guide "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text=" If you have any confusion regarding app you can just open this section and know about the app where you can see the app guidence."
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="• Knowledge Base "
+                    android:textStyle="bold"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text=" In this section you may know about the owner of this company and Property purchase, sale , investment"
+                    android:layout_gravity="center"
+                    android:textStyle="normal"
+                    android:paddingStart="20dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grey"
+                    android:layout_height="match_parent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>
